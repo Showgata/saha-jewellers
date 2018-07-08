@@ -13,6 +13,36 @@ body{
     font-weight: 400;
    font-family: 'Open Sans', sans-serif;
 }
+input{
+	color:#f7b03e;
+	background-color:#333;
+	border:1px solid #444;
+	padding:5px 14px;
+	border-radius:15px;
+}
+label{
+	color:#7b684c;
+}
+select{
+	color:#f7b03e;
+	background-color:#333;
+	padding:5px 14px;
+	border-radius:15px;
+}
+.even>td{
+	color:#f7b03e;
+	background-color:#333;
+}
+thead{
+	color:#f7b03e;
+	background-color:#333;
+	border:1px solid #444;
+	padding:5px 14px;
+	
+}
+tbody{
+	color:#f7b03e;
+}
 a{
     color:#f7b03e;
     text-decoration: none;

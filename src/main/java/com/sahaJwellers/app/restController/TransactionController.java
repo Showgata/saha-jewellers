@@ -36,7 +36,7 @@ public class TransactionController {
 		t.setStorage(1);
 		Mortgage m = new Mortgage();
 		m.setAna(1.1);
-		t.setMortgage(m);
+		
 		return new Transaction();
 	}
 	

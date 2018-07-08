@@ -7,5 +7,7 @@ import com.sahaJwellers.app.model.Voucher;
 
 @Repository
 public interface VoucherRepository extends JpaRepository<Voucher, Long> {
+	
+	
 
 }

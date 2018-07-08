@@ -29,9 +29,6 @@ public class Customer {
 	@Column(name="ref")
 	private String references;
 	
-	@Column(name="note")
-	private String note;
-	
 	@Version
 	@Column(name="version")
 	private Long version;
@@ -39,7 +36,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", mobile=" + mobile
-				+ ", Address=" + address + ", references=" + references + ", note=" + note + "]";
+				+ ", Address=" + address + ", references=" + references +"]";
 	}
 
 	public Long getCustomerId() {
@@ -66,12 +63,13 @@ public class Customer {
 		this.mobile = mobile;
 	}
 
+	
 	public String getAddress() {
 		return address;
 	}
 
 	public void setAddress(String address) {
-		address = address;
+		this.address = address;
 	}
 
 	public String getReferences() {
@@ -82,13 +80,6 @@ public class Customer {
 		this.references = references;
 	}
 
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
 
 	public Long getVersion() {
 		return version;

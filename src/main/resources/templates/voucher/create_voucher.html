@@ -5,178 +5,213 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    
+
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
 <head>
-        <title>pink-desh</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/metisMenu.css" rel="stylesheet">
-        <link href="/css/morris-0.4.3.min.css" rel="stylesheet">
-        <link href="/css/style.css" rel="stylesheet">
-        <script src="/js/modernizr.js"></script>
-    </head>
-    <body class="fixed-left">
+<title>pink-desh</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/metisMenu.css" rel="stylesheet">
+<link href="/css/morris-0.4.3.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link href="/css/dataTables.bootstrap.css" rel="stylesheet">
+<link href="/css/dataTables.colVis.css" rel="stylesheet"> -->
+ <link
+	href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+	rel="stylesheet"> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css" rel="stylesheet"/>
+<!-- 	<script src="/js/jquery.min.js"></script> -->
+<script src="/js/modernizr.js"></script>
+<!-- <script src="/js/dataTables.bootstrap.js"></script>
+<script src="/js/dataTables.colVis.js"></script> -->
+</head>
+<body class="fixed-left">
 
-        <div id="wrapper">
+	<div id="wrapper">
 
-            <!--top bar-->
-            <div class="topbar">
-                <div class="topbar-left">
-                    <div class="text-center">
-                        <a href="index.html" class="logo"><img src="/images/sahas.png" class="image-responsive" width="220px" style="margin-top:10px"alt=""></a>
-                    </div>
-                </div>
-                <div class="pull-left menu-toggle">
-                    <i class="fa fa-bars"></i>
-                </div>
-               
-                <ul class="nav navbar-nav  top-right-nav hidden-xs">
-                    <li>
+		<!--top bar-->
+		<div class="topbar">
+			<div class="topbar-left">
+				<div class="text-center">
+					<a href="index.html" class="logo"><img src="/images/sahas.png"
+						class="image-responsive" width="220px" style="margin-top: 10px"
+						alt=""></a>
+				</div>
+			</div>
+			<div class="pull-left menu-toggle">
+				<i class="fa fa-bars"></i>
+			</div>
 
-                        <span id="para2"></span>
-                        <span id="para3"></span>
-                        <span id="para1"></span>
-                    </li>
-                 
-                    <li class="dropdown profile-link hidden-xs">
-                        <div class="clearfix">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/images/user.png" alt="" class="pull-left">
-                                <span>up bar <br><em>Admin</em></span>                            
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Account</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Logout</a></li>
-                            </ul>
-                        </div>
+			<ul class="nav navbar-nav  top-right-nav hidden-xs">
+				<li><span id="para2"></span> <span id="para3"></span> <span
+					id="para1"></span></li>
 
-                    </li>
-                    
-                </ul>
-            </div>
-            <!--end top bar-->			<div th:replace="common/common-header :: common-menu"></div>
-            <!--left menu start-->
-            <!--left menu end-->
-            <div class="content-page  equal-height">
-                <div class="content">
-                    <div class="container">
-                    <div class="row">
-                             <div class="col-sm-4 h6" style="margin-top:-10px;">
-                                <div class="panel-box">
-                                    <h4>Customer Information</h4>
-                                    <form role="form">
-                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" class="form-control"></div>
-									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" class="form-control"></div>
-                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile" class="form-control"></div>
-                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" class="form-control"></div>
-									 
-                                  
-<a href="#" class="btn btn-border-theme btn-xs">Print</a>   &nbsp;
-									 <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>  &nbsp;
-										<a href="#" class="btn btn-border-theme btn-xs">Product</a>   &nbsp;
-										   <a href="#" class="btn btn-border-theme btn-xs">PDF</a>   &nbsp;
-								  <div>
-                                       <label></label>
-                                    </div>
-                                </form>
+				<li class="dropdown profile-link hidden-xs">
+					<div class="clearfix">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img
+							src="/images/user.png" alt="" class="pull-left"> <span>up
+								bar <br>
+							<em>Admin</em>
+						</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Account</a></li>
+							<li><a href="#">Settings</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</div>
 
-                                </div>
-									<ul class="pager">
-								 <li class="next"><a href="#">Calculate in Grams &rarr;</a>
-                                           
-                                            </li>
-                                            <li class="previous"><a href="#">Save &rarr;</a>
-                                            </li>
-                                       
-                                        </ul>
-										
-                            </div >
-                             <style>
+				</li>
+
+			</ul>
+		</div>
+		<!--end top bar-->
+		<div th:replace="common/common-header :: common-menu"></div>
+		<!--left menu start-->
+		<!--left menu end-->
+		<div class="content-page  equal-height">
+			<div class="content">
+				<div class="container">
+				  
+					<div class="row">
+						<div class="col-sm-4 h6">
+							<div class="panel-box">
+								<h4>Customer Information</h4>
+								<form role="form">
+									<div class="form-group">
+										<label>Customer Name</label> <input type="text"
+											placeholder="Enter name"  id="cust_name" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>ID</label> <input type="text" disabled="true" placeholder="Id" id="cust_id"
+											class="form-control">
+									</div>
+									<div class="form-group">
+										<label>Mobile</label> <input type="text"
+											placeholder="Enter mobile" id="cust_mobile" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>Address</label> <input type="text"
+											placeholder="Enter address" id="cust_address" class="form-control">
+									</div>
+
+
+									<a href="#" class="btn btn-border-theme btn-xs">Print</a>
+									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>
+									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Product</a>
+									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a>
+									&nbsp;
+									<div>
+										<label></label>
+									</div>
+								</form>
+
+							</div>
+							<ul class="pager">
+								<li class="next">	<input class="form-controlcol-sm-2" type="button" name="show_voucher_details" value="Voucher Details" id="show_voucher_details" /> 
+
+								</li>
+								<li class="previous"><a href="#" onclick="saveVoucher()">Save &rarr;</a></li>
+
+							</ul>
+
+						</div>
+						<style>
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+	width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+	background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888; 
+	background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+	background: #555;
 }
 </style>
-                         <div class="col-sm-5 h6"  style="margin-top:-10px;">
-                                <div class="panel-box">
-                                    <h4>Mortgage Informantion</h4>
-                                    <div id="wizard" class="bwizard">
-                                        <!-- Start .bwizard -->
-                                     
-                                        <form class="form-horizontal" role="form">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="tab1">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Bori</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <!-- End .control-group  -->
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Ana</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Ratti</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">point</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-													<div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Gram</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="gram will be calculated" readonly="readonly" name="lastname" type="text">
-                                                    </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Interest rate</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Int rate" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Loan amount</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="loan amt" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-                                                                                                        
-                                                    
-													<!-- End .control-group  -->
-                                                </div>
-                                              
-                                               
-                                            </div>
-                                        </form>
-                                        <!--<ul class="pager">
+						<div class="col-sm-4 h6">
+							<div class="panel-box">
+								<h4>Mortgage Information</h4>
+								<div id="wizard" class="bwizard">
+									<!-- Start .bwizard -->
+
+									<form class="form-horizontal" role="form">
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Bori</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="0.0"
+															name="bori" onkeyup="calculateGram();" id="bori" type="text"/>
+													</div>
+												</div>
+												<!-- End .control-group  -->
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Ana</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="0.0"
+															name="ana" id="ana" onkeyup="calculateGram();" type="text"/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Ratti</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="0.0"
+															name="ratti" onkeyup="calculateGram();" id="ratti" type="text"/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">point</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="0.0"
+															name="point" onkeyup="calculateGram();" id="point" type="text"/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Gram</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control"
+															placeholder="0.0" readonly="readonly"
+															name="gram"  id="gram" type="text"/>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Interest
+														rate</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="0.0"
+															name="rate" id="rate" type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Loan
+														amount</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="0.00"
+															name="loan_amnt" id="loan_amnt" type="text">
+													</div>
+												</div>
+
+
+												<!-- End .control-group  -->
+											</div>
+
+
+										</div>
+									</form>
+									<!--<ul class="pager">
                                             <li class="previous"><a href="#">&larr; Back</a>
                                             </li>
                                             <li class="next"><a href="#">Next &rarr;</a>
@@ -184,95 +219,115 @@ and open the template in the editor.
                                             <li class="next finish" style="display:none;"><a href="#">Finish</a>
                                             </li>
                                         </ul>-->
-                                    </div>
-                                    <!-- End .bwizard -->
-                                </div>
-                            </div><!--height-->
-                         <div class="col-sm-3 "  style="margin-top:-10px;">
-                                <div class="panel-box">
+								</div>
+								<!-- End .bwizard -->
+							</div>
+						</div>
+						<!--height-->
+						<div class="col-sm-3 ">
+							<div class="panel-box">
 								<h4>Voucher Details</h4>
-								 <div id="wizard" class="bwizard"  style="margin-top:-20px;">
-                                        <!-- Start .bwizard -->
-                                     
-                                        <form class="form-horizontal" role="form">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="tab1">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Date</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="date" name="firstname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <!-- End .control-group  -->
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
-                                                        <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg " style="color:#f7b03e;" placeholder="sl no." name="lastname" value="22220" type="text">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    
-     
-                                                  
-                                                                                                        
-                                                    
-													<!-- End .control-group  -->
-                                                </div>
-                                              
-                                               
-                                            </div>
-                                        </form>
-                                        
-                                    </div>
+								<div id="wizard" class="bwizard" style="margin-top: -20px;">
+									<!-- Start .bwizard -->
+
+									<form class="form-horizontal" role="form">
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Date</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control datepicker-here" placeholder="date"
+															name="date" id="date" type="text" 
+       														data-language='en'
+       														
+       														data-position='bottom left'
+       														data-date-format="dd/mm/yyyy">
+													</div>
+												</div>
+												<!-- End .control-group  -->
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Serial
+														No.</label>
+													<div class="col-lg-10 col-md-9 has-warning">
+														<input class="form-control input-lg "
+															style="color: #f7b03e;" placeholder="sl no."
+															name="serial" id="serial" disabled="true" value="22220" type="text">
+													</div>
+												</div>
+
+
+
+
+
+
+												<!-- End .control-group  -->
+											</div>
+
+
+										</div>
+									</form>
+
 								</div>
-								
-								</div>
-                        <div class="col-sm-3 h6"  style="margin-top:-10px;">
-                                <div class="panel-box">
-								  <h4>Transaction Details</h4>
-								 	
-								 <div id="wizard" class="bwizard" style="margin-top:-20px;">
-                                        <!-- Start .bwizard -->
-                                     
-                                        <form class="form-horizontal" role="form">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="tab1">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label"  style="font-size: 8px;"><font>Customer Serial</font></label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="customer serial" name="firstname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <!-- End .control-group  -->
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label" style="font-size: 8px;">Reminder Date</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="reminder date" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label" style="font-size: 10px;">Storage</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="storage" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Note</label>
-                                                        <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
-                                                        </div>
-                                                    </div>
-     
-                                                  
-                                                                                                        
-                                                    
-													<!-- End .control-group  -->
-                                                </div>
-                                              
-                                               
-                                            </div>
-                                        </form>
-                                        <!--<ul class="pager">
+							</div>
+
+						</div>
+						<div class="col-sm-3 h6">
+							<div class="panel-box">
+								<h4>Transaction Details</h4>
+
+								<div id="wizard" class="bwizard" style="margin-top: -20px;">
+									<!-- Start .bwizard -->
+
+									<form class="form-horizontal" role="form">
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label"
+														style="font-size: 8px;"><font>Customer
+															Serial</font></label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="customer serial"
+															name="transaction_serial" id="transaction_serial" type="text">
+													</div>
+												</div>
+												<!-- End .control-group  -->
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label"
+														style="font-size: 8px;">Reminder Date</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="reminder date"
+															name="reminder_date" id="reminder_date" type="text"
+															data-language='en'
+       														data-position='bottom left'
+       														data-date-format="dd/mm/yyyy">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label"
+														style="font-size: 10px;">Storage</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="storage"
+															name="storage" id="storage" type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Note</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="note"
+															name="note" id="note" type="text">
+													</div>
+												</div>
+
+
+
+
+												<!-- End .control-group  -->
+											</div>
+
+
+										</div>
+									</form>
+									<!--<ul class="pager">
                                             <li class="previous"><a href="#">&larr; Back</a>
                                             </li>
                                             <li class="next"><a href="#">Next &rarr;</a>
@@ -280,18 +335,87 @@ and open the template in the editor.
                                             <li class="next finish" style="display:none;"><a href="#">Finish</a>
                                             </li>
                                         </ul>-->
-                                    </div>
+                                        
 								</div>
-							
-								</div>
-                         <div class="row"  >
-                             <div class="col-sm-12" style="overflow: scroll;height:150px;margin-top:-20px">
-							 <div class="panel-box">
-							 
-                                    
-									   
-                                           <style>
-                                               .pane-box{
+							</div>
+						
+						</div>
+						<div class="container">
+							<!-- <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
+								  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text"> -->
+								  
+							<table class="table table-striped" id="voucher">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Name</th>
+										<th>Serial no</th>
+										<th>Cust sl</th>
+
+										<th>Receive Date</th>
+										<th>Bori</th>
+										<th>Ana</th>
+										<th>Ratti</th>
+
+										<th>Gram</th>
+										<th>Int. Rate</th>
+										<th>Loan Amt.</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+						<!--  <style>
+                                               .panel-box{
     padding: 15px;
   background: #272a31;
     margin-bottom: 20px;
@@ -303,11 +427,17 @@ and open the template in the editor.
     
 
                                            </style>
-										   
+								
+                         <div class="row"  >
+                             <div class="col-sm-12" style="overflow: scroll;height:150px;">
+							 <div class="panel-box">
+							 
+                                    
+									   
+                                         										   
                                     <div class="table-responsive">
 									
-                                                      <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
-									  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text">
+                                                    
                                                 
                                           <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
@@ -331,65 +461,434 @@ and open the template in the editor.
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <tr>
+                                        		<td>ID</td>
+                                        			<td>ID</td>
+                                        				<td>ID</td>
+                                        					<td>ID</td>
+                                        						<td>ID</td>
+                                        							<td>ID</td>
+                                        			<td>ID</td>
+                                        				<td>ID</td>
+                                        					<td>ID</td>
+                                        						<td>ID</td>
+                                        							<td>ID</td>
+                                        								<td>ID</td>					
+                                        </tr>
                                        
+                                                <th>Name</th>
+									    <td>Serial no</th>
+                                                <th>Cust sl</th>
+
+                                                <th>Receive Date</th>
+                                                <th>Bori</th>
+                                                <th>Ana</th>
+                                                <th>Ratti</th>
+                                               
+												<th>Gram</th>																								
+												<th>Int. Rate</th>
+											<th>Loan Amt.</th>
+                                               <th>Update</th>
+                                             <th>Delete</th>
                                         </tbody>
                                     </table>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                
+                                    </div> -->
+						<!-- <div class="clearfix"></div> -->
 
-							 </div>
+
+						<!--  </div>
 							 </div>
 							 </div>
                      
-                        </div>
-                    
-                      <!-- form -->
-                      
-                    </div><!--content-->               
-                </div><!--content page-->
-            </div><!--end wrapper-->
-        </div>
-        <div class="sidebar">
-            <div class='nicescroll'>
-                <h4>Quick Support</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod.
-                </p>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" rows='5' placeholder="Name"></textarea>
-                    </div>
-                    <div class="text-right">
-                        <button type="button" class=" btn btn-theme btn-lg">Send</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="footer">
-                <span>Copyright &copy; 2016. Pink-Desh.</span>
-        </div>
-        <!-- Plugins  -->
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/jquery.slimscroll.js"></script>
-        <script src="/js/metisMenu.js"></script>
-         <script src="/js/core.js"></script>
-        <script src="/js/mediaquery.js"></script>
-        <script src="/js/equalize.js"></script>
-        <script src="/js/app.js"></script>
+                        </div> -->
 
-    </body>
+
+
+						<!-- <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table> -->
+
+					</div>
+					<!--content-->
+				</div>
+				<!--content page-->
+			</div>
+			<!--end wrapper-->
+		</div>
+
+
+		<div class="footer col-sm-offset-4">
+			<span>Copyright &copy; 2016. Pink-Desh.</span>
+		</div>
+		<!-- Plugins  -->
+		<script src="/js/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.slimscroll.js"></script>
+		<script src="/js/metisMenu.js"></script>
+		<script src="/js/core.js"></script>
+		<script src="/js/mediaquery.js"></script>
+		<script src="/js/equalize.js"></script>
+		<script src="/js/app.js"></script>
+		  <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
+        <script>
+      
+        
+        function calculateGram(){
+        	console.log('calculate gram');
+        	const boriUnitValue = 11.664;
+            const anaUnitValue = 0.729;
+            const rotiUnitValue = 0.1215;
+            const pointUnitValue = 0.01215;
+            
+            let bori_field = $("#bori");
+            let ana_field = $("#ana");
+            let ratti_field = $("#ratti");
+            let point_field = $("#point");
+            let gram_field = $("#gram");
+            
+        	let bori = bori_field.val();
+        	let ana = ana_field.val();
+        	let rati = ratti_field.val();
+        	let point = point_field.val();
+        
+        	
+        	bori = isNaN(bori)||bori.trim()==""?0:parseFloat(bori);
+        	ana = isNaN(ana)||ana.trim()==""?0:parseFloat(ana);
+        	rati = isNaN(rati)||rati.trim()==""?0:parseFloat(rati);
+        	point = isNaN(point)||point.trim()==""?0:parseFloat(point);
+        	
+        	let gram = boriUnitValue * bori + anaUnitValue * ana + rotiUnitValue * rati + pointUnitValue * point;
+        	gram_field.val(roundTo(gram,2));
+        	
+        }
+        
+        function roundTo(n, digits) {
+            var negative = false;
+            if (digits === undefined) {
+                digits = 0;
+            }
+                if( n < 0) {
+                negative = true;
+              n = n * -1;
+            }
+            var multiplicator = Math.pow(10, digits);
+            n = parseFloat((n * multiplicator).toFixed(11));
+            n = (Math.round(n) / multiplicator).toFixed(2);
+            if( negative ) {    
+                n = (n * -1).toFixed(2);
+            }
+            return n;
+        }
+        
+       
+        	
+        
+        function GetFormattedDate() {
+
+            var todayTime = new Date();
+
+            var month = format(todayTime .getMonth() + 1);
+
+            var day = format(todayTime .getDate());
+
+            var year = todayTime .getFullYear();
+
+            return day + "/" + month + "/" + year;
+
+        }
+        function buildAjaxForJson(url, methodType, inputData){
+       	 return $.ajax({
+       	    url : url,
+       	    method : methodType,
+       	    data : JSON.stringify(inputData),
+       	    dataType : "json",
+       	    contentType: "application/json"
+       	 })
+       	}
+       
+        function buildAjax(url, methodType){
+        	return $.ajax({
+           	    url : url,
+           	    method : methodType,
+           	    contentType: "application/json"
+           	 })
+        }
+        
+       function formatFloatValue(val){
+       		return val==""||isNaN(val)?null:parseFloat(val);
+       	}
+       	
+       function formatIntegerValue(val){
+      		return val==""||isNaN(val)?null:parseInt(val);
+      	}	
+       
+       function formatValue(val){
+    	   return val==""?null:val;
+       }
+       
+       /* function fetchCustomers(){
+    	   var URL = "http://localhost:8080/modgage-app/api/customer";
+    	   var data = [];
+    	   buildAjax(URL, "GET").then(function(respJson){
+    		   jQuery.each(respJson, function(i, val) {
+    			   data.push(respJson.customerName+" > "+customerId);
+    		   });
+    		   
+    	   }, function(reason){
+             	 console.log("error in processing your request customer", reason);
+          	}); 
+       }	 */
+       
+       function fetchVouchers(){
+    	   var URL = "http://localhost:8080//modgage-app/api/voucher/";
+    	   var data = [];
+    	   var autoCompleteList = [];
+    	   buildAjax(URL, "GET").then(function(respJson){
+          		console.log(respJson);
+          		 let tr ="";
+          		 
+          		 jQuery.each(respJson, function(i, val) {
+          			autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
+          			
+          			 data.push([(val.id==null?"0":val.id),
+          				 val.customer.customerName,
+          				 (val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial),
+          				 (val.customer.customerId==null?"":val.customer.customerId),
+          				 val.date,
+          				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
+          				(val.mortgage.ana==null?"0.0":val.mortgage.ana),
+          				(val.mortgage.ratti==null?"0.0":val.mortgage.ratti),
+          				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
+          				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
+          				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
+          				"<input class='form-control col-sm-2 upd'  type='button' name='update' value='update' id='update' />",
+          				"<input class='form-control col-sm-2 del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+          			 ]); 
+          			/*  tr = "";
+          			 tr += "<tr role='row' class='"+(i%2==0?'even':'odd')+"'>";
+          			 tr += "<td>"+(val.id==null?"0":val.id)+"</td>";
+          			 tr += "<td>"+val.customer.customerName+"</td>";
+          			 tr += "<td>"+(val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial)+"</td>";
+          			 tr += "<td>"+(val.customer.customerId==null?"":val.customer.customerId)+"</td>";
+          			 tr += "<td>"+val.date+"</td>";
+          			 tr += "<td>"+(val.mortgage.bori==null?"0.0":val.mortgage.bori)+"</td>";
+          			 tr += "<td>"+(val.mortgage.ana==null?"0.0":val.mortgage.ana)+"</td>";
+          			 tr += "<td>"+(val.mortgage.ratti==null?"0.0":val.mortgage.ratti)+"</td>";
+          			 tr += "<td>"+(val.mortgage.gram==null?"0.0":val.mortgage.gram)+"</td>";
+          			 tr += "<td>"+(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate)+"</td>";
+          			 tr += "<td>"+(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount)+"</td>";
+          			 tr += "<td>"+
+          			"<input class='form-controlcol-sm-2'  type='button' name='show_voucher_details' value='update' id='update' />"+
+          				"<input class='form-controlcol-sm-2' type='button' name='show_voucher_details' value='delete' id='delete />"+
+          			 "</td>"; */
+          		// $("#voucher > tbody").append("<tr><td>"+val.id+"</td><td>"+val.customer.customerName+"</td></tr>");
+          		/* tr += "</tr>";
+          		$("#voucher > tbody").append(tr); */
+          		}); 
+          		$('#voucher').DataTable({
+            		data:           data,
+                    deferRender:    true,
+                    scrollY:        200,
+                    scrollCollapse: true,
+                    scroller:       true,
+                    "order": []
+            	});  
+          		 $( "#cust_name" ).autocomplete({
+     		        source: autoCompleteList,
+     		        select: function (event, ui) {
+     		        	var txt = ui.item.label;
+     		          let custId = parseInt(txt.split(">")[1]);
+     		          $("#cust_id").val(custId); 
+     		          
+     		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
+     		        	$("#cust_address").val(respJson.address);
+     		       	    $("#cust_mobile").val(respJson.mobile);
+     		         },function(reason){
+     		           	 console.log("error in processing your request", reason);
+     	           	}); 
+     		          
+     		      }
+     		      });
+          		
+           	}, function(reason){
+           	 console.log("error in processing your request", reason);
+           	}); 
+       }
+       
+       function moveDataTableRow(position,table){
+    	   var currentPage = table.page();
+    	   var index = position-1,
+           rowCount = table.data().length-1,
+           insertedRow = table.row(rowCount).data(),
+           tempRow;
+
+       for (var i=rowCount;i>index;i--) {
+           tempRow = table.row(i-1).data();
+           table.row(i).data(tempRow);
+           table.row(i-1).data(insertedRow);
+       }     
+       //refresh the current page
+       table.page(currentPage).draw(false);
+       }
+       
+       function saveVoucher(){   	   
+    	var URL = "http://localhost:8080//modgage-app/api/voucher/";
+    	var voucher = {
+    			/* id : null
+    			date	null
+    			serial	null
+    			customer	null
+    			transaction	null
+    			mortgage	null */
+    	};
+    	voucher["date"]=$("#date").val();
+    	voucher["serial"]=$("#serial").val();
+    	
+    	var customer = {};
+    	var mortgage = {};
+    	var transaction = {};
+    	
+        let bori_field = $("#bori");
+        let ana_field = $("#ana");
+        let ratti_field = $("#ratti");
+        let point_field = $("#point");
+        let gram_field = $("#gram");
+        let loanAmnt_field = $("#loan_amnt");
+        let interestRate_field = $("#rate");
+        let transactionSerial = $("#transaction_serial");
+        let reminderDate = $("#reminder_date");
+        let note = $("#note");
+        let storage = $("#storage");
+        
+        transaction["reminderDate"] = reminderDate.val()==""?null:reminderDate.val();
+        transaction["note"] = note.val()==""?null:note.val();
+        transaction["storage"] = formatIntegerValue(storage.val());
+        
+        mortgage["bori"] = formatFloatValue(bori_field.val());
+        mortgage["ana"] = formatFloatValue(ana_field.val());
+        mortgage["ratti"] = formatFloatValue(ratti_field.val());
+        mortgage["point"] = formatFloatValue(point_field.val());
+    	mortgage["gram"] = formatFloatValue(gram_field.val());
+    	mortgage["loanAmount"]=formatFloatValue(loanAmnt_field.val());
+    	mortgage["interestRate"]=formatFloatValue(interestRate_field.val());
+    	
+        
+    	customer["customerName"]=$("#cust_name").val();
+    	customer["address"]=$("#cust_address").val();
+    	customer["mobile"]=$("#cust_mobile").val();
+    	customer["id"]=formatIntegerValue($("#cust_id").val());
+    	
+    	voucher["customer"] = customer;
+    	voucher["mortgage"] = mortgage; 
+    	voucher["transaction"] = transaction;
+    	
+       	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
+       		console.log(respJson);
+       		let val = respJson;
+       		 var t = $('#voucher').DataTable();
+       		t.row.add([(val.id==null?"0":val.id),
+ 				 val.customer.customerName,
+ 				 (val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial),
+ 				 (val.customer.customerId==null?"":val.customer.customerId),
+ 				 val.date,
+ 				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
+ 				(val.mortgage.ana==null?"0.0":val.mortgage.ana),
+ 				(val.mortgage.ratti==null?"0.0":val.mortgage.ratti),
+ 				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
+ 				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
+ 				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
+ 				"<input class='form-controlcol-sm-2 upd'  type='button' name='update' value='update' id='update' />",
+ 				"<input class='form-controlcol-sm-2 del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+ 			 ]).draw();  
+ 			
+       		moveDataTableRow(1,t);
+       		
+       		
+       		alert("done");
+       	}, function(reason){
+       	 console.log("error in processing your request", reason);
+       	}); 
+    	   
+       } 	
+        // 2 digit formatted date
+        function format(n){
+        	return n<10? '0'+n:''+n;
+        }
+        $(document).ready( function () {    	
+         fetchVouchers();
+         
+            
+            var disabledDays = [0];
+            var dateSettings = {
+                language: 'en',
+                maxDate: new Date(),
+                autoClose:true,
+                onRenderCell: function (date, cellType) {
+                    if (cellType == 'day') {
+                        var day = date.getDay(),
+                            isDisabled = disabledDays.indexOf(day) != -1;
+
+                        return {
+                            disabled: isDisabled
+                        }
+                    }
+                }
+            };
+            $("#date").datepicker(dateSettings);
+        	$("#reminder_date").datepicker(dateSettings);
+        	  $("#date").val(GetFormattedDate());
+        	  
+            /* ratti_field.change(calculateGram());
+            point_field.change(calculateGram()); */
+            
+        } );
+        
+        $('#voucher tbody').on( 'click', '.del', function () {
+        	var table = $('#voucher').DataTable();
+        	if(confirm('Are you sure !')){
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('delid'));
+        		  buildAjax(URL, "POST").then(function(respJson){
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	}); 
+        		  var row = table.row( $(this).parents('tr') );
+                  var rowNode = row.node();
+                  row.remove();
+                  table.page(currentPage).draw(false);
+        	}
+         
+            
+        } );
+        </script> 
+</body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
 </html>

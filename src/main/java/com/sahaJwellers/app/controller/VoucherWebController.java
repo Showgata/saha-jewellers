@@ -14,4 +14,5 @@ public class VoucherWebController {
 		System.out.println("voucher");
 		return "voucher/create_voucher";
 	}
+	
 }

@@ -2,9 +2,12 @@ package com.sahaJwellers.app.restController;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +17,7 @@ import com.sahaJwellers.app.model.Customer;
 import com.sahaJwellers.app.service.CustomerService;
 
 @RestController
-@RequestMapping("/modgage-app/api/customer")
+@RequestMapping("/mortgage-app/api/customer")
 public class CustomerController {
 	
 	@Autowired
@@ -44,5 +47,14 @@ public class CustomerController {
 		return customer;
 	}
 	
+	@GetMapping("/{id}")
+	public Customer findVoucherById(@PathVariable("id") Long id) {
+		Optional<Customer> customer = customerService.findCustomerById(id);
+		if(customer.isPresent()) {
+			return customer.get();
+		} else {
+			return new Customer();
+		}
+	}
 	
 }

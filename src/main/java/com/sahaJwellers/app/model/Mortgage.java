@@ -64,14 +64,6 @@ public class Mortgage {
 		this.loanAmount = loanAmount;
 	}
 
-	public Long getVersion() {
-		return version;
-	}
-
-	public void setVersion(Long version) {
-		this.version = version;
-	}
-
 	public Long getMortgageId() {
 		return mortgageId;
 	}
