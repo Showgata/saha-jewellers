@@ -1,5 +1,7 @@
 package com.sahaJwellers.app.util;
 
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,30 +19,40 @@ private DateUtil() {
 }
 	
 public static Date atStartOfDay(Date date) {
+	
+   /* date = localizedDate(date,"Asia/Dhaka");*/
     LocalDateTime localDateTime = dateToLocalDateTime(date);
     LocalDateTime startOfDay = localDateTime.with(LocalTime.MIN);
-    
-    SimpleDateFormat bangladeshFormat = new SimpleDateFormat(DATE_FORMAT);
-    TimeZone bangladeshTimeZone = TimeZone.getTimeZone("Asia/Dhaka");
-    bangladeshFormat.setTimeZone(bangladeshTimeZone);
-   /* Loca
-    String bangladeshFormat = bangladeshFormat.fo
-    Date dateInAmerica = bangladeshFormat.parse(sDateInAmerica);*/
-    
+
     return localDateTimeToDate(startOfDay);
 }
 
+private static Date localizedDate(Date date,String zone) {
+	SimpleDateFormat bangladeshFormat = new SimpleDateFormat(DATE_FORMAT);
+    TimeZone bangladeshTimeZone = TimeZone.getTimeZone(zone);
+    bangladeshFormat.setTimeZone(bangladeshTimeZone);
+    
+    String dateValue = bangladeshFormat.format(date);
+    try {
+		date = bangladeshFormat.parse(dateValue);
+	} catch (ParseException e) {
+		e.printStackTrace(System.err);
+	}
+	return date;
+}
+
 public static Date atEndOfDay(Date date) {
+	/*date = localizedDate(date,"Asia/Dhaka");*/
     LocalDateTime localDateTime = dateToLocalDateTime(date);
     LocalDateTime endOfDay = localDateTime.with(LocalTime.MAX);
     return localDateTimeToDate(endOfDay);
 }
 
 private static LocalDateTime dateToLocalDateTime(Date date) {
-    return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    return LocalDateTime.ofInstant(date.toInstant(), ZoneId.of("Asia/Dhaka"));
 }
 
 private static Date localDateTimeToDate(LocalDateTime localDateTime) {
-    return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    return Date.from(localDateTime.atZone(ZoneId.of("Asia/Dhaka")).toInstant());
 }
 }
