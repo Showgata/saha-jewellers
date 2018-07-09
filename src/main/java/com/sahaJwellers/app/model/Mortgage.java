@@ -1,10 +1,13 @@
 package com.sahaJwellers.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -43,6 +46,10 @@ public class Mortgage {
 	
 	@Column(name="loan_Amt")
 	private Double loanAmount;
+	
+	@OneToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
+	@JoinColumn(name="product_id")
+	private Product product;
 
 	public Mortgage() {
 		super();
@@ -126,5 +133,20 @@ public class Mortgage {
 
 	public void setLoanAmount(Double loanAmount) {
 		this.loanAmount = loanAmount;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+	@Override
+	public String toString() {
+		return "Mortgage [version=" + version + ", mortgageId=" + mortgageId + ", bori=" + bori + ", ana=" + ana
+				+ ", ratti=" + ratti + ", point=" + point + ", gram=" + gram + ", interestRate=" + interestRate
+				+ ", loanAmount=" + loanAmount + ", product=" + product + "]";
 	}
 }

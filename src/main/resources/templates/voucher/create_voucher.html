@@ -687,7 +687,7 @@ and open the template in the editor.
           				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
           				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
           				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
-          				"<input class='form-control col-sm-2 upd'  type='button' name='update' value='update' id='update' />",
+          				"<input class='form-control col-sm-2 upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
           				"<input class='form-control col-sm-2 del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
           			 ]); 
           			/*  tr = "";
@@ -861,8 +861,10 @@ and open the template in the editor.
                 }
             };
             $("#date").datepicker(dateSettings);
+            dateSettings.maxDate=null;
+            dateSettings.minDate=new Date();
         	$("#reminder_date").datepicker(dateSettings);
-        	  $("#date").val(GetFormattedDate());
+        	$("#date").val(GetFormattedDate());
         	  
             /* ratti_field.change(calculateGram());
             point_field.change(calculateGram()); */
@@ -886,7 +888,41 @@ and open the template in the editor.
         	}
          
             
-        } );
+        });
+        
+        $('#voucher tbody').on( 'click', '.upd', function () {
+        	var table = $('#voucher').DataTable();
+        
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+        		  buildAjax(URL, "POST").then(function(respJson){
+        			  console.log(respJson);
+        		        let bori_field = $("#bori");
+        		        let ana_field = $("#ana");
+        		        let ratti_field = $("#ratti");
+        		        let point_field = $("#point");
+        		        let gram_field = $("#gram");
+        		        let loanAmnt_field = $("#loan_amnt");
+        		        let interestRate_field = $("#rate");
+        		        let transactionSerial = $("#transaction_serial");
+        		        let reminderDate = $("#reminder_date");
+        		        let note = $("#note");
+        		        let storage = $("#storage");
+        			  
+        		        
+        			  
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	}); 
+        		  /* var row = table.row( $(this).parents('tr') );
+                  var rowNode = row.node();
+                  row.remove();
+                  table.page(currentPage).draw(false); */
+        	
+         
+            
+        });
         </script> 
 </body>
 

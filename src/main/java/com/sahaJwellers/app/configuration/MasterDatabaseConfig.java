@@ -69,7 +69,7 @@ public class MasterDatabaseConfig {
         HikariDataSource ds = new HikariDataSource();
 
         ds.setUsername("root");
-        ds.setPassword("");
+        ds.setPassword("root123");
         ds.setJdbcUrl("jdbc:mysql://127.0.0.1/mordgage_db");
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setPoolName("modgage_database_Pool");
@@ -176,7 +176,7 @@ public class MasterDatabaseConfig {
                 "org.hibernate.dialect.MySQL5Dialect");
         properties.put(org.hibernate.cfg.Environment.SHOW_SQL, true);
         properties.put(org.hibernate.cfg.Environment.FORMAT_SQL, true);
-        properties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "validate");
+        properties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 }
