@@ -49,6 +49,7 @@ public class VoucherRestController {
 	
 	@PostMapping("/")
 	public Voucher saveVoucher(@RequestBody Voucher voucher) {
+		System.out.println(voucher);
 		return voucherService.saveOrUpdate(voucher);
 	}
 	
