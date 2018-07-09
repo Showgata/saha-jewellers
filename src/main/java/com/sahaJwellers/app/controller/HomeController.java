@@ -10,4 +10,9 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
+	
+	@GetMapping("/mortgage-app")
+	public String home() {
+		return "home/home";
+	}
 }

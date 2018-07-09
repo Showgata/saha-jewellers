@@ -3,6 +3,7 @@ package com.sahaJwellers.app.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.sahaJwellers.app.model.Transaction;
 import com.sahaJwellers.app.model.Voucher;
 
 public interface VoucherService {
@@ -14,5 +15,7 @@ public interface VoucherService {
 	Voucher saveOrUpdate(Voucher voucher);
 
 	void removeVoucher(Long id);
+
+	Optional<Voucher> findVoucherByTransactionId(Transaction trans);
 
 }

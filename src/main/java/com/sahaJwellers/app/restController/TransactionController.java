@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sahaJwellers.app.model.Mortgage;
 import com.sahaJwellers.app.model.Transaction;
 import com.sahaJwellers.app.service.TransactionService;
+import com.sahaJwellers.app.util.DateUtil;
 
 @RestController
 @RequestMapping("/modgage-app/api/transaction")
@@ -26,6 +27,12 @@ public class TransactionController {
 	@GetMapping("/")
 	public List<Transaction> findAllTransaction() {
 		return transactionService.fetchAll();
+	}
+	
+	@GetMapping("/latestTransactions")
+	public List<Transaction> fetchAllTransaction(){
+		Date date = DateUtil.dateUtil.atStartOfDay(new Date());
+		return transactionService.findAllTransaction(date);
 	}
 	
 	@GetMapping("/default")

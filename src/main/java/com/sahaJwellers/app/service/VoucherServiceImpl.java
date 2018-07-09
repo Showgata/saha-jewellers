@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.sahaJwellers.app.model.Transaction;
 import com.sahaJwellers.app.model.Voucher;
 import com.sahaJwellers.app.repository.VoucherRepository;
 
@@ -39,4 +40,8 @@ public class VoucherServiceImpl implements VoucherService {
 		voucherRepository.deleteById(id);
 	}
 	
+	@Override
+	public Optional<Voucher> findVoucherByTransactionId(Transaction id){
+		return voucherRepository.findVoucherByTransactionId(id);
+	}
 }

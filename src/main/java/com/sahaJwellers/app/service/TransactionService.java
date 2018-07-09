@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,5 +15,7 @@ public interface TransactionService {
 	void removeTransaction(Long id);
 
 	Optional<Transaction> findTransactionById(Long id);
+
+	List<Transaction> findAllTransaction(Date date);
 
 }

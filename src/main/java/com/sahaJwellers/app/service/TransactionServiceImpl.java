@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.sahaJwellers.app.model.Transaction;
 import com.sahaJwellers.app.repository.TransactionRepository;
+import com.sahaJwellers.app.util.DateUtil;
 
 @Service
 @Transactional
@@ -48,5 +50,10 @@ public class TransactionServiceImpl implements TransactionService {
 	@Override
 	public Optional<Transaction> findTransactionById(Long id) {
 		return transactionRepository.findById(id);
+	}
+	
+	@Override
+	public List<Transaction> findAllTransaction(Date date){ 
+		return transactionRepository.findAllTransactionByDate(date);
 	}
 }

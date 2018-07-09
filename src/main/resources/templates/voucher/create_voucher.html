@@ -790,6 +790,7 @@ and open the template in the editor.
         transaction["note"] = note.val()==""?null:note.val();
         transaction["storage"] = formatIntegerValue(storage.val());
         
+        
         mortgage["bori"] = formatFloatValue(bori_field.val());
         mortgage["ana"] = formatFloatValue(ana_field.val());
         mortgage["ratti"] = formatFloatValue(ratti_field.val());
@@ -806,6 +807,7 @@ and open the template in the editor.
     	
     	voucher["customer"] = customer;
     	voucher["mortgage"] = mortgage; 
+    	//transaction["voucher"] = voucher;
     	voucher["transaction"] = transaction;
     	
        	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
@@ -862,7 +864,9 @@ and open the template in the editor.
             };
             $("#date").datepicker(dateSettings);
             dateSettings.maxDate=null;
-            dateSettings.minDate=new Date();
+            var d = new Date();
+            d.setDate(d.getDate() - 1);
+            dateSettings.minDate=d;
         	$("#reminder_date").datepicker(dateSettings);
         	$("#date").val(GetFormattedDate());
         	  
