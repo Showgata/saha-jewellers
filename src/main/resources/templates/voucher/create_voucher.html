@@ -967,6 +967,7 @@ and open the template in the editor.
     	
        	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
        		alert("done");
+       		if(voucher["id"] != "" && voucher["id"] != null) return;
        		console.log(respJson);
        		let val = respJson;
        		 var t = $('#voucher').DataTable();

@@ -14,6 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,6 +24,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="voucher_tbl")
+@SelectBeforeUpdate
+@DynamicUpdate
+@DynamicInsert
 public class Voucher {
 	
 	@Id
@@ -41,8 +47,7 @@ public class Voucher {
 	@Override
 	public String toString() {
 		return "Voucher [id=" + id + ", version=" + version + ", date=" + date + ", serial=" + serial
-				+ ", createdTimestamp=" + createdTimestamp + ", updateTimestamp=" + updateTimestamp + ", customer="
-				+ customer + ", transaction=" + transaction + ", mortgage=" + mortgage + "]";
+				+ ", createdTimestamp=" + createdTimestamp + ", updateTimestamp=" + updateTimestamp + "]";
 	}
 	
 	@JsonIgnore
@@ -55,7 +60,7 @@ public class Voucher {
 	/*@OneToMany(mappedBy="voucher",orphanRemoval=true,cascade=CascadeType.PERSIST)
 	private List<Transaction> transactionList;*/
 	
-	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
+	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE},orphanRemoval=false)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
@@ -63,7 +68,7 @@ public class Voucher {
 	@JoinColumn(name="transaction_id")
 	private Transaction transaction;
 
-	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=false)
+	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
 	@JoinColumn(name="mortgage_id")
 	private Mortgage mortgage;
 	

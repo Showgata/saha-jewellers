@@ -11,21 +11,27 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 @Entity
 @Table(name="mortgage_tbl")
+@SelectBeforeUpdate
+@DynamicUpdate
+@DynamicInsert
 public class Mortgage {
 	
-	@Version
-	@Column(name="version")
-	private Long version;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="mortgage_id")
 	private Long mortgageId;
-	
+
 	@Column(name="bori")
 	private Double bori;
 	
@@ -56,11 +62,10 @@ public class Mortgage {
 	}
 
 	@JsonCreator
-	public Mortgage(@JsonProperty("version") Long version,@JsonProperty("mortgageId") Long mortgageId,@JsonProperty("bori") Double bori,@JsonProperty("ana") Double ana,
+	public Mortgage(@JsonProperty("mortgageId") Long mortgageId,@JsonProperty("bori") Double bori,@JsonProperty("ana") Double ana,
 			@JsonProperty("ratti") Double ratti,@JsonProperty("point") Double point,@JsonProperty("gram") Double gram,
 			@JsonProperty("interestRate") Double interestRate,@JsonProperty("loanAmount") Double loanAmount) {
 		super();
-		this.version = version;
 		this.mortgageId = mortgageId;
 		this.bori = bori;
 		this.ana = ana;
@@ -143,9 +148,16 @@ public class Mortgage {
 		this.product = product;
 	}
 	
+	/*public Long getVersion() {
+		return version;
+	}
+*/
+	/*public void setVersion(Long version) {
+		this.version = version;
+	}*/
 	@Override
 	public String toString() {
-		return "Mortgage [version=" + version + ", mortgageId=" + mortgageId + ", bori=" + bori + ", ana=" + ana
+		return "Mortgage [, mortgageId=" + mortgageId + ", bori=" + bori + ", ana=" + ana
 				+ ", ratti=" + ratti + ", point=" + point + ", gram=" + gram + ", interestRate=" + interestRate
 				+ ", loanAmount=" + loanAmount + ", product=" + product + "]";
 	}

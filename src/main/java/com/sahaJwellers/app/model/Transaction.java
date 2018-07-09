@@ -13,6 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Range;
 
@@ -23,11 +26,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="transaction_tbl")
+@SelectBeforeUpdate
+@DynamicUpdate
+@DynamicInsert
 public class Transaction {
 	
 	@JsonCreator
 	public Transaction(@JsonProperty("id") Long id,@JsonProperty("reminderDate") Date reminderDate,@JsonProperty("storage") @Range(min = 1, max = 10) Integer storage,@JsonProperty("note") String note,
-			@JsonProperty("transactionDate") Date transactionDate,@JsonProperty("transactionSerial") String transactionSerial,@JsonProperty("voucher") Voucher voucher) {
+			@JsonProperty("transactionDate") Date transactionDate,@JsonProperty("transactionSerial") String transactionSerial) {
 		super();
 		this.id = id;
 		this.reminderDate = reminderDate;
@@ -35,7 +41,7 @@ public class Transaction {
 		this.note = note;
 		this.transactionDate = transactionDate;
 		this.transactionSerial = transactionSerial;
-		this.voucher = voucher;
+		
 	}
 
 	public Transaction() {
@@ -46,10 +52,10 @@ public class Transaction {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="transaction_id")
 	private Long id;
-	
+/*	
 	@Version
 	@Column(name="version")
-	private Long version;
+	private Long version;*/
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="reminder_date")
@@ -70,10 +76,7 @@ public class Transaction {
 	
 	@Column(name="transactionSerial")
 	private String transactionSerial;
-	
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "voucher_id")
-	private Voucher voucher;
+
 	
 	public Long getId() {
 		return id;
@@ -83,13 +86,13 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Long getVersion() {
+	/*public Long getVersion() {
 		return version;
-	}
+	}*/
 
-	public void setVersion(Long version) {
+	/*public void setVersion(Long version) {
 		this.version = version;
-	}
+	}*/
 
 	public String getTransactionSerial() {
 		return transactionSerial;
@@ -97,14 +100,6 @@ public class Transaction {
 
 	public void setTransactionSerial(String transactionSerial) {
 		this.transactionSerial = transactionSerial;
-	}
-
-	public Voucher getVoucher() {
-		return voucher;
-	}
-
-	public void setVoucher(Voucher voucher) {
-		this.voucher = voucher;
 	}
 
 	public Date getReminderDate() {

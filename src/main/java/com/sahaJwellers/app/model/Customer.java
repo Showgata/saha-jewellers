@@ -8,8 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 @Entity
 @Table(name="customer_tbl")
+@SelectBeforeUpdate
+@DynamicUpdate
+@DynamicInsert
 public class Customer {
 	
 	@Id	
@@ -29,9 +36,9 @@ public class Customer {
 	@Column(name="ref")
 	private String references;
 	
-	@Version
+	/*@Version
 	@Column(name="version")
-	private Long version;
+	private Long version;*/
 
 	@Override
 	public String toString() {
@@ -81,11 +88,11 @@ public class Customer {
 	}
 
 
-	public Long getVersion() {
+	/*public Long getVersion() {
 		return version;
-	}
+	}*/
 
-	public void setVersion(Long version) {
+	/*public void setVersion(Long version) {
 		this.version = version;
-	}
+	}*/
 }
