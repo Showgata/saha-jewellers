@@ -102,7 +102,7 @@ and open the template in the editor.
 
 									<a href="#" class="btn btn-border-theme btn-xs">Print</a>
 									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>
-									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Product</a>
+									&nbsp;  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Product</button>
 									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a>
 									&nbsp;
 									<div>
@@ -148,6 +148,7 @@ and open the template in the editor.
 									<!-- Start .bwizard -->
 
 									<form class="form-horizontal" role="form">
+		<!-- mortgage hidden field --><input type="hidden" id="mortgage_id" value=""/>
 										<div class="tab-content">
 											<div class="tab-pane active" id="tab1">
 												<div class="form-group">
@@ -251,7 +252,8 @@ and open the template in the editor.
 													<div class="col-lg-10 col-md-9 has-warning">
 														<input class="form-control input-lg "
 															style="color: #f7b03e;" placeholder="sl no."
-															name="serial" id="serial" disabled="true" value="22220" type="text">
+															name="serial" id="serial" disabled="true" value="" type="text">
+			<!-- voucher hidden field -->				<input type="hidden" id="voucher_id" value=""/>
 													</div>
 												</div>
 
@@ -288,6 +290,7 @@ and open the template in the editor.
 													<div class="col-lg-10 col-md-9">
 														<input class="form-control" placeholder="customer serial"
 															name="transaction_serial" id="transaction_serial" type="text">
+					<!-- transaction hidden field -->	<input type="hidden" id="transaction_id" value=""/>
 													</div>
 												</div>
 												<!-- End .control-group  -->
@@ -538,7 +541,157 @@ and open the template in the editor.
 			</div>
 			<!--end wrapper-->
 		</div>
+	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Products</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+        <ul class="list-group">
+          <li class="list-group-item">
+          <label for="pwd">Products:</label>
+           <select id="products">
+           <option> Anklet</option>
+                                     <option>	Ayesti</option>
+                                     <option>	Baju</option>
+                                     <option>	Bala</option>
+                                     <option>	Bangle</option>
+                                 <option>	Bicha</option>
+                                 <option>	Bracelet</option>
+                                 <option>	Chain</option>
+                                 <option>	Chik</option>
+                                 <option>	Chur</option>
+                                 <option>	Churi</option>
+                                 <option>	Ear Chain Pair</option>
+                                 <option>	Earring Pair</option>
+                                 <option>	Ghaar Tana Pair</option>
+                                 <option>	Haar</option>
+                                 <option>	Hair Chain Pair</option>
+                                 <option>	Hath Panja</option>
+                                 <option>	Jhapta</option>
+                                 <option>	Jhumka Pair</option>
+                                 <option>	Kaan Tana Pair</option>
+                                 <option>	Locket</option>
+                                 <option>	Locket & Chain</option>
+                                 <option>	Mangalsutra</option>
+                                 <option>	Mantasha</option>
+                                 <option>	Necklace</option>
+                                    <option>	Nose Pin</option>
+                                       <option>	Noth</option>
+                                          <option>	Nupur</option>
+                                             <option>	Pasha Pair</option>
+                                                <option>	Payel</option>
+                                                   <option>	Pendant</option>
+                                                      <option>	Pola</option>
+                                                         <option>	Ring</option>
+                                                            <option>	Ring Bracelet</option>
+                                                               <option>	Shakha</option>
+                                                                  <option>	Side Clip</option>
+                                                                     <option>	Sita Haar</option>
+                                                                        <option>	Sithi Patti</option>
+                                                                        <option>	Taj</option>
+                                                                        <option>	Tayra</option>
+                                                                        <option>	Tiara</option>
+                                                                        <option>	Tikli</option>
+                                                                        <option>	Other</option>
+           
+           
+           </select>
+         
+          
+          <label for="pwd">Quantity:</label>
+           <input type="hide" name="qty"/>
+            </div>
+        </li>
+          </ul>
+        <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">ADD</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <ul class="list-group">
+          <li class="list-group-item"><select id="products">
+           <option> Anklet</option>
+                                     <option>	Ayesti</option>
+                                     <option>	Baju</option>
+                                     <option>	Bala</option>
+                                     <option>	Bangle</option>
+                                 <option>	Bicha</option>
+                                 <option>	Bracelet</option>
+                                 <option>	Chain</option>
+                                 <option>	Chik</option>
+                                 <option>	Chur</option>
+                                 <option>	Churi</option>
+                                 <option>	Ear Chain Pair</option>
+                                 <option>	Earring Pair</option>
+                                 <option>	Ghaar Tana Pair</option>
+                                 <option>	Haar</option>
+                                 <option>	Hair Chain Pair</option>
+                                 <option>	Hath Panja</option>
+                                 <option>	Jhapta</option>
+                                 <option>	Jhumka Pair</option>
+                                 <option>	Kaan Tana Pair</option>
+                                 <option>	Locket</option>
+                                 <option>	Locket & Chain</option>
+                                 <option>	Mangalsutra</option>
+                                 <option>	Mantasha</option>
+                                 <option>	Necklace</option>
+                                    <option>	Nose Pin</option>
+                                       <option>	Noth</option>
+                                          <option>	Nupur</option>
+                                             <option>	Pasha Pair</option>
+                                                <option>	Payel</option>
+                                                   <option>	Pendant</option>
+                                                      <option>	Pola</option>
+                                                         <option>	Ring</option>
+                                                            <option>	Ring Bracelet</option>
+                                                               <option>	Shakha</option>
+                                                                  <option>	Side Clip</option>
+                                                                     <option>	Sita Haar</option>
+                                                                        <option>	Sithi Patti</option>
+                                                                        <option>	Taj</option>
+                                                                        <option>	Tayra</option>
+                                                                        <option>	Tiara</option>
+                                                                        <option>	Tikli</option>
+                                                                        <option>	Other</option>
+           
+           
+           </select><input type="text" placeholder="Quantity" name="qty" style="color:gold"/></li>
+          <li class="list-group-item">Two</li>
+          <li class="list-group-item">Three</li>
+        </ul>
+        <div class="panel-footer">Footer</div>
+      </div>
+      
+      
+    </div>
+    <ul class="pager">
+					
+								<li class="previous"><a href="#" >Save &rarr;</a></li>
 
+							</ul>
+  </div>  
+        
+    
+    </div>
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 		<div class="footer col-sm-offset-4">
 			<span>Copyright &copy; 2016. Pink-Desh.</span>
@@ -789,6 +942,7 @@ and open the template in the editor.
         transaction["reminderDate"] = reminderDate.val()==""?null:reminderDate.val();
         transaction["note"] = note.val()==""?null:note.val();
         transaction["storage"] = formatIntegerValue(storage.val());
+        transaction["id"] = formatIntegerValue($("#transaction_id").val());
         
         
         mortgage["bori"] = formatFloatValue(bori_field.val());
@@ -798,19 +952,21 @@ and open the template in the editor.
     	mortgage["gram"] = formatFloatValue(gram_field.val());
     	mortgage["loanAmount"]=formatFloatValue(loanAmnt_field.val());
     	mortgage["interestRate"]=formatFloatValue(interestRate_field.val());
-    	
+    	mortgage["mortgageId"] = formatIntegerValue($("#mortgage_id").val());
         
     	customer["customerName"]=$("#cust_name").val();
     	customer["address"]=$("#cust_address").val();
     	customer["mobile"]=$("#cust_mobile").val();
-    	customer["id"]=formatIntegerValue($("#cust_id").val());
+    	customer["customerId"]=formatIntegerValue($("#cust_id").val());
     	
     	voucher["customer"] = customer;
     	voucher["mortgage"] = mortgage; 
     	//transaction["voucher"] = voucher;
     	voucher["transaction"] = transaction;
+    	voucher["id"] = formatIntegerValue($("#voucher_id").val());
     	
        	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
+       		alert("done");
        		console.log(respJson);
        		let val = respJson;
        		 var t = $('#voucher').DataTable();
@@ -825,7 +981,7 @@ and open the template in the editor.
  				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
  				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
  				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
- 				"<input class='form-controlcol-sm-2 upd'  type='button' name='update' value='update' id='update' />",
+ 				"<input class='form-controlcol-sm-2 upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
  				"<input class='form-controlcol-sm-2 del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
  			 ]).draw();  
  			
@@ -900,7 +1056,7 @@ and open the template in the editor.
         		  var currentPage = table.page();
         		  //console.log($(this).attr('delid'));
         		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('updid'));
-        		  buildAjax(URL, "POST").then(function(respJson){
+        		  buildAjax(URL, "GET").then(function(respJson){
         			  console.log(respJson);
         		        let bori_field = $("#bori");
         		        let ana_field = $("#ana");
@@ -914,8 +1070,27 @@ and open the template in the editor.
         		        let note = $("#note");
         		        let storage = $("#storage");
         			  
+        		        $("#cust_name").val(respJson.customer.customerName);
+        		        $("#cust_id").val(respJson.customer.customerId);
+        		        $("#cust_mobile").val(respJson.customer.mobile);
+        		        $("#cust_address").val(respJson.customer.address);
+        		        $("#bori").val(respJson.mortgage.bori);
+        		        $("#ana").val(respJson.mortgage.ana);
+        		        $("#ratti").val(respJson.mortgage.ratti);
+        		        $("#point").val(respJson.mortgage.point);
+        		        $("#gram").val(respJson.mortgage.gram);
+        		        $("#interestRate").val(respJson.mortgage.interestRate);
+        		        $("#loanAmount").val(respJson.mortgage.loanAmount);
+        		        /* $("#product").val(respJson.mortgage.product); */
+        		        $("#cust_id").val(respJson.transaction.id);
+        		        $("#reminder_date").val(respJson.transaction.transactionDate);
+        		        $("#storage").val(respJson.transaction.storage);
+        		        $("#note").val(respJson.transaction.note);
         		        
-        			  
+        		        $("#cust_id").val(respJson.customer.customerId);
+        		        $("#voucher_id").val(respJson.id);
+        		        $("#transaction_id").val(respJson.transaction.id);
+        		        $("#mortgage_id").val(respJson.mortgage.mortgageId);
         		  },function(reason){
   		           	 console.log("error in processing your request", reason);
    	           	}); 

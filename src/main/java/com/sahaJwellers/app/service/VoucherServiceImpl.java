@@ -27,7 +27,11 @@ public class VoucherServiceImpl implements VoucherService {
 	
 	@Override
 	public Voucher saveOrUpdate(Voucher voucher) {
+		if(voucher.getId() != null){
+		return voucherRepository.saveAndFlush(voucher);
+		} else {
 		return voucherRepository.save(voucher);
+		}
 	}
 	
 	@Override

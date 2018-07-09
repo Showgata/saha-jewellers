@@ -17,6 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="voucher_tbl")
@@ -37,6 +38,14 @@ public class Voucher {
 	@Column(name="serial")
 	private String serial;
 	
+	@Override
+	public String toString() {
+		return "Voucher [id=" + id + ", version=" + version + ", date=" + date + ", serial=" + serial
+				+ ", createdTimestamp=" + createdTimestamp + ", updateTimestamp=" + updateTimestamp + ", customer="
+				+ customer + ", transaction=" + transaction + ", mortgage=" + mortgage + "]";
+	}
+	
+	@JsonIgnore
 	@CreationTimestamp
 	private Date createdTimestamp;
 	
@@ -46,7 +55,7 @@ public class Voucher {
 	/*@OneToMany(mappedBy="voucher",orphanRemoval=true,cascade=CascadeType.PERSIST)
 	private List<Transaction> transactionList;*/
 	
-	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
+	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 

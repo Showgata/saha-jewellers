@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -61,7 +62,7 @@ public class Transaction {
 	@Column(name="note")
 	private String note;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="transaction_date")
 	@UpdateTimestamp
 	private Date transactionDate;
