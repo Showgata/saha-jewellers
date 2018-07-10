@@ -73,6 +73,8 @@ public class Transaction {
 	@UpdateTimestamp
 	private Date transactionDate;
 	
+	@Column(name="expenses")
+	private String expense;
 	
 	@Column(name="transactionSerial")
 	private String transactionSerial;
@@ -132,6 +134,14 @@ public class Transaction {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public String getExpense() {
+		return expense;
+	}
+
+	public void setExpense(String expense) {
+		this.expense = expense;
 	}
 
 	public Date getTransactionDate() {

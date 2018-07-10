@@ -15,4 +15,14 @@ public class VoucherWebController {
 		return "voucher/create_voucher";
 	}
 	
+	@GetMapping("/")
+	public String home() {
+		return "home/home";
+	}
+	
+	@GetMapping("/expense-voucher")
+	public String index() {
+		return "expense/expense_voucher";
+	}
+	
 }

@@ -13,6 +13,12 @@ body{
     font-weight: 400;
    font-family: 'Open Sans', sans-serif;
 }
+.input_field{
+	color:white;
+}
+.modal_dialog{
+	background-color:#212227;
+}
 input{
 	color:#f7b03e;
 	background-color:#333;

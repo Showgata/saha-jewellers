@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:30:05 GMT -->
+<head th:replace="/common/common-header :: common-head"></head>
+
+<body class="fixed-left" style="overflow: hidden;">
+
+	<div id="wrapper">
+
+		<!--top bar-->
+		<div class="topbar">
+			<div class="topbar-left">
+				<div class="text-center">
+					<a href="index.html" class="logo"><img src="sahas.png"
+						class="image-responsive" width="220px" style="margin-top: 10px"
+						alt=""></a>
+				</div>
+			</div>
+			<div class="pull-left menu-toggle">
+				<i class="fa fa-bars"></i>
+			</div>
+
+			<ul class="nav navbar-nav  top-right-nav hidden-xs">
+				<li><span id="para2"></span> <span id="para3"></span> <span
+					id="para1"></span></li>
+
+				<li class="dropdown profile-link hidden-xs">
+					<div class="clearfix">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img
+							src="images/user.png" alt="" class="pull-left"> <span>up
+								bar <br> <em>Admin</em>
+						</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Account</a></li>
+							<li><a href="#">Settings</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</div>
+
+				</li>
+
+			</ul>
+		</div>
+		<!--end top bar-->
+
+		<!--left menu start-->
+		<div class="side-menu left" id="side-menu">
+
+			<ul class="metismenu clearfix" id="menu">
+				<li class="profile-menu visible-xs"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"> <img
+						src="images/user.png" alt="" class="pull-left"> <span>ADMIN
+							<br> <em>Admin</em>
+					</span>
+				</a>
+					<ul class="dropdown-menu profile-drop">
+						<li><a href="#">Account</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul></li>
+
+				<li class=""><a href="customer.php"><i class="fa fa-home"></i>
+						<span>Home</span></a></li>
+				<li class=""><a href="customer.php"><i
+						class="fa fa-address-book-o"></i> <span>Customer</span></a></li>
+
+				<li><a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold
+							Mortgage</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li class="active "><a href="graph_flot.html"><font
+								color="#f7b03e">Create Voucher</font></a></li>
+						<li><a href="graph_morris.html">customer transaction</a></li>
+						<li><a href="graph_chartjs.html">customer ledger</a></li>
+
+					</ul></li>
+				<li class="active"><a href="#"><i class="fa fa-money"></i>
+						<span>Expense </span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="mailbox.html"><font color="#f7b03e">Create
+									Expense Voucher</font></a></li>
+						<li><a href="mail_detail.html">Create Expense Transaction</a></li>
+
+					</ul></li>
+				<li><a href="#"><i class="fa fa-reply"></i> <span>loan
+							Take</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="form_basic.html">Create Loan Take Voucher</a></li>
+						<li><a href="form_wizard.html">Loan Take Transaction</a></li>
+
+					</ul></li>
+				<li><a href="#"><i class="fa fa-share"></i> <span>loan
+							Give</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="table_basic.html">Create Loan Give Voucher</a></li>
+						<li><a href="table_data_tables.html">Loan Give
+								Transaction</a></li>
+					</ul></li>
+				<li class=""><a href="#"><i class="fa fa-line-chart"></i> <span
+						class="nav-label">Capital Investment</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="lockscreen.html">Create Capital Investment
+								Voucher</a></li>
+						<li><a href="login.html">Capital Investment Transaction</a></li>
+
+					</ul></li>
+				<li><a href="#"><i class="fa fa-bar-chart-o"></i> <span
+						class="nav-label">Custom report</span></a></li>
+				<li><a href="#"><i class="fa fa-sitemap"></i> <span>Reports
+					</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="#">Daily Report </a></li>
+
+						<li><a href="#">Weekly Report</a></li>
+						<li><a href="#">Monthly Report </a></li>
+						<li><a href="#">yearly Report </a></li>
+						<li><a href="#">Decade Report </a></li>
+					</ul></li>
+			</ul>
+
+		</div>
+		<!--left menu end-->
+		<div class="content-page  equal-height">
+			<div class="content">
+				<div class="container">
+
+
+					<!--end widget-->
+
+					<div class="row">
+						<div class="col-sm-12 h6" style="margin-top: -10px;">
+							<div class="panel-box">
+								<!-- <span style="margin-bottom: 5px; font-size: 16px;">Customer
+									Information</span> -->
+								<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Customer Name</label> <input type="text" id="cust_name"
+												placeholder="Enter name" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Customer Id</label> <input disabled="true" type="text" id="cust_id"
+												placeholder="Enter Customer Id" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Mobile</label> <input type="text" id="cust_mobile"
+												placeholder="Enter mobile" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Address</label> <input type="text" id="cust_address"
+												placeholder="Enter address" class="form-control">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 h6" style="margin-top: -10px;">
+							<div class="panel-box">
+								<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-3">
+											<span style="margin-bottom: 5px; font-size: 16px;">Voucher
+												Details</span>
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Date </label> <input type="text"
+												placeholder="Enter date" class="form-control" id="voucher_date">
+										</div>
+										<div class="form-group col-sm-4" style="padding-left: 10px;">
+											<label>Serial No.</label> <input type="text"
+												placeholder="2222" class="form-control" id="serial_no">
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 h6" style="margin-top: -10px;">
+							<div class="panel-box">
+								<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-2">
+											<span style="margin-bottom: 5px; font-size: 16px;">Transaction
+												Details</span>
+										</div>
+										<div class="form-group col-sm-4">
+											<label class="control-label">Expense List</label> <select id="expense"
+												class="form-control" style="width: 100%; margin-top: 5px;">
+												<option value="">Select Expense</optiono>
+												<option>Accounting</option>
+												<option>Advertising</option>
+												<option>Answering Service</option>
+												<option>Assessments</option>
+												<option>Auto Insurance</option>
+												<option>Bad Debts from Sales or Services</option>
+												<option>Bank Charges</option>
+												<option>Bonus</option>
+												<option>Business Insurance</option>
+												<option>Cable Internet Service</option>
+												<option>Car &amp; Truck Expenses</option>
+												<option>Charitable giving</option>
+												<option>Cleaning Service</option>
+												<option>Clothing</option>
+												<option>Commissions</option>
+												<option>Computer Expense</option>
+												<option>Computer Supplies</option>
+												<option>Costs</option>
+												<option>Credit Card Fees</option>
+												<option>Delivery &amp; Freight</option>
+												<option>Dining out</option>
+												<option>Dues &amp; Subscriptions</option>
+												<option>Electric</option>
+												<option>Entertainment</option>
+												<option>Equipment Supplies</option>
+												<option>Expense List</option>
+												<option>Gas</option>
+												<option>Gasoline Expense</option>
+												<option>Gifts</option>
+												<option>Gym membership</option>
+												<option>Hair care</option>
+												<option>Home Office Expense</option>
+												<option>Homeowners Insurance</option>
+												<option>Insurance</option>
+												<option>Insurance – Health</option>
+												<option>Insurance Expense</option>
+												<option>Interest</option>
+												<option>Interest - W/Comp</option>
+												<option>Internet Fees</option>
+												<option>Janitorial</option>
+												<option>Labor</option>
+												<option>Laundry &amp; Cleaning</option>
+												<option>Lawn Service</option>
+												<option>Lease Payments</option>
+												<option>Legal &amp; Professional</option>
+												<option>License &amp; Registration</option>
+												<option>Loan Interest</option>
+												<option>Materials &amp; Supplies</option>
+												<option>Meals &amp; Entertainment</option>
+												<option>Medical expenses</option>
+												<option>Miscellaneous</option>
+												<option>NJ Annual Report</option>
+												<option>Office Expense</option>
+												<option>Office Supplies</option>
+												<option>Other Costs</option>
+												<option>Parking &amp; Tolls</option>
+												<option>Pension &amp; Profit Sharing Expense</option>
+												<option>Postage</option>
+												<option>Postal Box</option>
+												<option>Purchases</option>
+												<option>Rent - other</option>
+												<option>Rent - Vehicles,machinery, &amp; equipment</option>
+												<option>Repairs</option>
+												<option>Repairs &amp; Maintenance Expense</option>
+												<option>Safe Deposit</option>
+												<option>Salary</option>
+												<option>Security</option>
+												<option>Security Service</option>
+												<option>Supplies</option>
+												<option>Taxes - Payroll</option>
+												<option>Taxes – Sales tax included in gross receipts</option>
+												<option>Telephone</option>
+												<option>Telephone &amp; Wireless</option>
+												<option>Travel</option>
+												<option>Vacation</option>
+												<option>Wages</option>
+												<option>Water</option>
+												<option>Web - site Expense</option>
+											</select>
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Amount</label> <input type="text"
+												placeholder="Enter Amount" id="amount" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Note</label> <input type="text"
+												placeholder="Enter Note" id="note" class="form-control">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<style>
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+</style>
+
+
+
+					<div class="row">
+						<div class="col-sm-12"
+							style="overflow: scroll; height: 350px; margin-top: -20px">
+							<div class="panel-box">
+
+
+
+								<style>
+.pane-box {
+	padding: 15px;
+	background: #272a31;
+	margin-bottom: 20px;
+}
+
+.table {
+	height: 200px;
+}
+</style>
+								<div class="table-responsive">
+									<!-- <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
+								  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text"> -->
+									<input class="form-control" style="width: 150px; float: right;"
+										placeholder="no expense voucher" name="vdetails" type="text">
+									<input class="form-control" style="width: 150px;"
+										placeholder="total expense" name="lamount" type="text">
+									<table class="table table-striped" id="voucher">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Name</th>
+												<th>Sl no.</th>
+												<th>Mobile no</th>
+												<th>Address</th>
+
+												<th>Expense List</th>
+												<th>Amount</th>
+												<th>Note</th>
+												<th>Date</th>
+												<th>Update</th>
+												<th>Delete</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+
+
+											</tr>
+											<tr>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+
+
+											</tr>
+											<tr>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>john@example.com</td>
+												<td>John</td>
+												<td>Doe</td>
+
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+								<div class="clearfix"></div>
+
+
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+				<!--content-->
+			</div>
+			<!--content page-->
+		</div>
+		<!--end wrapper-->
+	</div>
+
+	<!-- Plugins  -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.slimscroll.js"></script>
+	<script src="/js/metisMenu.js"></script>
+	<script src="/js/core.js"></script>
+	<script src="/js/mediaquery.js"></script>
+	<script src="/js/equalize.js"></script>
+	<script src="/js/app.js"></script>
+	<script
+		src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+	<script src="/js/dataTables.bootstrap.js"></script>
+	<script src="/js/dataTables.colVis.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
+	<script>
+		  $('#voucher').DataTable();
+		  
+		  function saveVoucher(){
+			  
+		  }
+   </script>
+
+</body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>

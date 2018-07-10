@@ -44,6 +44,10 @@ public class Voucher {
 	@Column(name="serial")
 	private String serial;
 	
+	@Column(name="type")
+	private String type;
+	
+	
 	@Override
 	public String toString() {
 		return "Voucher [id=" + id + ", version=" + version + ", date=" + date + ", serial=" + serial
@@ -72,6 +76,18 @@ public class Voucher {
 	@JoinColumn(name="mortgage_id")
 	private Mortgage mortgage;
 	
+	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
+	@JoinColumn(name="product_id")
+	private Product product;
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -118,6 +134,14 @@ public class Voucher {
 
 	public void setTransaction(Transaction transaction) {
 		this.transaction = transaction;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	

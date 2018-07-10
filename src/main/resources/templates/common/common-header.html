@@ -14,6 +14,29 @@
         <link href="css/style.css" rel="stylesheet">
         <script src="js/modernizr.js"></script>
     </head>
+    <head th:fragment="common-head">
+        <title>saha jwellers</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/metisMenu.css" rel="stylesheet">
+<link href="/css/morris-0.4.3.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="/css/dataTables.bootstrap.css" rel="stylesheet">
+<link href="/css/dataTables.colVis.css" rel="stylesheet">
+<link
+	href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css"
+	rel="stylesheet" />
+	<script src="/js/jquery.min.js"></script>
+<script src="/js/modernizr.js"></script>
+
+    </head>
 <body>
             <div class="side-menu left" id="side-menu" th:fragment="common-menu">
                <ul class="metismenu clearfix" id="menu" >
@@ -29,13 +52,13 @@
                         </ul>
                     </li>
                     <li><a href="index.html"><i class="fa fa-home"></i>  <span>Dashboard</span></a></li>                       
-                  	<li class=""><a href="customer.php"><i class="fa fa-home"></i>  <span>Home</span></a></li>  
-                    <li class=""><a href="customer.php"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
+                  	<li class=""><a href="/mortgage-app/"><i class="fa fa-home"></i>  <span>Home</span></a></li>  
+                    <li class=""><a href="/mortgage-app/voucher/"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
 
                     <li class="active ">
                      <a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold Mortgage</span><span class="fa arrow"></span></a> 
                         <ul class="nav nav-second-level collapse">
-                            <li class="active "><a href="graph_flot.html"><font color="#f7b03e">Create Voucher</font></a></li>
+                            <li class="active "><a href="/mortgage-app/voucher/"><font color="#f7b03e">Create Voucher</font></a></li>
                             <li><a href="graph_morris.html">customer transaction</a></li>
                             <li><a href="graph_chartjs.html">customer ledger</a></li>
                            

@@ -4,31 +4,13 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html  xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
-<head>
-<title>pink-desh</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="/css/metisMenu.css" rel="stylesheet">
-<link href="/css/morris-0.4.3.min.css" rel="stylesheet">
-<link href="/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!-- <link href="/css/dataTables.bootstrap.css" rel="stylesheet">
-<link href="/css/dataTables.colVis.css" rel="stylesheet"> -->
- <link
-	href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
-	rel="stylesheet"> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css" rel="stylesheet"/>
-<!-- 	<script src="/js/jquery.min.js"></script> -->
-<script src="/js/modernizr.js"></script>
-<!-- <script src="/js/dataTables.bootstrap.js"></script>
-<script src="/js/dataTables.colVis.js"></script> -->
-</head>
+<head th:replace="/common/common-header :: common-head" ></head>
 <body class="fixed-left">
 
 	<div id="wrapper">
@@ -84,26 +66,26 @@ and open the template in the editor.
 								<form role="form">
 									<div class="form-group">
 										<label>Customer Name</label> <input type="text"
-											placeholder="Enter name"  id="cust_name" class="form-control">
+											placeholder="Enter name"  id="cust_name" class="form-control input_field">
 									</div>
 									<div class="form-group">
-										<label>ID</label> <input type="text" disabled="true" placeholder="Id" id="cust_id"
+										<label>ID</label> <input type="text" disabled="true"  placeholder="Id" id="cust_id"
 											class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Mobile</label> <input type="text"
-											placeholder="Enter mobile" id="cust_mobile" class="form-control">
+											placeholder="Enter mobile" id="cust_mobile" class="form-control input_field">
 									</div>
 									<div class="form-group">
 										<label>Address</label> <input type="text"
-											placeholder="Enter address" id="cust_address" class="form-control">
+											placeholder="Enter address" id="cust_address" class="form-control input_field">
 									</div>
 
 
-									<a href="#" class="btn btn-border-theme btn-xs">Print</a>
+									<!-- <a href="#" class="btn btn-border-theme btn-xs">Print</a> -->
 									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>
-									&nbsp;  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Product</button>
-									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a>
+									&nbsp;  <button type="button" class="btn btn-border-theme btn-xs" data-toggle="modal" data-target="#myModal">Add Product</button>
+									<!-- &nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a> -->
 									&nbsp;
 									<div>
 										<label></label>
@@ -154,7 +136,7 @@ and open the template in the editor.
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Bori</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="0.0"
+														<input class="form-control input_field" placeholder="0.0"
 															name="bori" onkeyup="calculateGram();" id="bori" type="text"/>
 													</div>
 												</div>
@@ -162,28 +144,28 @@ and open the template in the editor.
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Ana</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="0.0"
+														<input class="form-control input_field" placeholder="0.0" 
 															name="ana" id="ana" onkeyup="calculateGram();" type="text"/>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Ratti</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="0.0"
+														<input class="form-control input_field" placeholder="0.0"
 															name="ratti" onkeyup="calculateGram();" id="ratti" type="text"/>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">point</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="0.0"
+														<input class="form-control input_field" placeholder="0.0"
 															name="point" onkeyup="calculateGram();" id="point" type="text"/>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Gram</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control"
+														<input class="form-control "
 															placeholder="0.0" readonly="readonly"
 															name="gram"  id="gram" type="text"/>
 													</div>
@@ -192,7 +174,7 @@ and open the template in the editor.
 													<label class="col-lg-2 col-md-3 control-label">Interest
 														rate</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="0.0"
+														<input class="form-control input_field" placeholder="0.0"
 															name="rate" id="rate" type="text">
 													</div>
 												</div>
@@ -200,7 +182,7 @@ and open the template in the editor.
 													<label class="col-lg-2 col-md-3 control-label">Loan
 														amount</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="0.00"
+														<input class="form-control input_field" placeholder="0.00"
 															name="loan_amnt" id="loan_amnt" type="text">
 													</div>
 												</div>
@@ -237,7 +219,7 @@ and open the template in the editor.
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Date</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control datepicker-here" placeholder="date"
+														<input class="form-control input_field datepicker-here" placeholder="date"
 															name="date" id="date" type="text" 
        														data-language='en'
        														
@@ -250,8 +232,8 @@ and open the template in the editor.
 													<label class="col-lg-2 col-md-3 control-label">Serial
 														No.</label>
 													<div class="col-lg-10 col-md-9 has-warning">
-														<input class="form-control input-lg "
-															style="color: #f7b03e;" placeholder="sl no."
+														<input class="form-control input_field input-lg "
+															style="color: #f7b03e;font-size:14px;" placeholder="sl no."
 															name="serial" id="serial" disabled="true" value="" type="text">
 			<!-- voucher hidden field -->				<input type="hidden" id="voucher_id" value=""/>
 													</div>
@@ -289,7 +271,7 @@ and open the template in the editor.
 															Serial</font></label>
 													<div class="col-lg-10 col-md-9">
 														<input class="form-control" placeholder="customer serial"
-															name="transaction_serial" id="transaction_serial" type="text">
+															name="transaction_serial" id="transaction_serial" disabled="true" type="text">
 					<!-- transaction hidden field -->	<input type="hidden" id="transaction_id" value=""/>
 													</div>
 												</div>
@@ -298,7 +280,7 @@ and open the template in the editor.
 													<label class="col-lg-2 col-md-3 control-label"
 														style="font-size: 8px;">Reminder Date</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="reminder date"
+														<input class="form-control input_field" placeholder="reminder date"
 															name="reminder_date" id="reminder_date" type="text"
 															data-language='en'
        														data-position='bottom left'
@@ -309,14 +291,14 @@ and open the template in the editor.
 													<label class="col-lg-2 col-md-3 control-label"
 														style="font-size: 10px;">Storage</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="storage"
+														<input class="form-control input_field" placeholder="storage"
 															name="storage" id="storage" type="text">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Note</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control" placeholder="note"
+														<input class="form-control input_field" placeholder="note"
 															name="note" id="note" type="text">
 													</div>
 												</div>
@@ -545,7 +527,7 @@ and open the template in the editor.
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content modal_dialog">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Products</h4>
@@ -554,9 +536,10 @@ and open the template in the editor.
           
           <div class="form-group">
         <ul class="list-group">
-          <li class="list-group-item">
-          <label for="pwd">Products:</label>
-           <select id="products">
+        	<li class="list-group-item"> 
+        			<label for="products">Products:</label>
+           <select id="productName">
+           <option value="" selected>Select Product</option>
            <option> Anklet</option>
                                      <option>	Ayesti</option>
                                      <option>	Baju</option>
@@ -603,90 +586,23 @@ and open the template in the editor.
            
            
            </select>
-         
-          
-          <label for="pwd">Quantity:</label>
-           <input type="hide" name="qty"/>
-            </div>
-        </li>
-          </ul>
-        <div class="panel-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse1">ADD</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse">
-        <ul class="list-group">
-          <li class="list-group-item"><select id="products">
-           <option> Anklet</option>
-                                     <option>	Ayesti</option>
-                                     <option>	Baju</option>
-                                     <option>	Bala</option>
-                                     <option>	Bangle</option>
-                                 <option>	Bicha</option>
-                                 <option>	Bracelet</option>
-                                 <option>	Chain</option>
-                                 <option>	Chik</option>
-                                 <option>	Chur</option>
-                                 <option>	Churi</option>
-                                 <option>	Ear Chain Pair</option>
-                                 <option>	Earring Pair</option>
-                                 <option>	Ghaar Tana Pair</option>
-                                 <option>	Haar</option>
-                                 <option>	Hair Chain Pair</option>
-                                 <option>	Hath Panja</option>
-                                 <option>	Jhapta</option>
-                                 <option>	Jhumka Pair</option>
-                                 <option>	Kaan Tana Pair</option>
-                                 <option>	Locket</option>
-                                 <option>	Locket & Chain</option>
-                                 <option>	Mangalsutra</option>
-                                 <option>	Mantasha</option>
-                                 <option>	Necklace</option>
-                                    <option>	Nose Pin</option>
-                                       <option>	Noth</option>
-                                          <option>	Nupur</option>
-                                             <option>	Pasha Pair</option>
-                                                <option>	Payel</option>
-                                                   <option>	Pendant</option>
-                                                      <option>	Pola</option>
-                                                         <option>	Ring</option>
-                                                            <option>	Ring Bracelet</option>
-                                                               <option>	Shakha</option>
-                                                                  <option>	Side Clip</option>
-                                                                     <option>	Sita Haar</option>
-                                                                        <option>	Sithi Patti</option>
-                                                                        <option>	Taj</option>
-                                                                        <option>	Tayra</option>
-                                                                        <option>	Tiara</option>
-                                                                        <option>	Tikli</option>
-                                                                        <option>	Other</option>
-           
-           
-           </select><input type="text" placeholder="Quantity" name="qty" style="color:gold"/></li>
-          <li class="list-group-item">Two</li>
-          <li class="list-group-item">Three</li>
+            <label for="productQuantity">Quantity:</label>
+           <input type="text" id="productQuantity" name="productQuantity"/>
+           <input type="hidden" name="product_Id" id="productId" />
+        	</li>
         </ul>
-        <div class="panel-footer">Footer</div>
-      </div>
+            </div>
+        <div class="panel-group">
+   
       
       
     </div>
     <ul class="pager">
-					
-								<li class="previous"><a href="#" >Save &rarr;</a></li>
-
+			<li class="previous"><a href="#"  onclick="javascript:toggleModal()" data-toggle="modal" >Save &rarr;</a></li>
 							</ul>
   </div>  
-        
-    
     </div>
        
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
@@ -707,10 +623,15 @@ and open the template in the editor.
 		<script src="/js/equalize.js"></script>
 		<script src="/js/app.js"></script>
 		  <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		  
+<script src="/js/dataTables.bootstrap.js"></script>
+<script src="/js/dataTables.colVis.js"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
         <script>
-      
+        function toggleModal(){
+        	$('#myModal').modal('toggle');
+        }
         
         function calculateGram(){
         	console.log('calculate gram');
@@ -926,6 +847,7 @@ and open the template in the editor.
     	var customer = {};
     	var mortgage = {};
     	var transaction = {};
+    	var product = {};
     	
         let bori_field = $("#bori");
         let ana_field = $("#ana");
@@ -959,8 +881,13 @@ and open the template in the editor.
     	customer["mobile"]=$("#cust_mobile").val();
     	customer["customerId"]=formatIntegerValue($("#cust_id").val());
     	
+    	product["productName"] = formatValue($("#productName").val());
+    	product["quantity"] = formatIntegerValue($("#productQuantity").val());
+    	product["productId"] = formatIntegerValue($("#productId").val());
+    	
     	voucher["customer"] = customer;
     	voucher["mortgage"] = mortgage; 
+    	voucher["product"] = product;
     	//transaction["voucher"] = voucher;
     	voucher["transaction"] = transaction;
     	voucher["id"] = formatIntegerValue($("#voucher_id").val());
@@ -1088,6 +1015,8 @@ and open the template in the editor.
         		        $("#storage").val(respJson.transaction.storage);
         		        $("#note").val(respJson.transaction.note);
         		        
+        		        $("#serial").val(respJson.id);
+        		        $("#transaction_serial").val(respJson.transaction.id);
         		        $("#cust_id").val(respJson.customer.customerId);
         		        $("#voucher_id").val(respJson.id);
         		        $("#transaction_id").val(respJson.transaction.id);
