@@ -449,7 +449,29 @@ and open the template in the editor.
 		  $('#voucher').DataTable();
 		  
 		  function saveVoucher(){
+			  let custId_field = $("#cust_id");
+			  let custName_field = $("#cust_name");
+			  let custPhone_field = $("#cust_mobile");
+			  let custAddress_field = $("#cust_address");
+			  let expense_field = $("#expense");
+			  let note_field = $("#note");
+			  let amount_field = $("#amount");
+			  let voucher_field = $("#voucher_date");
+			  let serial_field = $("#serial_no");
 			  
+			  let voucher = {};
+			  let transaction = {};
+			  let customer = {};
+			  let product = {};
+			  
+			  customer["customerId"] = custId_field.val();
+			  customer["customerName"] = custName_field.val();
+			  customer["mobile"] = custPhone_field.val();
+			  customer["address"] =  custAddress_field.val();
+			  
+			  transaction["expense"] =  expense_field.val();
+			  transaction["note"] = note_field.val();
+			  transaction["amount"] = amount_field.val();
 		  }
    </script>
 
