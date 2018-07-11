@@ -79,6 +79,8 @@ public class Transaction {
 	@Column(name="transactionSerial")
 	private String transactionSerial;
 
+	@Column(name="amount")
+	private Double amount;
 	
 	public Long getId() {
 		return id;
@@ -134,6 +136,14 @@ public class Transaction {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 	public String getExpense() {

@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.sahaJwellers.app.model.Transaction;
 import com.sahaJwellers.app.model.Voucher;
 import com.sahaJwellers.app.repository.VoucherRepository;
+import com.sahaJwellers.app.util.DateUtil;
 
 @Service
 @Transactional
@@ -47,5 +49,10 @@ public class VoucherServiceImpl implements VoucherService {
 	@Override
 	public Optional<Voucher> findVoucherByTransactionId(Transaction id){
 		return voucherRepository.findVoucherByTransactionId(id);
+	}
+	
+	@Override
+	public List<Voucher> fetchAllTodaysExpenseVoucher(){
+		return voucherRepository.listVoucherForTodayByType(DateUtil.atStartOfDay(new Date()), "expense");
 	}
 }

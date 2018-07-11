@@ -18,4 +18,6 @@ public interface VoucherService {
 
 	Optional<Voucher> findVoucherByTransactionId(Transaction trans);
 
+	List<Voucher> fetchAllTodaysExpenseVoucher();
+
 }

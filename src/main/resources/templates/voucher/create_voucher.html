@@ -4,13 +4,13 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html  xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:th="http://www.thymeleaf.org" 
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
-<head th:replace="/common/common-header :: common-head" ></head>
+<head th:replace="/common/common-header :: common-head"></head>
 <body class="fixed-left">
 
 	<div id="wrapper">
@@ -36,8 +36,7 @@ and open the template in the editor.
 					<div class="clearfix">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img
 							src="/images/user.png" alt="" class="pull-left"> <span>up
-								bar <br>
-							<em>Admin</em>
+								bar <br> <em>Admin</em>
 						</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -58,7 +57,7 @@ and open the template in the editor.
 		<div class="content-page  equal-height">
 			<div class="content">
 				<div class="container">
-				  
+
 					<div class="row">
 						<div class="col-sm-4 h6">
 							<div class="panel-box">
@@ -66,25 +65,31 @@ and open the template in the editor.
 								<form role="form">
 									<div class="form-group">
 										<label>Customer Name</label> <input type="text"
-											placeholder="Enter name"  id="cust_name" class="form-control input_field">
+											placeholder="Enter name" id="cust_name"
+											class="form-control input_field">
 									</div>
 									<div class="form-group">
-										<label>ID</label> <input type="text" disabled="true"  placeholder="Id" id="cust_id"
-											class="form-control">
+										<label>ID</label> <input type="text" disabled="true"
+											placeholder="Id" id="cust_id" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Mobile</label> <input type="text"
-											placeholder="Enter mobile" id="cust_mobile" class="form-control input_field">
+											placeholder="Enter mobile" id="cust_mobile"
+											class="form-control input_field">
 									</div>
 									<div class="form-group">
 										<label>Address</label> <input type="text"
-											placeholder="Enter address" id="cust_address" class="form-control input_field">
+											placeholder="Enter address" id="cust_address"
+											class="form-control input_field">
 									</div>
 
 
 									<!-- <a href="#" class="btn btn-border-theme btn-xs">Print</a> -->
 									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>
-									&nbsp;  <button type="button" class="btn btn-border-theme btn-xs" data-toggle="modal" data-target="#myModal">Add Product</button>
+									&nbsp;
+									<button type="button" class="btn btn-border-theme btn-xs"
+										data-toggle="modal" data-target="#myModal">Add
+										Product</button>
 									<!-- &nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a> -->
 									&nbsp;
 									<div>
@@ -94,10 +99,11 @@ and open the template in the editor.
 
 							</div>
 							<ul class="pager">
-								<li class="next">	<input class="form-controlcol-sm-2" type="button" name="show_voucher_details" value="Voucher Details" id="show_voucher_details" /> 
-
-								</li>
-								<li class="previous"><a href="#" onclick="saveVoucher()">Save &rarr;</a></li>
+								<li class="next"><input class="form-controlcol-sm-2"
+									type="button" name="show_voucher_details"
+									value="Voucher Details" id="show_voucher_details" /></li>
+								<li class="previous"><a href="#" onclick="saveVoucher()">Save
+										&rarr;</a></li>
 
 							</ul>
 
@@ -130,44 +136,48 @@ and open the template in the editor.
 									<!-- Start .bwizard -->
 
 									<form class="form-horizontal" role="form">
-		<!-- mortgage hidden field --><input type="hidden" id="mortgage_id" value=""/>
+										<!-- mortgage hidden field -->
+										<input type="hidden" id="mortgage_id" value="" />
 										<div class="tab-content">
 											<div class="tab-pane active" id="tab1">
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Bori</label>
 													<div class="col-lg-10 col-md-9">
 														<input class="form-control input_field" placeholder="0.0"
-															name="bori" onkeyup="calculateGram();" id="bori" type="text"/>
+															name="bori" onkeyup="calculateGram();" id="bori"
+															type="text" />
 													</div>
 												</div>
 												<!-- End .control-group  -->
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Ana</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control input_field" placeholder="0.0" 
-															name="ana" id="ana" onkeyup="calculateGram();" type="text"/>
+														<input class="form-control input_field" placeholder="0.0"
+															name="ana" id="ana" onkeyup="calculateGram();"
+															type="text" />
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Ratti</label>
 													<div class="col-lg-10 col-md-9">
 														<input class="form-control input_field" placeholder="0.0"
-															name="ratti" onkeyup="calculateGram();" id="ratti" type="text"/>
+															name="ratti" onkeyup="calculateGram();" id="ratti"
+															type="text" />
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">point</label>
 													<div class="col-lg-10 col-md-9">
 														<input class="form-control input_field" placeholder="0.0"
-															name="point" onkeyup="calculateGram();" id="point" type="text"/>
+															name="point" onkeyup="calculateGram();" id="point"
+															type="text" />
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Gram</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control "
-															placeholder="0.0" readonly="readonly"
-															name="gram"  id="gram" type="text"/>
+														<input class="form-control " placeholder="0.0"
+															readonly="readonly" name="gram" id="gram" type="text" />
 													</div>
 												</div>
 												<div class="form-group">
@@ -219,12 +229,10 @@ and open the template in the editor.
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label">Date</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control input_field datepicker-here" placeholder="date"
-															name="date" id="date" type="text" 
-       														data-language='en'
-       														
-       														data-position='bottom left'
-       														data-date-format="dd/mm/yyyy">
+														<input class="form-control input_field datepicker-here"
+															placeholder="date" name="date" id="date" type="text"
+															data-language='en' data-position='bottom left'
+															data-date-format="dd/mm/yyyy">
 													</div>
 												</div>
 												<!-- End .control-group  -->
@@ -233,9 +241,11 @@ and open the template in the editor.
 														No.</label>
 													<div class="col-lg-10 col-md-9 has-warning">
 														<input class="form-control input_field input-lg "
-															style="color: #f7b03e;font-size:14px;" placeholder="sl no."
-															name="serial" id="serial" disabled="true" value="" type="text">
-			<!-- voucher hidden field -->				<input type="hidden" id="voucher_id" value=""/>
+															style="color: #f7b03e; font-size: 14px;"
+															placeholder="sl no." name="serial" id="serial"
+															disabled="true" value="" type="text">
+														<!-- voucher hidden field -->
+														<input type="hidden" id="voucher_id" value="" />
 													</div>
 												</div>
 
@@ -271,8 +281,10 @@ and open the template in the editor.
 															Serial</font></label>
 													<div class="col-lg-10 col-md-9">
 														<input class="form-control" placeholder="customer serial"
-															name="transaction_serial" id="transaction_serial" disabled="true" type="text">
-					<!-- transaction hidden field -->	<input type="hidden" id="transaction_id" value=""/>
+															name="transaction_serial" id="transaction_serial"
+															disabled="true" type="text">
+														<!-- transaction hidden field -->
+														<input type="hidden" id="transaction_id" value="" />
 													</div>
 												</div>
 												<!-- End .control-group  -->
@@ -280,19 +292,19 @@ and open the template in the editor.
 													<label class="col-lg-2 col-md-3 control-label"
 														style="font-size: 8px;">Reminder Date</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control input_field" placeholder="reminder date"
-															name="reminder_date" id="reminder_date" type="text"
-															data-language='en'
-       														data-position='bottom left'
-       														data-date-format="dd/mm/yyyy">
+														<input class="form-control input_field"
+															placeholder="reminder date" name="reminder_date"
+															id="reminder_date" type="text" data-language='en'
+															data-position='bottom left' data-date-format="dd/mm/yyyy">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-lg-2 col-md-3 control-label"
 														style="font-size: 10px;">Storage</label>
 													<div class="col-lg-10 col-md-9">
-														<input class="form-control input_field" placeholder="storage"
-															name="storage" id="storage" type="text">
+														<input class="form-control input_field"
+															placeholder="storage" name="storage" id="storage"
+															type="text">
 													</div>
 												</div>
 												<div class="form-group">
@@ -320,15 +332,22 @@ and open the template in the editor.
                                             <li class="next finish" style="display:none;"><a href="#">Finish</a>
                                             </li>
                                         </ul>-->
-                                        
+
 								</div>
 							</div>
-						
+
 						</div>
 						<div class="container">
 							<!-- <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
 								  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text"> -->
-								  
+							<div id="voucher_search">
+								<!-- <div id="name">Customer Name</div> -->
+								<input type="text" name="cust_name" id="cname"  onkeyup="searchCustomer();" placeholder="Search Customer" data-index="1"/>
+							</div>
+							<input class="form-control" style="width: 150px; float: right;"
+										placeholder="no expense voucher" name="vdetails" type="text">
+									<input class="form-control" style="width: 150px; float : left;;"
+										placeholder="total expense" name="lamount" type="text">
 							<table class="table table-striped" id="voucher">
 								<thead>
 									<tr>
@@ -396,6 +415,12 @@ and open the template in the editor.
 										<td></td>
 									</tr>
 								</tbody>
+								<tfoot>
+            <tr>
+                <th colspan="11" style="text-align:right">Total:</th>
+                <th></th>
+            </tr>
+        </tfoot>
 							</table>
 
 						</div>
@@ -523,112 +548,112 @@ and open the template in the editor.
 			</div>
 			<!--end wrapper-->
 		</div>
-	<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content modal_dialog">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Products</h4>
-        </div>
-        <div class="modal-body">
-          
-          <div class="form-group">
-        <ul class="list-group">
-        	<li class="list-group-item"> 
-        			<label for="products">Products:</label>
-           <select id="productName">
-           <option value="" selected>Select Product</option>
-           <option> Anklet</option>
-                                     <option>	Ayesti</option>
-                                     <option>	Baju</option>
-                                     <option>	Bala</option>
-                                     <option>	Bangle</option>
-                                 <option>	Bicha</option>
-                                 <option>	Bracelet</option>
-                                 <option>	Chain</option>
-                                 <option>	Chik</option>
-                                 <option>	Chur</option>
-                                 <option>	Churi</option>
-                                 <option>	Ear Chain Pair</option>
-                                 <option>	Earring Pair</option>
-                                 <option>	Ghaar Tana Pair</option>
-                                 <option>	Haar</option>
-                                 <option>	Hair Chain Pair</option>
-                                 <option>	Hath Panja</option>
-                                 <option>	Jhapta</option>
-                                 <option>	Jhumka Pair</option>
-                                 <option>	Kaan Tana Pair</option>
-                                 <option>	Locket</option>
-                                 <option>	Locket & Chain</option>
-                                 <option>	Mangalsutra</option>
-                                 <option>	Mantasha</option>
-                                 <option>	Necklace</option>
-                                    <option>	Nose Pin</option>
-                                       <option>	Noth</option>
-                                          <option>	Nupur</option>
-                                             <option>	Pasha Pair</option>
-                                                <option>	Payel</option>
-                                                   <option>	Pendant</option>
-                                                      <option>	Pola</option>
-                                                         <option>	Ring</option>
-                                                            <option>	Ring Bracelet</option>
-                                                               <option>	Shakha</option>
-                                                                  <option>	Side Clip</option>
-                                                                     <option>	Sita Haar</option>
-                                                                        <option>	Sithi Patti</option>
-                                                                        <option>	Taj</option>
-                                                                        <option>	Tayra</option>
-                                                                        <option>	Tiara</option>
-                                                                        <option>	Tikli</option>
-                                                                        <option>	Other</option>
-           
-           
-           </select>
-            <label for="productQuantity">Quantity:</label>
-           <input type="text" id="productQuantity" name="productQuantity"/>
-           <input type="hidden" name="product_Id" id="productId" />
-        	</li>
-        </ul>
-            </div>
-        <div class="panel-group">
-   
-      
-      
-    </div>
-    <ul class="pager">
-			<li class="previous"><a href="#"  onclick="javascript:toggleModal()" data-toggle="modal" >Save &rarr;</a></li>
-							</ul>
-  </div>  
-    </div>
-       
-        </div>
-      </div>
-      
-    </div>
-  </div>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
 
-		<div class="footer col-sm-offset-4">
-			<span>Copyright &copy; 2016. Pink-Desh.</span>
+				<!-- Modal content-->
+				<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Products</h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="form-group">
+							<ul class="list-group">
+								<li class="list-group-item"><label for="products">Products:</label>
+									<select id="productName">
+										<option value="" selected>Select Product</option>
+										<option> Anklet</option>
+										<option>	Ayesti</option>
+										<option>	Baju</option>
+										<option>	Bala</option>
+										<option>	Bangle</option>
+										<option>	Bicha</option>
+										<option>	Bracelet</option>
+										<option>	Chain</option>
+										<option>	Chik</option>
+										<option>	Chur</option>
+										<option>	Churi</option>
+										<option>	Ear Chain Pair</option>
+										<option>	Earring Pair</option>
+										<option>	Ghaar Tana Pair</option>
+										<option>	Haar</option>
+										<option>	Hair Chain Pair</option>
+										<option>	Hath Panja</option>
+										<option>	Jhapta</option>
+										<option>	Jhumka Pair</option>
+										<option>	Kaan Tana Pair</option>
+										<option>	Locket</option>
+										<option>	Locket & Chain</option>
+										<option>	Mangalsutra</option>
+										<option>	Mantasha</option>
+										<option>	Necklace</option>
+										<option>	Nose Pin</option>
+										<option>	Noth</option>
+										<option>	Nupur</option>
+										<option>	Pasha Pair</option>
+										<option>	Payel</option>
+										<option>	Pendant</option>
+										<option>	Pola</option>
+										<option>	Ring</option>
+										<option>	Ring Bracelet</option>
+										<option>	Shakha</option>
+										<option>	Side Clip</option>
+										<option>	Sita Haar</option>
+										<option>	Sithi Patti</option>
+										<option>	Taj</option>
+										<option>	Tayra</option>
+										<option>	Tiara</option>
+										<option>	Tikli</option>
+										<option>	Other</option>
+
+
+								</select> <label for="productQuantity">Quantity:</label> <input
+									type="text" id="productQuantity" name="productQuantity" /> <input
+									type="hidden" name="product_Id" id="productId" /></li>
+							</ul>
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><a href="#"
+								onclick="javascript:toggleModal()" data-toggle="modal">Save
+									&rarr;</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
 		</div>
-		<!-- Plugins  -->
-		<script src="/js/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/jquery.slimscroll.js"></script>
-		<script src="/js/metisMenu.js"></script>
-		<script src="/js/core.js"></script>
-		<script src="/js/mediaquery.js"></script>
-		<script src="/js/equalize.js"></script>
-		<script src="/js/app.js"></script>
-		  <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-		  
-<script src="/js/dataTables.bootstrap.js"></script>
-<script src="/js/dataTables.colVis.js"></script>
-		  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
-		  <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
-        <script>
+
+	</div>
+	</div>
+
+	<div class="footer col-sm-offset-4">
+		<span>Copyright &copy; 2016. Pink-Desh.</span>
+	</div>
+	<!-- Plugins  -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.slimscroll.js"></script>
+	<script src="/js/metisMenu.js"></script>
+	<script src="/js/core.js"></script>
+	<script src="/js/mediaquery.js"></script>
+	<script src="/js/equalize.js"></script>
+	<script src="/js/app.js"></script>
+	<script
+		src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+	<script src="/js/dataTables.bootstrap.js"></script>
+	<script src="/js/dataTables.colVis.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
+	<script>
+	
+	var dataTable;
         function toggleModal(){
         	$('#myModal').modal('toggle');
         }
@@ -785,14 +810,57 @@ and open the template in the editor.
           		/* tr += "</tr>";
           		$("#voucher > tbody").append(tr); */
           		}); 
-          		$('#voucher').DataTable({
+          		dataTable = $('#voucher').DataTable({
             		data:           data,
                     deferRender:    true,
                     scrollY:        200,
                     scrollCollapse: true,
                     scroller:       true,
-                    "order": []
+                    "order": [],
+					 "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 10 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            var rowsCount = api
+            .column( 10 )
+            .data().length;
+            // Total over this page
+            pageTotal = api
+                .column( 10, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 10 ).footer() ).html(
+                '$'+pageTotal +' ( $'+ total +' total)'
+            );
+        }
             	});  
+          		
+          		 /* $(  dataTable.table().container() ).on( 'keyup', '#cname', function () {
+          			 
+          			dataTable
+          	            .column( $(this).data('index') )
+          	            .search( this.value )
+          	            .draw();
+          	    } ); */
           		 $( "#cust_name" ).autocomplete({
      		        source: autoCompleteList,
      		        select: function (event, ui) {
@@ -893,7 +961,7 @@ and open the template in the editor.
     	voucher["id"] = formatIntegerValue($("#voucher_id").val());
     	
        	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
-       		alert("done");
+       	
        		if(voucher["id"] != "" && voucher["id"] != null) return;
        		console.log(respJson);
        		let val = respJson;
@@ -916,7 +984,7 @@ and open the template in the editor.
        		moveDataTableRow(1,t);
        		
        		
-       		alert("done");
+       		
        	}, function(reason){
        	 console.log("error in processing your request", reason);
        	}); 
@@ -928,7 +996,7 @@ and open the template in the editor.
         }
         $(document).ready( function () {    	
          fetchVouchers();
-         
+        
             
             var disabledDays = [0];
             var dateSettings = {
@@ -1032,7 +1100,21 @@ and open the template in the editor.
          
             
         });
-        </script> 
+        
+        function searchCustomer(){
+        	console.log('search')
+        	dataTable
+	            .column(1)
+	            .search($("#cname").val())
+	            .draw();
+        }
+        
+       /*  $('#voucher_search').each( function (i) {
+	        var title = $('#voucher_search div').eq( $(this).index() ).text();
+	      //  $(this).html( '<input type="text" placeholder="Search '+title+'" data-index="'+i+'" />' );
+	    } ); */
+	
+        </script>
 </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->

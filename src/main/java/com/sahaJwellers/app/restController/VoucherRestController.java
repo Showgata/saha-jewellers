@@ -51,6 +51,11 @@ public class VoucherRestController {
 	public Voucher defaultValue() {
 		return new Voucher();
 	}
+	
+	@GetMapping("/expense-for-today")
+	public List<Voucher> findTodaysVoucher(){
+		return voucherService.fetchAllTodaysExpenseVoucher();
+	}
 
 	@PostMapping("/")
 	public Voucher saveVoucher(@RequestBody Voucher voucher) {
