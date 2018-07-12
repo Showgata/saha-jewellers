@@ -145,7 +145,7 @@ and open the template in the editor.
 									<form role="form" class="form-inline">
 										<div class="form-group col-sm-3" style="padding-left: 10px;">
 											<label>Customer Name</label> <input type="text" id="cust_name"
-												placeholder="Enter name" class="form-control">
+												placeholder="Enter name" class="form-control" autocomplete="on">
 										</div>
 										<div class="form-group col-sm-3" style="padding-left: 10px;">
 											<label>Customer Id</label> <input disabled="true" type="text" id="cust_id"
@@ -537,11 +537,13 @@ and open the template in the editor.
 	       }	 */
 	       
 	       function setCustomerAutoCompleteList(){
-	    	   var URL = "http://localhost:8080/mortgage-app/api/customer";
+	    	   var URL = "http://localhost:8080/mortgage-app/api/customer/";
 	    	   var autoCompleteList = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
-	    			   autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
+	    			   
+	    				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+	    			   
 	    		   });
 	    		   $( "#cust_name" ).autocomplete({
 	     		        source: autoCompleteList,
@@ -601,9 +603,9 @@ and open the template in the editor.
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
 	    			  
-	    			   data.push([(val.customer.customeerId==null?"0":val.customer.customerId),
+	    			   data.push([(val.customer.customerId==null?"0":val.customer.customerId),
 			 				 val.customer.customerName,
-			 				 (val.transaction.transactionSerial==null?"":val.transaction.transactionSerial),
+			 				 (val.id==null?"":val.id),
 			 				(val.customer.mobile==null?"":val.customer.mobile),
 			 				(val.customer.address==null?"":val.customer.address),
 			 				(val.transaction.expense==null?"":val.transaction.expense),
@@ -697,17 +699,18 @@ and open the template in the editor.
 			  voucher["transaction"] =  transaction;
 			  voucher["type"] = "expense";
 			  voucher["date"] = voucherDate_field.val();
-			  voucher["serial"] = serial_field.val();
-			  voucher["id"] = voucher_Id.val();
+			  voucher["serial"] = formatIntegerValue(serial_field.val());
+			  voucher["id"] = formatIntegerValue(voucher_Id.val());
 			  
 			  var data = [];
-			  buildAjaxForJson("http://localhost:8080//modgage-app/api/voucher/", "POST", voucher).then(function(respJson){
-				  alert('done');
+			  buildAjaxForJson("http://localhost:8080/modgage-app/api/voucher/", "POST", voucher).then(function(respJson){
+				  
 				  var t = dataTable;
 				  let val = respJson;
-		       		t.row.add([(val.customer.customeerId==null?"0":val.customer.customerId),
+				  console.log(val);
+		       		t.row.add([(val.customer.customerId==null?"0":val.customer.customerId),
 		 				 val.customer.customerName,
-		 				 (val.transaction.transactionSerial==null?"":val.transaction.transactionSerial),
+		 				 (val.id==null?"":val.id),
 		 				(val.customer.mobile==null?"":val.customer.mobile),
 		 				(val.customer.address==null?"":val.customer.address),
 		 				(val.transaction.expense==null?"":val.transaction.expense),
@@ -742,6 +745,7 @@ and open the template in the editor.
 		  
 		  $(document).ready(function (){    
 			  listExpenseVoucher();
+			  //setCustomerAutoCompleteList();
 			  var disabledDays = [0];
 	            var dateSettings = {
 	                language: 'en',
@@ -763,6 +767,88 @@ and open the template in the editor.
 			  
 			  
 		  });
+		  
+	        
+	        $('#voucher tbody').on( 'click', '.upd', function () {
+	        	var table = $('#voucher').DataTable();
+	        
+	        		  var currentPage = table.page();
+	        		  //console.log($(this).attr('delid'));
+	        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+	        		  buildAjax(URL, "GET").then(function(respJson){
+	        			  console.log(respJson);
+	        		      /*   let bori_field = $("#bori");
+	        		        let ana_field = $("#ana");
+	        		        let ratti_field = $("#ratti");
+	        		        let point_field = $("#point");
+	        		        let gram_field = $("#gram"); 
+	        		        let loanAmnt_field = $("#loan_amnt");
+	        		        let interestRate_field = $("#rate");*/
+	        		        let transactionSerial = $("#transaction_serial");
+	        		        let reminderDate = $("#reminder_date");
+	        		        let note = $("#note");
+	        		        let storage = $("#storage");
+	        			    let voucher_date = $("#voucher_date");
+	        			    
+	        		        $("#cust_name").val(respJson.customer.customerName);
+	        		        $("#cust_id").val(respJson.customer.customerId);
+	        		        $("#cust_mobile").val(respJson.customer.mobile);
+	        		        $("#cust_address").val(respJson.customer.address);
+	        		        voucher_date.val(respJson.date);
+	        		        transactionSerial.val(respJson.id);
+	        		        /* $("#bori").val(respJson.mortgage.bori);
+	        		        $("#ana").val(respJson.mortgage.ana);
+	        		        $("#ratti").val(respJson.mortgage.ratti);
+	        		        $("#point").val(respJson.mortgage.point);
+	        		        $("#gram").val(respJson.mortgage.gram);
+	        		        $("#interestRate").val(respJson.mortgage.interestRate);
+	        		        $("#loanAmount").val(respJson.mortgage.loanAmount); */
+	        		        /* $("#product").val(respJson.mortgage.product); */
+	        		        $("#cust_id").val(respJson.transaction.id);
+	        		        $("#reminder_date").val(respJson.transaction.transactionDate);
+	        		        $("#storage").val(respJson.transaction.storage);
+	        		        $("#note").val(respJson.transaction.note);
+	        		        $("#amount").val(respJson.transaction.amount);
+	        		        $("#expense").val(respJson.transaction.expense);
+	        		        
+	        		        $("#serial_no").val(respJson.id);
+	        		        $("#transaction_serial").val(respJson.transaction.id);
+	        		        $("#cust_id").val(respJson.customer.customerId);
+	        		        $("#voucher_id").val(respJson.id);
+	        		        $("#transaction_id").val(respJson.transaction.id);
+	        		        /* $("#mortgage_id").val(respJson.mortgage.mortgageId); */
+	        		  },function(reason){
+	  		           	 console.log("error in processing your request", reason);
+	   	           	}); 
+	        		  /* var row = table.row( $(this).parents('tr') );
+	                  var rowNode = row.node();
+	                  row.remove();
+	                  table.page(currentPage).draw(false); */
+	        	
+	         
+	            
+	        });
+	        
+	        $('#voucher tbody').on( 'click', '.del', function () {
+	        	var table = $('#voucher').DataTable();
+	        	if(confirm('Are you sure !')){
+	        		  var currentPage = table.page();
+	        		  //console.log($(this).attr('delid'));
+	        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('delid'));
+	        		  buildAjax(URL, "POST").then(function(respJson){
+	        		  },function(reason){
+	  		           	 console.log("error in processing your request", reason);
+	   	           	}); 
+	        		  var row = table.row( $(this).parents('tr') );
+	                  var rowNode = row.node();
+	                  row.remove();
+	                  table.page(currentPage).draw(false);
+	        	}
+	         
+	            
+	        });
+		  
+		  setCustomerAutoCompleteList();
    </script>
 
 </body>
