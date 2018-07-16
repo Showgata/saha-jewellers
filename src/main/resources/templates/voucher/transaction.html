@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    
+   <head th:replace="common/common-header :: common-headpage"></head> 
+    <body class="fixed-left" style="overflow:hidden;">
+        <div id="wrapper" >
+
+            <!--top bar-->
+            <div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+			
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                             <div class="col-sm-4 h6" style="margin-top:-10px;">
+							  <div class="panel-box">
+							  <h5>Customer Information</h5>
+							  <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Customer name</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Id</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Mobile number</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Address</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+													<div class="form-group col-sm-12" style="">
+											<a href="#" class="btn btn-border-theme btn-xs">Product</a> 
+											<a href="#" class="btn btn-border-theme btn-xs">Transaction Details</a> 										
+										</div>	
+
+                                                                                                        
+                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+										
+                                    </div>
+							  </div> </div>
+                           
+                              <div class="col-sm-4 h6" style="margin-top:0px;">
+                                <div class="panel-box">
+                                    <h5>Loan Transaction</h5>
+                                     <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Total Interest Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Previous Interest paid Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Paid Interest Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Due Interest Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+													
+                                                  
+                                                    
+                                                                                                        
+                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        <!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+                                    </div>
+
+                                </div>
+								
+								
+                            </div > 
+							
+							<div>
+						
+                                                        
+                                                    
+							</div>
+								<div class="col-sm-4 h6"  style="margin-top:-10px;">
+                                <label class="col-lg-2 col-md-3 control-label" style="margin-top:10px;" >Date</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="Date" name="lastname" type="text">
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-9 form-group has-warning">
+                                                            <input class="form-control input-lg " style="color:#f7b03e" placeholder="customer serial" name="firstname" type="text" value="number">
+                                                        </div>
+								<div class="panel-box">
+								  <h5>Transaction Details</h5>
+								 	
+								 <div id="wizard" class="bwizard" >
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label"  style="font-size: 8px;"><font>Total Loan Amount</font></label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="customer serial" name="firstname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label" style="font-size: 8px;">Total Interest Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="reminder date" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label" style="font-size: 10px;">Total Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="storage" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Paid Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+      <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Paid Interest Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                   <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Due Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                      <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Due Interest Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                        </div>
+                                                    </div>                                                   
+                                                     <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Net Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+													
+										
+											<ul class="pager">
+												<a href="#" class="btn btn-border-theme btn-xs">Save</a> 
+										  <li class="input-lg"><a href="#">Deliver &rarr;</a>
+											</li>
+											<a href="#" class="btn btn-border-theme btn-xs">Cancel</a> 
+											<a href="#" class="btn btn-border-theme btn-xs">Print</a> 
+											<a href="#" class="btn btn-border-theme btn-xs">PDF</a> 
+											</ul>
+											
+									
+										
+										
+											
+										
+										
+										
+											
+											
+													<!-- End .control-group  -->
+												
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        <!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+                                    </div>
+								</div>
+							
+								</div>
+								
+							
+                        </div>
+						  <div class="row">
+<div class="col-sm-4 h6"  style="margin-top:-370px;">
+                                <div class="panel-box">
+                                    <h5>Mortgage Informantion</h5>
+                                    <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Bori</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Ana</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Ratti</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">point</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+													<div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Gram</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="gram will be calculated"  name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Interest rate</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="Int rate" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Loan amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="loan amt" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                                                                        
+                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        <!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+                                    </div>
+                                    <!-- End .bwizard -->
+                                </div>
+                            </div><!--height-->
+                    
+                          
+							 <div class="col-sm-4 h6" style="margin-top:-280px;">
+                                <div class="panel-box">
+                                    <h5>Interest Transaction</h5>
+                                     <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Total Loan Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Previous Loan Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Paid Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Due Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                        </div>
+                                                    </div>
+													</div>   
+                                            </div>
+                                        </form>
+                                       
+                                    </div>
+
+                                </div>
+								
+								
+                            </div >
+</div>
+                    </div><!--content-->               
+					</div><!--content page-->
+            </div><!--end wrapper-->				
+        </div>      
+       <div th:replace="/common/common-header :: common-required-scripts"></div>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>
