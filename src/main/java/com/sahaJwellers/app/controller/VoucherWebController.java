@@ -19,6 +19,11 @@ public class VoucherWebController {
 		return "home/home";
 	}
 	
+	@GetMapping("/customer")
+	public String customer() {
+		return "customer/customer";
+	}
+	
 	@GetMapping("/expense-voucher")
 	public String index() {
 		return "expense/expense_voucher";

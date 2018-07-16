@@ -1,6 +1,7 @@
 package com.sahaJwellers.app.restController;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sahaJwellers.app.model.Customer;
 import com.sahaJwellers.app.service.CustomerService;
+import com.sahaJwellers.app.util.DateUtil;
 
 @RestController
 @RequestMapping("/mortgage-app/api/customer")
@@ -57,4 +60,13 @@ public class CustomerController {
 		}
 	}
 	
+	@PostMapping("/{id}")
+	public void deleteCustomerById(@PathVariable("id") Long id) {
+		customerService.deleteCustomerById(id);
+	}
+	
+	@GetMapping("/today")
+	public List<Customer> fetchCustomerListForToday(){
+		return customerService.fetchAllCustromerByDate(DateUtil.atStartOfDay(new Date()));
+	}
 }

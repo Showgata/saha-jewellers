@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,11 @@ public class CustomerServiceImpl  implements CustomerService{
 	@Override
 	public List<Customer> findAllCustomer(){
 		return customerRepository.findAll();
+	}
+	
+	@Override
+	public List<Customer> fetchAllCustromerByDate(Date date){
+		return customerRepository.listCustomerForToday(date);
 	}
 	
 }

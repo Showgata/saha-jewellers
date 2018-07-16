@@ -1,5 +1,7 @@
 package com.sahaJwellers.app.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="customer_tbl")
@@ -36,6 +42,17 @@ public class Customer {
 	@Column(name="ref")
 	private String references;
 	
+	@Column(name="note")
+	private String note;
+	
+	@JsonIgnore
+	@CreationTimestamp
+	private Date createdTimestamp;
+	
+	@JsonIgnore
+	@UpdateTimestamp
+	private Date updateTimestamp;
+	
 	/*@Version
 	@Column(name="version")
 	private Long version;*/
@@ -43,7 +60,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", mobile=" + mobile
-				+ ", Address=" + address + ", references=" + references +"]";
+				+ ", Address=" + address + ", references=" + references +" note= "+note+"]";
 	}
 
 	public Long getCustomerId() {
@@ -85,6 +102,14 @@ public class Customer {
 
 	public void setReferences(String references) {
 		this.references = references;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 

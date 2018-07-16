@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,5 +15,7 @@ public interface CustomerService {
 	Customer saveOrupdateCustomer(Customer customer);
 
 	List<Customer> findAllCustomer();
+
+	List<Customer> fetchAllCustromerByDate(Date date);
 
 }
