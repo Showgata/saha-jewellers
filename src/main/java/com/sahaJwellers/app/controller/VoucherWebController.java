@@ -1,6 +1,4 @@
-
 package com.sahaJwellers.app.controller;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +40,28 @@ public class VoucherWebController {
 	
 	@GetMapping("/expense-transaction")
 	public String expenseTransaction() {
-		return "voucher/expense-transaction";
+		return "expense/expense_transaction";
 	}
+	
+	@GetMapping("/loan-give")
+	public String createLoanGive() {
+		return "loan/create_loan_give";
+	}
+	
+	@GetMapping("/loan-take")
+	public String createLoanTake() {
+		return "loan/create_loan_take";
+	}
+	
+	@GetMapping("/loan-give-transaction")
+	public String createLoanGiveTransaction() {
+		return "loan/loan_give_trans";
+	}
+	
+	@GetMapping("/loan-take-transaction")
+	public String createLoanTakeTransaction() {
+		return "loan/loan_take_trans";
+	}
+	
+	
 }
