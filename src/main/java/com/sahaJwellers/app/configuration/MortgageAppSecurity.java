@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*package com.sahaJwellers.app.configuration;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
