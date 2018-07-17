@@ -63,5 +63,27 @@ public class VoucherWebController {
 		return "loan/loan_take_trans";
 	}
 	
+	@GetMapping("/daily")
+	public String dailyReport() {
+		return "report/daily";
+	}
 	
+	@GetMapping("/monthly")
+	public String monthlyReport() {
+		return "report/monthly";
+	}
+	@GetMapping("/decade")
+	public String decadeReport() {
+		return "report/decade";
+	}
+	
+	@GetMapping("/weekly")
+	public String weeklyReport() {
+		return "report/weekly";
+	}
+	
+	@GetMapping("/yearly")
+	public String yearlyReport() {
+		return "report/yearly";
+	}
 }
