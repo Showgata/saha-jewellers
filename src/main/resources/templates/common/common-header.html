@@ -176,7 +176,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">Account</a></li>
                                 <li><a href="#">Settings</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                             </ul>
                         </div>
 

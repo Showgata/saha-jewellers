@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
     xmlns:th="http://www.thymeleaf.org" 
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
    
@@ -12,14 +12,19 @@
             <div class="row">
                 <div class="locksreen-col text-center">
                     <h3>Login to SahaJwellers</h3>
-                    <form class="m-t" id="loginForm" novalidate name="loginForm" role="form" action="http://psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html">
+                    <form class="m-t" id="loginForm" novalidate name="loginForm" role="form" method="post"  th:action="@{/login}">
+                    	<div th:if="${param.error}">
+                    		<div class="alert alert-danger">
+                    			Invalid username and password
+                    		</div>
+                    	</div>
                          <div class="form-group">
-                            <input type="text" name="usernNme" id="userName" class="form-control" placeholder="Username" required="">
+                            <input type="text" name="username" id="userName" class="form-control" placeholder="Username" required="">
 							<span  style="color:white;" id="userErrMsg"></span>
                         </div>
 						
                         <div class="form-group">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Passowrd" required="">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Passoword" required="">
 							<span id="passErrMsg" style="color:white;"> </span>
                         </div>
 												
