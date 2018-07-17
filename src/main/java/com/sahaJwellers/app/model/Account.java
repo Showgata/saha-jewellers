@@ -22,6 +22,9 @@ public class Account {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long accountId;
 	
+	@Column(name="bankList")
+	private String bankList;
+	
 	@Column(name="account_name")
 	private String accountName;
 	
@@ -50,6 +53,14 @@ public class Account {
 
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
+	}
+
+	public String getBankList() {
+		return bankList;
+	}
+
+	public void setBankList(String bankList) {
+		this.bankList = bankList;
 	}
 
 	public String getAccountName() {
