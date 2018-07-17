@@ -15,43 +15,9 @@ and open the template in the editor.
 
 	<div id="wrapper">
 
-		<!--top bar-->
-		<div class="topbar">
-			<div class="topbar-left">
-				<div class="text-center">
-					<a href="index.html" class="logo"><img src="/images/sahas.png"
-						class="image-responsive" width="220px" style="margin-top: 10px"
-						alt=""></a>
-				</div>
-			</div>
-			<div class="pull-left menu-toggle">
-				<i class="fa fa-bars"></i>
-			</div>
-
-			<ul class="nav navbar-nav  top-right-nav hidden-xs">
-				<li><span id="para2"></span> <span id="para3"></span> <span
-					id="para1"></span></li>
-
-				<li class="dropdown profile-link hidden-xs">
-					<div class="clearfix">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img
-							src="/images/user.png" alt="" class="pull-left"> <span>up
-								bar <br> <em>Admin</em>
-						</span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Account</a></li>
-							<li><a href="#">Settings</a></li>
-							<li><a href="#">Logout</a></li>
-						</ul>
-					</div>
-
-				</li>
-
-			</ul>
-		</div>
-		<!--end top bar-->
-		<div th:replace="common/common-header :: common-menu"></div>
+		<div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+		
 		<!--left menu start-->
 		<!--left menu end-->
 	  <div class="content-page  equal-height">
