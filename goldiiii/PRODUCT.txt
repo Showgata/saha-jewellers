@@ -1,0 +1,43 @@
+ <option> Anklet</option>
+                                     <option>	Ayesti</option>
+                                     <option>	Baju</option>
+                                     <option>	Bala</option>
+                                     <option>	Bangle</option>
+                                 <option>	Bicha</option>
+                                 <option>	Bracelet</option>
+                                 <option>	Chain</option>
+                                 <option>	Chik</option>
+                                 <option>	Chur</option>
+                                 <option>	Churi</option>
+                                 <option>	Ear Chain Pair</option>
+                                 <option>	Earring Pair</option>
+                                 <option>	Ghaar Tana Pair</option>
+                                 <option>	Haar</option>
+                                 <option>	Hair Chain Pair</option>
+                                 <option>	Hath Panja</option>
+                                 <option>	Jhapta</option>
+                                 <option>	Jhumka Pair</option>
+                                 <option>	Kaan Tana Pair</option>
+                                 <option>	Locket</option>
+                                 <option>	Locket & Chain</option>
+                                 <option>	Mangalsutra</option>
+                                 <option>	Mantasha</option>
+                                 <option>	Necklace</option>
+                                    <option>	Nose Pin</option>
+                                       <option>	Noth</option>
+                                          <option>	Nupur</option>
+                                             <option>	Pasha Pair</option>
+                                                <option>	Payel</option>
+                                                   <option>	Pendant</option>
+                                                      <option>	Pola</option>
+                                                         <option>	Ring</option>
+                                                            <option>	Ring Bracelet</option>
+                                                               <option>	Shakha</option>
+                                                                  <option>	Side Clip</option>
+                                                                     <option>	Sita Haar</option>
+                                                                        <option>	Sithi Patti</option>
+                                                                        <option>	Taj</option>
+                                                                        <option>	Tayra</option>
+                                                                        <option>	Tiara</option>
+                                                                        <option>	Tikli</option>
+                                                                        <option>	Other</option>

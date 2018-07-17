@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:30:05 GMT -->
+<head>
+        <title>saha-jewellers</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/metisMenu.css" rel="stylesheet">
+        <link href="css/morris-0.4.3.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/modernizr.js"></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- DATATABLES-->
+        <link rel="stylesheet" href="css/dataTables.colVis.css">
+        <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+        
+    </head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+
+            <!--top bar-->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="index.html" class="logo"><img src="sahas.png" class="image-responsive" width="220px" style="margin-top:10px"alt=""></a>
+                    </div>
+                </div>
+                <div class="pull-left menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </div>
+               
+                <ul class="nav navbar-nav  top-right-nav hidden-xs">
+                    <li>
+
+                        <span id="para2"></span>
+                        <span id="para3"></span>
+                        <span id="para1"></span>
+                    </li>
+                 
+                    <li class="dropdown profile-link hidden-xs">
+                        <div class="clearfix">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="images/user.png" alt="" class="pull-left">
+                                <span>up bar <br><em>Admin</em></span>                            
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    
+                </ul>
+            </div>
+            <!--end top bar-->
+
+            <!--left menu start-->
+            <div class="side-menu left" id="side-menu" >
+
+                <ul class="metismenu clearfix" id="menu" >
+                    <li class="profile-menu visible-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="images/user.png" alt="" class="pull-left">
+                            <span>ADMIN <br><em>Admin</em></span>                            
+                        </a>
+                        <ul class="dropdown-menu profile-drop">
+                            <li><a href="#">Account</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                    
+                       <li class=""><a href="customer.php"><i class="fa fa-home"></i>  <span>Home</span></a></li>  
+                    <li class=""><a href="customer.php"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
+
+                    <li>
+                     <a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold Mortgage</span><span class="fa arrow"></span></a> 
+                        <ul class="nav nav-second-level collapse">
+                            <li class="active "><a href="graph_flot.html"><font color="#f7b03e">Create Voucher</font></a></li>
+                            <li><a href="graph_morris.html">customer transaction</a></li>
+                            <li><a href="graph_chartjs.html">customer ledger</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li  class="active">
+                        <a href="#"><i class="fa fa-money"></i> <span>Expense </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="mailbox.html"><font color="#f7b03e">Create Expense Voucher</font></a></li>
+                            <li><a href="mail_detail.html">Create Expense Transaction</a></li>
+                          
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-reply"></i> <span>loan Take</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="form_basic.html">Create Loan Take Voucher</a></li>
+                            <li><a href="form_wizard.html">Loan Take Transaction</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-share"></i> <span>loan Give</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="table_basic.html">Create Loan Give Voucher</a></li>
+                            <li><a href="table_data_tables.html">Loan Give Transaction</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Capital Investment</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="lockscreen.html">Create Capital Investment Voucher</a></li>
+                            <li><a href="login.html">Capital Investment Transaction</a></li>
+                         
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Custom report</span></a>
+                       
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> <span>Reports </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a href="#">Daily Report </a>
+								
+								
+								
+								</li>
+                                
+                            <li ><a href="#">Weekly Report</a>
+							
+							
+							</li>
+                            <li>
+                                <a href="#">Monthly Report </a></li>
+                            <li>
+                                <a href="#">yearly Report </a></li>
+								<li>
+                                <a href="#">Decade Report </a></li>
+                        </ul>
+                    </li>
+                </ul>
+             
+            </div>
+            <!--left menu end-->
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+
+                        <div class="row">
+                             <div class="col-sm-12 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+								 <span style="margin-bottom:5px;font-size:16px;">Customer Information</span> <div class="clearfix">
+								<form role="form" class="form-inline">
+                                    <div class="form-group col-sm-3" style="padding-left:10px;"><label>Customer Name</label> <input type="text" placeholder="Enter name" class="form-control"></div>
+									<div class="form-group col-sm-3" style="padding-left:10px;"><label>Customer Id</label> <input type="text" placeholder="Enter Customer Id" class="form-control"></div>
+                                    <div class="form-group col-sm-3" style="padding-left:10px;"><label>Mobile</label> <input type="text" placeholder="Enter mobile" class="form-control"></div>
+                                    <div class="form-group col-sm-3" style="padding-left:10px;"><label>Address</label> <input type="text" placeholder="Enter address" class="form-control"></div>
+                                </form>
+                                </div>
+                                </div>
+                            </div>
+						</div>
+						<div class="row">
+                             <div class="col-sm-12 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+								  <div class="clearfix">
+								<form role="form" class="form-inline">
+								    <div class="form-group col-sm-3"><span style="margin-bottom:5px;font-size:16px;">Voucher Details</span></div>
+                                    <div class="form-group col-sm-3" style="padding-left:10px;"><label>Date &nbsp; &nbsp;</label> <input type="text" placeholder="Enter date" class="form-control"></div>
+									<div class="form-group col-sm-3" style="padding-left:10px;"><label>Serial No.</label> <input type="text" placeholder="2222" class="form-control"></div>
+                                    
+                                </form>
+                                </div>
+                                </div>
+                            </div>
+						</div>
+						<div class="row">
+                             <div class="col-sm-12 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+								<div class="clearfix">
+								<form role="form" class="form-inline">
+									 <div class="form-group col-sm-3"><span style="margin-bottom:5px;font-size:16px;">Transaction Details</span></div>
+                                    <div class="form-group col-sm-3">
+                                                        <label class="control-label">Expense List</label>
+														<select class="form-control" style="width:100%;margin-top:5px;">
+														<option>Accounting</option>
+														<option>Advertising</option>
+														<option>Answering Service</option>
+														<option>Assessments</option>
+														<option>Auto Insurance</option>
+														<option>Bad Debts from Sales or Services</option>
+														<option>Bank Charges</option>
+														<option>Bonus</option>
+														<option>Business Insurance</option>
+														<option>Cable Internet Service</option>
+														<option>Car &amp; Truck Expenses</option>
+														<option>Charitable giving</option>
+														<option>Cleaning Service</option>
+														<option>Clothing</option>
+														<option>Commissions</option>
+														<option>Computer Expense</option>
+														<option>Computer Supplies</option>
+														<option>Costs</option>
+														<option>Credit Card Fees</option>
+														<option>Delivery &amp; Freight</option>
+														<option>Dining out</option>
+														<option>Dues &amp; Subscriptions</option>
+														<option>Electric</option>
+														<option>Entertainment</option>
+														<option>Equipment Supplies</option>
+														<option>Expense List</option>
+														<option>Gas</option>
+														<option>Gasoline Expense</option>
+														<option>Gifts</option>
+														<option>Gym membership</option>
+														<option>Hair care</option>
+														<option>Home Office Expense</option>
+														<option>Homeowners Insurance</option>
+														<option>Insurance</option>
+														<option>Insurance – Health</option>
+														<option>Insurance Expense</option>
+														<option>Interest</option>
+														<option>Interest - W/Comp</option>
+														<option>Internet Fees</option>
+														<option>Janitorial</option>
+														<option>Labor</option>
+														<option>Laundry &amp; Cleaning</option>
+														<option>Lawn Service</option>
+														<option>Lease Payments</option>
+														<option>Legal &amp; Professional</option>
+														<option>License &amp; Registration</option>
+														<option>Loan Interest</option>
+														<option>Materials &amp; Supplies</option>
+														<option>Meals &amp; Entertainment</option>
+														<option>Medical expenses</option>
+														<option>Miscellaneous</option>
+														<option>NJ Annual Report</option>
+														<option>Office Expense</option>
+														<option>Office Supplies</option>
+														<option>Other Costs</option>
+														<option>Parking &amp; Tolls</option>
+														<option>Pension &amp; Profit Sharing Expense</option>
+														<option>Postage</option>
+														<option>Postal Box</option>
+														<option>Purchases</option>
+														<option>Rent - other</option>
+														<option>Rent - Vehicles,machinery, &amp; equipment</option>
+														<option>Repairs</option>
+														<option>Repairs &amp; Maintenance Expense</option>
+														<option>Safe Deposit</option>
+														<option>Salary</option>
+														<option>Security</option>
+														<option>Security Service</option>
+														<option>Supplies</option>
+														<option>Taxes - Payroll</option>
+															<option>Taxes – Sales tax included in gross receipts</option>
+														<option>Telephone</option>
+														<option>Telephone &amp; Wireless</option>
+														<option>Travel</option>
+														<option>Vacation</option>
+														<option>Wages</option>
+														<option>Water</option>
+														<option>Web - site Expense</option>
+														</select></div>
+									<div class="form-group col-sm-3" style="padding-left:10px;"><label>Amount</label> <input type="text" placeholder="Enter Amount" class="form-control"></div>
+                                    <div class="form-group col-sm-3" style="padding-left:10px;"><label>Note  &nbsp; &nbsp; &nbsp;</label> <input type="text" placeholder="Enter Note" class="form-control"></div>
+                                </form>
+                                </div>
+                                </div>
+                            </div>		
+                            </div>
+							
+                            <style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+                      
+							
+							
+ <div class="row"  >
+                             <div class="col-sm-12" style="overflow: scroll;height:350px;margin-top:-20px">
+							 <div class="panel-box">
+							 
+                                    
+									   
+                                           <style>
+                                               .pane-box{
+    padding: 15px;
+  background: #272a31;
+    margin-bottom: 20px;
+                                               }
+    .table{
+        height:200px;
+                                                   
+                                               }
+    
+
+                                           </style>
+										   
+                                    <div class="table-responsive">
+									
+                                                      <input class="form-control" style="width:150px;float:right;" placeholder="no expense voucher" name="vdetails" type="text">
+									  <input class="form-control" style="width:150px;" placeholder="total expense" name="lamount" type="text">
+                                                
+                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+                                                <th>Name</th>
+												<th>Sl no.</th>
+									          <th>Mobile no</th>
+                                                <th>Address</th>
+
+                                                <th>Expense List</th>
+                                                <th>Amount</th>
+                                                <th>Note</th>
+                                                <th>Date</th>
+                                               
+																																
+                                               <th>Update</th>
+                                             <th>Delete</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+        </div>
+       
+       <!--<div class="footer">
+            <span>Copyright &copy; 2018.Magfus India.</span>
+        </div>-->
+        <!-- Plugins  -->
+         <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.js"></script>
+        <script src="js/metisMenu.js"></script>
+         <script src="js/core.js"></script>
+        <script src="js/mediaquery.js"></script>
+        <script src="js/equalize.js"></script>
+        <script src="js/app.js"></script>
+
+        <!--page js-->
+        <script>
+
+            $("#sparkline8").sparkline([5, 6, 7, 2, 0, 4, 2, 4, 5, 7, 2, 4, 12, 14, 4, 2, 14, 12, 7], {
+                type: 'bar',
+                barWidth: 4,
+                height: '60px',
+                barColor: '#f7b03e',
+                negBarColor: '#c6c6c6'});
+            $(".sparkline8").sparkline([4, 2], {
+                type: 'pie',
+                sliceColors: ['#f7af3e', '#404652']
+            });
+            $(".sparkline9").sparkline([3, 2], {
+                type: 'pie',
+                sliceColors: ['#f7af3e', '#404652']
+            });
+            $(".sparkline10").sparkline([4, 1], {
+                type: 'pie',
+                sliceColors: ['#f7af3e', '#404652']
+            });
+            $(".sparkline11").sparkline([1, 3], {
+                type: 'pie',
+                sliceColors: ['#f7af3e', '#404652']
+            });
+            $(".sparkline12").sparkline([3, 5], {
+                type: 'pie',
+                sliceColors: ['#f7af3e', '#404652']
+            });
+            $(".sparkline13").sparkline([6, 2], {
+                type: 'pie',
+                sliceColors: ['#f7af3e', '#404652']
+            });
+
+            //moris chart
+            $(function () {
+                var lineData = {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [
+                        {
+                            label: "Example dataset",
+                            fillColor: "rgba(235, 162, 59,0.5)",
+                            strokeColor: "rgba(235, 162, 59,1)",
+                            pointColor: "rgba(235, 162, 59,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(235, 162, 59,1)",
+                            data: [65, 59, 80, 81, 56, 55, 40]
+                        },
+                        {
+                            label: "Example dataset",
+                            fillColor: "rgba(247, 176, 62,0.5)",
+                            strokeColor: "rgba(247, 176, 62,0.7)",
+                            pointColor: "rgba(247, 176, 62,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(247, 176, 62,1)",
+                            data: [28, 48, 40, 19, 86, 27, 90]
+                        }
+                    ]
+                };
+                var lineOptions = {
+                    scaleShowGridLines: true,
+                    scaleGridLineColor: "#b5884c",
+                    scaleGridLineWidth: 1,
+                    bezierCurve: true,
+                    bezierCurveTension: 0.4,
+                    pointDot: true,
+                    pointDotRadius: 4,
+                    pointDotStrokeWidth: 1,
+                    pointHitDetectionRadius: 20,
+                    datasetStroke: true,
+                    datasetStrokeWidth: 2,
+                    datasetFill: true,
+                    responsive: true
+                };
+
+
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+
+
+                var polarData = [
+                    {
+                        value: 300,
+                        color: "#f7b03e",
+                        highlight: "#3d3f4b",
+                        label: "App"
+                    },
+                    {
+                        value: 140,
+                        color: "#f5c06c",
+                        highlight: "#3d3f4b",
+                        label: "Software"
+                    },
+                    {
+                        value: 200,
+                        color: "#bd914a",
+                        highlight: "#3d3f4b",
+                        label: "Laptop"
+                    }
+                ];
+
+                var polarOptions = {
+                    scaleShowLabelBackdrop: true,
+                    scaleBackdropColor: "rgba(255,255,255,0.75)",
+                    scaleBeginAtZero: true,
+                    scaleBackdropPaddingY: 1,
+                    scaleBackdropPaddingX: 1,
+                    scaleShowLine: true,
+                    segmentShowStroke: true,
+                    segmentStrokeColor: "#fff",
+                    segmentStrokeWidth: 2,
+                    animationSteps: 100,
+                    animationEasing: "easeOutBounce",
+                    animateRotate: true,
+                    animateScale: false,
+                    responsive: true
+
+                };
+
+                var ctx = document.getElementById("polarChart").getContext("2d");
+                var myNewChart = new Chart(ctx).PolarArea(polarData, polarOptions);
+
+                var barData = {
+                    labels: ["Monday", "Tuesday", "Wedneday", "Thrusday", "Friday"],
+                    datasets: [
+                        {
+                            label: "My Second dataset",
+                            fillColor: "#3d3f4b",
+                            strokeColor: "#3d3f4b",
+                            highlightFill: "#eda01c",
+                            highlightStroke: "#eda01c",
+                            data: [28, 48, 40, 19, 86]
+                        }
+                    ]
+                };
+
+                var barOptions = {
+                    scaleBeginAtZero: true,
+                    scaleShowGridLines: true,
+                    scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleGridLineWidth: 1,
+                    barShowStroke: true,
+                    barStrokeWidth: 1,
+                    barValueSpacing: 1,
+                    barDatasetSpacing: 1,
+                    responsive: true
+                };
+
+
+                var ctx = document.getElementById("barChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Bar(barData, barOptions);
+
+                var radarData = {
+                    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+                    datasets: [
+                        {
+                            label: "My First dataset",
+                            fillColor: "rgba(235, 162, 59,1)",
+                            strokeColor: "rgba(235, 162, 59,1)",
+                            pointColor: "rgba(235, 162, 59,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(235, 162, 59,1)",
+                            data: [65, 59, 90, 81, 56, 55, 40]
+                        },
+                        {
+                            label: "My Second dataset",
+                            fillColor: "rgba(247, 176, 62,1)",
+                            strokeColor: "rgba(247, 176, 62,1)",
+                            pointColor: "rgba(247, 176, 62,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(255,255,255,1)",
+                            data: [28, 48, 40, 19, 96, 27, 100]
+                        }
+                    ]
+                };
+
+                var radarOptions = {
+                    scaleShowLine: true,
+                    angleShowLineOut: true,
+                    scaleShowLabels: false,
+                    scaleBeginAtZero: true,
+                    angleLineColor: "rgba(0,0,0,.1)",
+                    angleLineWidth: 1,
+                    pointLabelFontStyle: "normal",
+                    pointLabelFontSize: 10,
+                    pointLabelFontColor: "#666",
+                    pointDot: true,
+                    pointDotRadius: 3,
+                    pointDotStrokeWidth: 1,
+                    pointHitDetectionRadius: 20,
+                    datasetStroke: true,
+                    datasetStrokeWidth: 2,
+                    datasetFill: true,
+                    responsive: true
+                };
+
+                var ctx = document.getElementById("radarChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Radar(radarData, radarOptions);
+
+                var data = [{
+                        label: "Sales 1",
+                        data: 21,
+                        color: "#d3d3d3"
+                    }, {
+                        label: "Sales 2",
+                        data: 3,
+                        color: "#bababa"
+                    }, {
+                        label: "Sales 3",
+                        data: 15,
+                        color: "#79d2c0"
+                    }, {
+                        label: "Sales 4",
+                        data: 52,
+                        color: "#f7b03e"
+                    }];
+
+                var doughnutData = [
+                    {
+                        value: 300,
+                        color: "#d53d2f",
+                        highlight: "#ba8036",
+                        label: "Chorme"
+                    },
+                    {
+                        value: 150,
+                        color: "#dedede",
+                        highlight: "#ba8036",
+                        label: "Mozilla"
+                    },
+                    {
+                        value: 130,
+                        color: "#03a679",
+                        highlight: "#ba8036",
+                        label: "Safari"
+                    }
+                ];
+
+                var doughnutOptions = {
+                    segmentShowStroke: true,
+                    segmentStrokeColor: "#272a31",
+                    segmentStrokeWidth: 4,
+                    percentageInnerCutout: 45, // This is 0 for Pie charts
+                    animationSteps: 100,
+                    animationEasing: "easeOutBounce",
+                    animateRotate: true,
+                    animateScale: false,
+                    responsive: true
+                };
+
+
+                var ctx = document.getElementById("doughnutChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+
+//line chart
+                Morris.Line({
+                    element: 'morris-line-chart',
+                    data: [{y: '2006', a: 0, b: 10},
+                        {y: '2007', a: 25, b: 35},
+                        {y: '2008', a: 30, b: 40},
+                        {y: '2009', a: 20, b: 25},
+                        {y: '2010', a: 37, b: 40}],
+                    xkey: 'y',
+                    ykeys: ['a', 'b'],
+                    labels: ['Series A', 'Series B'],
+                    hideHover: 'auto',
+                    resize: true,
+                    lineColors: ['#ddcc36', '#f7b03e']
+                });
+
+
+            });
+        </script>
+         <!-- DATATABLES-->
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.colVis.js"></script>
+        <script src="js/dataTables.bootstrap.js"></script>
+        <script src="js/demo-datatable.js"></script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>

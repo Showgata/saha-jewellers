@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+
+            <div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+            <!--left menu end-->
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+
+                        <div class="row">
+                             <div class="col-sm-4 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+                                    <h4>Customer Information</h4>
+                                    <form role="form">
+                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" id="cust_name" class="form-control"></div>
+									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" id="cust_id"  class="form-control"></div>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile"  id="cust_mobile" class="form-control"></div>
+                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_addr" class="form-control"></div>
+									<input type="hidden" id="custId"/> 
+                                  
+									 <button id="save_customer" class="btn btn-border-theme btn-xs">Save</button>   &nbsp;
+									 <button id="cancel_customer" class="btn btn-border-theme btn-xs">Cancel</button>  &nbsp;
+								  <div>
+                                       <label></label>
+                                    </div>
+                                </form>
+
+                                </div>
+									
+										
+                            </div >
+                          
+                            <div class="col-sm-5 h6"  style="margin-top:-10px;">
+                                <div class="panel-box">
+                                    <h4>Transaction Details</h4>
+                                    <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Account Name</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="Enter account name" name="trans_acc_name" id="trans_acc_name" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Currency</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <select class="form-control" id="trans_curr" name="trans_curr">
+															<option selected>Taka </option>
+                                                             <option>Cheque </option>
+															</select>
+															<input class="form-control" id="trans_cheque_number" disabled="true" placeholder="cheque number" name="trans_cheque_number" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Bank List</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                           <select class="form-control" id="trans_bank">
+                                                           <option value="" selected>Select Bank</option>
+														   <option>AB Bank Limited</option>
+                                                             <option>Agrani Bank Ltd.</option>
+															  <option>Al-Arafah Islami Bank Limited</option>
+															    <option>	Bangladesh Commerce Bank Limited</option>
+																  <option>Bangladesh Development Bank Limited.</option>
+																    <option>	Bangladesh Krishi Bank</option>
+																	  <option>Bank Asia Limited</option>
+																	    <option>	Basic Bank Limited</option>
+																		  <option>	Bengal Bank Limited</option>
+																		    <option>City Bank LimitedRAC Bank Limited</option>
+																			  <option>Dhaka Bank Limited</option>
+																			    <option>	Dutch-Bangla Bank Limited</option>
+																				  <option>Eastern Bank Limited</option>
+																				    <option>	EXIM Bank Limited</option>
+																					  <option>First Security Islami Bank Limited</option>
+																					    <option>	ICB Islamic Bank Limited</option>
+																						  <option>IFIC Bank Limited</option>
+																						    <option>	Islami Bank Bangladesh Limited</option>
+																							  <option>Islami Bank Bangladesh Limited</option>
+																							    <option>	Jamuna Bank Limited</option>
+																								  <option>Janata Bank Ltd.</option>
+																								    <option>	Meghna Bank Limited</option>
+																									  <option>Mercantile Bank Limited</option>
+																									    <option>	Midland Bank</option>
+																										  <option>Modhumoti Bank Limited</option>
+																										    <option>	Modhumoti Bank Limited</option>
+																											  <option>	National Bank Limited</option>
+																											   <option>National Credit & Commerce Bank Limited</option>
+																								    <option>	NRB Bank Limited</option>
+																									  <option>	NRB Commercial Bank Limited</option>
+																									    <option>	NRB Commercial Bank Limited</option>
+																										  <option>Premier Bank Limited</option>
+																										    <option>	Prime Bank Limited</option>
+																											  <option>	Pubali Bank Limited</option>
+																											   <option>	Rupali Bank Ltd.</option>
+																								    <option>	Shahjalal Islami Bank Limited</option>
+																									  <option>	Shahjalal Islami Bank Limited</option>
+																									    <option>	Social Islami Bank Limited</option>
+																										  <option>Sonali Bank Ltd.</option>
+																										    <option>South Bangla Agriculture & Commerce Bank Limited</option>
+																											  <option>Southeast Bank Limited</option>
+																											     <option>Standard Bank Limited</option>
+																											  <option>Standard Bank Limited</option>
+																											     <option>Trust Bank Limited</option>
+																											  <option>Union Bank Limited</option>
+																											     <option>United Commercial Bank Limited</option>
+																											  <option>Uttara Bank Limited</option>
+														   </select >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Reminder Date</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" id="trans_reminder_date" placeholder="reminder date" name="trans_reminder_date" type="text">
+                                                        </div>
+                                                    </div>
+													<div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Interest Rate</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" id="trans_interest_rate" placeholder="Interest Rate" name="trans_interest_rate" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Loan Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" id="trans_loan_amount" placeholder="Loan Amount" name="trans_loan_amount" type="text">
+                                                        </div>
+                                                    </div>                                                                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        <!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+                                    </div>
+                                    <!-- End .bwizard -->
+                                </div>
+                            </div><!--height-->
+							
+							 <div class="col-sm-3 "  style="margin-top:-10px;">
+                                <div class="panel-box">
+								<h4>Voucher Details</h4>
+								 <div id="wizard" class="bwizard"  style="margin-top:-20px;">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Date</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="date" id="date" name="date" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
+                                                        <div class="col-lg-10 col-md-9 has-warning">
+                                                            <input class="form-control input-lg" id="serial_no" style="color:#f7b03e;" placeholder="sl no." name="serial_no" value="22220" type="text">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+     
+                                                  
+                                                                                                        
+                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+								</div>
+								
+								</div>
+							<ul class="pager">
+							
+                                            <li class="previous input-lg"><a href="#">Save &rarr;</a>
+                                            </li>
+                                       
+                                        </ul>
+								
+							
+                        </div>
+ 							 <div class="row">
+                             <div class="col-sm-12" style="overflow: scroll;height:250px;margin-top:-20px">
+							 <div class="panel-box">                             
+                                    <div class="table-responsive">
+									
+                                                      <input class="form-control" style="width:150px;float:right;" placeholder="total loan voucher" name="vdetails" type="text">
+									  <input class="form-control" style="width:150px;" placeholder="total loan" name="lamount" type="text">
+                                                
+                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="90%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+                                                <th>Name</th>
+									    <th>Mobile</th>
+                                                <th>Address</th>
+
+                                                <th>Account Name</th>
+                                                <th>Currency</th>
+                                                <th>Bank List</th>
+                                                <th>Reminder Date</th>
+                                               
+												<th>Interest Rate</th>																								
+												<th>Loan Amount</th>
+										
+                                               <th>Date</th>
+                                             <th>sl no.</th>
+                                             <th>Update</th>
+                                             <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+        </div>
+       
+  <div th:replace="/common/common-header :: common-required-scripts"></div>
+  <script>
+  $(document).ready(function () {
+	  setCustomerAutoCompleteList();
+	  setDatePicker();
+  });
+  
+  ;(function () {
+	  
+	  var customer_name_field = $("#cust_name"); 
+	  $("#trans_curr").on('change',function(){
+		  var isDirty = !this.options[this.selectedIndex].defaultSelected;
+		  if(isDirty){
+			  if(this.options[this.selectedIndex].value == "Cheque"){
+				  $("#trans_cheque_number").prop("disabled", false);
+			  } else {
+				  $("#trans_cheque_number").val("");
+				  $("#trans_cheque_number").prop('disabled', true);
+			  }
+		  } else {
+			  $("#trans_cheque_number").val("");
+			  $("#trans_cheque_number").prop('disabled', true);
+		  }
+	  });
+	  
+  })();
+  
+  function setCustomerAutoCompleteList(){
+	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
+	   var autoCompleteList = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+		   jQuery.each(respJson, function(i, val) {
+				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+			   
+		   });
+		   $( "#cust_name" ).autocomplete({
+		        source: autoCompleteList,
+		        select: function (event, ui) {
+		        	var txt = ui.item.label;
+		          let custId = parseInt(txt.split(">")[1]);
+		          $("#cust_id").val(custId); 
+		          $("#custId").val(custId);
+		          
+		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
+		        	$("#cust_addr").val(respJson.address);
+		       	    $("#cust_mobile").val(respJson.mobile);
+		         },function(reason){
+		           	 console.log("error in processing your request in customer get", reason);
+	           	}); 
+		      }
+		      });
+	   }, function(reason){
+        	 console.log("error in processing your request customer", reason);
+     	}); 
+  }
+  
+  function setDatePicker(){
+	  let dateConfig = dateSettings;
+	  $("#date").datepicker(dateConfig);
+	  dateConfig.maxDate=null;
+      var d = new Date();
+      d.setDate(d.getDate() - 1);
+      dateConfig.minDate=d;
+	  $("#trans_reminder_date").datepicker(dateConfig);
+  }
+  
+  </script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>
