@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -183,3 +184,190 @@ and open the template in the editor.
        </script>
     </body>
 </html>
+=======
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    <body class="fixed-left" >
+
+        <div id="wrapper" >
+
+            <!--top bar-->
+   			<div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+   					<div class="widget-row">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="widget-box clearfix">
+                                        <div >
+                                            <h4>Cash In</h4>
+                                            <h2>17,50 <i class=" fa fa-reply pull-right"></i></h2>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+								   <div class="col-md-4">
+                                            <div class="widget-box clearfix">
+                                                <div>
+                                                    <h4>Cash Out</h4>
+                                                    <h2>580  <i class=" fa fa-share pull-right"></i></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+										   <div class="col-md-4">
+                                            <div class="widget-box clearfix">
+                                                <div>
+                                                    <h4>Balance</h4>
+                                                    <h2>$9.7k <i class="fa fa-usd pull-right"></i></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                  
+                           
+                            </div>
+                        </div><!--end widget-->
+                    
+				
+ <div class="row"  >
+                             <div class="col-sm-12" style="overflow: hidden;">
+							 <div class="panel-box">
+							 <h5>Gold Mortgage Chart</h5>
+                 
+                                    <div class="table-responsive">
+									
+                                                    
+                                          <table id="mortgage_detail" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+											<th>Sl no</th>
+                                            <th>Name</th>
+									        <th>mobile</th>
+                                                <th>address</th>
+  												<th>Customer Sl. Number</th>
+                                                <th> Receive date</th>
+                                                
+                                                <th>Due Interest Amount</th>
+                                                <th>Due Loan Amount</th>
+                                                <th>Total Loan Amount</th>
+												 <th>Day Count</th>
+												<th>Reminder Date</th>	
+												<th>Update</th>
+												<th>Cancel</th>																								
+										     
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                      <div class="row"  >
+                             <div class="col-sm-12" style="overflow: hidden;">
+							 <div class="panel-box">
+							 <h5>Loan Take Chart</h5>										   
+                                    <div class="table-responsive">
+									
+                                                    
+                                          <table id="loan-take" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+											<th>Sl no</th>
+                                                <th>Name</th>
+									    <th>mobile</th>
+                                                <th>address</th>
+  <th>Customer Sl. Number</th>
+                                                <th> Receive date</th>
+                                                
+                                                <th>Due Interest Amount</th>
+                                                <th>Due Loan Amount</th>
+                                                <th>Total Loan Amount</th>
+												 <th>Day Count</th>
+												<th>Reminder Date</th>	
+												<th>Update</th>
+												<th>Cancel</th>																								
+										     
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+							  <div class="row"  >
+                             <div class="col-sm-12" style="overflow: hidden;">
+							 <div class="panel-box">
+							 <h5>Loan Give Chart</h5>
+                                     <div class="table-responsive">         
+                                          <table id="loan-give" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+											<th>Sl no</th>
+                                            <th>Name</th>
+									        <th>mobile</th>
+                                            <th>address</th>
+  										    <th>Customer Sl. Number</th>
+                                            <th> Receive date</th>
+                                            <th>Due Interest Amount</th>
+                                            <th>Due Loan Amount</th>
+                                            <th>Total Loan Amount</th>
+											<th>Reminder Date</th>
+                                             <th>Day Count</th>												
+												<th>Update</th>
+												<th>Cancel</th>																								
+										      </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                 </div>
+							 </div>
+							 </div>
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+        </div>
+       <div th:replace="/common/common-header :: common-required-scripts"></div>
+       <script>
+    $("#mortgage_detail").dataTable();
+   	$("#loan-take").dataTable();
+   	$("#loan-give").dataTable();
+       </script>
+    </body>
+</html>
+>>>>>>> e5a3f8cc8bbf944746bb398b37e879e387199c5d

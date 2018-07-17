@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.sahaJwellers.app.service;
 
 import java.util.List;
@@ -20,4 +21,28 @@ public interface VoucherService {
 
 	List<Voucher> fetchAllTodaysExpenseVoucher();
 
+=======
+package com.sahaJwellers.app.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.sahaJwellers.app.model.Transaction;
+import com.sahaJwellers.app.model.Voucher;
+
+public interface VoucherService {
+
+	Optional<Voucher> findVoucherById(Long id);
+
+	List<Voucher> fetchAllVouchers();
+
+	Voucher saveOrUpdate(Voucher voucher);
+
+	void removeVoucher(Long id);
+
+	Optional<Voucher> findVoucherByTransactionId(Transaction trans);
+
+	List<Voucher> fetchAllTodaysExpenseVoucher();
+
+>>>>>>> e5a3f8cc8bbf944746bb398b37e879e387199c5d
 }
