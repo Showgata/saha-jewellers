@@ -86,4 +86,24 @@ public class VoucherWebController {
 	public String yearlyReport() {
 		return "report/yearly";
 	}
+	@GetMapping("/create_capital")
+	public String capitalReport() {
+		return "capital/create_capital";
+	}
+	@GetMapping("/capital_trans")
+	public String ctransReport() {
+		return "capital/create_capital_trans";
+	}
+	@GetMapping("/cash_ledger")
+	public String cashLedger() {
+		return "custom/cash_ledger";
+	}
+	@GetMapping("/custom_report")
+	public String customReport() {
+		return "custom/custom_report";
+	}
+	@GetMapping("/customer_credit_list")
+	public String customerCreditList() {
+		return "custom/customer_credit_list";
+	}
 }

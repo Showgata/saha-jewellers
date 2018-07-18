@@ -13,11 +13,10 @@ and open the template in the editor.
     <body class="fixed-left" style="overflow:hidden;">
 
         <div id="wrapper" >
-
-            	 <!--top bar-->
+		 <!--top bar-->
    			<div th:replace="/common/common-header :: common-topbar"></div>
 			<div th:replace="/common/common-header :: common-side-menu"></div>
-            <div class="content-page  equal-height" >
+              <div class="content-page  equal-height" >
                 <div class="content">
                     <div class="container">
                       
@@ -29,30 +28,24 @@ and open the template in the editor.
                                 <div class="panel-box">
                                   	<div class="clearfix" style="padding-top:20px">
 									<form role="form" class="form-inline">
-										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Sl no</label> <input type="text" id="cust_name"
+										<div class="form-group col-sm-5" style="padding-left: 10px;">
+											<label>Search</label> <input type="text" id="cust_name"
 												placeholder="search by id" class="form-control">
 										</div>
-										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Name</label> <input type="text" id="cust_name"
-												placeholder="search by id" class="form-control">
+										<div class="form-group col-sm-5" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control">
+												<option class="form-control">Mortgage</option>
+												
+												<option class="form-control">Loan Take</option>
+												<option class="form-control">Loan Give</option>
+												
+
+												</select>
 												
 										</div>
-											<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>ID</label> <input type="text" id="cust_name"
-												placeholder="search by id" class="form-control">
-										</div>
-										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Expense List</label> <input type="text" id="cust_name"
-												placeholder="search by id" class="form-control">
-										</div>
-										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Amount</label> <input type="text" id="cust_name"
-												placeholder="search by id" class="form-control">
-										</div>
-									
 										
-										<div class="form-group col-sm-2 " style="padding-top: 20px;">
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
 											<a href="#" class="btn btn-border-theme btn-xs">View Report</a> 
 										</div>
 										
@@ -118,23 +111,17 @@ and open the template in the editor.
                                           <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-											<th>Sl no.</th>
-											<th>ID</th>
+											<th>Sl no</th>
                                                 <th>Name</th>
-												
-									          <th>Mobile no</th>
-                                                <th>Address</th>
+									    <th>mobile</th>
+                                                <th>address</th>
 
-                                                <th>Expense List</th>
-                                                <th>Amount</th>
-                                                <th>Note</th>
-                                                <th>Date</th>
+                                                <th> Receive date</th>
+                                                
+                                                <th>Due Amount</th>
+                                                <th>Loan</th>
                                                
-																																
-                                               <th>Update</th>
-                                             <th>Delete</th>
-                                               
-																														
+												<th>Balance</th>																								
 										     
 
                                             </tr>
@@ -156,11 +143,13 @@ and open the template in the editor.
                     </div><!--content-->               
                 </div><!--content page-->
             </div><!--end wrapper-->
+            </div><!--end wrapper-->
         </div>
-       
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/customer/customer.js"></script>
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
 </html>
+

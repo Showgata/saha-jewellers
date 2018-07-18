@@ -13,11 +13,10 @@ and open the template in the editor.
     <body class="fixed-left" style="overflow:hidden;">
 
         <div id="wrapper" >
-
-            	 <!--top bar-->
+		 <!--top bar-->
    			<div th:replace="/common/common-header :: common-topbar"></div>
 			<div th:replace="/common/common-header :: common-side-menu"></div>
-            <div class="content-page  equal-height" >
+             <div class="content-page  equal-height" >
                 <div class="content">
                     <div class="container">
                       
@@ -38,19 +37,15 @@ and open the template in the editor.
 												placeholder="search by id" class="form-control">
 												
 										</div>
-											<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>ID</label> <input type="text" id="cust_name"
-												placeholder="search by id" class="form-control">
-										</div>
+									
 										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Expense List</label> <input type="text" id="cust_name"
+											<label>ID</label> <input type="text" id="cust_name"
 												placeholder="search by id" class="form-control">
 										</div>
 										<div class="form-group col-sm-2" style="padding-left: 10px;">
 											<label>Amount</label> <input type="text" id="cust_name"
 												placeholder="search by id" class="form-control">
 										</div>
-									
 										
 										<div class="form-group col-sm-2 " style="padding-top: 20px;">
 											<a href="#" class="btn btn-border-theme btn-xs">View Report</a> 
@@ -118,21 +113,16 @@ and open the template in the editor.
                                           <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-											<th>Sl no.</th>
+											<th>Sl no</th>
 											<th>ID</th>
                                                 <th>Name</th>
-												
-									          <th>Mobile no</th>
-                                                <th>Address</th>
-
-                                                <th>Expense List</th>
+									  
                                                 <th>Amount</th>
-                                                <th>Note</th>
-                                                <th>Date</th>
-                                               
-																																
-                                               <th>Update</th>
-                                             <th>Delete</th>
+
+                                                <th> Note</th>
+                                                
+                                                <th>Update</th>
+                                                <th>Delete</th>
                                                
 																														
 										     
@@ -156,11 +146,13 @@ and open the template in the editor.
                     </div><!--content-->               
                 </div><!--content page-->
             </div><!--end wrapper-->
+            </div><!--end wrapper-->
         </div>
-       
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/customer/customer.js"></script>
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
 </html>
+

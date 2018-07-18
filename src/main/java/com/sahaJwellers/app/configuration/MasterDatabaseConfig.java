@@ -69,7 +69,7 @@ public class MasterDatabaseConfig {
         HikariDataSource ds = new HikariDataSource();
 
         ds.setUsername("root");
-        ds.setPassword("toor");
+        ds.setPassword("");
         ds.setJdbcUrl("jdbc:mysql://127.0.0.1/mordgage_db");
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setPoolName("modgage_database_Pool");

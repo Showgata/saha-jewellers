@@ -16,7 +16,7 @@ var dateSettings = {
 };
 
 function getAbsoluteUrl(url){
-	return websiteInitialUrl+"//"+url;
+	return websiteInitialUrl+"/"+url;
 }
 
 function roundTo(n, digits) {
