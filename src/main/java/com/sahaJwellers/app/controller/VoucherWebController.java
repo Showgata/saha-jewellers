@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/mortgage-app/")
+@RequestMapping(value = "/mortgage-app/web/")
 public class VoucherWebController {
 	
 	@RequestMapping(path= {"/voucher"})

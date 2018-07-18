@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
-import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 @EnableWebSecurity
 public class MortgageAppSecurity  extends WebSecurityConfigurerAdapter  {
@@ -44,10 +44,11 @@ public class MortgageAppSecurity  extends WebSecurityConfigurerAdapter  {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		 http.authorizeRequests()
-		 	    .antMatchers("/resources/**","/css/*","/js/**","/fonts/**","/images/**","/fontawesome/**").permitAll()
+		 http.csrf().disable()
+		     .authorizeRequests()
+		 	    .antMatchers("/resources/**","/css/*","/js/**","/fonts/**","/images/**","/fontawesome/**","/mortgage-app/api/**").permitAll()
 		        .antMatchers("/login*").anonymous()
-				.antMatchers("/**").hasRole("USER")
+				.antMatchers("/mortgage-app/web/**").hasRole("USER")
 				.anyRequest().authenticated()
 		 .and()
 		 	.formLogin().loginPage("/login").successHandler(successHandler()).failureUrl("/login?error=true").permitAll()
@@ -55,18 +56,23 @@ public class MortgageAppSecurity  extends WebSecurityConfigurerAdapter  {
 		super.configure(http);
 	}
 	
-	@Bean
+	/*@Bean
 	public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
 	    StrictHttpFirewall firewall = new StrictHttpFirewall();
 	    firewall.setAllowUrlEncodedSlash(true);    
 	    return firewall;
+	}*/
+	
+	@Bean
+	public HttpFirewall defaultHttpFirewall() {
+	    return new DefaultHttpFirewall();
 	}
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 	    //@formatter:off
 	    super.configure(web);
-	    web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
+	    web.httpFirewall(defaultHttpFirewall());
 	
 	}
 }

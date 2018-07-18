@@ -67,7 +67,7 @@
 		   customer["address"] = formatValue(addr_field.val());
 		   
 		   
-		   let URL = getAbsoluteUrl("/mortgage-app/api/customer/");
+		   let URL = getAbsoluteUrl("mortgage-app/api/customer/");
 		   
 			buildAjaxForJson(URL, "POST",customer).then(function(respJson){
 				
