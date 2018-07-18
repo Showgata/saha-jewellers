@@ -1,60 +1,54 @@
 
-/*package com.sahaJwellers.app.configuration;
+package com.sahaJwellers.app.configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity
 public class MortgageAppSecurity  extends WebSecurityConfigurerAdapter  {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("arka").password("password").roles("USER");
+		
+		auth.userDetailsService(userDetailsService());
+		//auth.inMemoryAuthentication().withUser("arka").password("password").roles("USER");
 	}
-
+	
+	@Bean
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		 http.authorizeRequests()
-				.antMatchers("/mortgage-app/").hasRole("USER")
-				.anyRequest().authenticated()
-				.antMatchers("/").permitAll()
-		 .and().
-		 		formLogin().loginPage("/index").permitAll()
-		 .and().logout().permitAll();
-			
-		super.configure(http);
+	public UserDetailsService userDetailsService() {
+		List<UserDetails> userDetails = new ArrayList<UserDetails>();
+		userDetails.add(User.withDefaultPasswordEncoder().username("admin").password("password").roles("USER","ADMIN").build());
+		userDetails.add(User.withDefaultPasswordEncoder().username("arka").password("password").roles("USER").build());
+		return new InMemoryUserDetailsManager(userDetails);
 	}
-}
-=======
-/*package com.sahaJwellers.app.configuration;
-
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
-@EnableWebSecurity
-public class MortgageAppSecurity  extends WebSecurityConfigurerAdapter  {
+	
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+		return new CustomAuthenticationSuccessHandler();
+	}
 	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("arka").password("password").roles("USER");
-	}
-
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		 http.authorizeRequests()
-				.antMatchers("/mortgage-app/").hasRole("USER")
+		 	    .antMatchers("/resources/**","/css/*","/js/**","/fonts/**","/images/**","/fontawesome/**").permitAll()
+		        .antMatchers("/login*").anonymous()
+				.antMatchers("/**").hasRole("USER")
 				.anyRequest().authenticated()
-				.antMatchers("/").permitAll()
-		 .and().
-		 		formLogin().loginPage("/index").permitAll()
-		 .and().logout().permitAll();
-			
+		 .and()
+		 	.formLogin().loginPage("/login").successHandler(successHandler()).failureUrl("/login?error=true").permitAll()
+		 .and().logout().logoutSuccessUrl("/index?logout=true");
 		super.configure(http);
 	}
 }
->>>>>>> e5a3f8cc8bbf944746bb398b37e879e387199c5d
-*/

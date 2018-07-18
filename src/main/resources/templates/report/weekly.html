@@ -27,7 +27,7 @@ and open the template in the editor.
 							<div class="row">
 							<div class="col-sm-2" style="float:right">
 							
-							 <input class="form-control col-sm-2 " placeholder="calender from +7"  name="firstname" type="text">
+							 <input class="form-control col-sm-2 " id="trans_reminder_date" placeholder="weekly date" name="trans_reminder_date" type="text">
                                 </div>
 								</div>
 								<style>
@@ -317,31 +317,23 @@ and open the template in the editor.
                     </div><!--content-->               
                 </div><!--content page-->
             </div><!--end wrapper-->
-	<div class="footer col-sm-offset-4">
-		<span>Copyright &copy; 2016. Pink-Desh.</span>
-	</div>
-	<!-- Plugins  -->
-	<script src="/js/jquery.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.slimscroll.js"></script>
-	<script src="/js/metisMenu.js"></script>
-	<script src="/js/core.js"></script>
-	<script src="/js/mediaquery.js"></script>
-	<script src="/js/equalize.js"></script>
-	<script src="/js/app.js"></script>
-	<script
-		src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-	<script src="/js/dataTables.bootstrap.js"></script>
-	<script src="/js/dataTables.colVis.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
-	<script>
 	
+
+<div th:replace="/common/common-header :: common-required-scripts"></div>
+	<script>
 	var dataTable;
+	 $(document).ready(function () {
+		  setDatePicker();
+	  });
+	 function setDatePicker(){
+		  let dateConfig = dateSettings;
+		  $("#datep").datepicker(dateConfig);
+		  dateConfig.maxDate=null;
+	      var d = new Date();
+	      d.setDate(d.getDate() - 1);
+	      dateConfig.minDate=d;
+		  $("#trans_reminder_date").datepicker(dateConfig);
+	  }
         function toggleModal(){
         	$('#myModal').modal('toggle');
         }
