@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/mortgage-app/")
+@RequestMapping(value = "/mortgage-app/web/")
 public class VoucherWebController {
 	
 	@RequestMapping(path= {"/voucher"})
@@ -105,5 +105,9 @@ public class VoucherWebController {
 	@GetMapping("/customer_credit_list")
 	public String customerCreditList() {
 		return "custom/customer_credit_list";
+	}
+	@GetMapping("/exp")
+	public String exp() {
+		return "expense/expense_voucher2";
 	}
 }
