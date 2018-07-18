@@ -739,7 +739,7 @@ and open the template in the editor.
           		 let tr ="";
           		 
           		 jQuery.each(respJson, function(i, val) {
-          			autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
+          			//autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
           			
           			 data.push([(val.id==null?"0":val.id),
           				 val.customer.customerName,
@@ -827,28 +827,43 @@ and open the template in the editor.
           	            .search( this.value )
           	            .draw();
           	    } ); */
-          		 $( "#cust_name" ).autocomplete({
-     		        source: autoCompleteList,
-     		        select: function (event, ui) {
-     		        	var txt = ui.item.label;
-     		          let custId = parseInt(txt.split(">")[1]);
-     		          $("#cust_id").val(custId); 
-     		          
-     		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
-     		        	$("#cust_address").val(respJson.address);
-     		       	    $("#cust_mobile").val(respJson.mobile);
-     		         },function(reason){
-     		           	 console.log("error in processing your request", reason);
-     	           	}); 
-     		          
-     		      }
-     		      });
+          	
           		
            	}, function(reason){
            	 console.log("error in processing your request", reason);
            	}); 
        }
        
+       function setAutoComplete(){
+    	   
+    	   var autoCompleteList = [];
+    	   buildAjax(URL, "GET").then(function(respJson){
+    		   jQuery.each(respJson, function(i, val) {
+    			   
+    				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+    			   
+    		   });
+    	   
+    		 $( "#cust_name" ).autocomplete({
+  		        source: autoCompleteList,
+  		        select: function (event, ui) {
+  		        	var txt = ui.item.label;
+  		          let custId = parseInt(txt.split(">")[1]);
+  		          $("#cust_id").val(custId); 
+  		          
+  		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
+  		        	$("#cust_address").val(respJson.address);
+  		       	    $("#cust_mobile").val(respJson.mobile);
+  		         },function(reason){
+  		           	 console.log("error in processing your request", reason);
+  	           	}); 
+  		          
+  		      }
+  		      });
+    	   }, function(reason){
+           	 console.log("error in processing your request customer", reason);
+         	}); 
+       }
        function moveDataTableRow(position,table){
     	   var currentPage = table.page();
     	   var index = position-1,
