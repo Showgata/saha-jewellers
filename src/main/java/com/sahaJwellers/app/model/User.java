@@ -34,6 +34,9 @@ public class User {
 	@Column(name="version")
 	private Long version;
 	
+	@Column(name="role")
+	private String role;
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -64,6 +67,14 @@ public class User {
 
 	public void setVersion(Long version) {
 		this.version = version;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override

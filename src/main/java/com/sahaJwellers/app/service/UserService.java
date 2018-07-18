@@ -12,4 +12,6 @@ public interface UserService {
 
 	Optional<User> fetchUserByUsernameAndPassword(String username, String password);
 
+	Optional<User> fetchUserByUsername(String username);
+
 }

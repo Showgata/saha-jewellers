@@ -17,11 +17,6 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	public UserRepository userRepository;
 	
-/*	@Autowired
-	public UserServiceImpl(UserRepository userRepository){
-		this.userRepository = userRepository;
-	}
-	*/
 	@Override
 	public Optional<User> fetchUserByUserId(Long id){
 		Optional<User> optionalUser = userRepository.findById(id);
@@ -35,4 +30,10 @@ public class UserServiceImpl implements UserService{
 	public Optional<User> fetchUserByUsernameAndPassword(String username, String password){
 		return userRepository.findByUsernameAndPassword(username, password);
 	}
+	
+	@Override
+	public Optional<User> fetchUserByUsername(String username){
+		return userRepository.findByUsername(username);
+	}
+	
 }
