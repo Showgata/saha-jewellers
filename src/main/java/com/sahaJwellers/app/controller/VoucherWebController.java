@@ -110,4 +110,8 @@ public class VoucherWebController {
 	public String exp() {
 		return "expense/expense_voucher2";
 	}
+	@GetMapping("/settings")
+	public String set() {
+		return "/settings";
+	}
 }
