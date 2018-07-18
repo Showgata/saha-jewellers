@@ -57,7 +57,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     </head>
 <body>
-            <div class="side-menu left" id="side-menu" th:fragment="common-menu">
+            <!-- <div class="side-menu left" id="side-menu" th:fragment="common-menu">
                <ul class="metismenu clearfix" id="menu" >
                     <li class="profile-menu visible-xs">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -141,13 +141,13 @@
                         </ul>
                     </li>
                 </ul>
-                  <!-- <div class="nav-bottom clearfix">
+                  <div class="nav-bottom clearfix">
                     <a href="#" style="border-right: 0px;"><i class="fa fa-lock"></i></a>
                     <a href="#" style="border-right: 0px;"><i class="fa fa-download"></i></a>
                     <a href="#" style="border-right: 0px;"><i class="fa fa-globe"></i></a>
                     <a href="#" style="border-right: 0px;"><i class="fa fa-phone"></i></a>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
             
          <div class="topbar" th:fragment="common-topbar">
                 <div class="topbar-left">
@@ -210,7 +210,7 @@
                         <ul class="nav nav-second-level collapse">
                             <li ><a href="/mortgage-app/voucher">Create Voucher</a></li>
                             <li><a href="/mortgage-app/voucher_transaction">customer transaction</a></li>
-                            <li class="active "><a href="/mortgage-app/create_ledger">customer ledger</a></li>
+                          
                            
                         </ul>
                     </li>
@@ -240,17 +240,18 @@
                     <li class="">
                         <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Capital Investment</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="create_investment.html">Create Capital Investment Voucher</a></li>
-                            <li><a href="ci_trans.html">Capital Investment Transaction</a></li>
+                            <li><a href="/mortgage-app/create_capital">Create Capital Investment Voucher</a></li>
+                            <li><a href="/mortgage-app/capital_trans">Capital Investment Transaction</a></li>
                          
                         </ul>
                     </li>
 					  <li  >
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Custom </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="custom_report.html">Custom report</a></li>
-                            <li><a href="credit_list.html">Customer Credit List</a></li>
-                          <li><a href="cash_ledger.html">Cash Ledger</a></li>
+                            <li><a href="/mortgage-app/custom_report">Custom report</a></li>
+                            <li><a href="/mortgage-app/customer_credit_list">Customer Credit List</a></li>
+                          <li><a href="/mortgage-app/cash_ledger">Cash Ledger</a></li>
+                            <li><a href="/mortgage-app/create_ledger">customer ledger</a></li>
                         </ul>
                     </li>
                    

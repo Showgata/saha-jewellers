@@ -64,7 +64,7 @@ public class Voucher {
 	/*@OneToMany(mappedBy="voucher",orphanRemoval=true,cascade=CascadeType.PERSIST)
 	private List<Transaction> transactionList;*/
 	
-	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE},orphanRemoval=false)
+	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
