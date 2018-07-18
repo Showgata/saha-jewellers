@@ -24,6 +24,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
  
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
 
-        httpServletResponse.sendRedirect("/mortgage-app/");
+        httpServletResponse.sendRedirect("/mortgage-app/web/");
     }
 }

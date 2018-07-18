@@ -442,6 +442,7 @@ and open the template in the editor.
 	     		        	var txt = ui.item.label;
 	     		          let custId = parseInt(txt.split(">")[1]);
 	     		          $("#cust_id").val(custId); 
+	     		          $("#custId").val(custId);
 	     		          
 	     		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
 	     		        	$("#cust_address").val(respJson.address);
@@ -695,7 +696,8 @@ and open the template in the editor.
 	        		        $("#interestRate").val(respJson.mortgage.interestRate);
 	        		        $("#loanAmount").val(respJson.mortgage.loanAmount); */
 	        		        /* $("#product").val(respJson.mortgage.product); */
-	        		        $("#cust_id").val(respJson.transaction.id);
+	        		       // $("#cust_id").val(respJson.transaction.id);
+	        		        $("#custId").val(respJson.customer.customerId);
 	        		        $("#reminder_date").val(respJson.transaction.transactionDate);
 	        		        $("#storage").val(respJson.transaction.storage);
 	        		        $("#note").val(respJson.transaction.note);

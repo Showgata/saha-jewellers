@@ -48,13 +48,13 @@
         <link href="/css/morris-0.4.3.min.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
         <script src="/js/modernizr.js"></script>
-        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <!-- DATATABLES-->
         <link rel="stylesheet" href="/css/dataTables.colVis.css">
         <link rel="stylesheet" href="/css/dataTables.bootstrap.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css" rel="stylesheet" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        
     </head>
 <body>
             <!-- <div class="side-menu left" id="side-menu" th:fragment="common-menu">
@@ -71,13 +71,13 @@
                         </ul>
                     </li>
                     <li><a href="index.html"><i class="fa fa-home"></i>  <span>Dashboard</span></a></li>                       
-                  	<li class="home" ><a href="/mortgage-app/"><i class="fa fa-home"></i>  <span>Home</span></a></li>  
-                    <li class=""><a href="/mortgage-app/voucher/"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
+                  	<li class="home" ><a href="/mortgage-app/web/"><i class="fa fa-home"></i>  <span>Home</span></a></li>  
+                    <li class=""><a href="/mortgage-app/web/voucher/"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
 
                     <li class="active ">
                      <a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold Mortgage</span><span class="fa arrow"></span></a> 
                         <ul class="nav nav-second-level collapse">
-                            <li class="active "><a href="/mortgage-app/voucher/"><font color="#f7b03e">Create Voucher</font></a></li>
+                            <li class="active "><a href="/mortgage-app/web/voucher/"><font color="#f7b03e">Create Voucher</font></a></li>
                             <li><a href="graph_morris.html">customer transaction</a></li>
                             <li><a href="graph_chartjs.html">customer ledger</a></li>
                            
@@ -191,7 +191,7 @@
 
                 <ul class="metismenu clearfix" id="menu" >
                     <li class="profile-menu visible-xs">
-                        <a href="/mortgage-app/" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="/mortgage-app/web/" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/images/user.png" alt="" class="pull-left">
                             <span>ADMIN <br><em>Admin</em></span>                            
                         </a>
@@ -203,13 +203,13 @@
                     </li>
                     
                      <li class="active "><a href="home.html"><i class="fa fa-home"></i>  <span><font color="#f7b03e">Home</font></span></a></li>    
-                    <li class=""><a href="/mortgage-app/customer"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
+                    <li class=""><a href="/mortgage-app/web/customer"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
 
                     <li class="gold-mortgage">
                      <a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold Mortgage</span><span class="fa arrow"></span></a> 
                         <ul class="nav nav-second-level collapse">
-                            <li ><a href="/mortgage-app/voucher">Create Voucher</a></li>
-                            <li><a href="/mortgage-app/voucher_transaction">customer transaction</a></li>
+                            <li ><a href="/mortgage-app/web/voucher">Create Voucher</a></li>
+                            <li><a href="/mortgage-app/web/voucher_transaction">customer transaction</a></li>
                           
                            
                         </ul>
@@ -217,41 +217,41 @@
                     <li>
                         <a href="#"><i class="fa fa-money"></i> <span>Expense </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/mortgage-app/expense-voucher">Create Expense Voucher</a></li>
-                            <li><a href="/mortgage-app/expense-transaction">Expense Transaction</a></li>
+                            <li><a href="/mortgage-app/web/expense-voucher">Create Expense Voucher</a></li>
+                            <li><a href="/mortgage-app/web/expense-transaction">Expense Transaction</a></li>
                           
                         </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-reply"></i> <span>loan Take</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/mortgage-app/loan-take">Create Loan Take Voucher</a></li>
-                            <li><a href="/mortgage-app/loan-take-transaction">Loan Take Transaction</a></li>
+                            <li><a href="/mortgage-app/web/loan-take">Create Loan Take Voucher</a></li>
+                            <li><a href="/mortgage-app/web/loan-take-transaction">Loan Take Transaction</a></li>
                            
                         </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-share"></i> <span>loan Give</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/mortgage-app/loan-give">Create Loan Give Voucher</a></li>
-                            <li><a href="/mortgage-app/loan-give-transaction">Loan Give Transaction</a></li>
+                            <li><a href="/mortgage-app/web/loan-give">Create Loan Give Voucher</a></li>
+                            <li><a href="/mortgage-app/web/loan-give-transaction">Loan Give Transaction</a></li>
                         </ul>
                     </li>
                     <li class="">
                         <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Capital Investment</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/mortgage-app/create_capital">Create Capital Investment Voucher</a></li>
-                            <li><a href="/mortgage-app/capital_trans">Capital Investment Transaction</a></li>
+                            <li><a href="/mortgage-app/web/create_capital">Create Capital Investment Voucher</a></li>
+                            <li><a href="/mortgage-app/web/capital_trans">Capital Investment Transaction</a></li>
                          
                         </ul>
                     </li>
 					  <li  >
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Custom </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="/mortgage-app/custom_report">Custom report</a></li>
-                            <li><a href="/mortgage-app/customer_credit_list">Customer Credit List</a></li>
-                          <li><a href="/mortgage-app/cash_ledger">Cash Ledger</a></li>
-                            <li><a href="/mortgage-app/create_ledger">customer ledger</a></li>
+                            <li><a href="/mortgage-app/web/custom_report">Custom report</a></li>
+                            <li><a href="/mortgage-app/web/customer_credit_list">Customer Credit List</a></li>
+                          <li><a href="/mortgage-app/web/cash_ledger">Cash Ledger</a></li>
+                            <li><a href="/mortgage-app/web/create_ledger">customer ledger</a></li>
                         </ul>
                     </li>
                    
@@ -259,15 +259,15 @@
                         <a href="#"><i class="fa fa-sitemap"></i> <span>Reports </span><span class="fa arrow"></span></a>
                                           <ul class="nav nav-second-level collapse">
                             <li>
-                                <a href="/mortgage-app/daily">Daily Report </a></li>                        
-                            <li><a href="/mortgage-app/weekly">Weekly Report</a>
+                                <a href="/mortgage-app/web/daily">Daily Report </a></li>                        
+                            <li><a href="/mortgage-app/web/weekly">Weekly Report</a>
 							</li>
                             <li>
-                                <a href="/mortgage-app/monthly">Monthly Report </a></li>
+                                <a href="/mortgage-app/web/monthly">Monthly Report </a></li>
                             <li>
-                                <a href="/mortgage-app/yearly">yearly Report </a></li>
+                                <a href="/mortgage-app/web/yearly">yearly Report </a></li>
 								<li>
-                                <a href="/mortgage-app/decade">Decade Report </a></li>
+                                <a href="/mortgage-app/web/decade">Decade Report </a></li>
                         </ul>
                     </li>
                 </ul>
