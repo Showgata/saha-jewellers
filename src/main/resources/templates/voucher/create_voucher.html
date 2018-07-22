@@ -11,8 +11,8 @@ and open the template in the editor.
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
-<head th:replace="/common/common-header :: common-head"></head>
-<body class="fixed-left">
+<head th:replace="/common/common-header :: common-headpage"></head>
+<body class="fixed-left" id="content">
 
 	<div id="wrapper">
 
@@ -51,11 +51,11 @@ and open the template in the editor.
 
 
 									<!-- <a href="#" class="btn btn-border-theme btn-xs">Print</a> -->
-									&nbsp; <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>
+									&nbsp; <button type="button" id="cancel" class="btn btn-border-theme btn-xs">Cancel</button>
 									&nbsp;
 									<button type="button" class="btn btn-border-theme btn-xs"
 										data-toggle="modal" data-target="#myModal">Add
-										Product</button>
+										Product</button>&nbsp;&nbsp;<button type="button" id="pdf" class="btn btn-border-theme btn-xs">PDF</button>
 									<!-- &nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a> -->
 									&nbsp;
 									<div>
@@ -306,14 +306,21 @@ and open the template in the editor.
 						<div class="container">
 							<!-- <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
 								  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text"> -->
-							<div id="voucher_search">
+							<div id="voucher_search" class="row col-sm-12" >
 								<!-- <div id="name">Customer Name</div> -->
-								<input type="text" name="cust_name" id="cname"  onkeyup="searchCustomer();" placeholder="Search Customer" data-index="1"/>
+								<!-- <input type="text" name="cust_name" id="cname"  onkeyup="searchCustomer();" placeholder="Search Customer" data-index="1"/> -->
+								 <div class="col-sm-3">
+								 	<input class="form-control col-sm-3" 
+										placeholder="voucher count" id="voucher_count" name="vdetails" type="text"/>
+								 </div>
+								 <div class="col-sm-offset-6 col-sm-3">
+								 	
+									<input class="form-control col-sm-3" 
+										placeholder="total expense" name="lamount" id="total_loan_amount" type="text"/>
+								 </div>
+								
 							</div>
-							<input class="form-control" style="width: 150px; float: right;"
-										placeholder="no expense voucher" name="vdetails" type="text">
-									<input class="form-control" style="width: 150px; float : left;;"
-										placeholder="total expense" name="lamount" type="text">
+							
 							<table class="table table-striped" id="voucher">
 								<thead>
 									<tr>
@@ -335,7 +342,7 @@ and open the template in the editor.
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+								<!-- 	<tr>
 										<td>John</td>
 										<td>Doe</td>
 										<td>john@example.com</td>
@@ -380,7 +387,7 @@ and open the template in the editor.
 										<td>john@example.com</td>
 										<td></td>
 									</tr>
-								</tbody>
+ -->								</tbody>
 								<tfoot>
             <tr>
                 <th colspan="11" style="text-align:right">Total:</th>
@@ -575,9 +582,11 @@ and open the template in the editor.
 										<option>	Other</option>
 
 
-								</select> <label for="productQuantity">Quantity:</label> <input
+								</select> <input
+									type="text" name="add_product_Name" id="product_added" disabled placeholder="Other Product Name" /><br/><label for="productQuantity">Quantity:</label> <input
 									type="text" id="productQuantity" name="productQuantity" /> <input
 									type="hidden" name="product_Id" id="productId" /></li>
+									
 							</ul>
 						</div>
 						<div class="panel-group"></div>
@@ -593,11 +602,11 @@ and open the template in the editor.
 		</div>
 
 	</div>
-	</div>
 
+ <div th:replace="/common/common-header :: common-required-scripts"></div>
 	
 	<!-- Plugins  -->
-	<script src="/js/jquery.min.js"></script>
+<!-- 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jqueryy.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.slimscroll.js"></script>
@@ -609,17 +618,57 @@ and open the template in the editor.
 
 
 	<script src="/js/dataTables.bootstrap.js"></script>
-	<script src="/js/dataTables.colVis.js"></script>
+	<script src="/js/dataTables.colVis.js"></script> -->
 	<!-- new js -->
-		<script
+	<!-- 	<script
 		src="/js/jqueryy-datatable.js"></script>
 	<script
 		src="/js/datepick.js"></script>
 	<script
 		src="/js/datepickanother.js"></script>
-		<!--end new js -->
-	<script>
-	
+		end new js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+	<script> 
+	$("#pdf").click(function(){
+		var pdf = new jsPDF('p', 'pt', 'letter','div');
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#content')[0];
+
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 800
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                pdf.save('Test.pdf');
+            }, margins
+        );
+	});
 	var dataTable;
         function toggleModal(){
         	$('#myModal').modal('toggle');
@@ -732,7 +781,7 @@ and open the template in the editor.
        }	 */
        
        function fetchVouchers(){
-    	   var URL = "http://localhost:8080//modgage-app/api/voucher/";
+    	   var URL = "http://localhost:8080/mortgage-app/api/voucher/mortgage-for-today/";
     	   var data = [];
     	   var autoCompleteList = [];
     	   buildAjax(URL, "GET").then(function(respJson){
@@ -744,7 +793,7 @@ and open the template in the editor.
           			
           			 data.push([(val.id==null?"0":val.id),
           				 val.customer.customerName,
-          				 (val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial),
+          				 (val.transaction.trasnsactionSerial==null?"":val.transaction.transactionSerial),
           				 (val.customer.customerId==null?"":val.customer.customerId),
           				 val.date,
           				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
@@ -753,8 +802,8 @@ and open the template in the editor.
           				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
           				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
           				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
-          				"<input class='form-control col-sm-2 upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
-          				"<input class='form-control col-sm-2 del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+          				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+          				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
           			 ]); 
           			/*  tr = "";
           			 tr += "<tr role='row' class='"+(i%2==0?'even':'odd')+"'>";
@@ -806,6 +855,9 @@ and open the template in the editor.
             var rowsCount = api
             .column( 10 )
             .data().length;
+            
+            $("#voucher_count").val(rowsCount);
+            $("#total_loan_amount").val(roundTo(total,2));
             // Total over this page
             pageTotal = api
                 .column( 10, { page: 'current'} )
@@ -838,6 +890,7 @@ and open the template in the editor.
        function setAutoComplete(){
     	   
     	   var autoCompleteList = [];
+    	   var URL = getAbsoluteUrl("mortgage-app/api/customer/today");
     	   buildAjax(URL, "GET").then(function(respJson){
     		   jQuery.each(respJson, function(i, val) {
     			   
@@ -881,8 +934,33 @@ and open the template in the editor.
        table.page(currentPage).draw(false);
        }
        
+       function reset(){
+           
+           $("#bori").val("");
+           $("#ana").val("");
+           $("#ratti").val("");
+           $("#point").val("");
+           $("#gram").val("");
+           $("#loan_amnt").val("");
+           $("#rate").val("");
+           
+           $("#note").val("");
+           $("#storage").val("");
+           $("#reminder_date").val("");
+     		$("#mortgage_id").val("");
+     		$("#cust_name").val("");
+     		$("#cust_address").val("");
+     		$("#cust_mobile").val("");
+     		$("#cust_id").val("");
+     		
+     		$("#productName").val("");
+     		$("#productQuantity").val("");
+     		$("#productId").val("");
+     		$("#product_added").val("");
+       }
+       
        function saveVoucher(){   	   
-    	var URL = "http://localhost:8080//modgage-app/api/voucher/";
+    	var URL = "http://localhost:8080//mortgage-app/api/voucher/";
     	var voucher = {
     			/* id : null
     			date	null
@@ -911,6 +989,8 @@ and open the template in the editor.
         let note = $("#note");
         let storage = $("#storage");
         
+        
+        
         transaction["reminderDate"] = reminderDate.val()==""?null:reminderDate.val();
         transaction["note"] = note.val()==""?null:note.val();
         transaction["storage"] = formatIntegerValue(storage.val());
@@ -931,13 +1011,15 @@ and open the template in the editor.
     	customer["mobile"]=$("#cust_mobile").val();
     	customer["customerId"]=formatIntegerValue($("#cust_id").val());
     	
-    	product["productName"] = formatValue($("#productName").val());
+    	
+    	product["productName"] = formatValue($("#productName").val()=="Other"?$("#product_added").val():$("#productName").val());
     	product["quantity"] = formatIntegerValue($("#productQuantity").val());
     	product["productId"] = formatIntegerValue($("#productId").val());
     	
     	voucher["customer"] = customer;
     	voucher["mortgage"] = mortgage; 
     	voucher["product"] = product;
+    	voucher["type"] = "mortgage";
     	//transaction["voucher"] = voucher;
     	voucher["transaction"] = transaction;
     	voucher["id"] = formatIntegerValue($("#voucher_id").val());
@@ -945,12 +1027,43 @@ and open the template in the editor.
        	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
        	
        		if(voucher["id"] != "" && voucher["id"] != null) return;
+       		
+       		//reset values
+       		/* bori_field.val("");
+       		ana_field.val("");
+       		ratti_field.val("");
+       		point_field.val("");
+       		gram_field.val("");
+       		loanAmnt_field.val("");
+       		interestRate_field.val("");
+       		$("#mortgage_id").val("");
+       		$("#cust_name").val("");
+       		$("#cust_address").val("");
+       		$("#cust_mobile").val("");
+       		$("#cust_id").val("");
+       		
+       		$("#productName").val("");
+       		$("#productQuantity").val("");
+       		$("#productId").val(""); */
+       		
+       		reset();
+       		
+       		var t = $('#voucher').DataTable();
+       		if(parseInt($("#voucher_id").val())==parseInt(respJson.id)){
+				var rowNode = r.node();
+				r.remove();
+				customerDataTable.page(t.page()).draw(false);
+			}
+       		
+       		$("#voucher_id").val("");
+       		
+       		
        		console.log(respJson);
-       		let val = respJson;
-       		 var t = $('#voucher').DataTable();
+       		let val = respJson;       		 
+       		 
        		t.row.add([(val.id==null?"0":val.id),
  				 val.customer.customerName,
- 				 (val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial),
+ 				 (val.transaction.trasnsactionSerial==null?"":val.transaction.transactionSerial),
  				 (val.customer.customerId==null?"":val.customer.customerId),
  				 val.date,
  				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
@@ -976,9 +1089,13 @@ and open the template in the editor.
         function format(n){
         	return n<10? '0'+n:''+n;
         }
+        
+        $("#cancel").click(function(){
+        	reset();
+        });
         $(document).ready( function () {    	
          fetchVouchers();
-        
+         setAutoComplete();
             
             var disabledDays = [0];
             var dateSettings = {
@@ -1014,7 +1131,7 @@ and open the template in the editor.
         	if(confirm('Are you sure !')){
         		  var currentPage = table.page();
         		  //console.log($(this).attr('delid'));
-        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('delid'));
+        		  var URL = "http://localhost:8080//mortage-app/api/voucher/"+parseInt($(this).attr('delid'));
         		  buildAjax(URL, "POST").then(function(respJson){
         		  },function(reason){
   		           	 console.log("error in processing your request", reason);
@@ -1027,13 +1144,13 @@ and open the template in the editor.
          
             
         });
-        
+        var r = null;
         $('#voucher tbody').on( 'click', '.upd', function () {
         	var table = $('#voucher').DataTable();
-        
+        	  r = table.row( $(this).parents('tr') );
         		  var currentPage = table.page();
         		  //console.log($(this).attr('delid'));
-        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+        		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
         		  buildAjax(URL, "GET").then(function(respJson){
         			  console.log(respJson);
         		        let bori_field = $("#bori");
@@ -1081,6 +1198,15 @@ and open the template in the editor.
         	
          
             
+        });
+        
+        $("#productName").on('change',function(){
+        	if(this.options[this.selectedIndex].value == "Other"){
+        		$("#product_added").prop('disabled', false);
+        	} else {
+        		$("#product_added").prop('disabled', true);
+        	}
+        	
         });
         
         function searchCustomer(){

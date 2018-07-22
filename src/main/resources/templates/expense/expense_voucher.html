@@ -192,49 +192,17 @@ and open the template in the editor.
 						</div>
 					</div>
 
-					<style>
-/* width */
-::-webkit-scrollbar {
-	width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-	background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-	background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	background: #555;
-}
-</style>
 
 
 
 					<div class="row">
 						<div class="col-sm-12"
-							style="overflow: scroll; height: 350px; margin-top: -20px">
+							style="">
 							<div class="panel-box">
 
 
 
-								<style>
-.pane-box {
-	padding: 15px;
-	background: #272a31;
-	margin-bottom: 20px;
-}
-
-.table {
-	height: 200px;
-}
-</style>
-								<div class="table-responsive">
+															<div class="table-responsive">
 									<!-- <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
 								  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text"> -->
 									<input class="form-control" style="width: 150px; float: right;"
@@ -415,7 +383,7 @@ and open the template in the editor.
 	        }
 	       
 	       /* function fetchCustomers(){
-	    	   var URL = "http://localhost:8080/modgage-app/api/customer";
+	    	   var URL = "http://localhost:8080/mortgage-app/api/customer";
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -490,7 +458,7 @@ and open the template in the editor.
 			  let voucherDate_field = $("#voucher_date");
 			  let voucher_Id = $("#voucher_id");
 			  
-			  var URL = "http://localhost:8080/modgage-app/api/voucher/expense-for-today";
+			  var URL = "http://localhost:8080/mortgage-app/api/voucher/expense-for-today";
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -595,7 +563,7 @@ and open the template in the editor.
 			  voucher["id"] = formatIntegerValue(voucher_Id.val());
 			  
 			  var data = [];
-			  buildAjaxForJson("http://localhost:8080/modgage-app/api/voucher/", "POST", voucher).then(function(respJson){
+			  buildAjaxForJson("http://localhost:8080/mortgage-app/api/voucher/", "POST", voucher).then(function(respJson){
 				  
 				  var t = dataTable;
 				  let val = respJson;
@@ -666,7 +634,7 @@ and open the template in the editor.
 	        
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+	        		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
 	        		  buildAjax(URL, "GET").then(function(respJson){
 	        			  console.log(respJson);
 	        		      /*   let bori_field = $("#bori");
@@ -727,7 +695,7 @@ and open the template in the editor.
 	        	if(confirm('Are you sure !')){
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('delid'));
+	        		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('delid'));
 	        		  buildAjax(URL, "POST").then(function(respJson){
 	        		  },function(reason){
 	  		           	 console.log("error in processing your request", reason);

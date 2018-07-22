@@ -21,4 +21,7 @@ public interface VoucherRepository extends JpaRepository<Voucher, Long> {
 	@Query("select v from Voucher v where v.date >= :date AND v.type = :type ORDER BY v.updateTimestamp DESC")
 	public List<Voucher> listVoucherForTodayByType(@Param("date") Date date,@Param("type") String type);
 	
+	@Query("select v from Voucher v where v.type = :type ORDER BY v.updateTimestamp DESC")
+	public List<Voucher> listVoucherByType(@Param("type") String type);
+	
 }

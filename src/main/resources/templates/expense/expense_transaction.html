@@ -60,62 +60,20 @@ and open the template in the editor.
 								</div>
 								<br>
 							  
-                                </div>
-								
-										
+                                </div>									
                             </div >
-                            <style>
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
-</style>
-                           
-							
-							
-							
-									
-                        </div>
+  </div>
 				
  <div class="row"  >
                              <div class="col-sm-12" style="overflow: hidden;height:550px;">
 							 <div class="panel-box">
 							 
-                                    
-									   
-                                           <style>
-                                               .pane-box{
-    padding: 15px;
-  background: #272a31;
-    margin-bottom: 20px;
-                                               }
-    .table{
-        height:200px;
-                                                   
-                                               }
-    
-
-                                           </style>
+                                   
 										   
                                     <div class="table-responsive">
 									
                                                     
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                          <table id="expense-table" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
 											<th>Sl no.</th>
@@ -160,6 +118,49 @@ and open the template in the editor.
        
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script>
+   var expenseDataTable = null;
+   
+   function listAllExpenses(){
+	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/expense");
+	   var data = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+     		console.log(respJson);
+     		
+     		 jQuery.each(respJson, function(i, val) {
+       			
+       			 data.push([(val.transaction.id==null?"0":val.transaction.id),
+       				val.id,
+					val.customer.mobile,
+					val.customer.address,
+					val.transaction.expense,
+					(val.transacton.amount==null?"0.00":val.transaction.amount),
+					(val.note==null?"":val.note),
+					(val.date),
+	 				"<input class='form-controlcol-sm-2 btn btn-xs btn-theme upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
+	 				"<input class='form-controlcol-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+	 				]); 
+       		}); 
+     		
+     		customerDataTable = $('#expense-table').DataTable({
+        		data:           data,
+                deferRender:    true,
+                scrollY:        200,
+                scrollCollapse: true,
+                scroller:       true,
+                "order": [],
+				 "footerCallback": function ( row, data, start, end, display ) {
+        var api = this.api(), data;
+    }
+        	});  
+     		 
+     		},function(reason){
+		       	 console.log("error in processing your request", reason);
+	       	}); 
+	   
+   }
+   
+   </script>
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->

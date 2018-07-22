@@ -8,7 +8,7 @@
    });
    
    function listAllCustomer(){
-	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
+	   var URL = getAbsoluteUrl("mortgage-app/api/customer/today");
 	   var data = [];
 	   buildAjax(URL, "GET").then(function(respJson){
      		console.log(respJson);
@@ -56,7 +56,7 @@
 	   
 	   
 	   $("#cust_form").on('submit',function(e){
-		   event.preventDefault();
+		   e.preventDefault();
 		
 		   let customer = {};
 		   customer["customerId"] = formatIntegerValue(custId_field.val());

@@ -20,4 +20,8 @@ public interface VoucherService {
 
 	List<Voucher> fetchAllTodaysExpenseVoucher();
 
+	List<Voucher> fetchAllTodaysMortgageVoucher();
+
+	List<Voucher> fetchAllVoucherInDescOrder(String type);
+
 }

@@ -14,15 +14,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sahaJwellers.app.model.LoanTransaction;
 import com.sahaJwellers.app.model.Transaction;
 import com.sahaJwellers.app.model.Voucher;
+import com.sahaJwellers.app.service.LoanTransactionService;
 import com.sahaJwellers.app.service.TransactionService;
 import com.sahaJwellers.app.service.VoucherService;
 
 @RestController
-@RequestMapping("/modgage-app/api/voucher")
+@RequestMapping("/mortgage-app/api/voucher")
 public class VoucherRestController {
 
 	@Autowired
@@ -31,12 +34,25 @@ public class VoucherRestController {
 	@Autowired
 	private TransactionService transactionService;
 	
+	@Autowired
+	private LoanTransactionService loanTransactionService;
+	
 	@GetMapping("/")
 	public List<Voucher> findAll() {
 		List<Voucher> vouchers = voucherService.fetchAllVouchers();
 		return vouchers;
 	}
-
+	
+	@GetMapping("/loan/{voucherId}")
+	public List<LoanTransaction> fetchAllLoanTransaction(@PathVariable("voucherId") Long voucherId){
+		return loanTransactionService.fetchLoanTransactions(voucherId);
+	}
+	
+	@PostMapping("/loan/")
+	public LoanTransaction saveLoan(@RequestBody LoanTransaction loanTransaction){
+		return loanTransactionService.saveLoan(loanTransaction);
+	}
+	
 	@InitBinder
 	private void dateBinder(WebDataBinder binder) {
 		// The date format to parse or output your dates
@@ -53,9 +69,21 @@ public class VoucherRestController {
 	}
 	
 	@GetMapping("/expense-for-today")
-	public List<Voucher> findTodaysVoucher(){
+	public List<Voucher> findTodaysExpenseVoucher(){
 		return voucherService.fetchAllTodaysExpenseVoucher();
 	}
+	
+	@GetMapping("/expense")
+	public List<Voucher> findExpenseVoucher(){
+		return voucherService.fetchAllVoucherInDescOrder("expense");
+	}
+	
+	@GetMapping("/mortgage-for-today")
+	public List<Voucher> findTodaysMortgageVoucher(){
+		return voucherService.fetchAllTodaysMortgageVoucher();
+	}
+	
+	
 
 	@PostMapping("/")
 	public Voucher saveVoucher(@RequestBody Voucher voucher) {

@@ -31,6 +31,7 @@ public class Customer {
 	@Column(name="customerId")
 	private Long customerId;
 	
+	
 	@Column(name="customerName")
 	private String customerName;
 	

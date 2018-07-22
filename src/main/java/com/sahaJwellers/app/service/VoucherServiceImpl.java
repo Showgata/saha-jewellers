@@ -106,4 +106,15 @@ public class VoucherServiceImpl implements VoucherService {
 	public List<Voucher> fetchAllTodaysExpenseVoucher(){
 		return voucherRepository.listVoucherForTodayByType(DateUtil.atStartOfDay(new Date()), "expense");
 	}
+	
+	@Override
+	public List<Voucher> fetchAllTodaysMortgageVoucher(){
+		System.out.println("date=>"+DateUtil.atStartOfDay(new Date()));
+		return voucherRepository.listVoucherForTodayByType(DateUtil.atStartOfDay(new Date()), "mortgage");
+	}
+	
+	@Override
+	public List<Voucher> fetchAllVoucherInDescOrder(String type){
+		return voucherRepository.listVoucherByType(type);
+	}
 }
