@@ -78,6 +78,8 @@ public class VoucherRestController {
 		return voucherService.fetchAllVoucherInDescOrder("expense");
 	}
 	
+
+	
 	@GetMapping("/mortgage-for-today")
 	public List<Voucher> findTodaysMortgageVoucher(){
 		return voucherService.fetchAllTodaysMortgageVoucher();

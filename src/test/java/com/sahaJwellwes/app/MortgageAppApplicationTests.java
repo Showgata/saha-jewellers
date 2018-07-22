@@ -32,6 +32,11 @@ public class MortgageAppApplicationTests {
 		user.setRole("USER");
 		user.setUsername("arka");
 		userRepository.save(user);
+		user = new User();
+		user.setPassword(new BCryptPasswordEncoder().encode("password"));
+		user.setRole("ADMIN");
+		user.setUsername("admin");
+		userRepository.save(user);
 	}
 
 }

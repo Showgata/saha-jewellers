@@ -24,4 +24,8 @@ public interface VoucherService {
 
 	List<Voucher> fetchAllVoucherInDescOrder(String type);
 
+	List<Voucher> fetchAllTodaysLoanTakeVoucher();
+
+	List<Voucher> fetchAllTodaysLoanGiveVoucher();
+
 }

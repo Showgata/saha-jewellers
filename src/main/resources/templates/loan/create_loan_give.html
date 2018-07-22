@@ -25,7 +25,7 @@
                                     <h4>Customer Information</h4>
                                     <form role="form">
                                     <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" id="cust_name" class="form-control"></div>
-									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" id="cust_id"  class="form-control"></div>
+									<div class="form-group"><label>ID</label> <input disabled type="text" placeholder="Enter id" id="cust_id"  class="form-control"></div>
                                     <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile"  id="cust_mobile" class="form-control"></div>
                                     <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_addr" class="form-control"></div>
 									<input type="hidden" id="custId"/> 
@@ -120,6 +120,7 @@
 																											  <option>Union Bank Limited</option>
 																											     <option>United Commercial Bank Limited</option>
 																											  <option>Uttara Bank Limited</option>
+																											  <option>Other</option>
 														   </select >
                                                         </div>
                                                     </div>
@@ -179,7 +180,7 @@
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
                                                         <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg" id="serial_no" style="color:#f7b03e;" placeholder="sl no." name="serial_no" value="22220" type="text">
+                                                            <input class="form-control input-lg" id="serial_no" disabled style="color:#f7b03e;" placeholder="sl no." name="serial_no" value="22220" type="text">
                                                         </div>
                                                     </div>
                                                     <input type="hidden" value="" id="voucher_id"/>
@@ -213,10 +214,10 @@
 							 <div class="panel-box">                             
                                     <div class="table-responsive">
 									
-                                                      <input class="form-control" style="width:150px;float:right;" placeholder="total loan voucher" name="vdetails" type="text">
-									  <input class="form-control" style="width:150px;" placeholder="total loan" name="lamount" type="text">
+                                                      <input class="form-control"  style="width:150px;float:right;" id="total_loan_voucher" placeholder="total loan voucher" name="vdetails" type="text">
+									  <input class="form-control" id="total_loan" style="width:150px;" placeholder="total loan" name="lamount" type="text">
                                                 
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="90%">
+                                          <table id="loan-give-table" class="table table-striped" cellspacing="0" width="90%">
                                         <thead>
                                             <tr>
 											<th>ID</th>
@@ -259,10 +260,76 @@
        
   <div th:replace="/common/common-header :: common-required-scripts"></div>
   <script>
+  var loanDataTable = null;
   $(document).ready(function () {
 	  setCustomerAutoCompleteList();
 	  setDatePicker();
+	  fillLoanDetails();
   });
+  
+  function fillLoanDetails(){
+	  var URL = getAbsoluteUrl("mortgage-app/api/loan/loan-give-today");
+	   var data = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+    		console.log(respJson);
+    		
+    		 jQuery.each(respJson, function(i, val) {
+      			
+      			 data.push([(val.id==null?"0":val.id),
+      				val.customer.customerName,
+					val.customer.mobile,
+					val.customer.address,
+					val.transaction.account.accountName,
+					val.transaction.account.currency,
+					val.transaction.account.bankList,
+					val.transaction.reminderDate,
+					val.transaction.account.interestRate,
+					val.transaction.account.amount,
+					val.date,
+					val.transaction.id,
+	 				"<input id='cust'"+val.id+" class='form-controlcol-sm-2 btn btn-xs btn-theme upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
+	 				"<input class='form-controlcol-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+	 				]); 
+      		}); 
+    		
+    		 loanDataTable = $('#loan-give-table').DataTable({
+       		data:           data,
+               deferRender:    true,
+               scrollY:        200,
+               scrollCollapse: true,
+               scroller:       true,
+               "order": [],
+				 "footerCallback": function ( row, data, start, end, display ) {
+					 
+					 var intVal = function ( i ) {
+			                return typeof i === 'string' ?
+			                    i.replace(/[\$,]/g, '')*1 :
+			                    typeof i === 'number' ?
+			                        i : 0;
+			            };	 
+       var api = this.api(), data;
+       
+       total = api
+       .column( 9 )
+       .data()
+       .reduce( function (a, b) {
+           return intVal(a) + intVal(b);
+       }, 0 );
+	$("#total_loan").val(total);
+   var rowsCount = api
+   .column( 10 )
+   .data().length;
+   
+   $("#total_loan_voucher").val(rowsCount);
+   }
+    		 
+       	});  
+    		 
+    		},function(reason){
+		       	 console.log("error in processing your request", reason);
+	       	}); 
+	   
+  }
   
   ;(function () {
 	  
@@ -286,7 +353,7 @@
 	  var account_id_field = $("#account_id");
 	  
 	  $("#save_loan").on('click',function(){
-		  var URL = getAbsoluteUrl("modgage-app/api/voucher/");
+		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
 		  let voucher = {};
 		  let customer = {};
 		  let account = {};
@@ -331,6 +398,8 @@
 		  trans_cheque_number_field.val("");
 		  trans_bank_field.val("");
 		  
+		  
+		  
 		  loanDataTable.row.add([(respJson.id==null?"0":respJson.id),
 					respJson.customer.customerName,
 					respJson.customer.mobile,
@@ -346,7 +415,7 @@
 	 				"<input id='cust'"+respJson.id+" class='form-control col-sm-2 btn btn-xs btn-theme upd' updid='"+respJson.id+"'  type='button' name='update' value='update' id='update' />",
 	 				"<input class='form-control col-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+respJson.id+"' id='delete' />"
 	 			 ]).draw();  
-			  
+		  moveDataTableRow(1,t);
 		  },function(reason){
 	           	 console.log("error in processing your request in customer get", reason);
          }); 
@@ -396,7 +465,93 @@
 	   }, function(reason){
         	 console.log("error in processing your request customer", reason);
      	}); 
+	   
+	   $('#loan-give-table tbody').on( 'click', '.del', function () {
+       	var table = $('#loan-give-table').DataTable();
+       	if(confirm('Are you sure !')){
+       		  var currentPage = table.page();
+       		  //console.log($(this).attr('delid'));
+       		  var URL = "http://localhost:8080//mortage-app/api/voucher/"+parseInt($(this).attr('delid'));
+       		  buildAjax(URL, "POST").then(function(respJson){
+       		  },function(reason){
+ 		           	 console.log("error in processing your request", reason);
+  	           	}); 
+       		  var row = table.row( $(this).parents('tr') );
+                 var rowNode = row.node();
+                 row.remove();
+                 table.page(currentPage).draw(false);
+       	}
+        
+           
+       });
+       var r = null;
+       $('#loan-give-table tbody').on( 'click', '.upd', function () {
+       	var table = $('#loan-give-table').DataTable();
+       	  r = table.row( $(this).parents('tr') );
+       		  var currentPage = table.page();
+       		  //console.log($(this).attr('delid'));
+       		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+       		  buildAjax(URL, "GET").then(function(respJson){
+       			  console.log(respJson);
+       			  
+       			  var customer_name_field = $("#cust_name"); 
+       			  var acc_name_field = $("#trans_acc_name");
+       			  var trans_curr_field = $("#trans_curr");
+       			  var trans_cheque_number_field = $("#trans_cheque_number");
+       			  var trans_bank_field = $("#trans_bank");
+       			  var trans_reminder_date_field = $("#trans_reminder_date");
+       			  var trans_interest_rate_field = $("#trans_interest_rate");
+       			  var trans_loan_amount_field = $("#trans_loan_amount");
+       			  var date_field = $("#date");
+       			  var serial_no_field = $("#serial_no");
+       			//  var cust_name_field = $("#cust_name");
+       			  var cust_mobile_field = $("#cust_mobile");
+       			  var cust_addr_field = $("#cust_addr");
+       			  var cust_id_field = $("#cust_id");
+       			  var custId_field = $("#custId");
+       			  var voucher_id_field = $("#voucher_id");
+       			  var transaction_id_field = $("#transaction_id");
+       			  var account_id_field = $("#account_id");
+       			  
+       			    customer_name_field.val(respJson.customer.customerName);
+       			    cust_id_field.val(respJson.customer.customerId);
+       		        cust_mobile_field.val(respJson.customer.mobile);
+       		        cust_addr_field.val(respJson.customer.address);
+       		        
+       		        $("#bori").val(respJson.mortgage.bori);
+       		        $("#ana").val(respJson.mortgage.ana);
+       		        $("#ratti").val(respJson.mortgage.ratti);
+       		        $("#point").val(respJson.mortgage.point);
+       		        $("#gram").val(respJson.mortgage.gram);
+       		        $("#interestRate").val(respJson.mortgage.interestRate);
+       		        $("#loanAmount").val(respJson.mortgage.loanAmount);
+       		        /* $("#product").val(respJson.mortgage.product); */
+       		        $("#cust_id").val(respJson.transaction.id);
+       		        $("#reminder_date").val(respJson.transaction.transactionDate);
+       		        $("#storage").val(respJson.transaction.storage);
+       		        $("#note").val(respJson.transaction.note);
+       		        
+       		        $("#serial").val(respJson.id);
+       		        $("#transaction_serial").val(respJson.transaction.id);
+       		        $("#cust_id").val(respJson.customer.customerId);
+       		        $("#voucher_id").val(respJson.id);
+       		        $("#transaction_id").val(respJson.transaction.id);
+       		        $("#mortgage_id").val(respJson.mortgage.mortgageId);
+       		  },function(reason){
+ 		           	 console.log("error in processing your request", reason);
+  	           	}); 
+       		  /* var row = table.row( $(this).parents('tr') );
+                 var rowNode = row.node();
+                 row.remove();
+                 table.page(currentPage).draw(false); */
+       	
+        
+           
+       });
+       
   }
+  
+  
   
   function setDatePicker(){
 	  let dateConfig = dateSettings;
