@@ -19,8 +19,6 @@ public class CustomerServiceImpl  implements CustomerService{
 	@Autowired
 	public CustomerRepository customerRepository;
 	
-	
-
 	/*public CustomerServiceImpl(CustomerRepository customerRepository){
 		this.customerRepository = customerRepository;
 	}*/

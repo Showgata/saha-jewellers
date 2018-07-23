@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.sahaJwellers.app.model.User;
@@ -13,5 +14,9 @@ public interface UserService {
 	Optional<User> fetchUserByUsernameAndPassword(String username, String password);
 
 	Optional<User> fetchUserByUsername(String username);
+
+	List<User> fetchAllUser();
+
+	void deleteUser(Long id);
 
 }

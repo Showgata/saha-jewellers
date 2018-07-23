@@ -58,7 +58,7 @@ public class MortgageAppSecurity  extends WebSecurityConfigurerAdapter  {
 		     .authorizeRequests()
 		 	    .antMatchers("/resources/**","/css/*","/js/**","/fonts/**","/images/**","/fontawesome/**","/mortgage-app/api/**").permitAll()
 		        .antMatchers("/login*").anonymous()
-				.antMatchers("/mortgage-app/web/**").hasRole("USER")
+				//.antMatchers("/mortgage-app/web/**").
 				.anyRequest().authenticated()
 		 .and()
 		 	.formLogin().loginPage("/login").successHandler(successHandler()).failureUrl("/login?error=true").permitAll()

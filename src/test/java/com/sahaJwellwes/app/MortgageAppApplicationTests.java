@@ -27,15 +27,10 @@ public class MortgageAppApplicationTests {
 	@Test
 	@Transactional
 	public void createUser() {
-		User user = new User();
+	User user = new User();
 		user.setPassword(new BCryptPasswordEncoder().encode("password"));
 		user.setRole("USER");
 		user.setUsername("arka");
-		userRepository.save(user);
-		user = new User();
-		user.setPassword(new BCryptPasswordEncoder().encode("password"));
-		user.setRole("ADMIN");
-		user.setUsername("admin");
 		userRepository.save(user);
 	}
 

@@ -1,16 +1,24 @@
 package com.sahaJwellers.app.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="user_tbl")
@@ -36,6 +44,13 @@ public class User {
 	
 	@Column(name="role")
 	private String role;
+	
+	@JsonIgnore
+	@CreationTimestamp
+	private Date createdTimestamp;
+	
+	@UpdateTimestamp
+	private Date updateTimestamp;
 	
 	public Long getUserId() {
 		return userId;
