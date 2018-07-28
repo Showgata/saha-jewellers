@@ -22,10 +22,10 @@ public interface VoucherService {
 
 	List<Voucher> fetchAllTodaysMortgageVoucher();
 
-	List<Voucher> fetchAllTodaysLoanGiveVoucher();
+	List<Voucher> fetchAllVoucherInDescOrder(String type);
 
 	List<Voucher> fetchAllTodaysLoanTakeVoucher();
 
-	List<Voucher> fetchAllVoucherInDescOrder(String type);
+	List<Voucher> fetchAllTodaysLoanGiveVoucher();
 
 }

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sahaJwellers.app.model.Customer;
 import com.sahaJwellers.app.model.Product;
 import com.sahaJwellers.app.repository.ProductRepository;
 

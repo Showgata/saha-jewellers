@@ -13,6 +13,12 @@ body{
     font-weight: 400;
    font-family: 'Open Sans', sans-serif;
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+	background-color:#545958;
+	border:1px solid #ABADB3;
+	padding:2px 1px;
+	
+	}
 .input_field{
 	color:white;
 }
@@ -302,13 +308,26 @@ h1,h2,h3,h4,h5,h6{
       padding: 30px 15px;
       padding-bottom: 70px;
 }
+ .control-label{
+	font-size:12px;
+}
+
+.form-group{
+	margin-bottom:10px;
+}
+.content{
+	height:100%;
+}
 .form-control{
     border-color: #7b777a;
+    color:white;
     background-color: transparent;
     box-shadow: none;
     -webkit-box-shadow: none;
     border-radius: 2px;
     -webkit-border-radius: 2px;
+    font-size:12px;
+    height:30px;
 }
 .form-control:focus{
     border-color:  #f7b03e;
@@ -847,4 +866,9 @@ body.widescreen.fixed-left .side-menu .metismenu>li .nav-second-level{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+}
+
+.dataTables_scroll
+{
+    overflow:auto;
 }

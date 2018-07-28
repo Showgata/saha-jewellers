@@ -1,6 +1,5 @@
 package com.sahaJwellers.app.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -37,13 +36,4 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findByUsername(username);
 	}
 	
-	@Override
-	public List<User> fetchAllUser(){
-		return userRepository.listAllUser();
-	}
-	
-	@Override
-	public void deleteUser(Long id) {
-		userRepository.deleteById(id);
-	}
 }

@@ -176,6 +176,7 @@ and open the template in the editor.
 												<option>Wages</option>
 												<option>Water</option>
 												<option>Web - site Expense</option>
+												<option>Other</option>
 											</select>
 										</div>
 										<div class="form-group col-sm-3" style="padding-left: 10px;">
@@ -396,7 +397,7 @@ and open the template in the editor.
 	       }	 */
 	       
 	       function setCustomerAutoCompleteList(){
-	    	   var URL = "http://localhost:8080/mortgage-app/api/customer/";
+	    	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
 	    	   var autoCompleteList = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -411,8 +412,8 @@ and open the template in the editor.
 	     		          let custId = parseInt(txt.split(">")[1]);
 	     		          $("#cust_id").val(custId); 
 	     		          $("#custId").val(custId);
-	     		          
-	     		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
+	     		        
+	     		         buildAjax( getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
 	     		        	$("#cust_address").val(respJson.address);
 	     		       	    $("#cust_mobile").val(respJson.mobile);
 	     		         },function(reason){
@@ -458,7 +459,7 @@ and open the template in the editor.
 			  let voucherDate_field = $("#voucher_date");
 			  let voucher_Id = $("#voucher_id");
 			  
-			  var URL = "http://localhost:8080/mortgage-app/api/voucher/expense-for-today";
+			  var URL = getAbsoluteUrl("mortgage-app/api/voucher/expense-for-today");
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -545,6 +546,8 @@ and open the template in the editor.
 			  let transaction = {};
 			  let customer = {};
 			  
+			  
+			  
 			  customer["customerId"] = formatIntegerValue(customerId_field.val());
 			  customer["customerName"] = formatValue(custName_field.val());
 			  customer["mobile"] = formatIntegerValue(custPhone_field.val());
@@ -563,7 +566,7 @@ and open the template in the editor.
 			  voucher["id"] = formatIntegerValue(voucher_Id.val());
 			  
 			  var data = [];
-			  buildAjaxForJson("http://localhost:8080/mortgage-app/api/voucher/", "POST", voucher).then(function(respJson){
+			  buildAjaxForJson(getAbsoluteUrl("mortgage-app/api/voucher/"), "POST", voucher).then(function(respJson){
 				  
 				  var t = dataTable;
 				  let val = respJson;
@@ -634,7 +637,8 @@ and open the template in the editor.
 	        
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+	        		  
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
 	        		  buildAjax(URL, "GET").then(function(respJson){
 	        			  console.log(respJson);
 	        		      /*   let bori_field = $("#bori");
@@ -695,7 +699,8 @@ and open the template in the editor.
 	        	if(confirm('Are you sure !')){
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('delid'));
+	        		  
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid'));
 	        		  buildAjax(URL, "POST").then(function(respJson){
 	        		  },function(reason){
 	  		           	 console.log("error in processing your request", reason);

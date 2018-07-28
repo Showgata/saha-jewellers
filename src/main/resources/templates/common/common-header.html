@@ -171,11 +171,11 @@
                         <div class="clearfix">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/images/user.png" alt="" class="pull-left">
-                                <span>up bar <br><em>Admin</em></span>                            
+                                <span>User : <br><em><span th:text="${session.username}"></span></em></span>                            
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Account</a></li>
-                                <li><a href="/mortgage-app/web/settings">Settings</a></li>
+                               <!--  <li><a href="#">Account</a></li> -->
+                                <li><a th:href="@{/mortgage-app/web/settings}">Settings</a></li>
                                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                             </ul>
                         </div>
@@ -196,58 +196,58 @@
                             <span>ADMIN <br><em>Admin</em></span>                            
                         </a>
                         <ul class="dropdown-menu profile-drop">
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                           <!--  <li><a href="#">Account</a></li> -->
+                            <li><a href="/mortgage-app/web/settings">Settings</a></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
                     </li>
                     
-                     <li class="active "><a href="home.html"><i class="fa fa-home"></i>  <span><font color="#f7b03e">Home</font></span></a></li>    
-                    <li class=""><a href="/mortgage-app/web/customer"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
+                     <li  th:classappend="${menu}=='home' ? active : ''"><a th:href="@{/mortgage-app/web/}"><i class="fa fa-home"></i>  <span><font color="#f7b03e">Home</font></span></a></li>    
+                    <li class="" th:classappend="${menu}=='customer' ? active : ''"><a th:href="@{/mortgage-app/web/customer}"><i class="fa fa-address-book-o"></i>  <span>Customer</span></a></li>  
 
-                    <li class="gold-mortgage">
+                    <li class="gold-mortgage"  th:classappend="${menu}=='goldmortgage' ? active : ''">
                      <a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold Mortgage</span><span class="fa arrow"></span></a> 
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse" th:classappend="${menu}=='goldmortgage' ? in : ''">
                             <li ><a href="/mortgage-app/web/voucher">Create Voucher</a></li>
                             <li><a href="/mortgage-app/web/voucher_transaction">customer transaction</a></li>
                           
                            
                         </ul>
                     </li>
-                    <li>
+                    <li th:classappend="${menu}=='expense' ? active : ''">
                         <a href="#"><i class="fa fa-money"></i> <span>Expense </span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse" th:classappend="${menu}=='expense' ? in : ''">
                             <li><a href="/mortgage-app/web/exp">Create Expense Voucher</a></li>
                             <li><a href="/mortgage-app/web/expense-transaction">Expense Transaction</a></li>
                           
                         </ul>
                     </li>
-                    <li>
+                    <li th:classappend="${menu}=='loan-take' ? active : ''">
                         <a href="#"><i class="fa fa-reply"></i> <span>loan Take</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse" th:classappend="${menu}=='loan-take' ? in : ''">
                             <li><a href="/mortgage-app/web/loan-take">Create Loan Take Voucher</a></li>
                             <li><a href="/mortgage-app/web/loan-take-transaction">Loan Take Transaction</a></li>
                            
                         </ul>
                     </li>
-                    <li>
+                    <li th:classappend="${menu}=='loan-give' ? active : ''">
                         <a href="#"><i class="fa fa-share"></i> <span>loan Give</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse" th:classappend="${menu}=='loan-give' ? in : ''">
                             <li><a href="/mortgage-app/web/loan-give">Create Loan Give Voucher</a></li>
                             <li><a href="/mortgage-app/web/loan-give-transaction">Loan Give Transaction</a></li>
                         </ul>
                     </li>
-                    <li class="">
+                    <li class="" th:classappend="${menu}=='capital' ? active : ''">
                         <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Capital Investment</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse" th:classappend="${menu}=='capital' ? in : ''">
                             <li><a href="/mortgage-app/web/create_capital">Create Capital Investment Voucher</a></li>
                             <li><a href="/mortgage-app/web/capital_trans">Capital Investment Transaction</a></li>
                          
                         </ul>
                     </li>
-					  <li  >
+					  <li  th:classappend="${menu}=='custom' ? active : ''">
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Custom </span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse" th:classappend="${menu}=='custom' ? in : ''">
                             <li><a href="/mortgage-app/web/custom_report">Custom report</a></li>
                             <li><a href="/mortgage-app/web/customer_credit_list">Customer Credit List</a></li>
                           <li><a href="/mortgage-app/web/cash_ledger">Cash Ledger</a></li>
@@ -255,9 +255,9 @@
                         </ul>
                     </li>
                    
-                    <li>
+                    <li th:classappend="${menu}=='report' ? active : ''">
                         <a href="#"><i class="fa fa-sitemap"></i> <span>Reports </span><span class="fa arrow"></span></a>
-                                          <ul class="nav nav-second-level collapse">
+                                          <ul class="nav nav-second-level collapse" th:classappend="${menu}=='report' ? active : ''">
                             <li>
                                 <a href="/mortgage-app/web/daily">Daily Report </a></li>                        
                             <li><a href="/mortgage-app/web/weekly">Weekly Report</a>
@@ -292,6 +292,7 @@
         <script src="/js/dataTables.colVis.js"></script>
         <script src="/js/dataTables.bootstrap.js"></script>
         <script src="/js/demo-datatable.js"></script>
+        <script src="/js/moment.js"></script>
       <!-- new js -->
 		<!-- <script
 		src="/js/jqueryy-datatable.js"></script> -->

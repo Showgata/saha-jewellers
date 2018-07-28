@@ -56,7 +56,7 @@
 	   
 	   
 	   $("#cust_form").on('submit',function(e){
-		   event.preventDefault();
+		   e.preventDefault();
 		
 		   let customer = {};
 		   customer["customerId"] = formatIntegerValue(custId_field.val());

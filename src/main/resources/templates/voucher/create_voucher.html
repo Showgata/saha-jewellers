@@ -781,7 +781,8 @@ and open the template in the editor.
        }	 */
        
        function fetchVouchers(){
-    	   var URL = "http://localhost:8080/mortgage-app/api/voucher/mortgage-for-today/";
+    	  
+    	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/mortgage-for-today/");
     	   var data = [];
     	   var autoCompleteList = [];
     	   buildAjax(URL, "GET").then(function(respJson){
@@ -904,8 +905,8 @@ and open the template in the editor.
   		        	var txt = ui.item.label;
   		          let custId = parseInt(txt.split(">")[1]);
   		          $("#cust_id").val(custId); 
-  		          
-  		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
+  		        
+  		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
   		        	$("#cust_address").val(respJson.address);
   		       	    $("#cust_mobile").val(respJson.mobile);
   		         },function(reason){
@@ -960,7 +961,7 @@ and open the template in the editor.
        }
        
        function saveVoucher(){   	   
-    	var URL = "http://localhost:8080//mortgage-app/api/voucher/";
+    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/")
     	var voucher = {
     			/* id : null
     			date	null
@@ -1131,7 +1132,8 @@ and open the template in the editor.
         	if(confirm('Are you sure !')){
         		  var currentPage = table.page();
         		  //console.log($(this).attr('delid'));
-        		  var URL = "http://localhost:8080//mortage-app/api/voucher/"+parseInt($(this).attr('delid'));
+        		  
+        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
         		  buildAjax(URL, "POST").then(function(respJson){
         		  },function(reason){
   		           	 console.log("error in processing your request", reason);
@@ -1150,7 +1152,8 @@ and open the template in the editor.
         	  r = table.row( $(this).parents('tr') );
         		  var currentPage = table.page();
         		  //console.log($(this).attr('delid'));
-        		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+        		  
+        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
         		  buildAjax(URL, "GET").then(function(respJson){
         			  console.log(respJson);
         		        let bori_field = $("#bori");

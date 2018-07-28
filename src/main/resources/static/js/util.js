@@ -1,4 +1,5 @@
-var websiteInitialUrl = "http://localhost:8080";      
+var websiteInitialUrl = "http://localhost:8080";   
+//websiteInitialUrl = "http://node16543-sahjwel.mj.milesweb.cloud";
 var disabledDays = [0];
 var dateSettings = {
     language: 'en',

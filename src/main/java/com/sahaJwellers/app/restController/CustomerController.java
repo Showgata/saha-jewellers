@@ -67,6 +67,7 @@ public class CustomerController {
 	
 	@GetMapping("/today")
 	public List<Customer> fetchCustomerListForToday(){
-		return customerService.fetchAllCustromerByDate(DateUtil.atStartOfDay(new Date()));
+		//return customerService.fetchAllCustromerByDate(DateUtil.atStartOfDay(new Date()));
+		return customerService.findAllCustomer();
 	}
 }

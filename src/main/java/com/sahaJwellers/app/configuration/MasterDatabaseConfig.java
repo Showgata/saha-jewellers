@@ -68,13 +68,19 @@ public class MasterDatabaseConfig {
 
         HikariDataSource ds = new HikariDataSource();
 
-        ds.setUsername("toor");
-        ds.setPassword("toor@1993");
-       // ds.setJdbcUrl("jdbc:mysql://127.0.0.1/mordgage_db");
-        ds.setJdbcUrl("jdbc:mysql://127.0.0.1/gozeonlg_mortgage_db");
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setPoolName("modgage_database_Pool");
+//        ds.setUsername("root");
+//        ds.setPassword("GPHveo39293");
+//        ds.setJdbcUrl("jdbc:mysql://node16542-sahjwel.mj.milesweb.cloud/mortgage_db");
+//        ds.setDriverClassName("com.mysql.jdbc.Driver");
+//        ds.setPoolName("modgage_database_Pool");
 
+      ds.setUsername("toor");
+      ds.setPassword("toor@1993");
+      ds.setJdbcUrl("jdbc:mysql://localhost:3306/gozeonlg_mortgage_db");
+      ds.setDriverClassName("com.mysql.jdbc.Driver");
+      ds.setPoolName("modgage_database_Pool");
+        
+        
         // HikariCP settings
         // Maximum number of actual connection in the pool
         ds.setMaximumPoolSize(20000);
