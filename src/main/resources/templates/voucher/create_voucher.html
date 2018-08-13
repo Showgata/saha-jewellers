@@ -585,15 +585,21 @@ and open the template in the editor.
 								</select> <input
 									type="text" name="add_product_Name" id="product_added" disabled placeholder="Other Product Name" /><br/><label for="productQuantity">Quantity:</label> <input
 									type="text" id="productQuantity" name="productQuantity" /> <input
-									type="hidden" name="product_Id" id="productId" /></li>
+									type="hidden" name="product_Id" id="productId" /><button id="add_prod"
+								>Add
+									&rarr;</button></li>
 									
 							</ul>
+							<ul class="list-inline" id="prod_list">
+  <li class="list-inline-item init">Product : Quantity</li>
+</ul>
+
 						</div>
 						<div class="panel-group"></div>
 						<ul class="pager">
-							<li class="previous"><a href="#"
+							<li class="previous"><button
 								onclick="javascript:toggleModal()" data-toggle="modal">Save
-									&rarr;</a></li>
+									&rarr;</button></li>
 						</ul>
 					</div>
 				</div>
@@ -604,7 +610,14 @@ and open the template in the editor.
 	</div>
 
  <div th:replace="/common/common-header :: common-required-scripts"></div>
-	
+<script>
+	$("#add_prod").click(function(){
+		let prodName = $("#productName").val();
+		let productQuantity = $("#productQuantity").val();
+		$("#prod_list").append(" <li class='list-inline-item init'>"+prodName+" : "+productQuantity+"</li>");
+	})
+
+</script>	
 	<!-- Plugins  -->
 <!-- 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jqueryy.js"></script>
@@ -794,7 +807,7 @@ and open the template in the editor.
           			
           			 data.push([(val.id==null?"0":val.id),
           				 val.customer.customerName,
-          				 (val.transaction.trasnsactionSerial==null?"":val.transaction.transactionSerial),
+          				 (val.transaction.transactionSerial==null?"":val.transaction.transactionSerial),
           				 (val.customer.customerId==null?"":val.customer.customerId),
           				 val.date,
           				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
@@ -961,7 +974,7 @@ and open the template in the editor.
        }
        
        function saveVoucher(){   	   
-    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/")
+    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
     	var voucher = {
     			/* id : null
     			date	null

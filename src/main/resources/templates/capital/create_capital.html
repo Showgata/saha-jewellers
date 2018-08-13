@@ -22,18 +22,16 @@ and open the template in the editor.
                       
 
                         <!--end widget-->
-
+						<input type="hidden" id="voucher_update_id" th:value=${voucherId}/>
                         <div class="row">
                              <div class="col-sm-4 h6" style="margin-top:-10px;">
                                 <div class="panel-box">
                                     <h4>Customer Information</h4>
                                     <form role="form">
-                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" class="form-control"></div>
-									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" class="form-control"></div>
-                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile" class="form-control"></div>
-                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" class="form-control"></div>
-									 
- 
+                                    <div class="form-group"><label>Customer Name</label> <input id="cust_name" type="text" placeholder="Enter name" class="form-control"></div>
+									<div class="form-group"><label>ID</label> <input type="text" id="cust_id" placeholder="Enter id" class="form-control"></div>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" id="cust_mobile" placeholder="Enter mobile" class="form-control"></div>
+                                    <div class="form-group"><label>Address</label> <input type="text" id="cust_address" placeholder="Enter address" class="form-control"></div>
 								  <div>
                                        <label></label>
                                     </div>
@@ -42,28 +40,7 @@ and open the template in the editor.
                                 </div>
 								
                             </div >
-                            <style>
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
-</style>
-                            <div class="col-sm-5 h6"  style="margin-top:10px;">
+                                <div class="col-sm-5 h6"  style="margin-top:10px;">
                                 <div class="panel-box">
                                     <h4>Transaction Details</h4>
                                     <div id="wizard" class="bwizard">
@@ -79,18 +56,16 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Amount" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Amount" name="amount" id="trans_amount" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Note</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Note" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Note" name="note" id="trans_note" type="text">
                                                         </div>
-                                                    </div>
-                                         
-                                                                                                        
-                                                    
+                                                    </div>                       
+                                                    <input type="hidden" id="transaction_id"/>                                                                                                                                            
 													<!-- End .control-group  -->
                                                 </div>
                                               
@@ -129,19 +104,19 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Date</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="date" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="date" name="date" id="voucher_date" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
                                                         <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg " style="color:#f7b03e;" placeholder="sl no." name="lastname" value="22220" type="text">
+                                                            <input class="form-control input-lg " style="color:#f7b03e;" placeholder="sl no." name="sl_no" id="sl_no" value="0" type="text">
                                                         </div>
                                                     </div>
                                                     
                                                     
-     
+     									<input type="hidden" id="voucher_id"/>
                                                   
                                                                                                         
                                                     
@@ -159,38 +134,43 @@ and open the template in the editor.
 							
 								<ul class="pager" >
 							
-                                            <li class="previous input-lg" ><a href="#" style="margin-top:20px;">Save &rarr;</a>
+                                            <li class="previous input-lg" ><button class="btn btn-border-theme btn-xs" type="button" style="margin-top:20px;"id="save">Save &rarr;</button>
                                             </li>
                                        
                                         </ul>
 							
                         </div>
+                                                  <style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+                           
  <div class="row"  >
                              <div class="col-sm-12" style="overflow: scroll;height:350px;margin-top:-20px">
-							 <div class="panel-box">
-							 
-                                    
-									   
-                                           <style>
-                                               .pane-box{
-    padding: 15px;
-  background: #272a31;
-    margin-bottom: 20px;
-                                               }
-    .table{
-        height:200px;
-                                                   
-                                               }
-    
-
-                                           </style>
-										   
+							 <div class="panel-box">	   
                                     <div class="table-responsive">
 									
-                                                      <input class="form-control" style="width:150px;float:right;" placeholder="total capital invest " name="vdetails" type="text">
-									  <input class="form-control" style="width:150px;" placeholder="total investment" name="lamount" type="text">
+                                                      <input class="form-control" style="width:150px;float:right;" id="count" placeholder="total capital invest " name="vdetails" type="text">
+									  <input class="form-control" style="width:150px;" id="total_inv" placeholder="total investment" name="lamount" type="text">
                                                 
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                          <table id="capital_table" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
 											<th>ID</th>
@@ -216,14 +196,10 @@ and open the template in the editor.
                                     </table>
                                     </div>
                                     <div class="clearfix"></div>
-                                
-
-							 </div>
+                                </div>
 							 </div>
 							 </div>
                      
-
-
                     </div><!--content-->               
                 </div><!--content page-->
             </div><!--end wrapper-->
@@ -231,7 +207,298 @@ and open the template in the editor.
         </div>
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
-   <script src="/js/customer/customer.js"></script>
+   <script>
+   $(document).ready(function () {
+	   listAllCapital();
+	   setAutoComplete();
+	   $("#voucher_date").datepicker(dateSettings);
+	   reset();
+   });
+   var capitalTable = null;
+   function listAllCapital(){
+	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/capital-for-today");
+	   if($("#voucher_update_id").val().trim()!=""){
+		   $("#voucher_update_id").val($("#voucher_update_id").val().trim().split("/")[0]);
+		   updateVoucher($("#voucher_update_id").val());
+		   URL = getAbsoluteUrl("mortgage-app/api/voucher/capital/"+$("#voucher_update_id").val());
+	   }
+	   var data = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+     		console.log(respJson);
+     		
+     		 jQuery.each(respJson, function(i, val) {
+       			
+     			data.push([(val.id==null?"0":val.id),
+     				 val.customer.customerName,
+     				 (val.transaction.id==null?"":val.transaction.id),
+     				 (val.customer.mobile==null?"0":val.customer.mobile),
+     				 (val.customer.address==null?"":val.customer.address),
+     				(val.transaction.amount==null?"0.0":val.transaction.amount),
+     				(val.transaction.note==null?"":val.transaction.note),
+     				 val.date,
+     				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+     				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+     			 ]);  
+       		}); 
+     		
+     		capitalTable = $('#capital_table').DataTable({
+        		data:           data,
+                deferRender:    true,
+                scrollY:        100,
+                scrollCollapse: true,
+                scroller:       true,
+                "order": [],
+				"footerCallback": function ( row, data, start, end, display ) {
+        		var api = this.api(), data;
+        		
+        		   var intVal = function ( i ) {
+                       return typeof i === 'string' ?
+                           i.replace(/[\$,]/g, '')*1 :
+                           typeof i === 'number' ?
+                               i : 0;
+                   };
+        
+                   // Total over all pages
+                   let total = api
+                       .column( 5 )
+                       .data()
+                       .reduce( function (a, b) {
+                           return intVal(a) + intVal(b);
+                       }, 0 );
+                   
+                   var rowsCount = api
+                   .column( 5 )
+                   .data().length;
+                   
+                   $("#total_inv").val(total);
+                   $("#count").val(rowsCount);
+        		
+    			}
+        	});  
+     		},function(reason){
+		       	 console.log("error in processing your request", reason);
+	       	}); 
+	   
+   }
+   
+   
+   
+   function setAutoComplete(){
+	   
+	   var autoCompleteList = [];
+	   var URL = getAbsoluteUrl("mortgage-app/api/customer/today");
+	   buildAjax(URL, "GET").then(function(respJson){
+		   jQuery.each(respJson, function(i, val) {
+			   
+				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+			   
+		   });
+	   
+		 $( "#cust_name" ).autocomplete({
+		        source: autoCompleteList,
+		        select: function (event, ui) {
+		        	var txt = ui.item.label;
+		          let custId = parseInt(txt.split(">")[1]);
+		          $("#cust_id").val(custId); 
+		        
+		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
+		        	$("#cust_address").val(respJson.address);
+		       	    $("#cust_mobile").val(respJson.mobile);
+		         },function(reason){
+		           	 console.log("error in processing your request", reason);
+	           	}); 
+		          
+		      }
+		      });
+	   }, function(reason){
+       	 console.log("error in processing your request customer", reason);
+     	}); 
+   }
+   
+   function reset(){
+	   $("#cust_name").val("");
+	   $("#cust_id").val("");
+	   $("#cust_mobile").val("");
+	   $("#cust_address").val("");
+	   $("#trans_amount").val("");
+	   $("#trans_note").val("");
+	   $("#voucher_date").val(GetFormattedDate());
+	   $("#sl_no").val("");
+	   $("#transaction_id").val("");
+	   $("#voucher_id").val("");
+	   
+   }
+   	;(function(){
+   		
+   		$("#save").click(function(e){
+   			let cust_name = formatValue($("#cust_name").val());
+   			let cust_id = formatValue($("#cust_id").val());
+   			let cust_mobile = formatValue($("#cust_mobile").val());
+   			let cust_address = formatValue($("#cust_address").val());
+   			let trans_amount = formatFloatValue($("#trans_amount").val());
+   			let trans_note = formatValue($("#trans_note").val());
+   			let voucher_date = formatValue($("#voucher_date").val());
+   			let sl_no = formatValue($("#sl_no").val());
+   			
+   			let customer = {};
+   			
+   	    	customer["address"]=cust_address;
+   	    	customer["mobile"]=cust_mobile;
+   	    	customer["customerId"]=cust_id;
+   	    	customer["customerName"]=cust_name;
+   	    	
+   	    	let transaction = {};
+   	    	
+   	        transaction["amount"] = trans_amount;
+   	        transaction["note"] = trans_note;
+   	      //  transaction["storage"] = formatIntegerValue(storage.val());
+   	        transaction["id"] = formatIntegerValue($("#transaction_id").val());
+   	        
+   	        let voucher = {};
+   	        
+   	        voucher["id"] = formatIntegerValue($("#voucher_id").val());
+   	        voucher["transaction"] = transaction;
+   	 	    voucher["customer"] = customer;
+	    	voucher["type"] = "capital";
+	    	voucher["date"] = voucher_date;
+	    	voucher["serial"] = sl_no;
+	    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
+	    	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
+	    		if(voucher["id"] != "" && voucher["id"] != null) return;
+	    		
+	    		reset();
+	    		
+	    		var t = $('#capital_table').DataTable();
+	       		if(parseInt($("#voucher_id").val())==parseInt(respJson.id)){
+					var rowNode = r.node();
+					r.remove();
+					capitalTable.page(t.page()).draw(false);
+				}
+	       		
+	       		console.log(respJson);
+	       		let val = respJson;       		 
+	       		 
+	       		t.row.add([(val.id==null?"0":val.id),
+     				 val.customer.customerName,
+     				 (val.transaction.id==null?"":val.transaction.id),
+     				 (val.customer.mobile==null?"0":val.customer.mobile),
+     				 (val.customer.address==null?"":val.customer.address),
+     				(val.transaction.amount==null?"0.0":val.transaction.amount),
+     				(val.transaction.note==null?"":val.transaction.note),
+     				 val.date,
+     				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+     				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+     			 ]).draw();  
+	 			
+	       		moveDataTableRow(1,t);
+	       		
+	    		
+	    	},function(reason){
+	          	 console.log("error in processing your voucher request", reason);
+	       	}); 
+   		});
+   		
+   		//update and delete
+   		
+   		
+   	  $('#capital_table tbody').on( 'click', '.del', function () {
+      	var table = $('#capital_table').DataTable();
+      	if(confirm('Are you sure !')){
+      		  var currentPage = table.page();
+      		  //console.log($(this).attr('delid'));
+      		  
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
+      		  buildAjax(URL, "POST").then(function(respJson){
+      		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+ 	           	}); 
+      		  var row = table.row( $(this).parents('tr') );
+                var rowNode = row.node();
+                row.remove();
+                table.page(currentPage).draw(false);
+      	}
+       
+          
+      });
+      var r = null;
+      $('#capital_table tbody').on( 'click', '.upd', function () {
+      	var table = $('#capital_table').DataTable();
+      	  r = table.row( $(this).parents('tr') );
+      		  var currentPage = table.page();
+      		  //console.log($(this).attr('delid'));
+      		  
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
+      		  buildAjax(URL, "GET").then(function(respJson){
+      			  console.log(respJson);
+  					let val = respJson;
+      		        
+      		        let cust_name_field = $("#cust_name");
+      		        let cust_id_field = $("#cust_id");
+      		        let cust_mobile_field = $("#cust_mobile");
+      		        let cust_address_field = $("#cust_address");
+      		        let trans_amount_field = $("#trans_amount");
+      		        let trans_note_field = $("#trans_note");
+      		        let trans_id_field = $("#trans_id");
+      		        let voucher_date_field = $("#voucher_date");
+      		        let voucher_serial_field = $("#sl_no");
+      		        
+      		        cust_name_field.val(val.customer.customerName);
+      		        cust_id_field.val(val.customer.customerId);
+      		        cust_mobile_field.val(val.customer.mobile);
+      		        cust_address_field.val(val.customer.address);
+      		        voucher_date_field.val(val.date);
+      		        voucher_serial_field.val(val.id);
+      		        $("#voucher_id").val(val.id);
+      		        trans_note_field.val(val.transaction.note);
+      		        trans_id_field.val(val.transaction.id);
+      		        trans_amount_field.val(val.transaction.amount==null?"0.00":val.transaction.amount);
+      		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+ 	           	}); 
+      		  /* var row = table.row( $(this).parents('tr') );
+                var rowNode = row.node();
+                row.remove();
+                table.page(currentPage).draw(false); */
+      	
+       
+          
+      });
+   		
+   	})();
+
+   	
+    function updateVoucher(vid){
+    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+vid);
+		  buildAjax(URL, "GET").then(function(respJson){
+			  console.log(respJson);
+				let val = respJson;
+				//window.location.href=getAbsoluteUrl("mortgage-app/web/update_capital_trans/"+val.id);
+		    
+		        let cust_name_field = $("#cust_name");
+		        let cust_id_field = $("#cust_id");
+		        let cust_mobile_field = $("#cust_mobile");
+		        let cust_address_field = $("#cust_address");
+		        let trans_amount_field = $("#trans_amount");
+		        let trans_note_field = $("#trans_note");
+		        let trans_id_field = $("#trans_id");
+		        let voucher_date_field = $("#voucher_date");
+		        let voucher_serial_field = $("#sl_no");
+		        
+		        cust_name_field.val(val.customer.customerName);
+		        cust_id_field.val(val.customer.customerId);
+		        cust_mobile_field.val(val.customer.mobile);
+		        cust_address_field.val(val.customer.address);
+		        voucher_date_field.val(val.date);
+		        voucher_serial_field.val(val.id);
+		        $("#voucher_id").val(val.id);
+		        trans_note_field.val(val.transaction.note);
+		        trans_id_field.val(val.transaction.id);
+		        trans_amount_field.val(val.transaction.amount==null?"0.00":val.transaction.amount); 
+		  },function(reason){
+	           	 console.log("error in processing your request", reason);
+         	}); 
+    }
+   </script>
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->

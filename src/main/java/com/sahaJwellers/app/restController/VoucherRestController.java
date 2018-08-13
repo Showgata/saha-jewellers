@@ -79,7 +79,28 @@ public class VoucherRestController {
 		return voucherService.fetchAllVoucherInDescOrder("expense");
 	}
 	
+	@GetMapping("/expense/{id}")
+	public List<Voucher> findAllExpenseByVoucherId(@PathVariable("id") Long id){
+		Voucher voucher = voucherService.findVoucherById(id).get();
+		return voucherService.fetchVoucherByDateAndType("expense", voucher.getUpdateTimestamp());
+	}
+	
+	@GetMapping("/capital")
+	public List<Voucher> findAllCapital(){
+		return voucherService.fetchAllVoucherInDescOrder("capital");
+	}
+	
+	@GetMapping("/capital/{id}")
+	public List<Voucher> findAllCapitalByVoucherId(@PathVariable("id") Long id){
+		Voucher voucher = voucherService.findVoucherById(id).get();
+		return voucherService.fetchVoucherByDateAndType("capital", voucher.getUpdateTimestamp());
+	}
 
+	@GetMapping("/capital-for-today")
+	public List<Voucher> fidAllCapitalForToday(){
+		return voucherService.fetchAllCapitalVoucherForToday();
+	}
+	
 	
 	@GetMapping("/mortgage-for-today")
 	public List<Voucher> findTodaysMortgageVoucher(){

@@ -29,26 +29,26 @@ and open the template in the editor.
                                   	<div class="clearfix" style="padding-top:20px">
 									<form role="form" class="form-inline">
 										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Sl no</label> <input type="text" id="cust_name"
+											<label>Sl no</label> <input type="text" id="slno"
 												placeholder="search by id" class="form-control">
 										</div>
 										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Name</label> <input type="text" id="cust_name"
+											<label>Name</label> <input type="text" id="name"
 												placeholder="search by id" class="form-control">
 												
 										</div>
 									
 										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>ID</label> <input type="text" id="cust_name"
+											<label>ID</label> <input type="text" id="id"
 												placeholder="search by id" class="form-control">
 										</div>
 										<div class="form-group col-sm-2" style="padding-left: 10px;">
-											<label>Amount</label> <input type="text" id="cust_name"
+											<label>Amount</label> <input type="text" id="amount"
 												placeholder="search by id" class="form-control">
 										</div>
 										
 										<div class="form-group col-sm-2 " style="padding-top: 20px;">
-											<a href="#" class="btn btn-border-theme btn-xs">View Report</a> 
+											<button class="btn btn-border-theme btn-xs"  type="button" id="search">View Report</button> 
 										</div>
 										
 									</form>
@@ -91,26 +91,13 @@ and open the template in the editor.
                              <div class="col-sm-12" style="overflow: hidden;height:550px;">
 							 <div class="panel-box">
 							 
-                                    
-									   
-                                           <style>
-                                               .pane-box{
-    padding: 15px;
-  background: #272a31;
-    margin-bottom: 20px;
-                                               }
-    .table{
-        height:200px;
-                                                   
-                                               }
-    
-
-                                           </style>
-										   
+                                   
                                     <div class="table-responsive">
-									
+									  <input class="form-control" style="width:150px;float:right;" id="count" placeholder="total capital invest " name="vdetails" type="text">
+									  <input class="form-control" style="width:150px;" id="total_inv" placeholder="total investment" name="lamount" type="text">
+                                                
                                                     
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                          <table id="capital_table" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
 											<th>Sl no</th>
@@ -150,7 +137,172 @@ and open the template in the editor.
         </div>
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
-   <script src="/js/customer/customer.js"></script>
+  <script>
+  $(document).ready(function () {
+	  listAllCapital();
+  });
+  var capitalTable = null;
+  
+  function listAllCapital(){
+	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/capital");
+	   var data = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+    		console.log(respJson);
+    		
+    		 jQuery.each(respJson, function(i, val) {
+      			
+    			data.push([(val.id==null?"0":val.id),
+    				(val.transaction.id==null?"":val.transaction.id),
+    				 val.customer.customerName, 				 
+    				(val.transaction.amount==null?"0.0":val.transaction.amount),
+    				(val.transaction.note==null?"":val.transaction.note),
+    				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+    				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+    			 ]);  
+      		}); 
+    		
+    		capitalTable = $('#capital_table').DataTable({
+       		data:           data,
+               deferRender:    true,
+               scrollY:        100,
+               scrollCollapse: true,
+               scroller:       true,
+               "order": [],
+				"footerCallback": function ( row, data, start, end, display ) {
+       		var api = this.api(), data;
+       		
+       		   var intVal = function ( i ) {
+                      return typeof i === 'string' ?
+                          i.replace(/[\$,]/g, '')*1 :
+                          typeof i === 'number' ?
+                              i : 0;
+                  };
+       
+                  // Total over all pages
+                  let total = api
+                      .column( 3 )
+                      .data()
+                      .reduce( function (a, b) {
+                          return intVal(a) + intVal(b);
+                      }, 0 );
+                  
+                  var rowsCount = api
+                  .column( 3 )
+                  .data().length;
+                  
+                  $("#total_inv").val(total);
+                  $("#count").val(rowsCount);
+       		
+   			}
+       	});  
+    		},function(reason){
+		       	 console.log("error in processing your request", reason);
+	       	}); 
+	   
+  }
+  $('#capital_table tbody').on( 'click', '.del', function () {
+    	var table = $('#capital_table').DataTable();
+    	if(confirm('Are you sure !')){
+    		  var currentPage = table.page();
+    		  //console.log($(this).attr('delid'));
+    		  
+    		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
+    		  buildAjax(URL, "POST").then(function(respJson){
+    		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+	           	}); 
+    		  var row = table.row( $(this).parents('tr') );
+              var rowNode = row.node();
+              row.remove();
+              table.page(currentPage).draw(false);
+    	}
+     
+        
+    });
+    var r = null;
+    $('#capital_table tbody').on( 'click', '.upd', function () {
+    	var table = $('#capital_table').DataTable();
+    	  r = table.row( $(this).parents('tr') );
+    		  var currentPage = table.page();
+    		  //console.log($(this).attr('delid'));
+    		  
+    		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
+    		  buildAjax(URL, "GET").then(function(respJson){
+    			  console.log(respJson);
+					let val = respJson;
+					window.location.href=getAbsoluteUrl("mortgage-app/web/update_capital_trans/"+val.id);
+    		       /*  
+    		        let cust_name_field = $("#cust_name");
+    		        let cust_id_field = $("#cust_id");
+    		        let cust_mobile_field = $("#cust_mobile");
+    		        let cust_address_field = $("#cust_address");
+    		        let trans_amount_field = $("#trans_amount");
+    		        let trans_note_field = $("#trans_note");
+    		        let trans_id_field = $("#trans_id");
+    		        let voucher_date_field = $("#voucher_date");
+    		        let voucher_serial_field = $("#sl_no");
+    		        
+    		        cust_name_field.val(val.customer.customerName);
+    		        cust_id_field.val(val.customer.customerId);
+    		        cust_mobile_field.val(val.customer.mobile);
+    		        cust_address_field.val(val.customer.address);
+    		        voucher_date_field.val(val.date);
+    		        voucher_serial_field.val(val.id);
+    		        $("#voucher_id").val("");
+    		        trans_note_field.val(val.transaction.note);
+    		        trans_id_field.val(val.transaction.id);
+    		        trans_amount_field.val(val.transaction.amount==null?"0.00":val.transaction.amount); */
+    		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+	           	}); 
+    		  /* var row = table.row( $(this).parents('tr') );
+              var rowNode = row.node();
+              row.remove();
+              table.page(currentPage).draw(false); */
+    	
+     
+        
+    });
+   	
+    $("#search").click(function(){
+    	searchBySlno();
+    	searchByName();
+    	searchById();
+    	searchByAmount();
+    });
+    
+    function searchBySlno(){
+    	
+    	capitalTable
+            .column(0)
+            .search($("#slno").val())
+            .draw();
+    }
+    
+    function searchByName(){
+    	
+    	capitalTable
+            .column(2)
+            .search($("#name").val())
+            .draw();
+    }
+    
+ 	function searchById(){
+    	
+ 		capitalTable
+            .column(1)
+            .search($("#id").val())
+            .draw();
+    }
+ 
+  function searchByAmount(){
+ 	
+	  capitalTable
+         .column(3)
+         .search($("#amount").val())
+         .draw();
+ }
+  </script>
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->

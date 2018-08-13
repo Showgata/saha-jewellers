@@ -1,5 +1,5 @@
 var websiteInitialUrl = "http://localhost:8080";   
-//websiteInitialUrl = "http://node16543-sahjwel.mj.milesweb.cloud";
+websiteInitialUrl = "http://node16543-sahjwel.mj.milesweb.cloud";
 var disabledDays = [0];
 var dateSettings = {
     language: 'en',
@@ -15,6 +15,8 @@ var dateSettings = {
         }
     }
 };
+
+
 
 function getAbsoluteUrl(url){
 	return websiteInitialUrl+"/"+url;
@@ -71,6 +73,10 @@ function roundTo(n, digits) {
            	    contentType: "application/json"
            	 })
         }
+        // 2 digit formatted date
+        function format(n){
+        	return n<10? '0'+n:''+n;
+        } 
         
        function formatFloatValue(val){
        		return val==""||isNaN(val)?null:parseFloat(val);

@@ -1,5 +1,6 @@
 package com.sahaJwellers.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,5 +28,9 @@ public interface VoucherService {
 	List<Voucher> fetchAllTodaysLoanTakeVoucher();
 
 	List<Voucher> fetchAllTodaysLoanGiveVoucher();
+
+	List<Voucher> fetchAllCapitalVoucherForToday();
+
+	List<Voucher> fetchVoucherByDateAndType(String type, Date date);
 
 }

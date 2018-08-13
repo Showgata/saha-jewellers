@@ -135,6 +135,15 @@ public class Voucher {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+
+	public Date getUpdateTimestamp() {
+		return updateTimestamp;
+	}
+
+	public void setUpdateTimestamp(Date updateTimestamp) {
+		this.updateTimestamp = updateTimestamp;
+	}
 
 	public Transaction getTransaction() {
 		return transaction;

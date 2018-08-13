@@ -1,5 +1,7 @@
 package com.sahaJwellers.app.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,9 @@ import javax.persistence.Version;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="user_tbl")
@@ -30,12 +35,19 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	@Column(name="password_txt")
+	private String passwordText;
+	
 	@Version
 	@Column(name="version")
 	private Long version;
 	
 	@Column(name="role")
 	private String role;
+	
+	@JsonIgnore
+	@UpdateTimestamp
+	private Date updateTimestamp;
 	
 	public Long getUserId() {
 		return userId;
@@ -75,6 +87,14 @@ public class User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getPasswordText() {
+		return passwordText;
+	}
+
+	public void setPasswordText(String passwordText) {
+		this.passwordText = passwordText;
 	}
 
 	@Override

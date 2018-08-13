@@ -321,7 +321,7 @@ h1,h2,h3,h4,h5,h6{
 .form-control{
     border-color: #7b777a;
     color:white;
-    background-color: transparent;
+    background-color: black;
     box-shadow: none;
     -webkit-box-shadow: none;
     border-radius: 2px;

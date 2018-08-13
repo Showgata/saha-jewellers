@@ -11,7 +11,7 @@ and open the template in the editor.
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:30:05 GMT -->
-<head th:replace="/common/common-header :: common-head"></head>
+<head th:replace="/common/common-header :: common-headpage"></head>
 
 <body class="fixed-left" style="overflow: hidden;">
 
@@ -81,15 +81,15 @@ and open the template in the editor.
                                     <h4>Transaction Details</h4>
                                     <div id="wizard" class="bwizard">
                                         <!-- Start .bwizard -->
-                                     
+                                     <input type="hidden" id="voucher_update_id" th:value=${voucherId}/>
                                         <form class="form-horizontal" role="form">
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab1">
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Expense List</label>
                                                         <div class="col-lg-10 col-md-9">
-														<select id="expense" class="form-control">
-														<option value="">Select Expense</optiono>
+														<select id="expense" class="form-control" name="expense[]" multiple="multiple" >
+														
 														<option>Accounting</option>
 														<option>Advertising</option>
 														<option>Answering Service</option>
@@ -168,11 +168,11 @@ and open the template in the editor.
 														<option>Wages</option>
 														<option>Water</option>
 														<option>Web - site Expense</option>
-														
+														<option value="other">Other</option>
 														
 														
 														</select>
-                                                           <input class="form-control" placeholder="" name="lastname" type="text">
+                                                         <!--   <input class="form-control" id="other_expense" disabled placeholder="other expense" name="other_expense" type="text"> -->
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
@@ -261,30 +261,13 @@ and open the template in the editor.
 								
 							
                         </div>
- <div class="row"  >
+ 						<div class="row">
                              <div class="col-sm-12" style="overflow: scroll;height:350px;margin-top:-20px">
 							 <div class="panel-box">
-							 
-                                    
-									   
-                                           <style>
-                                               .pane-box{
-    padding: 15px;
-  background: #272a31;
-    margin-bottom: 20px;
-                                               }
-    .table{
-        height:200px;
-                                                   
-                                               }
-    
-
-                                           </style>
-										   
-                                    <div class="container">
+						     <div class="container">
 									
-                                                      <input class="form-control" style="width:150px;float:right;" placeholder="no expense voucher" name="vdetails" type="text">
-									  <input class="form-control" style="width:150px;" placeholder="total expense" name="lamount" type="text">
+                                                      <input class="form-control" style="width:150px;float:right;" id="exp_count" placeholder="no expense voucher" name="vdetails" type="text">
+									  <input class="form-control" style="width:150px;" placeholder="total expense" id="tot_exp" name="lamount" type="text">
                                                 
                                           <table  class="table table-striped" id="voucher" cellspacing="0" width="100%">
                                         <thead>
@@ -327,28 +310,7 @@ and open the template in the editor.
 		<!--end wrapper-->
 	</div>
 
-	<!-- Plugins  -->
-	<script src="/js/jquery.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.slimscroll.js"></script>
-	<script src="/js/metisMenu.js"></script>
-	<script src="/js/core.js"></script>
-	<script src="/js/mediaquery.js"></script>
-	<script src="/js/equalize.js"></script>
-	<script src="/js/app.js"></script>
-	<script
-		src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-	<script src="/js/dataTables.bootstrap.js"></script>
-	<script src="/js/dataTables.colVis.js"></script>
-	
-	
-	
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
+ <div th:replace="/common/common-header :: common-required-scripts"></div>
 	<script>
 		  var dataTable;
 		  
@@ -421,7 +383,7 @@ and open the template in the editor.
 	        }
 	       
 	       /* function fetchCustomers(){
-	    	   var URL = "http://localhost:8080/modgage-app/api/customer";
+	    	   var URL = getAbsoluteUrl(mortgage-app/api/customer";
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -434,7 +396,7 @@ and open the template in the editor.
 	       }	 */
 	       
 	       function setCustomerAutoCompleteList(){
-	    	   var URL = "http://localhost:8080/mortgage-app/api/customer/";
+	    	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
 	    	   var autoCompleteList = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -449,7 +411,7 @@ and open the template in the editor.
 	     		          let custId = parseInt(txt.split(">")[1]);
 	     		          $("#cust_id").val(custId); 
 	     		          
-	     		         buildAjax("http://localhost:8080/mortgage-app/api/customer/"+custId, "GET").then(function(respJson){
+	     		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
 	     		        	$("#cust_address").val(respJson.address);
 	     		       	    $("#cust_mobile").val(respJson.mobile);
 	     		         },function(reason){
@@ -495,7 +457,13 @@ and open the template in the editor.
 			  let voucherDate_field = $("#voucher_date");
 			  let voucher_Id = $("#voucher_id");
 			  
-			  var URL = "http://localhost:8080/modgage-app/api/voucher/expense-for-today";
+			  var URL = getAbsoluteUrl("mortgage-app/api/voucher/expense-for-today");
+			  if($("#voucher_update_id").val().trim()!=""){
+				  let vid = $("#voucher_update_id").val().trim().split("/")[0];
+				  updateVoucher(vid);
+				  URL = getAbsoluteUrl("mortgage-app/api/voucher/expense/"+vid);
+			  }
+			 
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
@@ -505,7 +473,7 @@ and open the template in the editor.
 			 				 (val.id==null?"":val.id),
 			 				(val.customer.mobile==null?"":val.customer.mobile),
 			 				(val.customer.address==null?"":val.customer.address),
-			 				(val.transaction.expense==null?"":val.transaction.expense),
+			 				(val.transaction.expense==null?"":JSON.parse(val.transaction.expense).toString()),
 			 				(val.transaction.amount==null?"":val.transaction.amount),
 			 				(val.transaction.note==null?"":val.transaction.note),
 			 				(val.date==null?"":val.date),
@@ -518,7 +486,7 @@ and open the template in the editor.
 	    		   dataTable = $('#voucher').DataTable({
 	            		data:           data,
 	                    deferRender:    true,
-	                    scrollY:        200,
+	                    scrollY:        100,
 	                    scrollCollapse: true,
 	                    scroller:       true,
 	                    "order": [],
@@ -533,6 +501,22 @@ and open the template in the editor.
 	                        i : 0;
 	            };
 	 
+	           
+                // Total over all pages
+                let total = api
+                    .column( 6 )
+                    .data()
+                    .reduce( function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0 );
+                
+                var rowsCount = api
+                .column( 5 )
+                .data().length;
+                
+                $("#exp_count").val(rowsCount);
+                $("#tot_exp").val(total);
+	            
 	            // Total over all pages
 	            total = api
 	                .column( 10 )
@@ -541,7 +525,7 @@ and open the template in the editor.
 	                    return intVal(a) + intVal(b);
 	                }, 0 );
 	 
-	            var rowsCount = api
+	       /*      var rowsCount = api
 	            .column( 10 )
 	            .data().length;
 	            // Total over this page
@@ -551,11 +535,11 @@ and open the template in the editor.
 	                .reduce( function (a, b) {
 	                    return intVal(a) + intVal(b);
 	                }, 0 );
-	 
+	  */
 	            // Update footer
-	            $( api.column( 10 ).footer() ).html(
+	          /*   $( api.column( 10 ).footer() ).html(
 	                '$'+pageTotal +' ( $'+ total +' total)'
-	            );
+	            ); */
 	        }
 	            	});
 	    		   
@@ -587,7 +571,7 @@ and open the template in the editor.
 			  customer["mobile"] = formatIntegerValue(custPhone_field.val());
 			  customer["address"] =  formatValue(custAddress_field.val());
 			  
-			  transaction["expense"] =  formatValue(expense_field.val());
+			  transaction["expense"] =  formatValue(JSON.stringify(expense_field.val()));
 			  transaction["note"] = formatValue(note_field.val());
 			  transaction["amount"] = formatValue(amount_field.val());
 			  transaction["id"] = formatValue(transactionId_field.val());
@@ -600,7 +584,7 @@ and open the template in the editor.
 			  voucher["id"] = formatIntegerValue(voucher_Id.val());
 			  
 			  var data = [];
-			  buildAjaxForJson("http://localhost:8080/modgage-app/api/voucher/", "POST", voucher).then(function(respJson){
+			  buildAjaxForJson(getAbsoluteUrl("mortgage-app/api/voucher/"), "POST", voucher).then(function(respJson){
 				  
 				  var t = dataTable;
 				  let val = respJson;
@@ -610,7 +594,7 @@ and open the template in the editor.
 		 				 (val.id==null?"":val.id),
 		 				(val.customer.mobile==null?"":val.customer.mobile),
 		 				(val.customer.address==null?"":val.customer.address),
-		 				(val.transaction.expense==null?"":val.transaction.expense),
+		 				(val.transaction.expense==null?"":JSON.parse(val.transaction.expense).toString()),
 		 				(val.transaction.amount==null?"":val.transaction.amount),
 		 				(val.transaction.note==null?"":val.transaction.note),
 		 				(val.date==null?"":val.date),
@@ -625,7 +609,8 @@ and open the template in the editor.
 				    custPhone_field.val("");
 				    custAddress_field.val("");
 				    customerId_field.val("");
-				    expense_field.val("");
+				    
+				    expense_field.val(null).trigger('change');
 				    note_field.val("");
 				    amount_field.val("");
 				    voucher_field.val("");
@@ -640,9 +625,12 @@ and open the template in the editor.
 			  console.log(voucher);
 		  }
 		  
-		  $(document).ready(function (){    
+		  $(document).ready(function (){   
+			  $('#expense').val(null).trigger('change');
+	//		  $('#expense').val([ "Answering Service", "Bank Charges", "Delivery & Freight", "NJ Annual Report"]).trigger('change');
+			  $("#expense").select2({maximumSelectionLength: 5,tags: true,allowClear: true});
 			  listExpenseVoucher();
-			  //setCustomerAutoCompleteList();
+			  setCustomerAutoCompleteList();
 			  var disabledDays = [0];
 	            var dateSettings = {
 	                language: 'en',
@@ -666,12 +654,65 @@ and open the template in the editor.
 		  });
 		  
 	        
-	        $('#voucher tbody').on( 'click', '.upd', function () {
+	      function updateVoucher(vid){
+	    	  
+	    	  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt(vid));
+    		  buildAjax(URL, "GET").then(function(respJson){
+    			  console.log(respJson);
+    		      /*   let bori_field = $("#bori");
+    		        let ana_field = $("#ana");
+    		        let ratti_field = $("#ratti");
+    		        let point_field = $("#point");
+    		        let gram_field = $("#gram"); 
+    		        let loanAmnt_field = $("#loan_amnt");
+    		        let interestRate_field = $("#rate");*/
+    		        let transactionSerial = $("#transaction_serial");
+    		        let reminderDate = $("#reminder_date");
+    		        let note = $("#note");
+    		        let storage = $("#storage");
+    			    let voucher_date = $("#voucher_date");
+    			    
+    		        $("#cust_name").val(respJson.customer.customerName);
+    		        $("#cust_id").val(respJson.customer.customerId);
+    		        $("#cust_mobile").val(respJson.customer.mobile);
+    		        $("#cust_address").val(respJson.customer.address);
+    		        voucher_date.val(respJson.date);
+    		        transactionSerial.val(respJson.id);
+    		        /* $("#bori").val(respJson.mortgage.bori);
+    		        $("#ana").val(respJson.mortgage.ana);
+    		        $("#ratti").val(respJson.mortgage.ratti);
+    		        $("#point").val(respJson.mortgage.point);
+    		        $("#gram").val(respJson.mortgage.gram);
+    		        $("#interestRate").val(respJson.mortgage.interestRate);
+    		        $("#loanAmount").val(respJson.mortgage.loanAmount); */
+    		        /* $("#product").val(respJson.mortgage.product); */
+    		        $("#cust_id").val(respJson.transaction.id);
+    		        $("#reminder_date").val(respJson.transaction.transactionDate);
+    		        $("#storage").val(respJson.transaction.storage);
+    		        $("#note").val(respJson.transaction.note);
+    		        $("#amount").val(respJson.transaction.amount);
+    	
+    		        $('#expense').val(null).trigger('change');		       
+    		        $("#expense").val(JSON.parse(respJson.transaction.expense==null?"[]":respJson.transaction.expense)).trigger('change');
+    		       
+    		        
+    		        $("#serial_no").val(respJson.id);
+    		        $("#transaction_serial").val(respJson.transaction.id);
+    		        $("#cust_id").val(respJson.customer.customerId);
+    		        $("#voucher_id").val(respJson.id);
+    		        $("#transaction_id").val(respJson.transaction.id);
+    		        /* $("#mortgage_id").val(respJson.mortgage.mortgageId); */
+    		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+	           	}); 
+	      }  
+		  
+		  $('#voucher tbody').on( 'click', '.upd', function () {
 	        	var table = $('#voucher').DataTable();
 	        
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
 	        		  buildAjax(URL, "GET").then(function(respJson){
 	        			  console.log(respJson);
 	        		      /*   let bori_field = $("#bori");
@@ -706,7 +747,10 @@ and open the template in the editor.
 	        		        $("#storage").val(respJson.transaction.storage);
 	        		        $("#note").val(respJson.transaction.note);
 	        		        $("#amount").val(respJson.transaction.amount);
-	        		        $("#expense").val(respJson.transaction.expense);
+	        	
+	        		        $('#expense').val(null).trigger('change');		       
+	        		        $("#expense").val(JSON.parse(respJson.transaction.expense==null?"[]":respJson.transaction.expense)).trigger('change');
+	        		       
 	        		        
 	        		        $("#serial_no").val(respJson.id);
 	        		        $("#transaction_serial").val(respJson.transaction.id);
@@ -731,7 +775,7 @@ and open the template in the editor.
 	        	if(confirm('Are you sure !')){
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = "http://localhost:8080//modgage-app/api/voucher/"+parseInt($(this).attr('delid'));
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
 	        		  buildAjax(URL, "POST").then(function(respJson){
 	        		  },function(reason){
 	  		           	 console.log("error in processing your request", reason);
@@ -745,7 +789,16 @@ and open the template in the editor.
 	            
 	        });
 		  
-		  setCustomerAutoCompleteList();
+		 // setCustomerAutoCompleteList();
+		  
+
+/* 		  	$("#expense").change(function(e){
+		  		if($(this).val()=="other"){
+		  			$("#other_expense").prop("disabled",false);
+		  		} else {
+		  			$("#other_expense").prop("disabled",true);
+		  		}
+		  	}); */
    </script>
 
 </body>

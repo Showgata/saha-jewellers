@@ -1,10 +1,12 @@
 package com.sahaJwellers.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sahaJwellers.app.model.User;
@@ -24,8 +26,10 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public User saveUser(User user){
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		return userRepository.save(user);
 	}
+	
 	@Override
 	public Optional<User> fetchUserByUsernameAndPassword(String username, String password){
 		return userRepository.findByUsernameAndPassword(username, password);
@@ -36,4 +40,13 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findByUsername(username);
 	}
 	
+	@Override
+	public List<User> findAll(){
+		return userRepository.listUser();
+	}
+	
+	@Override
+	public void deleteUserById(Long id){
+		 userRepository.deleteById(id);
+	}
 }

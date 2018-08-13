@@ -3,6 +3,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -120,6 +121,14 @@ public class VoucherWebController {
 		model.addAttribute("menu", "capital");
 		return "capital/create_capital_trans";
 	}
+	
+	@GetMapping("/update_capital_trans/{id}")
+	public String capitalUpdate(@PathVariable("id") Long id,Model model){
+		model.addAttribute("menu", "capital");
+		model.addAttribute("voucherId",id);
+		return "capital/create_capital";
+	}
+	
 	@GetMapping("/cash_ledger")
 	public String cashLedger(Model model) {
 		model.addAttribute("menu","custom");
@@ -140,6 +149,14 @@ public class VoucherWebController {
 		model.addAttribute("menu","expense");
 		return "expense/expense_voucher2";
 	}
+	
+	@GetMapping("/update_expense/{id}")
+	public String expenseUpdate(@PathVariable("id") Long id,Model model){
+		model.addAttribute("menu", "expense");
+		model.addAttribute("voucherId",id);
+		return "expense/expense_voucher2";
+	}
+	
 	@GetMapping("/settings")
 	public String set() {
 		return "/settings";

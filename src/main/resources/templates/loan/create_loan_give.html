@@ -415,7 +415,7 @@
 	 				"<input id='cust'"+respJson.id+" class='form-control col-sm-2 btn btn-xs btn-theme upd' updid='"+respJson.id+"'  type='button' name='update' value='update' id='update' />",
 	 				"<input class='form-control col-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+respJson.id+"' id='delete' />"
 	 			 ]).draw();  
-		  moveDataTableRow(1,t);
+		  moveDataTableRow(1,loanDataTable);
 		  },function(reason){
 	           	 console.log("error in processing your request in customer get", reason);
          }); 
