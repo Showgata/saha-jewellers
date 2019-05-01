@@ -26,10 +26,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @DynamicInsert
 public class Customer {
 	
+	/*
 	@Id	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private Long id;
+	
+	
+	@Column(name="customerId")
+	private Long customerId;*/
+	
+	@Id	
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="customerId")
 	private Long customerId;
+	
 	
 	
 	@Column(name="customerName")
@@ -55,9 +66,9 @@ public class Customer {
 	@UpdateTimestamp
 	private Date updateTimestamp;
 	
-	/*@Version
+	@Version
 	@Column(name="version")
-	private Long version;*/
+	private Long version;
 
 	@Override
 	public String toString() {
@@ -113,13 +124,23 @@ public class Customer {
 	public void setNote(String note) {
 		this.note = note;
 	}
+	
+/*
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}*/
 
-	/*public Long getVersion() {
+	
+
+	public Long getVersion() {
 		return version;
-	}*/
+	}
 
-	/*public void setVersion(Long version) {
+	public void setVersion(Long version) {
 		this.version = version;
-	}*/
+	}
 }

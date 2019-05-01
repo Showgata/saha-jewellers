@@ -37,6 +37,12 @@
 	<script src="/js/jquery.min.js"></script>
 <script src="/js/modernizr.js"></script>
 
+<script type="text/javascript" src="/js/jquery.flot.js"></script>
+<script type="text/javascript" src="/js/jquery.flot.time.js"></script>    
+<script type="text/javascript" src="/js/jquery.flot.selection.js"></script>
+<script type="text/javascript" src="/js/jquery.flot.tooltip.min.js"></script>
+<!-- for updaing balance all time -->
+     <script src="/js/cashledger/cashledger.js"></script>
     </head>
     <head th:fragment="common-headpage">
         <title>saha-jewellers</title>
@@ -58,9 +64,13 @@
         <link rel="stylesheet" href="/css/dataTables.bootstrap.css">
         <link href="/css/datepicker.css" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-  
+   
     </head>
 <body>
+<!-- for auto update balance-->
+
+
+ 
             <!-- <div class="side-menu left" id="side-menu" th:fragment="common-menu">
                <ul class="metismenu clearfix" id="menu" >
                     <li class="profile-menu visible-xs">
@@ -177,9 +187,9 @@
                                 <img src="/images/SAHAJ2.png" height="40" title="saha jwellers" alt="" class="pull-left">
                                 <span>User : <br><em><span th:text="${session.username}"></span></em></span>                            
                             </a>
-                            <ul class="dropdown-menu">
-                               <!--  <li><a href="#">Account</a></li> -->
-                                <li><a th:href="@{/mortgage-app/web/settings}">Settings</a></li>
+                            <ul class="dropdown-menu">                      
+                                <li><a th:href="@{/mortgage-app/web/create_user}">Create User</a></li>
+                                <li><a th:href="@{/mortgage-app/web/settings}">Settings</a></li> 
                                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                             </ul>
                         </div>
@@ -213,7 +223,9 @@
                      <a href="#"><i class=" fa fa-balance-scale"></i> <span>Gold Mortgage</span><span class="fa arrow"></span></a> 
                         <ul class="nav nav-second-level collapse" th:classappend="${menu}=='goldmortgage' ? in : ''">
                             <li ><a href="/mortgage-app/web/voucher">Create Voucher</a></li>
-                            <li><a href="/mortgage-app/web/voucher_transaction">customer transaction</a></li>
+                            
+                            <!-- Rename to Delivery Transaction from Customer Transaction -->
+                            <li><a href="/mortgage-app/web/voucher_transaction">Delivery Transaction</a></li>
                           
                            
                         </ul>
@@ -256,6 +268,7 @@
                             <li><a href="/mortgage-app/web/customer_credit_list">Customer Credit List</a></li>
                           <li><a href="/mortgage-app/web/cash_ledger">Cash Ledger</a></li>
                             <li><a href="/mortgage-app/web/create_ledger">customer ledger</a></li>
+                            <li><a href="/mortgage-app/web/history">Transaction History</a></li>
                         </ul>
                     </li>
                    
@@ -306,6 +319,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.min.js"></script> -->
 		<script src="/js/datepicker.min.js"></script>
 <script src="/js/i18n/datepicker.en.min.js"></script>
+	
+	<script>
+	
+	
+	$(function() {
+		  //var button = $('.widescreen');
+		      
+		  $('.pull-left').on('click', function() {
+			  
+			  $(".nav-second-level").removeClass("in");
+			  $(".nav-second-level").parent().removeClass("active");
+			  
+			});
+		  
+		});
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+
+
+
+
 		<!--end new js -->
         </div>
 </body>

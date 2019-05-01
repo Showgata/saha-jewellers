@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -34,13 +35,26 @@ public class Voucher {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private Long sl_id;
+	
+	
+
 	@Column(name="voucher_id")
 	private Long id;
 	
+	/*
+	@Id
+	@Column(name="voucher_id")
+	private Long id;
+	
+	*/
+
+	@Version
 	@Column(name="version")
 	private Long version;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="GMT")
 	@Temporal(TemporalType.DATE)
 	@Column(name="date")
 	private Date date;
@@ -50,8 +64,7 @@ public class Voucher {
 	
 	@Column(name="type")
 	private String type;
-	
-	
+
 	@Override
 	public String toString() {
 		return "Voucher [id=" + id + ", version=" + version + ", date=" + date + ", serial=" + serial
@@ -88,9 +101,24 @@ public class Voucher {
 	@JoinColumn(name="product_id")
 	private Product product;
 	
+	
+	
+	
 	public Product getProduct() {
 		return product;
 	}
+	
+
+	public Long getSl_id() {
+		return sl_id;
+	}
+
+
+
+	public void setSl_id(Long sl_id) {
+		this.sl_id = sl_id;
+	}
+
 
 	public void setProduct(Product product) {
 		this.product = product;
@@ -160,6 +188,19 @@ public class Voucher {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+
+	public Long getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	
+	
 	
 	
 }

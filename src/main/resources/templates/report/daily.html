@@ -26,10 +26,15 @@ and open the template in the editor.
                         <div class="page-title">
                             <h3>Daily Report</h3>
 							<div class="row">
-							<div class="col-sm-2" style="float:right">
 							
-							 <input class="form-control col-sm-2 "id="trans_reminder_date" placeholder="Daily" name="trans_reminder_date" type="text">
-                                </div>
+							<div class="form-group col-md-3" >
+                                                        <input class="form-control col-sm-2 "id="daily_date" placeholder="Daily" name="daily_date" type="text">
+                                                    </div> 
+							 
+							 <div class="form-group col-md-3" >
+                                                        <button type="button" class="btn btn-border-theme btn-xs" id="show">Show </button>
+                                                    </div> 
+                                
 								</div>
                                 <style>
 /* width */
@@ -59,7 +64,51 @@ and open the template in the editor.
                                 <div class="panel-box">
                                     <h4>Transaction Update</h4>
                                     <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar-chart"></div>
+                                        <div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control daily_transUpdate">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
+												
+										</div>
+									
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="transUpdate_daily" class="table table-striped transUpdate_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	<th>Voucher sl.</th>
+                                                <th>Name</th>
+                                                <th>ID</th>		
+									   	 		<th>Paid Amount</th>
+                                                <th>Paid Interest Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                     </div>
 								
 									 <div id="wizard" class="bwizard" >
@@ -72,14 +121,14 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label"  style="font-size:10px;"><font>total update voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total update voucher" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="total update voucher" id="tu_voucher_count" type="text" disabled>
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" style="font-size: 10px;">total update voucher collection</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                        <br/>    <input class="form-control" placeholder="total update voucher collection" name="lastname" type="text">
+                                                        <br/>    <input class="form-control" placeholder="total update voucher collection" id="tu_total_amount" type="text" disabled>
                                                         </div>
                                                     </div>
                                                    <!-- End .control-group  -->
@@ -99,7 +148,57 @@ and open the template in the editor.
                                 <div class="panel-box">
                                     <h4>Receive</h4>
                                     <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar1"></div>
+                                        <div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control daily_receive">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
+												
+										</div>
+									
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="receive_daily" class="table table-striped receive_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	<th>Voucher Sl.</th>
+												<th>Name</th>
+                                                <th>ID</th>
+                                                <th>Interest Rate</th>
+                                                <th>Loan Amount</th>
+                                                <!-- 
+									   	 		<th>Last Paid Amount</th>
+                                                <th>Total Paid Amount</th>
+                                                <th>Paid Interest Amount</th>
+                                                <th>Balance</th>
+                                                 -->	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                     </div>
 									
 									 <div id="wizard" class="bwizard" >
@@ -112,14 +211,14 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label"  style="font-size:11px;"><font>total receive voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total receive voucher" name="firstname" type="text">
+                                                            <input class="form-control" id="rec_voucher_count" placeholder="total receive voucher" disabled type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" style="font-size: 11px;">total loan amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                        <br/>    <input class="form-control" placeholder="total loan amount" name="lastname" type="text">
+                                                        <br/>    <input class="form-control" id="rec_total_amount" placeholder="total loan amount" disabled type="text">
                                                         </div>
                                                     </div>
                                                    <!-- End .control-group  -->
@@ -136,8 +235,55 @@ and open the template in the editor.
                             <div class="col-sm-6">
                                 <div class="panel-box">
                                     <h4>Delivery</h4>
-                                    <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar2"></div>
+                                    
+                                        <div class="flot-chart">
+                                        <div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control daily_delivery_select">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
+												
+										</div>
+									
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="delivery_daily" class="table table-striped delivery_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	<th>Voucher Sl.</th>
+												<th>Name</th>
+                                                <th>ID</th>
+                                                <!--
+                                                <th>Interest Rate</th>
+                                                <th>Loan Amount</th>	
+									   	 		<th>Last Paid Amount</th>
+									   	 		  -->
+                                                <th>Total Paid Amount</th>
+                                                <th>Total Paid Interest Amount</th>
+                                                <th>Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                    
+                                        
                                     </div>
 										 <div id="wizard" class="bwizard" >
                                         <!-- Start .bwizard -->
@@ -149,14 +295,14 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label"  style="font-size:11px;"><font>total delivery voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total delivery voucher" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="total delivery voucher" id="del_voucher_count" type="text" disabled>
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label" style="font-size: 11px;">total delivery Voucher Collection</label>
+                                                        <label class="col-lg-2 col-md-3 control-label" style="font-size: 11px;">total loan amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                        <br/>    <input class="form-control" placeholder="total delivery Voucher Collection" name="lastname" type="text">
+                                                        <br/>    <input class="form-control" placeholder="total delivery Voucher Collection" id="del_total_amount" type="text" disabled>
                                                         </div>
                                                     </div>
                                                    <!-- End .control-group  -->
@@ -171,9 +317,40 @@ and open the template in the editor.
                             <div class="col-sm-6">
                                 <div class="panel-box">
                                     <h4>Expense</h4>
-                                    <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar3"></div>
+                                    
+                                         <div class="flot-chart">
+                                        
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="expense_daily" class="table table-striped expense_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	
+												<th>Expense Head</th>
+                                                <th>ID</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>	
+									   	 		<th>Note</th>	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
                                     </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                    
+                                        
+                                    </div>
+                                    
 											 <div id="wizard" class="bwizard" >
                                         <!-- Start .bwizard -->
                                      
@@ -184,14 +361,14 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label"  style="font-size:11px;"><font>total expense voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total expense voucher" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="total expense voucher" id="exp_voucher_count" type="text" disabled>
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" style="font-size: 11px;">total expense</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                        <br/>    <input class="form-control" placeholder="total expense" name="lastname" type="text">
+                                                        <br/>    <input class="form-control" placeholder="total expense" id="total_expense" type="text" disabled>
                                                         </div>
                                                     </div>
                                                    <!-- End .control-group  -->
@@ -204,15 +381,46 @@ and open the template in the editor.
                                 </div>
                             </div>
                         </div>
+                        <!--  
                        <div class="row">
                             <div class="col-sm-6">
                                 <div class="panel-box">
                                     <h4>Loan Take</h4>
                                     <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar4"></div>
+                                        
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="loan_take_daily" class="table table-striped loan_take_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	
+												
+												<th>Name</th>
+												<th>ID</th>
+                                                <th>Date</th>
+                                                <th>Interest Rate</th>
+                                                <th>Loan Amount</th>	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                    
+                                        
                                     </div>
 									 <div id="wizard" class="bwizard" >
-                                        <!-- Start .bwizard -->
+                                        
                                      
                                         <form class="form-horizontal" role="form">
                                             <div class="tab-content">
@@ -221,17 +429,17 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label" ><font>total loan voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total loan voucher" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="total loan voucher" id="lt_voucher_count" disabled type="text">
                                                         </div>
                                                     </div>
-                                                    <!-- End .control-group  -->
+                                                    
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" >total loan</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                        <br/>    <input class="form-control" placeholder="total loan" name="lastname" type="text">
+                                                        <br/>    <input class="form-control" placeholder="total loan" id="lt_loan_amount" disabled  type="text">
                                                         </div>
                                                     </div>
-                                                   <!-- End .control-group  -->
+                                                  
                                                 </div>
                                              
                                             </div>
@@ -241,14 +449,45 @@ and open the template in the editor.
 									
                                 </div>
                             </div>
+                            
                             <div class="col-sm-6">
                                 <div class="panel-box">
                                     <h4>Loan Give</h4>
                                     <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar5"></div>
+                                        
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="loan_give_daily" class="table table-striped loan_give_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	
+												
+												<th>Name</th>
+												<th>ID</th>
+                                                <th>Date</th>
+                                                <th>Interest Rate</th>
+                                                <th>Loan Amount</th>	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                    
+                                        
                                     </div>
 									 <div id="wizard" class="bwizard" >
-                                        <!-- Start .bwizard -->
+                                        
                                      
                                         <form class="form-horizontal" role="form">
                                             <div class="tab-content">
@@ -257,17 +496,17 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label" ><font>total loan voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total loan voucher" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="total loan voucher" id="lg_voucher_count" disabled type="text">
                                                         </div>
                                                     </div>
-                                                    <!-- End .control-group  -->
+                                                    
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" >total loan</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                        <br/>    <input class="form-control" placeholder="total loan" name="lastname" type="text">
+                                                        <br/>    <input class="form-control" placeholder="total loan" id="lg_loan_amount" disabled type="text">
                                                         </div>
                                                     </div>
-                                                   <!-- End .control-group  -->
+                                                   
                                                 </div>
                                              
                                             </div>
@@ -276,13 +515,42 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 						 <div class="row">
                             <div class="col-sm-12">
                                 <div class="panel-box">
                                     <h4>Total Capital Investment</h4>
                                     <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar6"></div>
+                                        
+                                        <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">										   
+                                    <div class="table-responsive">                                               
+                                          <table id="capital_daily" class="table table-striped capital_daily"  cellspacing="0" width="100%" style="font-size:10px;">
+                                        <thead>
+                                            <tr>
+                                            	
+												<th>Name</th>
+                                                <th>ID</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>	
+									   	 		<th>Note</th>	
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                                        
+                                    
+                                        
                                     </div>
 									 <div id="wizard" class="bwizard" >
                                         <!-- Start .bwizard -->
@@ -294,14 +562,14 @@ and open the template in the editor.
                                                         <label class="col-lg-2 col-md-3 control-label"  ><font>total capital investment voucher</font></label>
                                                         <div class="col-lg-10 col-md-9">
 														<br/>
-                                                            <input class="form-control" placeholder="total capital investment voucher" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="total capital investment voucher" id="cap_voucher_count" disabled type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">total investment</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="total investment" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="total investment" id="cap_loan_amount" disabled type="text">
                                                         </div>
                                                     </div>
                                                    <!-- End .control-group  -->
@@ -321,6 +589,7 @@ and open the template in the editor.
 <div th:replace="/common/common-header :: common-required-scripts"></div>
 	<script>
 
+	/*
 	var dataTable;
 	 $(document).ready(function () {
 		  setDatePicker();
@@ -445,7 +714,7 @@ and open the template in the editor.
     	   }, function(reason){
              	 console.log("error in processing your request customer", reason);
           	}); 
-       }	 */
+       }	
        
        function fetchVouchers(){
     	   var URL = "http://localhost:8080//modgage-app/api/voucher/";
@@ -472,26 +741,7 @@ and open the template in the editor.
           				"<input class='form-control col-sm-2 upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
           				"<input class='form-control col-sm-2 del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
           			 ]); 
-          			/*  tr = "";
-          			 tr += "<tr role='row' class='"+(i%2==0?'even':'odd')+"'>";
-          			 tr += "<td>"+(val.id==null?"0":val.id)+"</td>";
-          			 tr += "<td>"+val.customer.customerName+"</td>";
-          			 tr += "<td>"+(val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial)+"</td>";
-          			 tr += "<td>"+(val.customer.customerId==null?"":val.customer.customerId)+"</td>";
-          			 tr += "<td>"+val.date+"</td>";
-          			 tr += "<td>"+(val.mortgage.bori==null?"0.0":val.mortgage.bori)+"</td>";
-          			 tr += "<td>"+(val.mortgage.ana==null?"0.0":val.mortgage.ana)+"</td>";
-          			 tr += "<td>"+(val.mortgage.ratti==null?"0.0":val.mortgage.ratti)+"</td>";
-          			 tr += "<td>"+(val.mortgage.gram==null?"0.0":val.mortgage.gram)+"</td>";
-          			 tr += "<td>"+(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate)+"</td>";
-          			 tr += "<td>"+(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount)+"</td>";
-          			 tr += "<td>"+
-          			"<input class='form-controlcol-sm-2'  type='button' name='show_voucher_details' value='update' id='update' />"+
-          				"<input class='form-controlcol-sm-2' type='button' name='show_voucher_details' value='delete' id='delete />"+
-          			 "</td>"; */
-          		// $("#voucher > tbody").append("<tr><td>"+val.id+"</td><td>"+val.customer.customerName+"</td></tr>");
-          		/* tr += "</tr>";
-          		$("#voucher > tbody").append(tr); */
+          			
           		}); 
           		dataTable = $('#voucher').DataTable({
             		data:           data,
@@ -537,13 +787,7 @@ and open the template in the editor.
         }
             	});  
           		
-          		 /* $(  dataTable.table().container() ).on( 'keyup', '#cname', function () {
-          			 
-          			dataTable
-          	            .column( $(this).data('index') )
-          	            .search( this.value )
-          	            .draw();
-          	    } ); */
+          		
           		 $( "#cust_name" ).autocomplete({
      		        source: autoCompleteList,
      		        select: function (event, ui) {
@@ -585,12 +829,7 @@ and open the template in the editor.
        function saveVoucher(){   	   
     	var URL = "http://localhost:8080//modgage-app/api/voucher/";
     	var voucher = {
-    			/* id : null
-    			date	null
-    			serial	null
-    			customer	null
-    			transaction	null
-    			mortgage	null */
+    			
     	};
     	voucher["date"]=$("#date").val();
     	voucher["serial"]=$("#serial").val();
@@ -705,8 +944,7 @@ and open the template in the editor.
         	$("#reminder_date").datepicker(dateSettings);
         	$("#date").val(GetFormattedDate());
         	  
-            /* ratti_field.change(calculateGram());
-            point_field.change(calculateGram()); */
+            
             
         } );
         
@@ -760,7 +998,7 @@ and open the template in the editor.
         		        $("#gram").val(respJson.mortgage.gram);
         		        $("#interestRate").val(respJson.mortgage.interestRate);
         		        $("#loanAmount").val(respJson.mortgage.loanAmount);
-        		        /* $("#product").val(respJson.mortgage.product); */
+        		        
         		        $("#cust_id").val(respJson.transaction.id);
         		        $("#reminder_date").val(respJson.transaction.transactionDate);
         		        $("#storage").val(respJson.transaction.storage);
@@ -775,10 +1013,7 @@ and open the template in the editor.
         		  },function(reason){
   		           	 console.log("error in processing your request", reason);
    	           	}); 
-        		  /* var row = table.row( $(this).parents('tr') );
-                  var rowNode = row.node();
-                  row.remove();
-                  table.page(currentPage).draw(false); */
+        		  
         	
          
             
@@ -791,13 +1026,14 @@ and open the template in the editor.
 	            .search($("#cname").val())
 	            .draw();
         }
-        
-       /*  $('#voucher_search').each( function (i) {
+       
+         $('#voucher_search').each( function (i) {
 	        var title = $('#voucher_search div').eq( $(this).index() ).text();
 	      //  $(this).html( '<input type="text" placeholder="Search '+title+'" data-index="'+i+'" />' );
-	    } ); */
+	    } );  */
 	
         </script>
+        <script src="/js/daily.js"></script>
 </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->

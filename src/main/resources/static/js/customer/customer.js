@@ -32,7 +32,7 @@
                 scrollY:        200,
                 scrollCollapse: true,
                 scroller:       true,
-                "order": [],
+                "order": [[ 0 ,"asc"]],
 				 "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
     }
@@ -57,6 +57,10 @@
 	   
 	   $("#cust_form").on('submit',function(e){
 		   e.preventDefault();
+		   
+		   var ignoreThisArray =["cust_references","cust_note"];
+		   
+		   if(isValid(ignoreThisArray)){
 		
 		   let customer = {};
 		   customer["customerId"] = formatIntegerValue(custId_field.val());
@@ -99,6 +103,10 @@
 			}, function(reason){
 		       	 console.log("error in processing your request", reason);
 	       	}); 
+			
+	   }else{
+      		alert("Some fields are empty");
+      	}
 	   });
 	   
 	   $('#cust_table tbody').on( 'click', '.del', function () {
@@ -107,6 +115,8 @@
        		  currentPage = customerDataTable.page();
        		  //console.log($(this).attr('delid'));
        		  var URL = getAbsoluteUrl("mortgage-app/api/customer/"+parseInt($(this).attr('delid')));
+       		  console.log("customer id = "+parseInt($(this).attr('delid')));
+       		  
        		  buildAjax(URL, "POST").then(function(respJson){
        		  },function(reason){
  		           	 console.log("error in processing your request", reason);

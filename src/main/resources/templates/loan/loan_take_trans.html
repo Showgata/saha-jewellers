@@ -11,6 +11,9 @@ and open the template in the editor.
     
    <head th:replace="common/common-header :: common-headpage"></head> 
     <body class="fixed-left" style="overflow:hidden;">
+       
+ 
+       
         <div id="wrapper" >
 
             <!--top bar-->
@@ -21,11 +24,22 @@ and open the template in the editor.
                 <div class="content">
                     <div class="container">
                         <div class="row">
-                             <div class="col-sm-4 h6" style="margin-top:-10px;">
-							  <div class="panel-box">
+                             <div class="col-sm-4 h6">
+							  <div class="panel-box" >
 							  <h5>Customer Information</h5>
 							  <div id="wizard" class="bwizard">
                                         <!-- Start .bwizard -->
+                                        
+                                        	<!-- For updating purpose  -->
+                                     	
+                                     	<input type="hidden" id="update_id" th:value=${voucherId}/>
+                                     	<input type="hidden" id="update_type" th:value=${type}/>
+                                     	<input type="hidden" id="update_mode"/>
+                                     	<input type="hidden" id="update_prev_id"/>
+                                     	<input type="hidden" id="total_paid_balance"/>
+                                     	<input type="hidden" id="total_paid_interest_balance"/>
+                                     	
+                                     	
                                      
                                         <form class="form-horizontal" role="form">
                                             <div class="tab-content">
@@ -33,36 +47,32 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Customer name</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="Customer name" disabled id="cust_name" name="firstname" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Id</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Id" name="lastname" id="cust_id" disabled type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Mobile number</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Mobile number" id="cust_mobile" disabled type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Address</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Address" id="cust_address" disabled type="text">
                                                         </div>
                                                     </div>
-													<div class="form-group col-sm-12" style="">
-											<a href="#" class="btn btn-border-theme btn-xs">Product</a> 
-											<a href="#" class="btn btn-border-theme btn-xs">Transaction Details</a> 										
-										</div>	
-
-                                                                                                        
-                                                    
-													<!-- End .control-group  -->
+													
+													<!-- <a href="#" class="btn btn-border-theme btn-xs" id="up">Update</a>
+													
+													 End .control-group  -->
                                                 </div>
                                               
                                                
@@ -84,26 +94,26 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Total Loan Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="Total Loan Amount" id="tot_loan_amnt" disabled  name="firstname" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Previous Loan Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Previous Loan Amount" id="prev_loan_amount" disabled type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Paid Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Paid Amount" id="paid_amount" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Due Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Due Amount" id="due_amount" disabled type="text">
                                                         </div>
                                                     </div>
 													</div>   
@@ -125,12 +135,15 @@ and open the template in the editor.
 								<div class="col-sm-4 h6"  style="margin-top:-10px;">
                                 <label class="col-lg-2 col-md-3 control-label" style="margin-top:30px;" >Date</label>
                                                         <div class="col-lg-10 col-md-9" style="margin-top:20px;">
-                                                            <input class="form-control" placeholder="Date" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Date" id="date" type="text">
                                                         </div>
-                                                        <div class="col-lg-12 col-md-9 form-group has-warning">
-                                                            <input class="form-control input-lg " style="color:#f7b03e" placeholder="customer serial" name="firstname" type="text" value="number">
+                                                        <div class="col-lg-12 col-md-9 form-group has-warning" style="margin-top:'16px';font-size: 28px;">
+                                                            <input class="form-control input-lg " style="margin-top:'16px';color:#f7b03e;font-size: 28px;" placeholder="Loan Voucher Id" id="voucher_id" type="text" >
+                                                            
+                                                            <input type="hidden" id="trans_id" name="trans_id">
+
                                                         </div>
-								<div class="panel-box">
+								<div class="panel-box" style="margin-top:-10px;">
 								  <h5>  Transaction Details</h5>
 								 	
 								 <div id="wizard" class="bwizard" >
@@ -142,73 +155,75 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label"  style="font-size: 12px;"><font>Total Loan Amount</font></label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="customer serial" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="Total Loan Amount" disabled id="totalLoanAmount"  type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" style="font-size: 12px;">Total Interest Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="reminder date" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Total Interest Amount" disabled id="totalInterestAmount" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label" style="font-size: 10px;">Total Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="storage" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Total Amount"  disabled id="totalAmount" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Paid Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Paid Amount" disabled id="paidAmount" type="text">
                                                         </div>
                                                     </div>
       <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Paid Interest Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Paid Interest Amount" disabled id="paidInterestAmount" type="text">
                                                         </div>
                                                     </div>
                                                    <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Due Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Due Amount" disabled id="dueAmount" type="text">
                                                         </div>
                                                     </div>
                                                       <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Due Interest Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Due Interest Amount" disabled id="dueInterestAmount" type="text">
                                                         </div>
                                                     </div>                                                   
                                                      <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Net Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="note" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Net Amount" disabled id="netAmount" type="text">
                                                         </div>
                                                     </div>
 													
 										
 											<ul class="pager">
-												<a href="#" class="btn btn-border-theme btn-xs">Save</a> 
-										  <li class="input-lg"><a href="#">Deliver &rarr;</a>
-											</li>
-											<a href="#" class="btn btn-border-theme btn-xs">Cancel</a> 
-											<a href="#" class="btn btn-border-theme btn-xs">Print</a> 
-											<a href="#" class="btn btn-border-theme btn-xs">PDF</a> 
+											
+											<div id="component1">
+											<a href="#" class="btn btn-border-theme btn-xs save_focus"  id="save">Save</a> 
+											<a href="#" class="btn btn-border-theme btn-xs" id="delivery">Delivery</a> 
+											<a href="#" class="btn btn-border-theme btn-xs" id="cancel">Cancel</a> 
+											<a href="#" class="btn btn-border-theme btn-xs" id="print">Print</a> 
+											<a href="#" class="btn btn-border-theme btn-xs" id="pdf">PDF</a> 
+											</div>
+											
+											<div id="component2">
+											<a href="#" class="btn btn-border-theme btn-xs" id="update">Update</a> 
+											
+											<a href="#" class="btn btn-border-theme btn-xs" id="can">Cancel</a> 
+											
+											</div>
+											
 											</ul>
 											
-									
-										
-										
 											
-										
-										
-										
-											
-											
-													<!-- End .control-group  -->
+											<!-- End .control-group  -->
 												
                                                 </div>
                                               
@@ -233,7 +248,7 @@ and open the template in the editor.
 						  <div class="row">
 <div class="col-sm-4 h6"  style="margin-top:-375px;">
                                 <div class="panel-box">
-                                    <h5>Mortgage Informantion </h5>
+                                    <h5>Mortgage Information </h5>
                                     <div id="wizard" class="bwizard">
                                         <!-- Start .bwizard -->
                                      
@@ -249,19 +264,19 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Interest rate</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Int rate" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Int rate" id="rate" disabled type="text">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Loan amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="loan amt" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="loan amt"  id="loan_amount" disabled type="text">
                                                         </div>
                                                     </div>
                                                       <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Days Count</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Count days"  name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Count days" disabled  id="days_count" type="text">
                                                         </div>
                                                     </div>                                                  
                                                     
@@ -298,26 +313,26 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Total Interest Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="bori" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="Total Interest Amount" disabled id="total_interest_amount" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Previous Interest paid Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ana" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Previous Interest paid Amount" disabled id="prev_interest_paid" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Paid Interest Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="ratti" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Paid Interest Amount" id="paid_interest_amount" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Due Interest Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="point" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Due Interest Amount" disabled id="due_interest_amount" type="text">
                                                         </div>
                                                     </div>
 													
@@ -352,6 +367,862 @@ and open the template in the editor.
         </div>      
        <div th:replace="/common/common-header :: common-required-scripts"></div>
     </body>
+    <script type="text/javascript" src="/js/SumById.js"></script>
+    <script type="text/javascript" src="/js/loan_transaction.js"></script>
+    
+    <!-- used to update balance all the time  -->
+			<input type="submit" id="#edit-submit" class="abc" style="display:none"> 
+ <div style="display:none">
+ <form action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form>
+</div>
+   <script src="/js/cashledger/cashledger.js"></script>
+   <!-- used to update balance all the time  -->
+       
+    <script type="text/javascript">
+    
+    
+    $(document).ready(function(){
+		$("#voucher_id").focus();
+	});
+	
+	$("#voucher_id").focusout(function(){
+		$("#paid_amount").focus();
+	});
+	
+	$("#paid_amount").focusout(function(){
+		$("#paid_interest_amount").focus();
+	});
+	
+	$("#paid_interest_amount").focusout(function(){
+		$(".save_focus").focus();
+		console.log("focus in");
+	});
+	
+	$("#save").keypress(function(e) {
+	    if(e.which == 13) {
+	    	saveOrUpdate(0);
+	        
+	        
+	    }
+	    
+	    $("#voucher_id").focus();
+	});
+	
+	
+	/*
+	 $("#voucher_id").val("");
+ 	   $("#due_interest_amount").val("");
+ 	   $("#paid_amount").val("");
+ 	   $("#prev_loan_amount").val("");
+ 	   $("#tot_loan_amnt").val("");
+ 	   $("#total_interest_amount").val("");
+ 	   $("#due_interest_amount").val("");
+ 	   $("#paid_interest_amount").val("");
+ 	   $("#prev_interest_paid").val("");
+ 	   
+ 	   
+ 	   $("#cust_address").val("");
+	       $("#cust_mobile").val(""); 
+	       $("#cust_name").val("");
+	       $("#cust_id").val("");
+	       	    
+	       	    $("#days_count").val("");
+	       	    $("#loan_amount").val("");
+	       	    $("#rate").val("");
+	       	    $("#tot_loan_amnt").val("");
+	       	 	$("#due_amount").val("");
+	       	    $("#date").datepicker(dateSettings);
+	       	    $("#date").val(moment().format("DD/MM/YYYY"));
+	
+	       	    
+	       	    //================================modification
+	       	    $("#receive_date").val("");
+	       	 	$("#voucher_id").val("");
+	       	 	
+	       		$("#totalLoanAmount").val("");
+	       		$("#totalInterestAmount").val("");
+	       		$("#paidInterestAmount").val("");
+	       		$("#dueInterestAmount").val("");
+	       		$("#paidAmount").val("");
+	       		$("#totalAmount").val("");
+	       		$("#dueAmount").val("");
+	       		$("#netAmount").val("");
+	*/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    let voucherObj={};
+    let resObj ={};
+    let mode = 0;
+    
+    /*
+    	0 - Save Mode
+    	1 - Update Mode
+    */
+    
+    let flag = 0;
+    
+    /*
+    	0 - Save Btn
+    	1 - Delivery Btn
+    */
+    
+    
+    
+    var setNoOfDays=function(receiveDate,transDate)
+	   {
+		   let old = moment(receiveDate); 
+ 	   		let today =moment(transDate, "DD/MM/YYYY"); ; 
+ 	   		let noOfDays = today.diff(old,"days"); 
+ 	   		
+ 	   		
+ 	   		/*no of days */
+ 	   		$("#days_count").val(noOfDays);
+	   }
+    
+    
+    $(document).ready(function(){
+    	
+    	updateTransaction();
+    	
+    	$("#date").datepicker(dateSettings);	
+    	$("#date").datepicker({
+			   dateFormat: "dd/mm/yyyy",
+			   onSelect: function(dateText) {
+				   setNoOfDays(vDetails.date,dateText);
+				   fillUpInterestTransactionFields(lDetails,vDetails,dateText);
+				  }
+		   });
+    	
+    	$("#save").attr("disabled",true);
+  		$("#delivery").attr("disabled",true);
+    	
+    	$("#date").val(moment().format("DD/MM/YYYY"));
+    		
+    	setAutoComplete();
+    	
+    	$("#component2").hide();
+    });
+    
+    
+    var updatePrimaryFields =function(respJson,date)
+    {
+    	$("#cust_address").val(respJson.customer.address);
+   	    $("#cust_mobile").val(respJson.customer.mobile); 
+   	    $("#cust_name").val(respJson.customer.customerName);
+   	    $("#cust_id").val(respJson.customer.customerId);
+   	    
+   	    $("#loan_amount").val(respJson.transaction.account.amount);
+   	    $("#tot_loan_amnt").val(respJson.transaction.account.amount);
+   	    $("#rate").val(respJson.transaction.account.interestRate);
+   	   
+   	    
+   	 	let old = moment(respJson.createdDate,"DD/MM/YYYY"); 
+	     	let today = moment(date,"DD/MM/YYYY"); 
+	     	let diff = today.diff(old,"days");		       	 
+   	    $("#days_count").val(diff);
+    }
+    
+    
+    function setAutoComplete(){
+ 	   
+ 	   var autoCompleteList = [];
+ 	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/takeloan/");
+ 	   
+ 	   buildAjax(URL, "GET").then(function(respJson){
+ 		   
+ 		   console.log(respJson);
+ 		   
+ 		   jQuery.each(respJson, function(i, val) {
+ 			   
+ 			   		if(val.customer!=null){
+ 			   			var str ="LT-"+val.id +" > "+ val.customer.customerName +" > "+moment(val.date).format("DD/MM/YYYY");
+  				   		autoCompleteList.push({value: "LT-"+val.id,  label: str});
+ 			   		}
+ 			   		
+ 				   
+ 				   
+ 		   });
+ 		   
+ 	   
+ 		 $( "#voucher_id" ).autocomplete({
+		        source: autoCompleteList,
+		        select: function (event, ui) {
+		        var txt = (ui.item.value);
+		        var subTxt = txt.substring(3,6);
+		        
+		          let voucherId = parseInt(subTxt);
+		          
+		          $("#up").remove('disabled');
+		          
+		          $("#rate").focus();
+		         // $("#cust_id").val(custId); 
+		         
+		          apiCall(voucherId);
+		          
+		      }
+		      })
+ 	   }, function(reason){
+        	 console.log("error in processing your request customer", reason);
+      	});
+    }
+    
+    
+    /*
+    var apiCall =function(voucherId)
+    {
+    	var voucher = null;
+    	buildAjax(getAbsoluteUrl("mortgage-app/api/voucher/"+voucherId), "GET").then(function(respJson){
+	        //	 alert('success');
+	        	
+	        	let d = moment();
+	         	updatePrimaryFields(respJson,d);
+	       	    
+	       	 	voucherObj = respJson;
+	       	    
+	       	    
+	       	 buildAjax(getAbsoluteUrl("mortgage-app/api/voucher/loan/"+voucherId),"GET").then(function(loanJson){
+	       	    	 
+	       	    	 
+	       	    	 console.log(loanJson);
+	       	    	 
+	       	    	 
+	       	    	let d=$("#date").val();
+	       	    	
+	       	    	 if(loanJson != null && loanJson.length>0){
+	       	    		resObj=loanJson; 
+	       	    		calVariousInterest(loanJson,respJson,d);
+       	    		 
+	       	    	 } else {
+	       	    		 
+	       	    		
+	       	    				       	    		
+	       	    		calFirstTimeInterest(respJson,d);
+	       	    	 }
+	       	    		
+	       	    		
+	       	 	},function(reason){
+	           	 console.log("error in processing your request", reason);
+           		})
+	       	    
+	         },function(reason){
+	           	 console.log("error in processing your request", reason);
+           	}); 
+    }
+ 	   
+    var calFirstTimeInterest =function(respJson,date){
+    	
+    	$("#total_paid_balance").val("0.00");
+    	
+   	 $("#prev_loan_amount").val("0.00");
+   	$("#prev_loan_amount").attr("data-init","0.00");
+   	 $("#paid_amount").val("0.00");
+   	 $("#due_amount").val(roundTo(respJson.transaction.account.amount,2));
+       $("#due_amount").attr("data-init",respJson.transaction.account.amount);
+   	 
+   	 $("#tot_loan_amnt").val(respJson.transaction.account.amount);
+       let old = moment(respJson.date,"DD/MM/YYYY"); 
+       let today = moment(date, "DD/MM/YYYY"); 
+       let diff =  Math.abs(today.diff(old,"days"));
 
+       console.log(diff);
+       
+   	 	let dueAmt = parseFloat(respJson.transaction.account.amount);
+   		let totalAmt =parseFloat(respJson.transaction.account.amount);	      
+   		let paidAmt = Math.abs(totalAmt-dueAmt); 
+   		//let amount = parseFloat(dueAmt);
+   	
+   	
+       let totalInterestAmnt = 0;
+       let paidInterest =0;		       	    	   
+       //let prePaidInterest=0;
+       
+       let rate = parseFloat(respJson.transaction.account.interestRate);
+       
+       
+       if((diff-31)>0){
+      	let noOfDays = (diff-31);
+          totalInterestAmnt = (rate*dueAmt*noOfDays)/100;
+     		
+     		//prePaidInterest=(rate*paidAmt*noOfDays)/100;
+       }else
+    {
+      	let noOfDays = (diff);
+      	console.log("noOfDays => "+noOfDays);
+          totalInterestAmnt = (rate*dueAmt)/100;
+      	
+      	//prePaidInterest=(rate*paidAmt)/100;
+       }
+       
+       
+   $("#total_interest_amount").val(roundTo(totalInterestAmnt,2));	       	    		 
+   $("#prev_interest_paid").val("0.00");
+   $("#paid_interest_amount").val("0.00");
+   $("#due_interest_amount").val(roundTo(totalInterestAmnt,2));
+   $("#due_interest_amount").attr("data-init",roundTo(totalInterestAmnt,2));
+
+   $("#totalLoanAmount").val(roundTo(respJson.transaction.account.amount,2));
+   $("#totalLoanAmount").attr("data-init",respJson.transaction.account.amount);
+   $("#totalInterestAmount").val(roundTo(totalInterestAmnt,2));
+   $("#totalInterestAmount").attr("data-init",totalInterestAmnt);
+   $("#totalAmount").val(roundTo(totalInterestAmnt+respJson.transaction.account.amount,2));
+   $("#paidAmount").val("0.00");
+   $("#paidInterestAmount").val("0.00");
+   $("#paidInterestAmount").attr("data-init","0.00");
+   $("#paidAmount").attr("data-init","0.00");
+   $("#dueAmount").val(roundTo(dueAmt,2));
+   $("#dueInterestAmount").val(roundTo(totalInterestAmnt,2));
+   $("#netAmount").val("0.00");
+   	 
+   $("trans_id").val("0.00");	   
+   }
+
+
+
+
+
+
+   var calVariousInterest = function(loanJson,respJson,date){
+
+
+    $("#tot_loan_amnt").val(respJson.transaction.account.amount);
+   	 //===============================modification
+      //setLoanTransactionList(respJson);
+   		$("#total_paid_balance").val("0.00");
+      $("#thdate").click();
+      
+   	 let loanTransaction = loanJson[0];
+   	 console.log(loanTransaction);
+   	 
+   	 //=================================================================== 
+   		 
+   	let dueAmt = parseFloat(loanTransaction.dueAmount);
+   	let totalAmt =parseFloat(loanTransaction.transaction_amount);
+   		let paidAmt = Math.abs(totalAmt-dueAmt);
+   	
+   	
+   		let interestPaidAmount = parseFloat(loanTransaction.interestPaidAmount);
+   		
+   	let totalInterestAmt =parseFloat(loanTransaction.interest_amount);
+   		//let prePaidInterest = Math.abs(totalInterestAmt-dueInterest);
+   	
+   	
+   	
+   	
+     $("#prev_loan_amount").val(paidAmt);
+      $("#paid_amount").val("0.00");
+      $("#due_amount").val(dueAmt);
+      
+      
+      
+      $("#due_amount").attr("data-init",dueAmt);
+      
+      
+   	let rate = parseFloat(respJson.transaction.account.interestRate);
+     let old = moment(loanTransaction.date,"DD/MM/YYYY"); 
+   	let today = moment(date, "DD/MM/YYYY");  
+    	let diff = today.diff(old,"days");
+    	let amount = parseFloat(dueAmt);
+
+      let totalInterestAmnt = 0;
+      
+   	 if((diff-31)>0){
+   	let noOfDays = (diff-31);
+   	console.log("noOfDays => "+noOfDays);
+       totalInterestAmnt = (rate*dueAmt*noOfDays)/100;
+    	
+    	
+
+    }else
+    {
+   	let noOfDays = (diff);
+   	console.log("noOfDays => "+noOfDays);
+       totalInterestAmnt = (rate*dueAmt)/100;
+
+    }
+   	 
+   	 console.log("loanTransaction.flag="+loanTransaction.flag);
+   	 
+   	 
+   	if(loanTransaction.flag === 0 || loanTransaction.flag == null ){
+   	let dueInterest =  parseFloat(totalInterestAmnt);
+
+   var dueInterestAmount = loanTransaction.interestDueAmount;
+   	
+   	//roundTo(totalInterestAmnt-loanTransaction.interestPreviousLoanAmount,2) <= 0.00 ? "0.00":roundTo(totalInterestAmnt-loanTransaction.interestPreviousLoanAmount,2);
+
+    $("#total_interest_amount").val(roundTo(totalInterestAmnt,2));	       	    		 
+    $("#prev_interest_paid").val(loanTransaction.interestPaidAmount);
+    $("#prev_interest_paid").attr("data-init",loanTransaction.interestPaidAmount);
+    $("#paid_interest_amount").val("0.00");
+
+    
+    //check this
+    if(loanTransaction.interest_amount === totalInterestAmnt)
+   		 {
+   		 $("#due_interest_amount").val(dueInterestAmount); 
+   		 $("#due_interest_amount").attr("data-init",dueInterestAmount);
+   		 
+   		 $("#dueInterestAmount").val(dueInterestAmount);
+   		   $("#dueInterestAmount").attr("data-init",dueInterestAmount);
+   		 }else
+   			 
+    {
+   	 	$("#due_interest_amount").val(totalInterestAmnt); 
+   	 	$("#due_interest_amount").attr("data-init",totalInterestAmnt);
+   	 
+   	 	$("#dueInterestAmount").val(totalInterestAmnt);
+   	   $("#dueInterestAmount").attr("data-init",totalInterestAmnt);
+   	 
+   	 
+   	 }
+
+
+   $("#totalLoanAmount").val(roundTo(respJson.transaction.account.amount,2));
+   $("#totalLoanAmount").attr("data-init",respJson.transaction.account.amount);
+   $("#totalInterestAmount").val(roundTo(totalInterestAmnt,2));
+   $("#totalInterestAmount").attr("data-init",totalInterestAmnt);
+
+   var totalAmount =roundTo(totalInterestAmnt+respJson.transaction.account.amount,2);
+
+
+
+   $("#totalAmount").val(totalAmount);
+   $("#paidAmount").val(loanTransaction.paidAmount);
+   $("#paidAmount").attr("data-init",loanTransaction.paidAmount)
+   $("#paidInterestAmount").val(loanTransaction.interestPaidAmount);
+   $("#paidInterestAmount").attr("data-init",loanTransaction.interestPaidAmount);
+   $("#dueAmount").val(roundTo(loanTransaction.dueAmount,2));
+
+   $("#netAmount").val(loanTransaction.interestPaidAmount+loanTransaction.paidAmount);
+
+   $("#trans_id").val(loanTransaction.id);
+   }else
+   {
+   alert("Delivered Already !");
+
+   $("#total_interest_amount").val(loanTransaction.interestPaidAmount);	       	    		 
+    $("#prev_interest_paid").val(loanTransaction.interestPaidAmount);
+    $("#prev_interest_paid").attr("data-init",loanTransaction.interestPaidAmount);
+    $("#paid_interest_amount").val("0.00");
+    
+    
+    $("#due_interest_amount").val("0.00"); 
+    $("#due_interest_amount").attr("data-init","0.00");
+    
+    $("#dueInterestAmount").val("0.00");
+      $("#dueInterestAmount").attr("data-init","0.00");
+    
+    $("#totalLoanAmount").val(roundTo(respJson.transaction.account.amount,2));
+      $("#totalLoanAmount").attr("data-init",respJson.transaction.account.amount);
+      $("#totalInterestAmount").val(roundTo(loanTransaction.interestPaidAmount,2));
+      $("#totalInterestAmount").attr("data-init",loanTransaction.interestPaidAmount);
+
+
+      var totalAmount =roundTo(loanTransaction.interestPaidAmount+respJson.transaction.account.amount,2);
+
+
+   $("#totalAmount").val(totalAmount);
+   $("#paidAmount").val(loanTransaction.paidAmount);
+   $("#paidAmount").attr("data-init",loanTransaction.paidAmount)
+   $("#paidInterestAmount").val(loanTransaction.interestPaidAmount);
+   $("#paidInterestAmount").attr("data-init","0.00");
+   $("#dueAmount").val(roundTo(loanTransaction.dueAmount,2));
+
+   $("#netAmount").val(loanTransaction.interestPaidAmount+loanTransaction.paidAmount);
+
+   $("#trans_id").val(loanTransaction.id);
+   }
+
+
+
+   }
+
+  
+   //onchange
+
+    
+       ;(function(){
+       	
+       	$("#paid_amount").change(function(e){
+    		   let paidAmount = parseFloat($(this).val()==""?"0.00":$(this).val());
+    		   let dueAmount = parseFloat($("#due_amount").attr("data-init"));
+    		   
+
+    		   let totLoanAmount = parseFloat($("#totalLoanAmount").attr("data-init"));
+    		   let totInterestAmount = parseFloat($("#totalInterestAmount").attr("data-init"));
+    		   
+    		  $("#prev_loan_amount").attr("data-init",paidAmount);
+    		   
+    		  var overallpaidAmt = ($("#total_paid_balance").val() === null ||$("#total_paid_balance").val() === "") ? 0.00 : parseInt($("#total_paid_balance").val()) ;
+     		  console.log("overallpaidAmt "+overallpaidAmt);
+     		  var amtLeft =  totLoanAmount - (overallpaidAmt);
+     		   
+     		  console.log("amt left = ");
+     		 console.log(amtLeft);
+     		  
+     		var updateMode =parseInt($("#update_mode").val());
+     		  
+     		  $("#prev_loan_amount").attr("data-init",paidAmount);
+     		  
+     		 	if(paidAmount>amtLeft && updateMode ===1){
+     		  		$(this).val("0.00");
+     		  		paidAmount=0;
+     		  		alert("Paid Amount should be less than "+amtLeft );
+     		  	}
+     		  
+     		  
+     		   
+     		  	if($("#due_amount").val()>=paidAmount){
+     		  	 dueAmount =   dueAmount - paidAmount;
+     		  	}else{
+     		  		$(this).val("0.00");
+     		  		paidAmount=0;
+     		  		alert("Paid Amount cannot be more than Due Amount")
+     		  	}
+     		  	
+    		   
+    		   
+    		   
+    		  let overallAmount=roundTo(totLoanAmount+totInterestAmount,2);
+    		   $("#totalAmount").val(overallAmount);
+    		   
+    		   $("#due_amount").val(roundTo(dueAmount,2));
+    		   // totaldueAmount += dueAmount
+    		   if($("#dueAmount").val()!="" && parseInt($("#dueAmount").attr("data-init"))>=paidAmount){
+    			   dueAmount = parseFloat($("#dueAmount").attr("data-init"))-paidAmount;
+    		   }
+    		   //total due Amount
+    		   $("#dueAmount").val(roundTo(dueAmount,2));
+    		  
+    		  // $("#dueAmount").attr("data-init",roundTo(dueAmount,2))
+    		   //totalPaidAmount
+    		   if($("#paidAmount").val()!=""){
+    			  paidAmount = parseFloat($("#paidAmount").attr("data-init"))+paidAmount;
+    		   }
+    		   $("#paidAmount").val(roundTo(paidAmount,2));
+    		  	$("#prev_loan_amount").val(roundTo(paidAmount,2));
+    		  	//use this
+    		   //netAmount
+    		   let intDueAmount = parseFloat($("#dueInterestAmount").val()==""?"0.00":$("#dueInterestAmount").val());
+    		   $("#netAmount").val(roundTo(overallAmount-(dueAmount+intDueAmount)),2);
+    	   });
+    	   
+       	
+       	
+       	
+       	
+       	
+    	   $("#paid_interest_amount").change(function(){
+    		   
+    		   let paidInterestAmount = parseFloat($(this).val()===""?"0.00":$(this).val());
+    		   let dueInterestAmount = parseFloat($("#due_interest_amount").attr("data-init"));
+    		   
+    		   
+    		   if($("#due_interest_amount").val()!="" && parseFloat($("#due_interest_amount").attr("data-init")) >= paidInterestAmount){
+    	 			 $("#prev_interest_paid").attr("data-init",paidInterestAmount);
+    	 			 dueInterestAmount = dueInterestAmount - paidInterestAmount;
+    	 		  }else{
+    	 			  alert("Paid Interest should be less than Due Interest..");
+    	 			 paidInterestAmount=0.0;
+    	 			$(this).val("0.00");
+    	 		  }
+    		    		
+    		   $("#due_interest_amount").val(roundTo(dueInterestAmount,2));
+    		  $("#dueInterestAmount").val(roundTo(dueInterestAmount,2));
+    		   //tot amount
+    		   let totLoanAmount = parseFloat($("#totalLoanAmount").attr("data-init"));
+    		   let totInterestAmount = parseFloat($("#totalInterestAmount").attr("data-init"));
+    		   
+    		   
+    		  let overallAmount=roundTo(totLoanAmount+totInterestAmount,2);
+    		   $("#totalAmount").val(overallAmount);
+    		   
+    		   if($("#paidInterestAmount").val()!=""){
+    			   paidInterestAmount+= parseFloat($("#paidInterestAmount").attr("data-init"));
+    		   }
+    		   //totpaidInterestAmount
+    		   $("#paidInterestAmount").val(roundTo(paidInterestAmount,2));
+    		  $("#paidInterestAmount").attr("data-init",roundTo(paidInterestAmount,2))
+    		  	$("#prev_interest_paid").val(roundTo(paidInterestAmount,2));
+   		  	
+    		   //$("#paidInterestAmount").attr("data-init",paidInterestAmount);
+    		   //totdueInterestAmount
+    		   
+    		   //if($("#dueInterestAmount").val()!="" && parseFloat($("#dueInterestAmount").attr("data-init")) >= paidInterestAmount){
+    			   //dueInterestAmount = parseFloat($("#dueInterestAmount").attr("data-init")) - paidInterestAmount;
+    		   //}
+    		  
+    		   
+    		   let dueAmount = parseFloat($("#due_amount").val());
+    		   $("#netAmount").val(roundTo(overallAmount-(dueAmount+dueInterestAmount)),2);
+    	   });
+    	   
+    	   
+    	   
+    	   
+    	   
+    	   
+       })();
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
+
+       var saveOrUpdate = function(mode){
+       	   
+       	console.log("Hello, is it me you looking for ? 3");
+       	
+       	   let loanTransaction = {}; 
+       	 
+       	var txt =$("#voucher_id").val(); 
+       	var subTxt = txt.substring(3,6);
+          let voucherId = parseInt(subTxt);
+       	 
+          loanTransaction["flag"]=formatIntegerValue("0");
+          loanTransaction["type"]="loan_take";
+       	 loanTransaction["voucherId"] = formatIntegerValue(voucherId);
+       	 loanTransaction["dueAmount"] = formatFloatValue($("#due_amount").val());
+       	 loanTransaction["paidAmount"] = formatFloatValue($("#paidAmount").val());
+       	 loanTransaction["previousLoanAmount"] = formatFloatValue($("#prev_loan_amount").attr("data-init"));
+       	 loanTransaction["transaction_amount"] = formatFloatValue($("#tot_loan_amnt").val());
+       	 loanTransaction["date"] = $("#date").val();
+       	 loanTransaction["interest_amount"] = formatFloatValue($("#total_interest_amount").val());
+       	 loanTransaction["interestDueAmount"] = formatFloatValue($("#due_interest_amount").val());
+       	 loanTransaction["interestPaidAmount"] = formatFloatValue($("#paidInterestAmount").val());
+       	 loanTransaction["interestPreviousLoanAmount"] = formatFloatValue($("#prev_interest_paid").attr("data-init"));
+       	 
+       	 console.log("Hello, is it me you looking for ? 2");
+       	 console.log(loanTransaction);
+       	 
+       	 let url = getAbsoluteUrl("mortgage-app/api/voucher/loan/");
+       	 buildAjaxForJson(url, "POST", loanTransaction).then(function(respJson){
+       		 
+       		 console.log("Hello, is it me you looking for ?")
+       		 
+       		 if(mode === 1)
+       			 {
+       			 	
+       				$("#component1").show(400);
+       				$("#component2").hide();
+       				 
+       				var txt =$("#voucher_id").val(); 
+       				var subTxt = txt.substring(3,6);
+       			   let voucherId = parseInt(subTxt);
+
+       				$("#up").show();
+       				$("#voucher_id").removeAttr("disabled");
+       				alert("updated LoanTransaction");
+       			 }
+       		 else{
+       			alert("saved LoanTransaction");
+       			 reset();
+       		 }
+       		 
+       		 console.log(respJson);
+       		
+       	 },function(reason){
+       	           	 console.log("error in processing your request while saving loanTransaction", reason);
+         	}); 
+       	   	    	   
+       	   
+       }*/
+
+    
+    
+    
+    
+    
+    
+    
+    function reset(){
+ 	   $("#voucher_id").val("");
+ 	   $("#due_interest_amount").val("");
+ 	   $("#paid_amount").val("");
+ 	   $("#prev_loan_amount").val("");
+ 	   $("#tot_loan_amnt").val("");
+ 	   $("#total_interest_amount").val("");
+ 	   $("#due_interest_amount").val("");
+ 	   $("#paid_interest_amount").val("");
+ 	   $("#prev_interest_paid").val("");
+ 	   
+ 	   
+ 	   $("#cust_address").val("");
+	       $("#cust_mobile").val(""); 
+	       $("#cust_name").val("");
+	       $("#cust_id").val("");
+	       	    
+	       	    $("#days_count").val("");
+	       	    $("#loan_amount").val("");
+	       	    $("#rate").val("");
+	       	    $("#tot_loan_amnt").val("");
+	       	 	$("#due_amount").val("");
+	       	    $("#date").datepicker(dateSettings);
+	       	    $("#date").val(moment().format("DD/MM/YYYY"));
+	
+	       	    
+	       	    //================================modification
+	       	    $("#receive_date").val("");
+	       	 	$("#voucher_id").val("");
+	       	 	
+	       		$("#totalLoanAmount").val("");
+	       		$("#totalInterestAmount").val("");
+	       		$("#paidInterestAmount").val("");
+	       		$("#dueInterestAmount").val("");
+	       		$("#paidAmount").val("");
+	       		$("#totalAmount").val("");
+	       		$("#dueAmount").val("");
+	       		$("#netAmount").val("");
+	       		
+	       	 	   
+	       	 
+    }
+    
+       /*
+    $("#cancel").click(function(){
+    	reset();
+    });
+    
+
+    $("#save").click(function(){
+    	 saveOrUpdate(0);
+       })*/
+       
+    
+       
+          
+var updateTransaction =function()
+{
+	if($("#update_id").val().trim()!="" && $("#update_type").val().trim()!=""){
+		   			
+				var id =parseInt($("#update_id").val().trim());
+				var type =$("#update_type").val().trim().split("/")[0]; 
+		
+				console.log(id+"======="+type);
+		
+          		var URL =getAbsoluteUrl("mortgage-app/api/voucher/updateByIDAndType"); 
+          		
+          		$.ajax({
+          	     type: "GET",
+          	     url: URL,
+          	   data:{id,type},
+          	    success: function(respJson) {
+
+          	    	console.log(respJson);
+          	    	
+          	    	var voucherDetails = respJson[0][1];
+          	    	var loanDetails = respJson[0][0];
+          	    	
+          	    	lDetails =loanDetails;
+          	    	vDetails = voucherDetails;
+          	    	
+          	    	console.log(voucherDetails);
+          	    	
+          	    	getSumById(voucherDetails.id);
+          	    	getSumInterestById(voucherDetails.id);
+          	    	$("#update_mode").val(1);
+          	    	updatePrimaryFields(voucherDetails,voucherDetails.date);
+          	    	setNoOfDays(voucherDetails.date,loanDetails.date);
+          	    	//setDataTableInTransactionDetails(voucherDetails);
+    	         	//setDataTableInProductDetails(voucherDetails);             	    	
+    	         	//setLoanTransData(loanDetails,voucherDetails);
+    	         	fillUpLoanTransaction(loanDetails,voucherDetails,1);
+    	         	$("#voucher_id").val(voucherDetails.id);
+    	         	$("#save").removeAttr('disabled');
+    	 			$("#delivery").removeAttr('disabled');
+          	  		}  
+          	})
+
+
+		
+	   }else{$("#update_mode").val(0);}
+}
+
+
+var setLoanTransData =function(loanJson,voucherDetails)
+{
+	updateTransactionFields(loanJson,voucherDetails);
+}
+	/*
+	let dueAmt =parseFloat(loanJson.dueAmount+loanJson.previousLoanAmount);
+	
+	var pa = parseFloat(loanJson.transaction_amount - dueAmt);
+	let prevAmnt = pa>0 ? pa:0;
+	let rate = parseFloat(respJson.mortgage.interestRate);
+	
+	
+	
+	 	$("#due_interest_amount").val(loanDetail.interestDueAmount);
+	   $("#paid_amount").val(loanDetail.paidAmount);
+	   $("#prev_loan_amount").val(loanDetail.previousLoanAmount);
+	   $("#tot_loan_amnt").val(loanDetail.interest_amount);
+	   $("#total_interest_amount").val(loanDetail.interest_amount);
+	   $("#due_interest_amount").val(loanDetail.interestDueAmount);
+	   $("#paid_interest_amount").val(loanDetail.interestPaidAmount);
+	   $("#prev_interest_paid").val(loanDetail.interestPreviousLoanAmount);
+	   
+	   
+	   $("#totalLoanAmount").val("");
+   		$("#totalInterestAmount").val("");
+   		$("#paidInterestAmount").val("");
+   		$("#dueInterestAmount").val("");
+   		$("#paidAmount").val("");
+   		$("#totalAmount").val("");
+   		$("#dueAmount").val(dueAmt);
+   		$("#netAmount").val("");
+   		
+}
+
+$("#update").click(function(){
+	
+	saveOrUpdate1(1,"loan_take");
+	
+	
+}); */
+
+
+
+$("#save").click(function(e){
+	saveOrUpdate("loan_take",0);
+});
+
+$("#delivery").click(function(e){
+	deliveryBtn("loan_take");
+});
+
+    
+    
+    </script>
+	<!-- <script type="text/javascript" src="/js/loanGiveTrans.js"></script>-->
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
 </html>

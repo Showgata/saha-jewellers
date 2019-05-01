@@ -29,7 +29,7 @@ and open the template in the editor.
                                     <div class="widget-box clearfix">
                                         <div >
                                             <h4>Cash In</h4>
-                                            <h2>17,50 <i class=" fa fa-reply pull-right"></i></h2>
+                                            <h2><ab id="cashi"></ab> <i class=" fa fa-reply pull-right"></i></h2>
                                         </div>
                                        
                                     </div>
@@ -38,7 +38,7 @@ and open the template in the editor.
                                             <div class="widget-box clearfix">
                                                 <div>
                                                     <h4>Cash Out</h4>
-                                                    <h2>580  <i class=" fa fa-share pull-right"></i></h2>
+                                                    <h2><ab id="casho"></ab> <i class=" fa fa-share pull-right"></i></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +46,7 @@ and open the template in the editor.
                                             <div class="widget-box clearfix">
                                                 <div>
                                                     <h4>Balance</h4>
-                                                    <h2>$9.7k <i class="fa fa-usd pull-right"></i></h2>
+                                                    <h2><ab id="cashb"></ab> <i class="fa fa-money pull-right"></i></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -55,7 +55,8 @@ and open the template in the editor.
                             </div>
                         </div><!--end widget-->
                     
-				
+
+
  <div class="row"  >
                              <div class="col-sm-12" style="overflow: hidden;">
 							 <div class="panel-box">
@@ -64,7 +65,8 @@ and open the template in the editor.
                                     <div class="table-responsive">
 									
                                                     
-                                          <table id="mortgage_detail" class="table table-striped" cellspacing="0" width="100%">
+                                          <table id="mortgageTable" class="table table-striped" cellspacing="0" width="100%">
+                                      
                                         <thead>
                                             <tr>
 											<th>ID</th>
@@ -175,9 +177,88 @@ and open the template in the editor.
                 </div><!--content page-->
             </div><!--end wrapper-->
         </div>
+        
+        
+        
+        <!-- Update remainder Date -->
+        <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-sm" style="width:30%;">			
+			<!-- Modal content For Product Details-->
+					<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Update Reminder Date</h4> 
+					</div>
+					<div class="modal-body">
+
+						<div class="form-group">
+						<label class="col-lg-2 col-md-3 control-label">Set Reminder Date</label>
+						<div class="col-lg-10 col-md-9">
+							<input class="form-control date" placeholder="DD/MM/YYYY"
+								id="updateRemainderDate" type="text" required>
+						</div>
+						<button type="button" class="btn btn-border-theme btn-xs" id="updateDate">
+							Update Date</button>
+																	
+						
+					</div>
+						</div>
+						<div class="panel-group"></div>
+					</div>
+			
+			</div>
+
+			</div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
        <div th:replace="/common/common-header :: common-required-scripts"></div>
+       
+        <script src="/js/home.js"></script>
+          
+ <!-- used to update balance all the time  -->
+			<input type="submit" id="#edit-submit" class="abc" style="display:none"> 
+ <div style="display:none">
+ <form action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form>
+</div>
+   <script src="/js/cashledger/cashledger.js"></script>
+   <!-- used to update balance all the time  -->
+
        <script>
-    $("#mortgage_detail").dataTable();
+    $("#mortgageTable").dataTable();
    	$("#loan-take").dataTable();
    	$("#loan-give").dataTable();
        </script>

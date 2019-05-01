@@ -10,7 +10,8 @@ and open the template in the editor.
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head th:replace="/common/common-header :: common-headpage"></head>
     
-    <body class="fixed-left" style="overflow:hidden;">
+    <body class="fixed-left">
+
 
         <div id="wrapper" >
 		 <!--top bar-->
@@ -29,7 +30,7 @@ and open the template in the editor.
                                     <h4>Customer Information</h4>
                                     <form role="form">
                                     <div class="form-group"><label>Customer Name</label> <input id="cust_name" type="text" placeholder="Enter name" class="form-control"></div>
-									<div class="form-group"><label>ID</label> <input type="text" id="cust_id" placeholder="Enter id" class="form-control"></div>
+									<div class="form-group"><label>ID</label> <input type="text" id="cust_id" placeholder="Enter id" disabled class="form-control"></div>
                                     <div class="form-group"><label>Mobile</label> <input type="text" id="cust_mobile" placeholder="Enter mobile" class="form-control"></div>
                                     <div class="form-group"><label>Address</label> <input type="text" id="cust_address" placeholder="Enter address" class="form-control"></div>
 								  <div>
@@ -65,7 +66,8 @@ and open the template in the editor.
                                                             <input class="form-control" placeholder="Note" name="note" id="trans_note" type="text">
                                                         </div>
                                                     </div>                       
-                                                    <input type="hidden" id="transaction_id"/>                                                                                                                                            
+                                                    <input type="hidden" id="transaction_id"/>   
+                                                                                                                                                                                             
 													<!-- End .control-group  -->
                                                 </div>
                                               
@@ -85,8 +87,8 @@ and open the template in the editor.
                                 </div>
 								                                 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-border-theme btn-xs ">Print</a>   &nbsp;
-									 <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>  &nbsp;
-								
+									 <a href="#" class="btn btn-border-theme btn-xs" id="new">New</a>  &nbsp;
+								<input type="hidden" id="slid"/>
 										   <a href="#" class="btn btn-border-theme btn-xs">PDF</a>   &nbsp;
 									
 										
@@ -111,7 +113,7 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
                                                         <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg " style="color:#f7b03e;" placeholder="sl no." name="sl_no" id="sl_no" value="0" type="text">
+                                                            <input class="form-control input-lg " style="color:#f7b03e;font-size: 28px;" placeholder="sl no." name="sl_no" disabled id="sl_no" value="0" type="text">
                                                         </div>
                                                     </div>
                                                     
@@ -163,7 +165,7 @@ and open the template in the editor.
 </style>
                            
  <div class="row"  >
-                             <div class="col-sm-12" style="overflow: scroll;height:350px;margin-top:-20px">
+                             <div class="col-sm-12" style="margin-top:-20px">
 							 <div class="panel-box">	   
                                     <div class="table-responsive">
 									
@@ -207,11 +209,47 @@ and open the template in the editor.
         </div>
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/check.js"></script>
+   
+ <!-- used to update balance all the time  -->
+			<input type="submit" id="#edit-submit" class="abc" style="display:none"> 
+ <div style="display:none">
+ <form action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form>
+</div>
+   <script src="/js/cashledger/cashledger.js"></script>
+   <!-- used to update balance all the time  -->
+   
    <script>
+   var isSavedAlready = false;
    $(document).ready(function () {
 	   listAllCapital();
 	   setAutoComplete();
 	   $("#voucher_date").datepicker(dateSettings);
+	   $("#voucher_date").datepicker({
+			   dateFormat: "dd/mm/yyyy"
+		   });
 	   reset();
    });
    var capitalTable = null;
@@ -228,23 +266,23 @@ and open the template in the editor.
      		
      		 jQuery.each(respJson, function(i, val) {
        			
-     			data.push([(val.id==null?"0":val.id),
+     			data.push([(val.customer.customerId==null?"0":val.customer.customerId),
      				 val.customer.customerName,
-     				 (val.transaction.id==null?"":val.transaction.id),
+     				(val.id==null?"0":"CI-"+val.id),
      				 (val.customer.mobile==null?"0":val.customer.mobile),
      				 (val.customer.address==null?"":val.customer.address),
      				(val.transaction.amount==null?"0.0":val.transaction.amount),
      				(val.transaction.note==null?"":val.transaction.note),
-     				 val.date,
-     				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
-     				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+     				moment(val.date).format("DD/MM/YYYY"),
+     				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.sl_id+"' name='update' value='update' id='update' />",
+     				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.sl_id+"' name='delete' value='delete' id='delete' />"
      			 ]);  
        		}); 
      		
      		capitalTable = $('#capital_table').DataTable({
         		data:           data,
                 deferRender:    true,
-                scrollY:        100,
+                
                 scrollCollapse: true,
                 scroller:       true,
                 "order": [],
@@ -315,6 +353,11 @@ and open the template in the editor.
      	}); 
    }
    
+   
+   $("#new").click(function(){
+	   reset();
+	   });
+   
    function reset(){
 	   $("#cust_name").val("");
 	   $("#cust_id").val("");
@@ -326,77 +369,105 @@ and open the template in the editor.
 	   $("#sl_no").val("");
 	   $("#transaction_id").val("");
 	   $("#voucher_id").val("");
+	   $("#slid").val("");
 	   
    }
    	;(function(){
    		
    		$("#save").click(function(e){
-   			let cust_name = formatValue($("#cust_name").val());
-   			let cust_id = formatValue($("#cust_id").val());
-   			let cust_mobile = formatValue($("#cust_mobile").val());
-   			let cust_address = formatValue($("#cust_address").val());
-   			let trans_amount = formatFloatValue($("#trans_amount").val());
-   			let trans_note = formatValue($("#trans_note").val());
-   			let voucher_date = formatValue($("#voucher_date").val());
-   			let sl_no = formatValue($("#sl_no").val());
    			
-   			let customer = {};
    			
-   	    	customer["address"]=cust_address;
-   	    	customer["mobile"]=cust_mobile;
-   	    	customer["customerId"]=cust_id;
-   	    	customer["customerName"]=cust_name;
+   			if(!isSavedAlready){
+      		 var ignoreThisArray =["sl_no","trans_note"];
+     	   
+     	   
+     	   
+   	    	if(isValid(ignoreThisArray)){
+      			
+      			
+      			
+      			let cust_name = formatValue($("#cust_name").val());
+      			let cust_id = formatValue($("#cust_id").val());
+      			let cust_mobile = formatValue($("#cust_mobile").val());
+      			let cust_address = formatValue($("#cust_address").val());
+      			let trans_amount = formatFloatValue($("#trans_amount").val());
+      			let trans_note = formatValue($("#trans_note").val());
+      			let voucher_date = formatValue($("#voucher_date").val());
+      			let sl_no = formatValue($("#sl_no").val());
+      			
+      			let customer = {};
+      			
+      	    	customer["address"]=cust_address;
+      	    	customer["mobile"]=cust_mobile;
+      	    	customer["customerId"]=cust_id;
+      	    	customer["customerName"]=cust_name;
+      	    	
+      	    	let transaction = {};
+      	    	
+      	        transaction["amount"] = trans_amount;
+      	        transaction["note"] = trans_note;
+      	     	transaction["customerId"] = formatIntegerValue(cust_id);
+      	        transaction["id"] = formatIntegerValue($("#transaction_id").val());
+      	        
+      	        let voucher = {};
+      	        
+      	     	var res =$("#voucher_id").val();
+      	        voucher["id"] = formatIntegerValue(res.substr(3, 2));
+      	        voucher["transaction"] = transaction;
+      	 	    voucher["customer"] = customer;
+   	    	voucher["type"] = "capital";
+   	    	var da = moment(voucher_date,"DD/MM/YYYY").format("MM/DD/YYYY");
+   	  		voucher["date"]=new Date(da);
+   	    	voucher["serial"] = sl_no;
+   	    	voucher["sl_id"]=formatIntegerValue($("#slid").val());
    	    	
-   	    	let transaction = {};
    	    	
-   	        transaction["amount"] = trans_amount;
-   	        transaction["note"] = trans_note;
-   	      //  transaction["storage"] = formatIntegerValue(storage.val());
-   	        transaction["id"] = formatIntegerValue($("#transaction_id").val());
-   	        
-   	        let voucher = {};
-   	        
-   	        voucher["id"] = formatIntegerValue($("#voucher_id").val());
-   	        voucher["transaction"] = transaction;
-   	 	    voucher["customer"] = customer;
-	    	voucher["type"] = "capital";
-	    	voucher["date"] = voucher_date;
-	    	voucher["serial"] = sl_no;
-	    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
-	    	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
-	    		if(voucher["id"] != "" && voucher["id"] != null) return;
-	    		
-	    		reset();
-	    		
-	    		var t = $('#capital_table').DataTable();
-	       		if(parseInt($("#voucher_id").val())==parseInt(respJson.id)){
-					var rowNode = r.node();
-					r.remove();
-					capitalTable.page(t.page()).draw(false);
-				}
-	       		
-	       		console.log(respJson);
-	       		let val = respJson;       		 
-	       		 
-	       		t.row.add([(val.id==null?"0":val.id),
-     				 val.customer.customerName,
-     				 (val.transaction.id==null?"":val.transaction.id),
-     				 (val.customer.mobile==null?"0":val.customer.mobile),
-     				 (val.customer.address==null?"":val.customer.address),
-     				(val.transaction.amount==null?"0.0":val.transaction.amount),
-     				(val.transaction.note==null?"":val.transaction.note),
-     				 val.date,
-     				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
-     				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
-     			 ]).draw();  
-	 			
-	       		moveDataTableRow(1,t);
-	       		
-	    		
-	    	},function(reason){
-	          	 console.log("error in processing your voucher request", reason);
-	       	}); 
-   		});
+   	    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
+   	    	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
+   	    		if(voucher["id"] != "" && voucher["id"] != null) return;
+   	    		
+   	    		
+   	    		
+   	    		var t = $('#capital_table').DataTable();
+   	       		if(parseInt($("#voucher_id").val())===parseInt(respJson.id)){
+   					var rowNode = r.node();
+   					r.remove();
+   					capitalTable.page(t.page()).draw(false);
+   				}
+   	       		
+   	       		console.log(respJson);
+   	       		let val = respJson;       		 
+   	       		 
+   	       		t.row.add([(val.customer.customerId==null?"0":val.customer.customerId),
+        				 val.customer.customerName,
+        				 (val.id==null?"":"CI-"+val.id),
+        				 (val.customer.mobile==null?"0":val.customer.mobile),
+        				 (val.customer.address==null?"":val.customer.address),
+        				(val.transaction.amount==null?"0.0":val.transaction.amount),
+        				(val.transaction.note==null?"":val.transaction.note),
+        				 moment(val.date).format("DD/MM/YYYY"),
+        				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.sl_id+"' name='update' value='update' id='update' />",
+        				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.sl_id+"' name='delete' value='delete' id='delete' />"
+        			 ]).draw();  
+   	 			
+   	       		moveDataTableRow(1,t);
+   	       		
+   	       		$("#sl_no").val("CI-"+val.id);
+   	    		
+   	    	},function(reason){
+   	          	 console.log("error in processing your voucher request", reason);
+   	       	}); 
+   	    	
+   	    	isSavedAlready=true;
+   	    	
+      		}else{
+      			alert("Some fields are empty !");
+      		}
+   			}else{
+   				isSavedAlready=false;
+   				reset();
+   			}
+      		});
    		
    		//update and delete
    		
@@ -407,16 +478,37 @@ and open the template in the editor.
       		  var currentPage = table.page();
       		  //console.log($(this).attr('delid'));
       		  
-      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
-      		  buildAjax(URL, "POST").then(function(respJson){
-      		  },function(reason){
-		           	 console.log("error in processing your request", reason);
- 	           	}); 
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/remove");
+        		  /*buildAjax(URL, "POST").then(function(respJson){
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	});*/
+   	           	
+   	           	var params = {
+   	           			type:"capital",
+   	           			id:parseInt($(this).attr('delid'))
+   	           			};
+   	           	
+   	         $.ajax({
+          	     type: "POST",
+          	     url: URL,
+          	   //data:{id:voucherId},
+          	   data:params,
+          	    success: function(respJson) {
+
+          	    	alert("Deleted successfully !")
+          	  			
+          	  		}  
+          	})
       		  var row = table.row( $(this).parents('tr') );
                 var rowNode = row.node();
                 row.remove();
                 table.page(currentPage).draw(false);
+                
+                reset();
       	}
+      	
+      	
        
           
       });
@@ -427,7 +519,7 @@ and open the template in the editor.
       		  var currentPage = table.page();
       		  //console.log($(this).attr('delid'));
       		  
-      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/update/"+parseInt($(this).attr('updid')));
       		  buildAjax(URL, "GET").then(function(respJson){
       			  console.log(respJson);
   					let val = respJson;
@@ -443,15 +535,18 @@ and open the template in the editor.
       		        let voucher_serial_field = $("#sl_no");
       		        
       		        cust_name_field.val(val.customer.customerName);
+      		      	
       		        cust_id_field.val(val.customer.customerId);
       		        cust_mobile_field.val(val.customer.mobile);
       		        cust_address_field.val(val.customer.address);
-      		        voucher_date_field.val(val.date);
-      		        voucher_serial_field.val(val.id);
+      		        voucher_date_field.val(moment(respJson.date).format("DD/MM/YYYY"));;
+      		        voucher_serial_field.val("CI-"+val.id);
       		        $("#voucher_id").val(val.id);
       		        trans_note_field.val(val.transaction.note);
       		        trans_id_field.val(val.transaction.id);
       		        trans_amount_field.val(val.transaction.amount==null?"0.00":val.transaction.amount);
+      		  
+      		      $("#slid").val(respJson.sl_id);
       		  },function(reason){
 		           	 console.log("error in processing your request", reason);
  	           	}); 
@@ -488,12 +583,14 @@ and open the template in the editor.
 		        cust_id_field.val(val.customer.customerId);
 		        cust_mobile_field.val(val.customer.mobile);
 		        cust_address_field.val(val.customer.address);
-		        voucher_date_field.val(val.date);
-		        voucher_serial_field.val(val.id);
+		        voucher_date_field.val(moment(val.date).format("DD/MM/YYYY"));
+		        voucher_serial_field.val("CI-"+val.id);
 		        $("#voucher_id").val(val.id);
 		        trans_note_field.val(val.transaction.note);
 		        trans_id_field.val(val.transaction.id);
 		        trans_amount_field.val(val.transaction.amount==null?"0.00":val.transaction.amount); 
+		        $("#slid").val(respJson.sl_id);
+		        
 		  },function(reason){
 	           	 console.log("error in processing your request", reason);
          	}); 

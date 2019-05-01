@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+		 <!--top bar-->
+   			<div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+             <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+
+                        <div class="row">
+                             <div class="col-sm-12 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+                                  	<div class="clearfix" style="padding-top:20px">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-2" style="padding-left: 10px;">
+											<label>Sl no</label> <input type="text" id="slno"
+												placeholder="search by Serial No" class="form-control">
+										</div>
+										<div class="form-group col-sm-2" style="padding-left: 10px;">
+											<label>Name</label> <input type="text" id="name"
+												placeholder="search by Name" class="form-control">
+												
+										</div>
+									
+										<div class="form-group col-sm-2" style="padding-left: 10px;">
+											<label>ID</label> <input type="text" id="id"
+												placeholder="search by ID" class="form-control">
+										</div>
+										<div class="form-group col-sm-2" style="padding-left: 10px;">
+											<label>Amount</label> <input type="text" id="amount"
+												placeholder="search by Amount" class="form-control">
+										</div>
+										
+										<div class="form-group col-sm-2 " style="margin-left:10px;padding-top: 10px;">
+											<button class="btn btn-border-theme btn-xs"  type="button" id="search">View Report</button> 
+										</div>
+										
+										
+										<div class="form-group col-sm-2 " style="margin-left:10px;padding-top: 10px;">
+											<button type="button" id="search_by_date" class="btn btn-border-theme btn-xs" data-toggle="modal" data-target="#myModal">Search By Date</button> 
+										</div>
+										
+									</form>
+								</div>
+								<br>
+							  
+                                </div>
+								
+										
+                            </div >
+                            <style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+                           
+							
+							
+							
+									
+                        </div>
+				
+				
+				
+				
+				
+				
+					<!-- Search By Date Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-lg" style="width:90%;">
+
+				<!-- Modal content For Transaction Details-->
+				<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Search By Date</h4> 
+					</div>
+					<div class="modal-body">
+						
+						<!-- Date Fields -->
+						
+						<div class="row">
+						<div class="col-sm-8">
+							<div class="panel-box">
+								
+								<div class="dropdown">
+									<button class="btn btn-danger btn-lg dropdown-toggle"
+										type="button" id="dropdownMenuButton" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false">Search By Date</button>
+
+									<div class="dropdown-menu" role="menu"
+										aria-labelledby="dropdownMenuButton">
+
+										<a class="dropdown-item range_dates" href="#"
+											 style="padding: 10px;"
+											aria-expanded="true" id="date_range">By Date From & To</a> <br> 
+											
+											<a
+											class="dropdown-item specific_date" href="#"
+											 style="padding: 10px;"
+											aria-expanded="false">By Date</a> <br>
+									</div>
+								</div>
+
+								
+
+									<!-- Date From And To  -->
+									<div class="clearfix" id="range_dates"
+										style="margin-top: 30px;">
+										<form role="form" class="form-inline">
+											<div class="form-group col-sm-2 ">
+												<label>Date from</label> <input type="text" id="date_from"
+													placeholder="date from" class="form-control date">
+											</div>
+											<div class="form-group col-sm-2 col-sm-offset-2"
+												style="padding-left: 10px;">
+												<label>Date To</label> <input type="text" id="date_to"
+													placeholder="date to" class="form-control date">
+											</div>
+											<div class="form-group col-sm-4 col-sm-offset-2 mt-sm-4"
+												style="padding-left: 10px; margin-top: 25px;">
+												<a href="#" class="btn btn-border-theme btn-xs" id="s1">Search
+												</a>
+											</div>
+
+										</form>
+									</div>
+
+									<!-- Specific Date-->
+									<div class="clearfix " id="specific_date"
+										
+										style="margin-top: 30px;">
+										<form role="form" class="form-inline">
+											<div class="form-group col-sm-2 ">
+												<label>Select Date</label> <input type="text" id="sp_date"
+													placeholder="Select Date" class="form-control date">
+											</div>
+											<div class="form-group col-sm-4 col-sm-offset-2 mt-sm-4"
+												style="padding-left: 10px; margin-top: 25px;">
+												<a href="#" class="btn btn-border-theme btn-xs" id="s2">Search
+												</a>
+											</div>
+
+										</form>
+									</div>
+								</div>
+								
+							</div>
+
+
+
+							
+
+						</div>
+					
+					
+					
+
+						<div class="form-group ">
+							<div class="form-group col-sm-2" style="padding-left: 10px;" >
+											<label>Total Expense</label> <input type="text" id="total_exp_modal"
+												placeholder="Total Expenses" class="form-control" disabled>
+							</div>	
+						
+							 <table id="capital-table_2_date_modal" class="table table-striped cap_mod" cellspacing="0" width="100%">
+                                       <thead>
+                                            <tr>
+											<th>Sl no</th>
+											<th>ID</th>
+                                                <th>Name</th>
+									  
+                                                <th>Amount</th>
+
+                                                <th> Note</th>
+                                                
+                                                <th>Update</th>
+                                                <th>Delete</th>
+                                               
+																														
+										     
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                        </tbody>
+                                    </table>
+						</div>
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><a href="#"
+								onclick="javascript:toggleModal()" data-toggle="modal">Close
+									&rarr;</a></li>
+						</ul>
+					</div>
+					
+				</div>
+
+			</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+ <div class="row"  >
+                             <div class="col-sm-12" style="overflow: hidden;height:550px;">
+							 <div class="panel-box">
+							 
+                                   
+                                    <div class="table-responsive">
+									  <input class="form-control" style="width:150px;float:right;" id="count" placeholder="total capital invest " name="vdetails" type="text">
+									  <input class="form-control" style="width:150px;" id="total_inv" placeholder="total investment" name="lamount" type="text">
+                                                
+                                                    
+                                          <table id="capital_table" class="table table-striped cap_mod" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>Sl no</th>
+											<th>ID</th>
+                                                <th>Name</th>
+									  
+                                                <th>Amount</th>
+
+                                                <th> Note</th>
+                                                
+                                                <th>Update</th>
+                                                <th>Delete</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+            </div><!--end wrapper-->
+        </div>
+
+   <div th:replace="/common/common-header :: common-required-scripts"></div>
+  <script>
+  const type ="capital";
+  const CI ="CI-";
+  
+  $(document).ready(function () {
+	  autoComplete();
+	  listAllCapital();
+	  
+	  // in modals
+	  
+	  $("#range_dates").show();
+		$("#specific_date").hide();
+	
+	
+		$(".date").datepicker(dateSettings);
+	  $(".date").datepicker({
+		   dateFormat: "dd/mm/yyyy"
+	   });
+	   
+ 	   $(".date").val(moment().format("DD/MM/YYYY"));
+ 	   
+ 	   
+  } ); 
+  
+  	//dropdown functionality
+  	var currentId="#range_dates";
+ 	  $('.dropdown-menu a').on('click', function(){
+			
+			var split_id = $(this).attr('class').trim().split(" ");
+			var id ="#"+split_id[1];
+			console.log(id);
+			
+			if(currentId == null || currentId != id){
+				hideAll();
+				$(id).show(300);
+				currentId =id;
+			}
+	  
+	  
+  });
+  
+  function toggleModal(){
+     	$('#myModal').modal('toggle');
+     }
+  
+  
+  
+  var hideAll =function()
+	{
+		$("#range_dates").hide();
+		$("#specific_date").hide();
+	
+	}
+  
+  
+  var capitalTable = null;
+  
+  function listAllCapital(){
+	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/capital");
+	   var data = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+    		console.log(respJson);
+    		
+    		 jQuery.each(respJson, function(i, val) {
+      			
+    			data.push([(val.id==null?"0":CI+val.id),
+    				(val.customer.customerId==null?"":val.customer.customerId),
+    				 val.customer.customerName, 				 
+    				(val.transaction.amount==null?"0.0":val.transaction.amount),
+    				(val.transaction.note==null?"":val.transaction.note),
+    				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+    				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+    			 ]);  
+      		}); 
+    		
+    		capitalTable = $('#capital_table').DataTable({
+       		data:           data,
+               deferRender:    true,
+               scrollY:        100,
+               scrollCollapse: true,
+               scroller:       true,
+               "order": [],
+				"footerCallback": function ( row, data, start, end, display ) {
+       		var api = this.api(), data;
+       		
+       		   var intVal = function ( i ) {
+                      return typeof i === 'string' ?
+                          i.replace(/[\$,]/g, '')*1 :
+                          typeof i === 'number' ?
+                              i : 0;
+                  };
+       
+                  // Total over all pages
+                  let total = api
+                      .column( 3 )
+                      .data()
+                      .reduce( function (a, b) {
+                          return intVal(a) + intVal(b);
+                      }, 0 );
+                  
+                  var rowsCount = api
+                  .column( 3 )
+                  .data().length;
+                  
+                  $("#total_inv").val(total);
+                  $("#count").val(rowsCount);
+       		
+   			}
+       	});  
+    		},function(reason){
+		       	 console.log("error in processing your request", reason);
+	       	}); 
+	   
+  }
+  $('.cap_mod tbody').on( 'click', '.del', function () {
+    	var table = $('#capital_table').DataTable();
+    	if(confirm('Are you sure !')){
+    		  var currentPage = table.page();
+    		  //console.log($(this).attr('delid'));
+    		  
+    		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
+    		  buildAjax(URL, "POST").then(function(respJson){
+    		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+	           	}); 
+    		  var row = table.row( $(this).parents('tr') );
+              var rowNode = row.node();
+              row.remove();
+              table.page(currentPage).draw(false);
+    	}
+     
+        
+    });
+    var r = null;
+    $('.cap_mod tbody').on( 'click', '.upd', function () {
+    	var table = $('#capital_table').DataTable();
+    	  r = table.row( $(this).parents('tr') );
+    		  var currentPage = table.page();
+    		  //console.log($(this).attr('delid'));
+    		  
+    		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
+    		  buildAjax(URL, "GET").then(function(respJson){
+    			  console.log(respJson);
+					let val = respJson;
+					window.location.href=getAbsoluteUrl("mortgage-app/web/update_capital_trans/"+val.id);
+    		       /*  
+    		        let cust_name_field = $("#cust_name");
+    		        let cust_id_field = $("#cust_id");
+    		        let cust_mobile_field = $("#cust_mobile");
+    		        let cust_address_field = $("#cust_address");
+    		        let trans_amount_field = $("#trans_amount");
+    		        let trans_note_field = $("#trans_note");
+    		        let trans_id_field = $("#trans_id");
+    		        let voucher_date_field = $("#voucher_date");
+    		        let voucher_serial_field = $("#sl_no");
+    		        
+    		        cust_name_field.val(val.customer.customerName);
+    		        cust_id_field.val(val.customer.customerId);
+    		        cust_mobile_field.val(val.customer.mobile);
+    		        cust_address_field.val(val.customer.address);
+    		        voucher_date_field.val(val.date);
+    		        voucher_serial_field.val(val.id);
+    		        $("#voucher_id").val("");
+    		        trans_note_field.val(val.transaction.note);
+    		        trans_id_field.val(val.transaction.id);
+    		        trans_amount_field.val(val.transaction.amount==null?"0.00":val.transaction.amount); */
+    		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+	           	}); 
+    		  /* var row = table.row( $(this).parents('tr') );
+              var rowNode = row.node();
+              row.remove();
+              table.page(currentPage).draw(false); */
+    	
+     
+        
+    });
+   	
+    $("#search").click(function(){
+    	searchBySlno();
+    	searchByName();
+    	searchById();
+    	searchByAmount();
+    });
+    
+    function searchBySlno(){
+    	
+    	capitalTable
+            .column(0)
+            .search($("#slno").val())
+            .draw();
+    }
+    
+    function searchByName(){
+    	
+    	capitalTable
+            .column(2)
+            .search($("#name").val())
+            .draw();
+    }
+    
+ 	function searchById(){
+    	
+ 		capitalTable
+            .column(1)
+            .search($("#id").val())
+            .draw();
+    }
+ 
+  function searchByAmount(){
+ 	
+	  capitalTable
+         .column(3)
+         .search($("#amount").val())
+         .draw();
+ }
+  
+  //=============================================================================================
+	  
+	  
+	  
+	  //auto fill when search by name
+	   var autoComplete = function(){
+	   
+		   var autoCompleteList = [];
+    	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/capital");
+    	   
+    	   //
+    	   buildAjax(URL, "GET").then(function(cap){
+    	   
+    		   jQuery.each(cap, function(i, val) {
+    			   
+    			   		var str =val.customer.customerName +" > "+ val.id ;
+    				   autoCompleteList.push({value: val.customer.customerName,  label: str});
+   
+    		   });
+    		   
+    		   $("#name").autocomplete({
+     		        source: autoCompleteList,
+     		        select: function (event, ui) {
+     		        var txt = (ui.item.label).split(">");
+     		        
+     		       exId = parseInt(txt[1]);
+     		        
+     		       	
+     		        
+     		        
+     		        }});
+    		   
+    	   });
+   		}
+  
+  
+  
+  
+  
+	   var te =0;
+		//search by specific date
+		var searchBySpecificDate= function() {
+			var date = $("#sp_date").val();
+	   		var URL = getAbsoluteUrl("mortgage-app/api/voucher/ec/search");
+	   		
+	   		$('#capital-table_2_date_modal').DataTable().destroy();
+	   		
+	   		$.ajax({
+	   	     type: "GET",
+	   	     url: URL,
+	   	     data: { date: date,type:type} ,// parameters
+	   	  		success: function(respJson) {
+	   	  			
+	   	  			
+	   	  			
+	   	  		console.log(respJson);
+	     		var data = [];
+	     		
+	     		 jQuery.each(respJson, function(i, val) {
+	     			 
+	     			 //add all expenses
+	     			 te += parseInt(val.transaction.amount==null?"0.00":val.transaction.amount);
+	     			 
+	     			 var fdate=formatDate(val.date);
+	     			 
+	       			try{
+	       				data.push([(val.id==null?"0":CI+val.id),
+	        				(val.customer.customerId==null?"":val.customer.customerId),
+	        				 val.customer.customerName, 				 
+	        				(val.transaction.amount==null?"0.0":val.transaction.amount),
+	        				(val.transaction.note==null?"":val.transaction.note),
+	        				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+	        				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+	        			 ]);  
+	       			}catch(e){
+	       				console.log(e);
+	       			}
+	       		});
+	     		 
+	     		$("#total_exp_modal").val(te);
+	     		
+	     		expenseDataTable = $('#capital-table_2_date_modal').DataTable({
+	        		data:           data,
+	                deferRender:    true,
+	                scrollY:        200,
+	                scrollCollapse: true,
+	                scroller:       true,
+	                "order": [],
+					 "footerCallback": function ( row, data, start, end, display ) {
+	       			 var api = this.api(), data;
+	        
+	    }
+	        	});
+	   	  			
+	   	  			
+	            }
+	   	     
+	   	})
+
+		}
+		$("#s2").click(searchBySpecificDate);
+		
+		
+		
+		//search by dateTo And dateFrom
+		var tot =0;
+		var searchByDateRange= function() {
+			var dateTo = $("#date_to").val().trim();
+			var dateFrom = $("#date_from").val().trim();
+			
+	   		var URL = getAbsoluteUrl("mortgage-app/api/voucher/ec/search");
+	   		
+	   		$('#capital-table_2_date_modal').DataTable().destroy();
+	   		
+	   		$.ajax({
+	   	     type: "GET",
+	   	     url: URL,
+	   	     data: { datefrom: dateFrom,dateto: dateTo,type:type} ,// parameters
+	   	  		success: function(respJson) {
+	   	  			
+	   	  			
+	   	  			
+	   	  		console.log(respJson);
+	     		var data = [];
+	     		
+	     		 jQuery.each(respJson, function(i, val) {
+	     			 
+	     			 //add all expenses
+	     			 tot += parseInt(val.transaction.amount==null?"0.00":val.transaction.amount);
+	     			 
+	     			 var fdate=formatDate(val.date);
+	     			 
+	       			try{
+	       				data.push([(val.id==null?"0":CI+val.id),
+	        				(val.customer.customerId==null?"":val.customer.customerId),
+	        				 val.customer.customerName, 				 
+	        				(val.transaction.amount==null?"0.0":val.transaction.amount),
+	        				(val.transaction.note==null?"":val.transaction.note),
+	        				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+	        				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+	        			 ]);  
+	       			}catch(e){
+	       				console.log(e);
+	       			}
+	       		}); 
+	     		
+	     		$("#total_exp_modal").val(tot);
+	     		 
+	     		expenseDataTable = $('#capital-table_2_date_modal').DataTable({
+	        		data:           data,
+	                deferRender:    true,
+	                scrollY:        200,
+	                scrollCollapse: true,
+	                scroller:       true,
+	                "order": [],
+					 "footerCallback": function ( row, data, start, end, display ) {
+	       			 var api = this.api(), data;
+	        
+	    }
+	        	});
+	   	  			
+	   	  			
+	            }
+	   	     
+	   	})
+
+		}
+		$("#s1").click(searchByDateRange);
+		
+		//formatting date
+		var formatDate =function(date)
+		{
+			var new_date = moment(date, "DD/MM/YYYY").add(1, 'days');
+			
+			return new_date.format("DD/MM/YYYY");
+				
+		}
+		
+  
+  
+  </script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>
+

@@ -3,29 +3,53 @@ package com.sahaJwellers.app.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="loanTransaction_tbl")
+@SelectBeforeUpdate
+@DynamicUpdate
+@DynamicInsert
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LoanTransaction {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	//done by rajat
+//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
+//	@JoinColumn(name="customer_id")
+//	private Customer customer;
+//	
+//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//	@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},orphanRemoval=false)
+//	@JoinColumn(name="mortgage_id")
+//	private Mortgage mortgage;
+	//end
 	
 	@Version
 	private Long version;
@@ -57,7 +81,7 @@ public class LoanTransaction {
 	@Column(name="interest_prev_loan_amount")
 	private BigDecimal interestPreviousLoanAmount;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="GMT")
 	@Temporal(TemporalType.DATE)
 	@Column(name="payment_Date")
 	private  Date date;
@@ -69,6 +93,40 @@ public class LoanTransaction {
 	@JsonIgnore
 	@UpdateTimestamp
 	private Date updateTimestamp;
+	
+	@Column(name="flag")
+	private Integer flag =0;
+	
+	@Column(name="type")
+	private String type;
+	
+	@Column(name="balance")
+	private BigDecimal balance;
+	
+
+	public BigDecimal getBalance() {
+		return balance;
+	}
+
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Integer getFlag() {
+		return flag;
+	}
+
+	public void setFlag(Integer flag) {
+		this.flag = flag;
+	}
 
 	public Long getId() {
 		return id;
@@ -167,6 +225,24 @@ public class LoanTransaction {
 				+ ", interestPreviousLoanAmount=" + interestPreviousLoanAmount + ", date=" + date
 				+ ", createdTimestamp=" + createdTimestamp + ", updateTimestamp=" + updateTimestamp + "]";
 	}
+
+	
+
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
+//
+//	public Mortgage getMortgage() {
+//		return mortgage;
+//	}
+//
+//	public void setMortgage(Mortgage mortgage) {
+//		this.mortgage = mortgage;
+//	}
 	
 	
 }

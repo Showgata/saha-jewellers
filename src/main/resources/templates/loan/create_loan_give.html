@@ -1,17 +1,23 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" 
     xmlns:th="http://www.thymeleaf.org" 
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head th:replace="/common/common-header :: common-headpage"></head>
     
-    <body class="fixed-left" style="overflow:hidden;">
+    <body class="fixed-left" >
+
+ 
 
         <div id="wrapper" >
 
-            <div th:replace="/common/common-header :: common-topbar"></div>
+           <div th:replace="/common/common-header :: common-topbar"></div>
 			<div th:replace="/common/common-header :: common-side-menu"></div>
-            <!--left menu end-->
             <div class="content-page  equal-height" >
                 <div class="content">
                     <div class="container">
@@ -25,13 +31,15 @@
                                     <h4>Customer Information</h4>
                                     <form role="form">
                                     <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" id="cust_name" class="form-control"></div>
-									<div class="form-group"><label>ID</label> <input disabled type="text" placeholder="Enter id" id="cust_id"  class="form-control"></div>
-                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile"  id="cust_mobile" class="form-control"></div>
-                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_addr" class="form-control"></div>
-									<input type="hidden" id="custId"/> 
+									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" id="cust_id" class="form-control"></div>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile" id="cust_mobile" class="form-control"></div>
+                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_address" class="form-control"></div>
+									 
                                   
-									 <button id="save_customer" class="btn btn-border-theme btn-xs">Save</button>   &nbsp;
-									 <button id="cancel_customer" class="btn btn-border-theme btn-xs">Cancel</button>  &nbsp;
+<a href="#" class="btn btn-border-theme btn-xs">Print</a>   &nbsp;
+									 <a href="#" id="new" class="btn btn-border-theme btn-xs">New</a>  &nbsp;
+											<input type="hidden" id="slid"/>
+										   <a href="#" class="btn btn-border-theme btn-xs">PDF</a>   &nbsp;
 								  <div>
                                        <label></label>
                                     </div>
@@ -41,7 +49,27 @@
 									
 										
                             </div >
-                          
+                            <style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
                             <div class="col-sm-5 h6"  style="margin-top:-10px;">
                                 <div class="panel-box">
                                     <h4>Transaction Details</h4>
@@ -54,25 +82,34 @@
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Account Name</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Enter account name" name="trans_acc_name" id="trans_acc_name" type="text">
+                                                            <input class="form-control" placeholder="account name" id="acc_name" name="firstname" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Currency</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <select class="form-control" id="trans_curr" name="trans_curr">
-															<option selected>Taka </option>
-                                                             <option>Cheque </option>
+                                                            <select class="form-control" id="pay_type">
+															<option id="id_taka">Taka</option>
+                                                             <option id="id_cheque">Cheque</option>
+														
 															</select>
-															<input class="form-control" id="trans_cheque_number" disabled="true" placeholder="cheque number" name="trans_cheque_number" type="text">
+														
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    
+                                                    <div class="form-group" id="cheque_no_div">
+                                                        <label class="col-lg-2 col-md-3 control-label">Cheque Number</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="Cheque Number" id="cheque_no" name="firstname" type="text">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="form-group" id="list_of_banks">
                                                         <label class="col-lg-2 col-md-3 control-label">Bank List</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                           <select class="form-control" id="trans_bank">
-                                                           <option value="" selected>Select Bank</option>
+                                                           <select class="form-control" id="list_of_banks">
 														   <option>AB Bank Limited</option>
                                                              <option>Agrani Bank Ltd.</option>
 															  <option>Al-Arafah Islami Bank Limited</option>
@@ -120,28 +157,30 @@
 																											  <option>Union Bank Limited</option>
 																											     <option>United Commercial Bank Limited</option>
 																											  <option>Uttara Bank Limited</option>
-																											  <option>Other</option>
 														   </select >
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Reminder Date</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" id="trans_reminder_date" placeholder="reminder date" name="trans_reminder_date" type="text">
+                                                            <input class="form-control date" placeholder="reminder date" id="reminder_date" name="lastname" data-language='en'
+															data-position='bottom left' data-date-format="dd/mm/yyyy" type="text">
                                                         </div>
                                                     </div>
 													<div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Interest Rate</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" id="trans_interest_rate" placeholder="Interest Rate" name="trans_interest_rate" type="text">
+                                                            <input class="form-control" placeholder="Interest Rate" id="rate" name="lastname" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Loan Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" id="trans_loan_amount" placeholder="Loan Amount" name="trans_loan_amount" type="text">
+                                                            <input class="form-control" placeholder="Loan Amount" name="lastname" id="loan_amnt" type="text">
                                                         </div>
-                                                    </div>                                                                                                    
+                                                    </div>
+                                                                                              
+                                                    
 													<!-- End .control-group  -->
                                                 </div>
                                               
@@ -173,19 +212,20 @@
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Date</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="date" id="date" name="date" type="text">
+                                                            <input class="form-control date" placeholder="Date" id="voucher_date" name="firstname" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
                                                         <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg" id="serial_no" disabled style="color:#f7b03e;" placeholder="sl no." name="serial_no" value="22220" type="text">
+                                                            <input class="form-control input-lg " style="color:#f7b03e;font-size: 28px;" placeholder="sl no." name="lastname" disabled id="serial" type="text">
                                                         </div>
                                                     </div>
                                                     <input type="hidden" value="" id="voucher_id"/>
                                                     <input type="hidden" value="" id="transaction_id"/>
-     												<input type="hidden" value="" id="account_id"/>
+                                                    
+     
                                                   
                                                                                                         
                                                     
@@ -202,22 +242,51 @@
 								</div>
 							<ul class="pager">
 							
-                                            <li class="previous input-lg"><button id="save_loan">Save &rarr;</button>
+                                            <li class="previous input-lg"><a href="#" class="save">Save &rarr;</a>
                                             </li>
                                        
                                         </ul>
 								
 							
                         </div>
- 							 <div class="row">
-                             <div class="col-sm-12" style="overflow: scroll;height:250px;margin-top:-20px">
-							 <div class="panel-box">                             
+ <div class="row"  >
+                             <div class="col-sm-12" style="margin-top:-20px">
+							 <div class="panel-box">
+							 
+                                    
+									   
+                                           <style>
+                                               .pane-box{
+    padding: 15px;
+  background: #272a31;
+    margin-bottom: 20px;
+                                               }
+    .table{
+        height:200px;
+                                                   
+                                               }
+    
+
+                                           </style>
+										   
                                     <div class="table-responsive">
 									
-                                                      <input class="form-control"  style="width:150px;float:right;" id="total_loan_voucher" placeholder="total loan voucher" name="vdetails" type="text">
-									  <input class="form-control" id="total_loan" style="width:150px;" placeholder="total loan" name="lamount" type="text">
+									<div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Total Loan Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+										<input class="form-control" style="width:150px;" placeholder="total loan" id="tl" disabled type="text">                                                        </div>
+                                                    </div>													
+                                                      
+									  
+
+										<div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Voucher Count</label>
+                                                        <div class="col-lg-10 col-md-9">
+									  <input class="form-control" style="width:150px;" placeholder="total loan" id="voucher_count" disabled type="text">
+                                                        </div>
+                                                    </div>
                                                 
-                                          <table id="loan-give-table" class="table table-striped" cellspacing="0" width="90%">
+                                          <table id="basic-datatables" class="table table-striped loangive_voucher"  cellspacing="0" width="100%" style="font-size:10px;">
                                         <thead>
                                             <tr>
 											<th>ID</th>
@@ -232,7 +301,7 @@
                                                
 												<th>Interest Rate</th>																								
 												<th>Loan Amount</th>
-										
+											
                                                <th>Date</th>
                                              <th>sl no.</th>
                                              <th>Update</th>
@@ -258,299 +327,613 @@
             </div><!--end wrapper-->
         </div>
        
-  <div th:replace="/common/common-header :: common-required-scripts"></div>
-  <script>
-  var loanDataTable = null;
-  $(document).ready(function () {
-	  setCustomerAutoCompleteList();
-	  setDatePicker();
-	  fillLoanDetails();
-  });
-  
-  function fillLoanDetails(){
-	  var URL = getAbsoluteUrl("mortgage-app/api/loan/loan-give-today");
-	   var data = [];
-	   buildAjax(URL, "GET").then(function(respJson){
-    		console.log(respJson);
-    		
-    		 jQuery.each(respJson, function(i, val) {
-      			
-      			 data.push([(val.id==null?"0":val.id),
-      				val.customer.customerName,
-					val.customer.mobile,
-					val.customer.address,
-					val.transaction.account.accountName,
-					val.transaction.account.currency,
-					val.transaction.account.bankList,
-					val.transaction.reminderDate,
-					val.transaction.account.interestRate,
-					val.transaction.account.amount,
-					val.date,
-					val.transaction.id,
-	 				"<input id='cust'"+val.id+" class='form-controlcol-sm-2 btn btn-xs btn-theme upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
-	 				"<input class='form-controlcol-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
-	 				]); 
-      		}); 
-    		
-    		 loanDataTable = $('#loan-give-table').DataTable({
-       		data:           data,
-               deferRender:    true,
-               scrollY:        200,
-               scrollCollapse: true,
-               scroller:       true,
-               "order": [],
-				 "footerCallback": function ( row, data, start, end, display ) {
-					 
-					 var intVal = function ( i ) {
-			                return typeof i === 'string' ?
-			                    i.replace(/[\$,]/g, '')*1 :
-			                    typeof i === 'number' ?
-			                        i : 0;
-			            };	 
-       var api = this.api(), data;
-       
-       total = api
-       .column( 9 )
-       .data()
-       .reduce( function (a, b) {
-           return intVal(a) + intVal(b);
-       }, 0 );
-	$("#total_loan").val(total);
-   var rowsCount = api
-   .column( 10 )
-   .data().length;
+       <!--<div class="footer">
+            <span>Copyright &copy; 2018.Magfus India.</span>
+        </div>-->
+         <div th:replace="/common/common-header :: common-required-scripts"></div>
+    </body>
+    
+      <script src="/js/initialTrans.js"></script>
+    <script src="/js/check.js"></script>
+    <script src="/js/reminderDateSet.js"></script>
+    <!-- used to update balance all the time  -->
+			<input type="submit" id="#edit-submit" class="abc" style="display:none"> 
+ <div style="display:none">
+ <form action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
    
-   $("#total_loan_voucher").val(rowsCount);
-   }
-    		 
-       	});  
-    		 
-    		},function(reason){
-		       	 console.log("error in processing your request", reason);
-	       	}); 
-	   
-  }
-  
-  ;(function () {
-	  
-	  var customer_name_field = $("#cust_name"); 
-	  var acc_name_field = $("#trans_acc_name");
-	  var trans_curr_field = $("#trans_curr");
-	  var trans_cheque_number_field = $("#trans_cheque_number");
-	  var trans_bank_field = $("#trans_bank");
-	  var trans_reminder_date_field = $("#trans_reminder_date");
-	  var trans_interest_rate_field = $("#trans_interest_rate");
-	  var trans_loan_amount_field = $("#trans_loan_amount");
-	  var date_field = $("#date");
-	  var serial_no_field = $("#serial_no");
-	  var cust_name_field = $("#cust_name");
-	  var cust_mobile_field = $("#cust_mobile");
-	  var cust_addr_field = $("#cust_addr");
-	  var cust_id_field = $("#cust_id");
-	  var custId_field = $("#custId");
-	  var voucher_id_field = $("#voucher_id");
-	  var transaction_id_field = $("#transaction_id");
-	  var account_id_field = $("#account_id");
-	  
-	  $("#save_loan").on('click',function(){
-		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
-		  let voucher = {};
-		  let customer = {};
-		  let account = {};
-		  let transaction = {};
-		  
-		  customer["customerId"] = formatIntegerValue(custId_field.val());
-		  customer["customerName"] = formatValue(cust_name_field.val());
-		  customer["mobile"] = formatIntegerValue(cust_mobile_field.val());
-		  customer["address"] =  formatValue(cust_addr_field.val());
-		  
-		  account["amount"] = formatFloatValue(trans_loan_amount_field.val());
-		  account["accountId"] = formatIntegerValue(account_id_field.val());
-		  account["accountName"] = formatValue(acc_name_field.val());
-		  account["currency"] = formatValue(trans_curr_field.val());
-		  account["interestRate"] = formatFloatValue(trans_interest_rate_field.val());
-		  account["bankList"] = formatValue(trans_bank_field.val());
-//		  transaction["expense"] =  formatValue(expense_field.val());
-//		  transaction["note"] = formatValue(note_field.val());
-		  transaction["customerName"] = formatValue(cust_name_field.val());
-		  transaction["mobile"] = formatValue(cust_mobile_field.val());
-		  transaction["address"] = formatValue(cust_addr_field.val());
-		  transaction["amount"] = formatValue(trans_loan_amount_field.val());
-		  transaction["id"] = formatValue(transaction_id_field.val());		  
-	      transaction["reminderDate"] = trans_reminder_date_field.val()==""?null:trans_reminder_date_field.val();
-	 /*      transaction["note"] = note.val()==""?null:note.val();
-	      transaction["storage"] = formatIntegerValue(storage.val()); */
-	      transaction["account"] = account;
-	     // transaction["id"] = formatIntegerValue($("#transaction_id").val());
-		  
-		  voucher["customer"] = customer;
-		  voucher["transaction"] =  transaction;
-		  voucher["type"] = "loan_give";
-		  voucher["date"] = date_field.val();
-		  voucher["serial"] = formatIntegerValue(serial_no_field.val());
-		  voucher["id"] = formatIntegerValue(voucher_id_field.val());
-		  
-		  buildAjaxForJson(URL, "POST", voucher).then(function(respJson){
+</center>
+</form>
+</div>
+   <script src="/js/cashledger/cashledger.js"></script>
+   <!-- used to update balance all the time  -->
+    <script type="text/javascript">
+    
+    //======================================================================================================
+    	var totalLoanAmount =0;
+    	var dataTable=null;
+    	var isSavedAlready = false;
+    	$(document).ready(function(){
+    		$("#cheque_no_div").hide();
+    		setAutoComplete();
+    		fetchloangiveVouchers();
+    		
+    		
+    		var disabledDays = [0];
+            var dateSetting = {
+                language: 'en',
+                //maxDate: new Date(),
+                autoClose:true,
+                onRenderCell: function (date, cellType) {
+                    if (cellType == 'day') {
+                        var day = date.getDay(),
+                            isDisabled = disabledDays.indexOf(day) != -1;
+
+                        return {
+                            disabled: isDisabled
+                        }
+                    }
+                }
+            };
+    		
+    		$(".date").datepicker(dateSetting);
+    		//date format changed
+ 		   $(".date").datepicker({
+ 			   dateFormat: "dd/mm/yyyy"
+ 		   });
+    		
+ 		  	dateSetting.maxDate=null;
+          	var d = new Date();
+          	d.setDate(d.getDate() - 1);
+          	dateSetting.minDate=d;
+      		//$("#reminder_date").datepicker(dateSetting);
+    		
+    		
+    		$("#voucher_date").val(moment().format("DD/MM/YYYY"));
+    		
+
+    		dateSet($("#voucher_date"),$("#reminder_date"));
+    		$("#list_of_banks").hide();
+			$("#id_if_cheque").hide();
+    	});
+    	
+    	
+    	
+    	$("#pay_type").change(function(){
+    		
+    		var selectedValue = $(this).val();
+    		
+    		console.log(selectedValue);
+    		
+    		if(selectedValue === "Cheque")
+    		{
+    			$("#list_of_banks").show(400);
+    			$("#cheque_no_div").show(400);
+    		}else
+    		{
+    			$("#list_of_banks").hide(400);
+    			$("#cheque_no_div").hide(400);
+    		}
+    		
+    		
+    		
+    	});
+    	
+    	
+    	
+    	function setAutoComplete(){
+     	   
+     	   var autoCompleteList = [];
+     	   var URL = getAbsoluteUrl("mortgage-app/api/customer/today");
+     	   buildAjax(URL, "GET").then(function(respJson){
+     		   jQuery.each(respJson, function(i, val) {
+     			   
+     				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+     			   
+     		   });
+     	   
+     		 $( "#cust_name" ).autocomplete({
+   		        source: autoCompleteList,
+   		        select: function (event, ui) {
+   		        	var txt = ui.item.label;
+   		          let custId = parseInt(txt.split(">")[1]);
+   		          $("#cust_id").val(custId); 
+   		        
+   		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
+   		        	$("#cust_address").val(respJson.address);
+   		       	    $("#cust_mobile").val(respJson.mobile);
+   		         },function(reason){
+   		           	 console.log("error in processing your request", reason);
+   	           	}); 
+   		          
+   		      }
+   		      });
+     	   }, function(reason){
+            	 console.log("error in processing your request customer", reason);
+          	}); 
+        }
+    	
+    	
+    	
+    	
+    	
+
+    	var saveloangiveInfo =function()
+    	{
+    		
+    		
+    		if(!isSavedAlready){
+    		var ignoreThisArray =["serial","cheque_no"];
+	    	   
+	    	   
+	    	   
+   	    	if(isValid(ignoreThisArray)){
+    		
+    		let URL =getAbsoluteUrl("mortgage-app/api/voucher/");
+    		
+    		
+    		let custId_field = $("#cust_id");
+			  let custName_field = $("#cust_name");
+			  let custPhone_field = $("#cust_mobile");
+			  let custAddress_field = $("#cust_address");
+			  let customerId_field = $("#custId");
+			  let accountName = $("#acc_name");
+			  let amount_field = $("#loan_amnt");
+			  let reminderDate = $("#reminder_date");
+			  let serial_field = $("#serial");
+			  let interestRate_field = $("#rate");
+			  let transaction_id_field =$("#transaction_id")
 			  
-		  customer_name_field.val("");
-		  acc_name_field.val("");
-		  trans_curr_field.val("");
-		  trans_cheque_number_field.val("");
-		  trans_bank_field.val("");
-		  
-		  
-		  
-		  loanDataTable.row.add([(respJson.id==null?"0":respJson.id),
-					respJson.customer.customerName,
-					respJson.customer.mobile,
-					respJson.customer.address,
-					respJson.transaction.account.accountName,
-					respJson.transaction.account.currency,
-					respJson.transaction.account.bankList,
-					respJson.transaction.reminderDate,
-					respJson.transaction.account.interestRate,
-					respJson.transaction.amount,
-					respJson.transaction.id,
-					(respJson.note==null?"":respJson.note),
-	 				"<input id='cust'"+respJson.id+" class='form-control col-sm-2 btn btn-xs btn-theme upd' updid='"+respJson.id+"'  type='button' name='update' value='update' id='update' />",
-	 				"<input class='form-control col-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+respJson.id+"' id='delete' />"
-	 			 ]).draw();  
-		  moveDataTableRow(1,loanDataTable);
-		  },function(reason){
-	           	 console.log("error in processing your request in customer get", reason);
-         }); 
-	  });
-	  
-	  $("#trans_curr").on('change',function(){
-		  var isDirty = !this.options[this.selectedIndex].defaultSelected;
-		  if(isDirty){
-			  if(this.options[this.selectedIndex].value == "Cheque"){
-				  $("#trans_cheque_number").prop("disabled", false);
-			  } else {
-				  $("#trans_cheque_number").val("");
-				  $("#trans_cheque_number").prop('disabled', true);
-			  }
+			  
+			  let voucherDate_field = $("#voucher_date");
+			  let voucher_Id = $("#voucher_id");
+			  
+			  let payType =$("#pay_type :selected");
+			  let listOfbanks =$("#list_of_banks :selected");
+			  
+			  console.log("selected="+payType.text());
+			  console.log("selected="+listOfbanks.text());
+			  
+			  
+			  
+			  
+			  
+			  let customer={};
+			  let account={};
+			  let transaction={};
+			  let voucher={};
+			  
+			  
+			  customer["customerId"] = formatIntegerValue(custId_field.val());
+			  customer["customerName"] = formatValue(custName_field.val());
+			  customer["mobile"] = formatIntegerValue(custPhone_field.val());
+			  customer["address"] =  formatValue(custAddress_field.val());
+			  
+			  account["accountName"] =  formatValue(accountName.val());
+			  account["amount"] = formatValue(amount_field.val());
+			  account["accountId"] = getLoanId();//check this
+			  transaction["reminderDate"]= reminderDate.val()==""?null:reminderDate.val();
+			  
+			  //account["loanAmount"]=formatFloatValue(amount_field.val());
+			  account["interestRate"]=formatFloatValue(interestRate_field.val());
+			  account["currency"]=formatValue(payType.text());
+			  account["bankList"]=formatValue(payType.text() === "Taka"?null:(listOfbanks.text()));
+			  
+			  
+			  
+			  transaction["customerId"] = formatIntegerValue(custId_field.val());
+			  transaction["mobile"] =  formatIntegerValue(custPhone_field.val());
+			  transaction["address"] =  formatValue(custAddress_field.val());
+			  transaction["amount"] = formatValue(amount_field.val());
+			  transaction["id"] = formatValue(transaction_id_field.val());//check this
+			  transaction["account"] = account;
+			  transaction["transactionDate"] =voucherDate_field.val()==""?null:voucherDate_field.val();
+
+			  
+		 	
+			  voucher["customer"] = customer;
+			  voucher["transaction"] =  transaction;
+			  voucher["type"] = "loan_give";
+			  var da = moment($("#voucher_date").val().trim(),"DD/MM/YYYY").format("MM/DD/YYYY");
+			  voucher["date"] = new Date(da);
+			  //voucher["serial"] = formatIntegerValue(serial_no_field.val());
+			  //voucher["id"] = formatIntegerValue(voucher_id_field.val());
+			  
+			  //voucher["customer"] = customer;
+			  //voucher["transaction"] =  transaction;
+			  //voucher["type"] = "loan_take";
+			  //voucher["date"] = voucherDate_field.val();
+			  //voucher["serial"] = formatIntegerValue(serial_field.val());
+			  //voucher["id"] = formatIntegerValue(voucher_Id.val());
+			  
+			  var res =serial_field.val();
+			  voucher["sl_id"]=formatIntegerValue($("#slid").val());
+			  voucher["id"] = formatIntegerValue(res.substr(3, 2));
+			  
+			  buildAjaxForJson(URL, "POST",voucher).then(function(val){
+				  
+				  
+				  //initialize transaction
+				  setInitialTransaction(val,val.type);
+				 
+				  
+				  var m = ($("#serial").val()).split("-");
+				  			
+				  
+		       		var t = $('.loangive_voucher').DataTable();
+		       		
+		       		
+	   	       		if(parseInt(m[1])===parseInt(val.id)){
+	   					var rowNode = r.node();
+	   					r.remove();
+	   					t.page(t.page()).draw(false);
+	   				}
+		       		
+		       		totalLoanAmount+=val.transaction.account.amount;
+		       		
+		       		t.row.add([(val.customer.customerId==null?"":val.customer.customerId),
+		       			(val.customer==null?"":val.customer.customerName),
+		       			(val.customer==null?"":val.customer.mobile),
+		       			(val.customer==null?"":val.customer.address),
+          				(val.transaction.account.accountName==null?"===":val.transaction.account.accountName),
+          				(val.transaction.account.currency==null?"===":val.transaction.account.currency),
+          				(val.transaction.account.bankList==null?"===":val.transaction.account.bankList),
+          				(val.transaction.reminderDate),
+          				(val.transaction.account.interestRate),
+          				(val.transaction.account.amount),
+          				moment(val.date).format("DD/MM/YYYY"),
+          				("LG-"+val.id),
+          				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.sl_id+"' name='update' value='update' id='update' />",
+          				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.sl_id+"' name='delete' value='delete' id='delete' />"
+          			 ]).draw();  
+		 			
+		       		moveDataTableRow(1,t);
+				  
+		       		$("#tl").val(totalLoanAmount);
+		       		$("#serial").val("LG-"+val.id);
+		       	 	
+			  });
+			  isSavedAlready = true;
+			  
+   	    	}else{
+		    		alert("Some fields are empty !")
+		    	}
+    	}else{
+    		isSavedAlready = false;
+    		reset();
+    	}
+    	}
+    	
+    	$(".save").click(function(){
+    		saveloangiveInfo();
+    		setLoanId(null);
+    	});
+    	
+    	
+    	
+    	
+    	function fetchloangiveVouchers(){
+      	  
+     	   var URL = getAbsoluteUrl("mortgage-app/api/loan/loan-give-today");
+     	   var data = [];
+     	   var autoCompleteList = [];
+     	  $("#sl_id").val("");
+     	  $('.loangive_voucher').DataTable().destroy();
+     	   buildAjax(URL, "GET").then(function(respJson){
+           		console.log(respJson);
+           		 let tr ="";
+           		 
+           		 jQuery.each(respJson, function(i, val) {
+           			//autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
+           			
+           			totalLoanAmount+=val.transaction.account.amount;
+           			
+           			
+		       		data.push([(val.customer.customerId==null?"":val.customer.customerId),
+		       			(val.customer==null?"":val.customer.customerName),
+		       			(val.customer==null?"":val.customer.mobile),
+		       			(val.customer==null?"":val.customer.address),
+          				(val.transaction.account.accountName==null?"===":val.transaction.account.accountName),
+          				(val.transaction.account.currency==null?"===":val.transaction.account.currency),
+          				(val.transaction.account.bankList==null?"===":val.transaction.account.bankList),
+          				(val.transaction.reminderDate),
+          				(val.transaction.account.interestRate),
+          				(val.transaction.account.amount),
+          				moment(val.date).format("DD/MM/YYYY"),
+          				("LG-"+val.id),//correct this
+          				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.sl_id+"' name='update' value='update' id='update' />",
+          				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.sl_id+"' name='delete' value='delete' id='delete' />"
+          			 ]);  
+		 			
+		       		
+		       		
+		       	 
+			   
+           			 
+           			
+           			/*  tr = "";
+           			 tr += "<tr role='row' class='"+(i%2==0?'even':'odd')+"'>";
+           			 tr += "<td>"+(val.id==null?"0":val.id)+"</td>";
+           			 tr += "<td>"+val.customer.customerName+"</td>";
+           			 tr += "<td>"+(val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial)+"</td>";
+           			 tr += "<td>"+(val.customer.customerId==null?"":val.customer.customerId)+"</td>";
+           			 tr += "<td>"+val.date+"</td>";
+           			 tr += "<td>"+(val.mortgage.bori==null?"0.0":val.mortgage.bori)+"</td>";
+           			 tr += "<td>"+(val.mortgage.ana==null?"0.0":val.mortgage.ana)+"</td>";
+           			 tr += "<td>"+(val.mortgage.ratti==null?"0.0":val.mortgage.ratti)+"</td>";
+           			 tr += "<td>"+(val.mortgage.gram==null?"0.0":val.mortgage.gram)+"</td>";
+           			 tr += "<td>"+(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate)+"</td>";
+           			 tr += "<td>"+(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount)+"</td>";
+           			 tr += "<td>"+
+           			"<input class='form-controlcol-sm-2'  type='button' name='show_voucher_details' value='update' id='update' />"+
+           				"<input class='form-controlcol-sm-2' type='button' name='show_voucher_details' value='delete' id='delete />"+
+           			 "</td>"; */
+           		// $("#voucher > tbody").append("<tr><td>"+val.id+"</td><td>"+val.customer.customerName+"</td></tr>");
+           		/* tr += "</tr>";
+           		$("#voucher > tbody").append(tr); */
+           		}); 
+           		 
+           		 $("#tl").val(totalLoanAmount);
+           		 
+           		 
+           		dataTable = $('.loangive_voucher').DataTable({
+             		data:           data,
+                     deferRender:    true,
+                     
+                     scrollCollapse: true,
+                     scroller:       true,
+                     "order": [],
+ 					 "footerCallback": function ( row, data, start, end, display ) {
+             var api = this.api(), data;
+  
+             // Remove the formatting to get integer data for summation
+             var intVal = function ( i ) {
+                 return typeof i === 'string' ?
+                     i.replace(/[\$,]/g, '')*1 :
+                     typeof i === 'number' ?
+                         i : 0;
+             };
+  
+             // Total over all pages
+             total = api
+                 .column( 10 )
+                 .data()
+                 .reduce( function (a, b) {
+                     return intVal(a) + intVal(b);
+                 }, 0 );
+  
+             var rowsCount = api
+             .column( 10 )
+             .data().length;
+             
+             $("#voucher_count").val(rowsCount);
+             //$("#totalLoan").val(roundTo(total,2));
+             // Total over this page
+             pageTotal = api
+                 .column( 10, { page: 'current'} )
+                 .data()
+                 .reduce( function (a, b) {
+                     return intVal(a) + intVal(b);
+                 }, 0 );
+             
+             
+  
+             // Update footer
+             $( api.column( 10 ).footer() ).html(
+                 '$'+pageTotal +' ( $'+ total +' total)'
+             );
+         }
+             	});  
+           		
+           		 /* $(  dataTable.table().container() ).on( 'keyup', '#cname', function () {
+           			 
+           			dataTable
+           	            .column( $(this).data('index') )
+           	            .search( this.value )
+           	            .draw();
+           	    } ); */
+           	
+           		
+            	}, function(reason){
+            	 console.log("error in processing your request", reason);
+            	}); 
+        }
+    	
+    	
+    	
+    	$('.loangive_voucher tbody').on( 'click', '.del', function () {
+        	var table = $('.loangive_voucher').DataTable();
+        	if(confirm('Are you sure !')){
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  
+        		 var URL = getAbsoluteUrl("mortgage-app/api/voucher/remove");
+        		  /*buildAjax(URL, "POST").then(function(respJson){
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	});*/
+   	           	
+   	           	var params = {
+   	           			type:"loan_give",
+   	           			id:parseInt($(this).attr('delid'))
+   	           			};
+   	           	
+   	         $.ajax({
+          	     type: "POST",
+          	     url: URL,
+          	   //data:{id:voucherId},
+          	   data:params,
+          	    success: function(respJson) {
+
+          	    	alert("Deleted successfully !")
+          	  			
+          	  		}  
+          	})
+        		  
+        		  var row = table.row( $(this).parents('tr') );
+                  var rowNode = row.node();
+                  row.remove();
+                  table.page(currentPage).draw(false);
+                  reset();
+                  isSavedAlready = false;
+        		  
+        	}
+         
+            
+        });
+    	
+    	
+    	
+    	var r = null;
+    	var updateFun = function () {
+        	var table = $('.loangive_voucher').DataTable();
+      	  r = table.row( $(this).parents('tr') );
+      		  var currentPage = table.page();
+      		  //console.log($(this).attr('delid'));
+      		  
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/update/"+parseInt($(this).attr('updid')));
+      		  buildAjax(URL, "GET").then(function(respJson){
+      			  
+      			  console.log(respJson);
+
+          		let custId_field = $("#cust_id");
+      			  let custName_field = $("#cust_name");
+      			  let custPhone_field = $("#cust_mobile");
+      			  let custAddress_field = $("#cust_address");
+      			  let accountName = $("#acc_name");
+      			  let amount_field = $("#loan_amnt");
+      			  let remainderDate = $("#reminder_date");
+      			  let serial_field = $("#serial");
+      			  let interestRate_field = $("#rate");
+      			  
+      			  
+      			  
+      			  let voucherDate_field = $("#voucher_date");
+      			  let voucher_Id = $("#voucher_id");
+      			  
+      			  let payType =$("#pay_type");
+      			  let listOfbanks =$("#list_of_banks");
+      			  
+      			  
+      		      
+	       	 	custId_field.val(respJson.customer.customerId);
+      			custName_field.val(respJson.customer.customerName);
+      			custPhone_field.val(respJson.customer.mobile);
+      			custAddress_field.val(respJson.customer.address);
+	       		
+			  
+      			
+      			voucherDate_field.val(moment(respJson.date).format("DD/MM/YYYY"));
+      			accountName.val(respJson.transaction.account.accountName);
+      			amount_field.val(respJson.transaction.amount);
+      			remainderDate.val(respJson.transaction.reminderDate);
+      			serial_field.val("LG-"+respJson.id);
+      			interestRate_field.val(respJson.transaction.account.interestRate);
+      			$("#slid").val(respJson.sl_id);
+      			
+      			
+      			if(respJson.transaction.account.currency != null)
+      				$("#payType option[value='" + respJson.transaction.account.currency + "']").attr('selected', 'selected');
+      			
+      			
+      			if(respJson.transaction.account.bankList != null){
+      				$("#payType option[value='" + respJson.transaction.account.bankList + "']").attr('selected', 'selected');
+      				$("#list_of_banks").show(400);
+        			$("#cheque_no_div").show(400);
+      			}
+      				
+      			
+      			
+      			setLoanId(respJson.loanId);
+      			
+      		        
+      		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+ 	           	}); 
+      		  /* var row = table.row( $(this).parents('tr') );
+                var rowNode = row.node();
+                row.remove();
+                table.page(currentPage).draw(false); */
+         
+          
+      }
+    	
+    	
+   
+        $('.loangive_voucher tbody').on( 'click', '.upd',updateFun );
+        
+        
+        
+        function reset(){
+            
+     	   $("#serial").val("");
+            $("#loan_amnt").val("");
+            $("#rate").val("");
+            
+            	$("#acc_name").val("");
+            	$("#note").val("");
+            	$("#storage").val("");
+            	dateSet($("#voucher_date"),$("#reminder_date"));
+      		$("#cust_name").val("");
+      		$("#cust_address").val("");
+      		$("#cust_mobile").val("");
+      		$("#cust_id").val("");
+      		$("#voucher_date").val(dateSettings);
+      		$("#voucher_date").val(moment().format("DD/MM/YYYY"));
+      		$("#slid").val("");
+      		$("#list_of_banks").hide();
+			$("#id_if_cheque").hide();
+      		
+      		
+
+        }
+        
+        
+        $("#new").click(function(){
+        	reset();
+        });
+        
+        let id=null;
+        getLoanId=function(){return id;}
+		setLoanId=function(loanId){id=loanId;}
+		
+		
+			
+			//======================================================================================================================
+  /*
+  $("#payType").on('change',function(){
+	  var isDirty = !this.options[this.selectedIndex].defaultSelected;
+	  if(isDirty){
+		  if(this.options[this.selectedIndex].value == "Cheque"){
+			  $("#trans_cheque_number").prop("disabled", false);
 		  } else {
 			  $("#trans_cheque_number").val("");
 			  $("#trans_cheque_number").prop('disabled', true);
 		  }
-	  });
-	  
-  })();
-  
-  function setCustomerAutoCompleteList(){
-	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
-	   var autoCompleteList = [];
-	   buildAjax(URL, "GET").then(function(respJson){
-		   jQuery.each(respJson, function(i, val) {
-				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
-			   
-		   });
-		   $( "#cust_name" ).autocomplete({
-		        source: autoCompleteList,
-		        select: function (event, ui) {
-		        	var txt = ui.item.label;
-		          let custId = parseInt(txt.split(">")[1]);
-		          $("#cust_id").val(custId); 
-		          $("#custId").val(custId);
-		          
-		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
-		        	$("#cust_addr").val(respJson.address);
-		       	    $("#cust_mobile").val(respJson.mobile);
-		         },function(reason){
-		           	 console.log("error in processing your request in customer get", reason);
-	           	}); 
-		      }
-		      });
-	   }, function(reason){
-        	 console.log("error in processing your request customer", reason);
-     	}); 
-	   
-	   $('#loan-give-table tbody').on( 'click', '.del', function () {
-       	var table = $('#loan-give-table').DataTable();
-       	if(confirm('Are you sure !')){
-       		  var currentPage = table.page();
-       		  //console.log($(this).attr('delid'));
-       		  var URL = "http://localhost:8080//mortage-app/api/voucher/"+parseInt($(this).attr('delid'));
-       		  buildAjax(URL, "POST").then(function(respJson){
-       		  },function(reason){
- 		           	 console.log("error in processing your request", reason);
-  	           	}); 
-       		  var row = table.row( $(this).parents('tr') );
-                 var rowNode = row.node();
-                 row.remove();
-                 table.page(currentPage).draw(false);
-       	}
-        
-           
-       });
-       var r = null;
-       $('#loan-give-table tbody').on( 'click', '.upd', function () {
-       	var table = $('#loan-give-table').DataTable();
-       	  r = table.row( $(this).parents('tr') );
-       		  var currentPage = table.page();
-       		  //console.log($(this).attr('delid'));
-       		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
-       		  buildAjax(URL, "GET").then(function(respJson){
-       			  console.log(respJson);
-       			  
-       			  var customer_name_field = $("#cust_name"); 
-       			  var acc_name_field = $("#trans_acc_name");
-       			  var trans_curr_field = $("#trans_curr");
-       			  var trans_cheque_number_field = $("#trans_cheque_number");
-       			  var trans_bank_field = $("#trans_bank");
-       			  var trans_reminder_date_field = $("#trans_reminder_date");
-       			  var trans_interest_rate_field = $("#trans_interest_rate");
-       			  var trans_loan_amount_field = $("#trans_loan_amount");
-       			  var date_field = $("#date");
-       			  var serial_no_field = $("#serial_no");
-       			//  var cust_name_field = $("#cust_name");
-       			  var cust_mobile_field = $("#cust_mobile");
-       			  var cust_addr_field = $("#cust_addr");
-       			  var cust_id_field = $("#cust_id");
-       			  var custId_field = $("#custId");
-       			  var voucher_id_field = $("#voucher_id");
-       			  var transaction_id_field = $("#transaction_id");
-       			  var account_id_field = $("#account_id");
-       			  
-       			    customer_name_field.val(respJson.customer.customerName);
-       			    cust_id_field.val(respJson.customer.customerId);
-       		        cust_mobile_field.val(respJson.customer.mobile);
-       		        cust_addr_field.val(respJson.customer.address);
-       		        
-       		        $("#bori").val(respJson.mortgage.bori);
-       		        $("#ana").val(respJson.mortgage.ana);
-       		        $("#ratti").val(respJson.mortgage.ratti);
-       		        $("#point").val(respJson.mortgage.point);
-       		        $("#gram").val(respJson.mortgage.gram);
-       		        $("#interestRate").val(respJson.mortgage.interestRate);
-       		        $("#loanAmount").val(respJson.mortgage.loanAmount);
-       		        /* $("#product").val(respJson.mortgage.product); */
-       		        $("#cust_id").val(respJson.transaction.id);
-       		        $("#reminder_date").val(respJson.transaction.transactionDate);
-       		        $("#storage").val(respJson.transaction.storage);
-       		        $("#note").val(respJson.transaction.note);
-       		        
-       		        $("#serial").val(respJson.id);
-       		        $("#transaction_serial").val(respJson.transaction.id);
-       		        $("#cust_id").val(respJson.customer.customerId);
-       		        $("#voucher_id").val(respJson.id);
-       		        $("#transaction_id").val(respJson.transaction.id);
-       		        $("#mortgage_id").val(respJson.mortgage.mortgageId);
-       		  },function(reason){
- 		           	 console.log("error in processing your request", reason);
-  	           	}); 
-       		  /* var row = table.row( $(this).parents('tr') );
-                 var rowNode = row.node();
-                 row.remove();
-                 table.page(currentPage).draw(false); */
-       	
-        
-           
-       });
-       
-  }
-  
+	  } else {
+		  $("#trans_cheque_number").val("");
+		  $("#trans_cheque_number").prop('disabled', true);
+	  }
+  });
+  */
   
   
   function setDatePicker(){
@@ -563,8 +946,10 @@
 	  $("#trans_reminder_date").datepicker(dateConfig);
   }
   
-  </script>
-    </body>
+					
+					
+				</script>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
 </html>
+

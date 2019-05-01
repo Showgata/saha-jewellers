@@ -13,8 +13,9 @@ and open the template in the editor.
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:30:05 GMT -->
 <head th:replace="/common/common-header :: common-headpage"></head>
 
-<body class="fixed-left" style="overflow: hidden;">
+<body class="fixed-left" >
 
+ 
 	<div id="wrapper">
 
 			 <!--top bar-->
@@ -30,23 +31,26 @@ and open the template in the editor.
                         <div class="row">
                              <div class="col-sm-4 h6" style="margin-top:-10px;">
                                 <div class="panel-box">
-                                    <h4>Customer Information</h4>
+                                    <h4>Create Expense</h4>
                                     <form role="form">
-                                    <div class="form-group"><label>Customer Name</label> <input type="text" id="cust_name"
+                                    <div class="form-group"><label>Expense Name</label> <input type="text" id="exp_name"
 												placeholder="Enter name" class="form-control" autocomplete="on"></div>
-									<div class="form-group"><label>ID</label> <input disabled="true" type="text" id="cust_id"
-												placeholder="" class="form-control"></div>
-												<input type="hidden" id="custId"/>
-                                    <div class="form-group"><label>Mobile</label> <input type="text" id="cust_mobile"
+									<div class="form-group"><label>Description</label> <input type="text" id="exp_desc"
+												placeholder="Description" class="form-control"></div>
+												<input type="hidden" id="expId"/>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" id="exp_mobile"
 												placeholder="Enter mobile" class="form-control"></div>
-                                    <div class="form-group"><label>Address</label> <input type="text" id="cust_address"
+                                    <div class="form-group"><label>Address</label> <input type="text" id="exp_address"
 												placeholder="Enter address" class="form-control"></div>
 									 
-                                  
+                                  <a href="#" class="btn btn-border-theme btn-xs" id="add_expense">Add</a>   &nbsp;
 <a href="#" class="btn btn-border-theme btn-xs">Print</a>   &nbsp;
-									 <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>  &nbsp;
+									 <a href="#" class="btn btn-border-theme btn-xs" id="new">New</a>  &nbsp;
 									
 										   <a href="#" class="btn btn-border-theme btn-xs">PDF</a>   &nbsp;
+										   
+										    <a href="#" class="btn btn-border-theme btn-xs" id="update_expense_info" data-toggle="modal"  data-target="#myModal">List</a>   &nbsp;
+
 								  <div>
                                        <label></label>
                                     </div>
@@ -86,95 +90,21 @@ and open the template in the editor.
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab1">
                                                     <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Expense List</label>
+                                                        <label class="col-lg-2 col-md-3 control-label">Expense Head</label>
                                                         <div class="col-lg-10 col-md-9">
-														<select id="expense" class="form-control" name="expense[]" multiple="multiple" >
 														
-														<option>Accounting</option>
-														<option>Advertising</option>
-														<option>Answering Service</option>
-														<option>Assessments</option>
-														<option>Auto Insurance</option>
-														<option>Bad Debts from Sales or Services</option>
-														<option>Bank Charges</option>
-														<option>Bonus</option>
-														<option>Business Insurance</option>
-														<option>Cable Internet Service</option>
-														<option>Car &amp; Truck Expenses</option>
-														<option>Charitable giving</option>
-														<option>Cleaning Service</option>
-														<option>Clothing</option>
-														<option>Commissions</option>
-														<option>Computer Expense</option>
-														<option>Computer Supplies</option>
-														<option>Costs</option>
-														<option>Credit Card Fees</option>
-														<option>Delivery &amp; Freight</option>
-														<option>Dining out</option>
-														<option>Dues &amp; Subscriptions</option>
-														<option>Electric</option>
-														<option>Entertainment</option>
-														<option>Equipment Supplies</option>
-														<option>Expense List</option>
-														<option>Gas</option>
-														<option>Gasoline Expense</option>
-														<option>Gifts</option>
-														<option>Gym membership</option>
-														<option>Hair care</option>
-														<option>Home Office Expense</option>
-														<option>Homeowners Insurance</option>
-														<option>Insurance</option>
-														<option>Insurance – Health</option>
-														<option>Insurance Expense</option>
-														<option>Interest</option>
-														<option>Interest - W/Comp</option>
-														<option>Internet Fees</option>
-														<option>Janitorial</option>
-														<option>Labor</option>
-														<option>Laundry &amp; Cleaning</option>
-														<option>Lawn Service</option>
-														<option>Lease Payments</option>
-														<option>Legal &amp; Professional</option>
-														<option>License &amp; Registration</option>
-														<option>Loan Interest</option>
-														<option>Materials &amp; Supplies</option>
-														<option>Meals &amp; Entertainment</option>
-														<option>Medical expenses</option>
-														<option>Miscellaneous</option>
-														<option>NJ Annual Report</option>
-														<option>Office Expense</option>
-														<option>Office Supplies</option>
-														<option>Other Costs</option>
-														<option>Parking &amp; Tolls</option>
-														<option>Pension &amp; Profit Sharing Expense</option>
-														<option>Postage</option>
-														<option>Postal Box</option>
-														<option>Purchases</option>
-														<option>Rent - other</option>
-														<option>Rent - Vehicles,machinery, &amp; equipment</option>
-														<option>Repairs</option>
-														<option>Repairs &amp; Maintenance Expense</option>
-														<option>Safe Deposit</option>
-														<option>Salary</option>
-														<option>Security</option>
-														<option>Security Service</option>
-														<option>Supplies</option>
-														<option>Taxes - Payroll</option>
-															<option>Taxes – Sales tax included in gross receipts</option>
-														<option>Telephone</option>
-														<option>Telephone &amp; Wireless</option>
-														<option>Travel</option>
-														<option>Vacation</option>
-														<option>Wages</option>
-														<option>Water</option>
-														<option>Web - site Expense</option>
-														<option value="other">Other</option>
+														<select id="expense" class="form-control" autocomplete="off" >
+														
+														<!-- Add expense dynamically here -->
 														
 														
 														</select>
                                                          <!--   <input class="form-control" id="other_expense" disabled placeholder="other expense" name="other_expense" type="text"> -->
                                                         </div>
-                                                    </div>
+                                                    </div> 
+                                                    
+                                                     
+                                                    
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Amount</label>
@@ -229,14 +159,14 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Date</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="date" id="voucher_date" type="text">
+                                                            <input class="form-control date" placeholder="date" id="voucher_date" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
-                                                        <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
+                                                        <label class="col-lg-2 col-md-3 control-label">Voucher No.</label>
                                                         <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg " id="serial_no" style="color:#f7b03e;" placeholder="sl no." name="lastname"  type="text">
+                                                            <input class="form-control input-lg " id="serial_no" disabled=true style="color:#f7b03e;font-size: 28px;" placeholder="sl no." name="lastname"  type="text">
                                                         </div>
                                                     </div>
                                                     
@@ -262,29 +192,22 @@ and open the template in the editor.
 							
                         </div>
  						<div class="row">
-                             <div class="col-sm-12" style="overflow: scroll;height:350px;margin-top:-20px">
+                             <div class="col-sm-12" style="margin-top:-20px">
 							 <div class="panel-box">
 						     <div class="container">
 									
                                                       <input class="form-control" style="width:150px;float:right;" id="exp_count" placeholder="no expense voucher" name="vdetails" type="text">
 									  <input class="form-control" style="width:150px;" placeholder="total expense" id="tot_exp" name="lamount" type="text">
                                                 
-                                          <table  class="table table-striped" id="voucher" cellspacing="0" width="100%">
+                                          <table  class="table table-striped" id="voucher"  style="font-size:12px;">
                                         <thead>
                                             <tr>
-											<th>Sl no.</th>
-											<th>ID</th>
-                                                <th>Name</th>
-												
-									          <th>Mobile no</th>
-                                                <th>Address</th>
-
-                                                <th>Expense List</th>
-                                                <th>Amount</th>
-                                                <th>Note</th>
+											
+												<th>ID</th>
+                                                <th>Expense Head</th>
                                                 <th>Date</th>
-                                               
-																																
+                                                <th>Amount</th>
+                                                <th>Notes</th>
                                                <th>Update</th>
                                              <th>Delete</th>
 
@@ -301,7 +224,92 @@ and open the template in the editor.
 							 </div>
 							 </div>
 							 </div>
+							 
+							 
+							 
+							 
+							 
+							 <!-- Expense Info Modal -->
                      
+                     <!-- Receive Transaction -->
+							 
+							 <div class="modal fade" id="myModal" role="dialog"  >
+			<div class="modal-dialog modal-lg" style="width:60%;">
+
+				
+				<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Expense Info</h4> 
+					</div>
+					<div class="modal-body" style="padding:0;">
+						<!-- Fields -->
+							    <div class="panel-box">
+                                  	<div class="clearfix">
+									<form role="form" class="form-inline">
+										
+										<div class="form-group col-sm-2   " style="padding-left: 10px;">
+											<label>Name</label> <input type="text" id="r_cust_name"
+												placeholder="Search By Name" class="form-control">
+										</div>
+										
+									<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Address</label> <input type="text" id="r_address"
+												placeholder="Search By Address" class="form-control">
+										</div>
+										
+										
+									
+									
+								</div>
+								
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_view_report" >View Report</button> 
+									
+										
+									</form>
+								</div>
+					
+							
+					
+					
+					
+
+						<div class="form-group " style="padding:0">
+							<table class="table table-striped" id="expense_tbl" style="width:100%;font-size:10px;padding:0">
+								<thead>
+									<tr>
+									
+										<th>Expense Name</th> 
+										<th>Expense Descripton</th>
+										<th>Mobile No.</th>
+										<th>Address</th>
+								
+										<th>Update</th>
+										<th>Delete</th>
+																		
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							
+							
+									
+						</div>
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><a href="#"
+								onclick="javascript:toggleModal()" data-toggle="modal">Close
+									&rarr;</a></li>
+						</ul>
+					</div>
+					
+				</div>
+
+			</div>
+							 
+							 
 
 
                     </div><!--content-->               
@@ -311,7 +319,68 @@ and open the template in the editor.
 	</div>
 
  <div th:replace="/common/common-header :: common-required-scripts"></div>
+ <script src="/js/check.js"></script>
+ 
+ <!-- used to update balance all the time  -->
+			<input type="submit" id="#edit-submit" class="abc" style="display:none"> 
+ <div style="display:none">
+ <form action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form>
+</div>
+   <script src="/js/cashledger/cashledger.js"></script>
+   <!-- used to update balance all the time  -->
+ 
 	<script>
+	var isSavedAlready = false;
+	const EX ="EX-";
+	
+	
+	$(document).ready(function(){
+		$("#expense").focus();
+	});
+	
+	function toggleModal(){
+       	$('#myModal').modal('toggle');
+       }
+	
+	
+	$(document).ready(function () {
+		  
+		   
+		   $(".date").datepicker(dateSettings);
+		   
+		   //date format changed
+		   $(".date").datepicker({
+			   dateFormat: "dd/mm/yyyy"
+		   });
+		   
+   	   $(".date").val(moment().format("DD/MM/YYYY"));
+		  
+    });
+	
+	
+	
 		  var dataTable;
 		  
 		  function roundTo(n, digits) {
@@ -383,45 +452,40 @@ and open the template in the editor.
 	        }
 	       
 	       /* function fetchCustomers(){
-	    	   var URL = getAbsoluteUrl(mortgage-app/api/customer";
+	    	   var URL = getAbsoluteUrl(mortgage-app/api/expomer";
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
 	    		   jQuery.each(respJson, function(i, val) {
-	    			   data.push(respJson.customerName+" > "+customerId);
+	    			   data.push(respJson.expomerName+" > "+expomerId);
 	    		   });
 	    		   
 	    	   }, function(reason){
-	             	 console.log("error in processing your request customer", reason);
+	             	 console.log("error in processing your request expomer", reason);
 	          	}); 
 	       }	 */
 	       
-	       function setCustomerAutoCompleteList(){
-	    	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
+	       function setExpenseList(){
+	    	   var URL = getAbsoluteUrl("/mortgage-app/api/exp/info");
 	    	   var autoCompleteList = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
+	    		   
+	    		   if(respJson != null || respJson.length != 0 ){
 	    		   jQuery.each(respJson, function(i, val) {
 	    			   
-	    				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+	    			   var o = new Option(val.expenseName, val.id);
+	    			 	/// jquerify the DOM object 'o' so we can use the html method
+	    			 	
+	    			 	console.log(o);
+	    			 	$(o).html(val.expenseName);
+	    			 	$("#expense").append(o);
 	    			   
 	    		   });
-	    		   $( "#cust_name" ).autocomplete({
-	     		        source: autoCompleteList,
-	     		        select: function (event, ui) {
-	     		        	var txt = ui.item.label;
-	     		          let custId = parseInt(txt.split(">")[1]);
-	     		          $("#cust_id").val(custId); 
-	     		          
-	     		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
-	     		        	$("#cust_address").val(respJson.address);
-	     		       	    $("#cust_mobile").val(respJson.mobile);
-	     		         },function(reason){
-	     		           	 console.log("error in processing your request in customer get", reason);
-	     	           	}); 
-	     		          
-	     		      }
-	     		      });
+	    		   
+	    		   }else{alert("No Data yet!");}
+	    		   
+	    		   
 	    	   }, function(reason){
-	             	 console.log("error in processing your request customer", reason);
+	             	 console.log("error in processing your request expense", reason);
 	          	}); 
 	       }
 			
@@ -443,11 +507,11 @@ and open the template in the editor.
 	      
 	       
 	      function listExpenseVoucher(){
-	    	  let custId_field = $("#cust_id");
-			  let custName_field = $("#cust_name");
-			  let custPhone_field = $("#cust_mobile");
-			  let custAddress_field = $("#cust_address");
-			  let customerId_field = $("#custId");
+	    	  let expId_field = $("#exp_id");
+			  let expName_field = $("#exp_name");
+			  let expPhone_field = $("#exp_mobile");
+			  let expAddress_field = $("#exp_address");
+			  let expomerId_field = $("#expId");
 			  let expense_field = $("#expense");
 			  let note_field = $("#note");
 			  let amount_field = $("#amount");
@@ -457,26 +521,24 @@ and open the template in the editor.
 			  let voucherDate_field = $("#voucher_date");
 			  let voucher_Id = $("#voucher_id");
 			  
-			  var URL = getAbsoluteUrl("mortgage-app/api/voucher/expense-for-today");
+			  var URL = getAbsoluteUrl("mortgage-app/api/exp/expense-today");
 			  if($("#voucher_update_id").val().trim()!=""){
 				  let vid = $("#voucher_update_id").val().trim().split("/")[0];
 				  updateVoucher(vid);
-				  URL = getAbsoluteUrl("mortgage-app/api/voucher/expense/"+vid);
+				  
 			  }
 			 
 	    	   var data = [];
 	    	   buildAjax(URL, "GET").then(function(respJson){
-	    		   jQuery.each(respJson, function(i, val) {
+	    		   
+	    		   $('#voucher').DataTable().destroy();
+	    		   jQuery.each(respJson, function(index, val) {
 	    			  
-	    			   data.push([(val.customer.customerId==null?"0":val.customer.customerId),
-			 				 val.customer.customerName,
-			 				 (val.id==null?"":val.id),
-			 				(val.customer.mobile==null?"":val.customer.mobile),
-			 				(val.customer.address==null?"":val.customer.address),
-			 				(val.transaction.expense==null?"":JSON.parse(val.transaction.expense).toString()),
-			 				(val.transaction.amount==null?"":val.transaction.amount),
-			 				(val.transaction.note==null?"":val.transaction.note),
-			 				(val.date==null?"":val.date),
+	    			   data.push([(val.id==null?"":"EX-"+val.id),
+			 				 val.expenseHead,
+			 				moment(val.date).format("DD/MM/YYYY"),
+			 				(val.amount==null?"0.00":val.amount),
+			 				(val.note ===""?"-":val.note),
 			 				"<input class='form-controlcol-sm-2 upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
 			 				"<input class='form-controlcol-sm-2 del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
 			 			 ]);     
@@ -486,7 +548,6 @@ and open the template in the editor.
 	    		   dataTable = $('#voucher').DataTable({
 	            		data:           data,
 	                    deferRender:    true,
-	                    scrollY:        100,
 	                    scrollCollapse: true,
 	                    scroller:       true,
 	                    "order": [],
@@ -504,7 +565,7 @@ and open the template in the editor.
 	           
                 // Total over all pages
                 let total = api
-                    .column( 6 )
+                    .column( 3 )
                     .data()
                     .reduce( function (a, b) {
                         return intVal(a) + intVal(b);
@@ -519,7 +580,7 @@ and open the template in the editor.
 	            
 	            // Total over all pages
 	            total = api
-	                .column( 10 )
+	                .column( 3 )
 	                .data()
 	                .reduce( function (a, b) {
 	                    return intVal(a) + intVal(b);
@@ -544,17 +605,35 @@ and open the template in the editor.
 	            	});
 	    		   
 	    	   }, function(reason){
-	             	 console.log("error in processing your request customer", reason);
+	             	 console.log("error in processing your request expomer", reason);
 	          	}); 
 	      }
+	      
+	      
+	      $("#add_expense").click(function(e){
+	    	  addExpenseInfo();
+	      })
+	      
+	      
+	      
 	       
-		  function saveExpenseVoucher(){
-			  let custId_field = $("#cust_id");
-			  let custName_field = $("#cust_name");
-			  let custPhone_field = $("#cust_mobile");
-			  let custAddress_field = $("#cust_address");
-			  let customerId_field = $("#custId");
-			  let expense_field = $("#expense");
+	      function addExpenseInfo(){
+			  
+	    	  
+			  
+	    	   var ignoreThisArray =["serial_no","amount","note","expense","exp_count","tot_exp","r_address","r_cust_name"];
+	    	   
+	    	   
+	    	   
+	    	if(isValid(ignoreThisArray)){
+			  
+			  
+			  let expDesc_field = $("#exp_desc");
+			  let expName_field = $("#exp_name");
+			  let expPhone_field = $("#exp_mobile");
+			  let expAddress_field = $("#exp_address");
+			  //let expomerId_field = $("#expId");
+			  //let expense_field = $("#expense");
 			  let note_field = $("#note");
 			  let amount_field = $("#amount");
 			  let voucher_field = $("#voucher_date");
@@ -562,38 +641,49 @@ and open the template in the editor.
 			  let transactionId_field = $("#transaction_Id");
 			  let voucherDate_field = $("#voucher_date");
 			  let voucher_Id = $("#voucher_id");
-			  let voucher = {};
-			  let transaction = {};
-			  let customer = {};
+			  let expenseInfo = {};
 			  
-			  customer["customerId"] = formatIntegerValue(customerId_field.val());
-			  customer["customerName"] = formatValue(custName_field.val());
-			  customer["mobile"] = formatIntegerValue(custPhone_field.val());
-			  customer["address"] =  formatValue(custAddress_field.val());
 			  
-			  transaction["expense"] =  formatValue(JSON.stringify(expense_field.val()));
-			  transaction["note"] = formatValue(note_field.val());
-			  transaction["amount"] = formatValue(amount_field.val());
-			  transaction["id"] = formatValue(transactionId_field.val());
+			  expenseInfo["expenseName"] = expName_field.val().trim();
+			  expenseInfo["mobileNo"] = formatIntegerValue(expPhone_field.val().trim());
+			  expenseInfo["address"] = expAddress_field.val().trim();
+			  expenseInfo["expenseDescription"] = expDesc_field.val().trim();
 			  
-			  voucher["customer"] = customer;
-			  voucher["transaction"] =  transaction;
-			  voucher["type"] = "expense";
-			  voucher["date"] = voucherDate_field.val();
-			  voucher["serial"] = formatIntegerValue(serial_field.val());
-			  voucher["id"] = formatIntegerValue(voucher_Id.val());
+			  console.log(expenseInfo);
 			  
+			  buildAjaxForJson(getAbsoluteUrl("/mortgage-app/api/exp/saveInfo"), "POST", expenseInfo).then(function(val){
+				  
+				  alert("Added to the expense list");
+				  console.log(val);
+				  
+				  var o = new Option(val.expenseName, val.id);
+  			 	/// jquerify the DOM object 'o' so we can use the html method
+  			 	$(o).html(val.expenseName);
+  			 	$("#expense").append(o);
+  			 	
+  			 	$("#exp_desc").val("");
+  			 	$("#exp_name").val("");  
+  			 	$("#exp_mobile").val("");  
+  			 	$("#exp_address").val("");
+  			 	
+  			 	isSavedAlready = false;
+  			 	
+			  }, function(reason){
+	             	 console.log("error in processing your request expense", reason);
+	          	});
+			  
+				/*	  
 			  var data = [];
 			  buildAjaxForJson(getAbsoluteUrl("mortgage-app/api/voucher/"), "POST", voucher).then(function(respJson){
 				  
 				  var t = dataTable;
 				  let val = respJson;
 				  console.log(val);
-		       		t.row.add([(val.customer.customerId==null?"0":val.customer.customerId),
-		 				 val.customer.customerName,
-		 				 (val.id==null?"":val.id),
-		 				(val.customer.mobile==null?"":val.customer.mobile),
-		 				(val.customer.address==null?"":val.customer.address),
+		       		t.row.add([(val.expomer.expomerId==null?"0":val.expomer.expomerId),
+		 				 val.expomer.expomerName,
+		 				 (EX+val.id==null?"":EX+val.id),
+		 				(val.expomer.mobile==null?"":val.expomer.mobile),
+		 				(val.expomer.address==null?"":val.expomer.address),
 		 				(val.transaction.expense==null?"":JSON.parse(val.transaction.expense).toString()),
 		 				(val.transaction.amount==null?"":val.transaction.amount),
 		 				(val.transaction.note==null?"":val.transaction.note),
@@ -604,33 +694,29 @@ and open the template in the editor.
 		 			
 		       		moveDataTableRow(1,t);
 		       		
-		       	 	custId_field.val("");
-				    custName_field.val("");
-				    custPhone_field.val("");
-				    custAddress_field.val("");
-				    customerId_field.val("");
-				    
-				    expense_field.val(null).trigger('change');
-				    note_field.val("");
-				    amount_field.val("");
-				    voucher_field.val("");
-				    serial_field.val("");
-				    transactionId_field.val("");
-				    voucherDate_field.val("");
-				    voucher_Id.val();
+		       	 	//serial no shown in the box after save
+		       	 	$("#serial_no").val("EX-"+val.id);
+		       	 	
 	    		   
 	    	   }, function(reason){
 	             	 console.log("error in processing your request voucher", reason);
-	          	}); 
-			  console.log(voucher);
+	          	}); */
+			  //console.log(voucher);
+			  
+			  
+		  }else
+		  {
+			  alert("Some fields are empty !");
+		  }
+	    	  
 		  }
 		  
 		  $(document).ready(function (){   
-			  $('#expense').val(null).trigger('change');
+			  //$('#expense').val(null).trigger('change');
 	//		  $('#expense').val([ "Answering Service", "Bank Charges", "Delivery & Freight", "NJ Annual Report"]).trigger('change');
-			  $("#expense").select2({maximumSelectionLength: 5,tags: true,allowClear: true});
+			  //$("#expense").select2({maximumSelectionLength: 5,tags: true,allowClear: true});
 			  listExpenseVoucher();
-			  setCustomerAutoCompleteList();
+			  setExpenseList();
 			  var disabledDays = [0];
 	            var dateSettings = {
 	                language: 'en',
@@ -653,66 +739,61 @@ and open the template in the editor.
 			  
 		  });
 		  
-	        
+	     /*   
 	      function updateVoucher(vid){
 	    	  
-	    	  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt(vid));
+	    	  var URL = getAbsoluteUrl("mortgage-app/api/exp/getOneExpenseDetail/"+parseInt(vid));
     		  buildAjax(URL, "GET").then(function(respJson){
-    			  console.log(respJson);
-    		      /*   let bori_field = $("#bori");
-    		        let ana_field = $("#ana");
-    		        let ratti_field = $("#ratti");
-    		        let point_field = $("#point");
-    		        let gram_field = $("#gram"); 
-    		        let loanAmnt_field = $("#loan_amnt");
-    		        let interestRate_field = $("#rate");*/
-    		        let transactionSerial = $("#transaction_serial");
-    		        let reminderDate = $("#reminder_date");
-    		        let note = $("#note");
-    		        let storage = $("#storage");
-    			    let voucher_date = $("#voucher_date");
-    			    
-    		        $("#cust_name").val(respJson.customer.customerName);
-    		        $("#cust_id").val(respJson.customer.customerId);
-    		        $("#cust_mobile").val(respJson.customer.mobile);
-    		        $("#cust_address").val(respJson.customer.address);
-    		        voucher_date.val(respJson.date);
-    		        transactionSerial.val(respJson.id);
-    		        /* $("#bori").val(respJson.mortgage.bori);
-    		        $("#ana").val(respJson.mortgage.ana);
-    		        $("#ratti").val(respJson.mortgage.ratti);
-    		        $("#point").val(respJson.mortgage.point);
-    		        $("#gram").val(respJson.mortgage.gram);
-    		        $("#interestRate").val(respJson.mortgage.interestRate);
-    		        $("#loanAmount").val(respJson.mortgage.loanAmount); */
-    		        /* $("#product").val(respJson.mortgage.product); */
-    		        $("#cust_id").val(respJson.transaction.id);
-    		        $("#reminder_date").val(respJson.transaction.transactionDate);
-    		        $("#storage").val(respJson.transaction.storage);
-    		        $("#note").val(respJson.transaction.note);
-    		        $("#amount").val(respJson.transaction.amount);
-    	
-    		        $('#expense').val(null).trigger('change');		       
-    		        $("#expense").val(JSON.parse(respJson.transaction.expense==null?"[]":respJson.transaction.expense)).trigger('change');
-    		       
-    		        
-    		        $("#serial_no").val(respJson.id);
-    		        $("#transaction_serial").val(respJson.transaction.id);
-    		        $("#cust_id").val(respJson.customer.customerId);
-    		        $("#voucher_id").val(respJson.id);
-    		        $("#transaction_id").val(respJson.transaction.id);
-    		        /* $("#mortgage_id").val(respJson.mortgage.mortgageId); */
+    			  
+    			  
+    			  var expTrans = respJson[0][0];
+    			  var expInfo = respJson[0][1];
+    			  
+    			  
+    			  let transactionSerial = $("#serial_no");
+  		        let reminderDate = $("#reminder_date");
+  		        let note = $("#note");
+  		        let storage = $("#storage");
+  			    let voucher_date = $("#voucher_date");
+  			    
+  			    
+  		        //$("#exp_name").val(expInfo.expenseName);
+  		        //$("#exp_desc").val(expInfo.expenseDescription);
+  		        //$("#exp_mobile").val(expInfo.mobileNo);
+  		        //$("#exp_address").val(expInfo.address);
+  		        
+  		        //==================
+  		        	console.log("Date="+expTrans.date);
+  		        	console.log("Date="+moment(expTrans.date).format("DD/MM/YYYY"));
+  		       	//================== 	
+  		        
+  		        voucher_date.val(moment(expTrans.date).format("DD/MM/YYYY"));
+  		        transactionSerial.val(expTrans.id);
+
+  		        $("#note").val(expTrans.note);
+  		        $("#amount").val(expTrans.amount);
+  		        
+  		        //console.log("Differemce ===="+expTrans.expenseInfoId+"===="+expInfo.id);
+  	
+  		       	//document.getElementById('expense').value=expInfo.id; 	       
+  		        $("#expense option[value='" + expInfo.id + "']").attr('selected', 'selected');
+  		       
+  		        $("#date").val(moment(expTrans.date).format("DD/MM/YYYY"));
+  		        $("#serial_no").val("EX-"+expTrans.id);
     		  },function(reason){
 		           	 console.log("error in processing your request", reason);
 	           	}); 
-	      }  
+	      }  */
 		  
+	      
+	      //Expense Update Happens Here
+	      var r=null;
 		  $('#voucher tbody').on( 'click', '.upd', function () {
 	        	var table = $('#voucher').DataTable();
-	        
+	        	r = table.row( $(this).parents('tr') );
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/exp/getOne/"+parseInt($(this).attr('updid')));
 	        		  buildAjax(URL, "GET").then(function(respJson){
 	        			  console.log(respJson);
 	        		      /*   let bori_field = $("#bori");
@@ -728,35 +809,23 @@ and open the template in the editor.
 	        		        let storage = $("#storage");
 	        			    let voucher_date = $("#voucher_date");
 	        			    
-	        		        $("#cust_name").val(respJson.customer.customerName);
-	        		        $("#cust_id").val(respJson.customer.customerId);
-	        		        $("#cust_mobile").val(respJson.customer.mobile);
-	        		        $("#cust_address").val(respJson.customer.address);
-	        		        voucher_date.val(respJson.date);
+	        			    /*
+	        		        $("#exp_name").val(respJson.expomer.expomerName);
+	        		        $("#exp_id").val(respJson.expomer.expomerId);
+	        		        $("#exp_mobile").val(respJson.expomer.mobile);
+	        		        $("#exp_address").val(respJson.expomer.address);*/
+	        		        voucher_date.val(moment(respJson.date).format("DD/MM/YYYY"));
 	        		        transactionSerial.val(respJson.id);
-	        		        /* $("#bori").val(respJson.mortgage.bori);
-	        		        $("#ana").val(respJson.mortgage.ana);
-	        		        $("#ratti").val(respJson.mortgage.ratti);
-	        		        $("#point").val(respJson.mortgage.point);
-	        		        $("#gram").val(respJson.mortgage.gram);
-	        		        $("#interestRate").val(respJson.mortgage.interestRate);
-	        		        $("#loanAmount").val(respJson.mortgage.loanAmount); */
-	        		        /* $("#product").val(respJson.mortgage.product); */
-	        		        $("#cust_id").val(respJson.transaction.id);
-	        		        $("#reminder_date").val(respJson.transaction.transactionDate);
-	        		        $("#storage").val(respJson.transaction.storage);
-	        		        $("#note").val(respJson.transaction.note);
-	        		        $("#amount").val(respJson.transaction.amount);
+
+	        		        $("#note").val(respJson.note);
+	        		        $("#amount").val(respJson.amount);
 	        	
 	        		        $('#expense').val(null).trigger('change');		       
-	        		        $("#expense").val(JSON.parse(respJson.transaction.expense==null?"[]":respJson.transaction.expense)).trigger('change');
+	        		        $("#expense option[value='" + respJson.expenseInfoId + "']").attr('selected', 'selected');
 	        		       
+	        		        $("#date").val(moment(respJson.date).format("DD/MM/YYYY"));
+	        		        $("#serial_no").val("EX-"+respJson.id);
 	        		        
-	        		        $("#serial_no").val(respJson.id);
-	        		        $("#transaction_serial").val(respJson.transaction.id);
-	        		        $("#cust_id").val(respJson.customer.customerId);
-	        		        $("#voucher_id").val(respJson.id);
-	        		        $("#transaction_id").val(respJson.transaction.id);
 	        		        /* $("#mortgage_id").val(respJson.mortgage.mortgageId); */
 	        		  },function(reason){
 	  		           	 console.log("error in processing your request", reason);
@@ -775,8 +844,9 @@ and open the template in the editor.
 	        	if(confirm('Are you sure !')){
 	        		  var currentPage = table.page();
 	        		  //console.log($(this).attr('delid'));
-	        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/exp/"+parseInt($(this).attr('delid')));
 	        		  buildAjax(URL, "POST").then(function(respJson){
+	        			  alert("Deleted Successfully !");
 	        		  },function(reason){
 	  		           	 console.log("error in processing your request", reason);
 	   	           	}); 
@@ -799,6 +869,284 @@ and open the template in the editor.
 		  			$("#other_expense").prop("disabled",true);
 		  		}
 		  	}); */
+		  	
+		  	
+		  	//=============================================================
+		  		
+		  		$("#new").click(function(){
+		  			reset();
+		  		});
+		  	
+		  	
+		  	var reset =function(){
+
+		        $("#exp_name").val("");
+		        $("#exp_desc").val("");
+		        $("#exp_mobile").val("");
+		        $("#exp_address").val("");
+		        $('#voucher_date').val(moment().format("DD/MM/YYYY"));
+		        $("transactionSerial").val("");
+		        $("#exp_id").val("");
+		        //dateSet($("#voucher_date"),$("#reminder_date"));
+		        $("#storage").val("");
+		        $("#note").val("");
+		        $("#amount").val("");
+		        $("#serial_no").val("");
+		        $("#transaction_serial").val("");
+		        $("#voucher_id").val("");
+		        $("#transaction_id").val("");
+	
+		        //$("#expense").val(null).trigger('change');
+		        
+		       
+		        
+		        
+		    }
+		  	
+		  	
+		  	
+		  	var saveExpenseVoucher = function()
+		  	{
+		  		
+		  		if(!isSavedAlready){
+					  
+			    	   var ignoreThisArray =["exp_desc","exp_name","exp_mobile","exp_address","serial_no","exp_count","tot_exp","note",,"r_address","r_cust_name"];
+			    	   
+			    	   
+			    	   
+			    	if(isValid(ignoreThisArray)){
+					  
+					  
+					 
+					  //let expomerId_field = $("#expId");
+					  let expense_field = $("#expense");
+					  let note_field = $("#note");
+					  let amount_field = $("#amount");
+					  let voucher_field = $("#voucher_date");
+					  let serial_field = $("#serial_no");
+					  let transactionId_field = $("#transaction_Id");
+					  let voucherDate_field = $("#voucher_date");
+					  let voucher_Id = $("#voucher_id");
+					  let expense = {};
+					  
+					  var optSelected = $('#expense option:selected').text();
+					  var valSelected = $('#expense option:selected').attr('value');
+					  
+					  console.log("name="+optSelected+" val="+valSelected);
+					  
+					  if(serial_field.val().trim()!="")
+					{
+						  var txt =serial_field.val(); 
+							var subTxt = txt.substring(3,6);
+						   let voucherId = parseInt(subTxt);  
+						   
+						   expense["id"]=parseInt(voucherId);
+						  }
+					  
+					  
+					  expense["expenseHead"] = optSelected;
+					  expense["amount"] = formatIntegerValue(amount_field.val().trim());
+					  expense["note"] = note_field.val().trim();
+					  expense["expenseInfoId"] = valSelected;
+					  var da = moment($("#voucher_date").val().trim(),"DD/MM/YYYY").format("MM/DD/YYYY");
+					  expense["date"]=new Date(da);
+					  
+					  console.log(expense);
+					  
+					  buildAjaxForJson(getAbsoluteUrl("/mortgage-app/api/exp/save_expense"), "POST", expense).then(function(respJson){
+						  
+						  alert("Save to  expense head");
+						  console.log(respJson);
+						  let val = respJson;
+						  console.log(val);
+						  
+						  var t = dataTable;
+						  
+						  var m = ($("#serial_no").val()).split("-");
+						  console.log(m);
+						  
+				       		if(parseInt(m[1])===parseInt(val.id)){
+								var rowNode = r.node();
+								r.remove();
+								t.page(t.page()).draw(false);
+							}
+						  
+						  
+				       		t.row.add([(val.id==null?"":"EX-"+val.id),
+				 				 val.expenseHead,
+				 				moment(val.date).format("DD/MM/YYYY"),
+					 				(val.amount==null?"":val.amount),
+					 				(val.note.trim()==""?"-":val.note),
+					 				"<input class='form-controlcol-sm-2 upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
+					 				"<input class='form-controlcol-sm-2 del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+					 			 ]).draw();  
+				 			
+				       		moveDataTableRow(1,t);
+				       		
+				       	 	//serial no shown in the box after save
+				       	 	$("#serial_no").val("EX-"+val.id);
+						  
+						  
+						 
+						  
+					  }, function(reason){
+			             	 console.log("error in processing your request expense", reason);
+			          	});
+
+					  isSavedAlready = true;
+					  
+				  }else
+				  {
+					  alert("Some fields are empty !");
+				  }
+			    	  }else{
+			    		  isSavedAlready = false;
+			    		  reset();
+			    	  }
+		  		
+		  	}
+		  	
+		  	
+		  	$("#update_expense_info").click(function(e){
+		  		
+		  		showExpenseInfoModal();
+		  	});
+		  	
+		  	
+		  	var exdataTable;
+		  	var showExpenseInfoModal = function(){
+		  		var data=[];
+		  		
+		  		var URL = getAbsoluteUrl("/mortgage-app/api/exp/info");
+		  		buildAjax(URL, "GET").then(function(respJson){
+		    		   
+		    		   jQuery.each(respJson, function(index, val) {
+		    			  
+		    			   data.push([
+				 				 val.expenseName,
+			 					val.expenseDescription,
+				 				(val.mobileNo==null?"0.00":val.mobileNo),
+				 				(val.address ===""?"-":val.address),
+				 				"<input class='form-controlcol-sm-2 upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
+				 				"<input class='form-controlcol-sm-2 del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+				 			 ]);     
+		    			   
+		    		   });
+		    		   
+		    		   exdataTable = $('#expense_tbl').DataTable({
+		            		data:           data,
+		                    deferRender:    true,
+		                    scrollCollapse: true,
+		                    scroller:       true,
+		                    "order": [],
+							 "footerCallback": function ( row, data, start, end, display ) {
+		            var api = this.api(), data;
+		 
+		            
+		 
+		       /*      var rowsCount = api
+		            .column( 10 )
+		            .data().length;
+		            // Total over this page
+		            pageTotal = api
+		                .column( 10, { page: 'current'} )
+		                .data()
+		                .reduce( function (a, b) {
+		                    return intVal(a) + intVal(b);
+		                }, 0 );
+		  */
+		            // Update footer
+		          /*   $( api.column( 10 ).footer() ).html(
+		                '$'+pageTotal +' ( $'+ total +' total)'
+		            ); */
+		        }
+		            	});
+		    		   
+		    	   }, function(reason){
+		             	 console.log("error in processing your request expomer", reason);
+		          	}); 
+		  		
+		  		
+		  		
+		  	}
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	$('#expense_tbl tbody').on( 'click', '#update', function () {
+		     	
+		  		
+		  		var vid =$(this).attr('updid');
+  		        
+		  		var URL = getAbsoluteUrl("mortgage-app/api/exp/getOneInfo/"+parseInt(vid));
+	    		  buildAjax(URL, "GET").then(function(expInfo){
+	    			  
+	    			  toggleModal();
+	    			  $("#exp_name").val(expInfo.expenseName);
+	    		        $("#exp_desc").val(expInfo.expenseDescription);
+	    		        $("#exp_mobile").val(expInfo.mobileNo);
+	    		        $("#exp_address").val(expInfo.address);
+	    		        
+	    		  },function(reason){
+			           	 console.log("error in processing your request", reason);
+		           	}); 
+		      
+		         
+		     });
+		  	
+		  	
+		  	
+		  	
+		  	$('#expense_tbl tbody').on( 'click', '#delete', function () {
+	        	var table = $('#expense_tbl').DataTable();
+	        	if(confirm('Are you sure !')){
+	        		  var currentPage = table.page();
+	        		  //console.log($(this).attr('delid'));
+	        		  var URL = getAbsoluteUrl("mortgage-app/api/exp/info/"+parseInt($(this).attr('delid')));
+	        		  buildAjax(URL, "POST").then(function(respJson){
+	        			  alert("Deleted Successfully !");
+	        		  },function(reason){
+	  		           	 console.log("error in processing your request", reason);
+	   	           	}); 
+	        		  var row = table.row( $(this).parents('tr') );
+	                  var rowNode = row.node();
+	                  row.remove();
+	                  table.page(currentPage).draw(false);
+	        	}
+	         
+	            
+	        });
+		  	
+		  	
+		  	function searchByName(){
+		  		
+		  		$('#expense_tbl').DataTable()
+		  	        .column(0)
+		  	        .search($("#r_cust_name").val())
+		  	        .draw();
+		  	}
+		  	
+		  	function searchByAddress(){
+		  		
+		  		$('#expense_tbl').DataTable()
+		  	    .column(3)
+		  	    .search($("#r_address").val())
+		  	    .draw();
+		  	}
+		  	
+		  	
+		  	$("#r_view_report").click(function(){
+		  		searchByName();
+		  		searchByAddress();
+		  		
+		  	});
+		  	
+		  	
+		  	
+		  	
+		  	
    </script>
 
 </body>

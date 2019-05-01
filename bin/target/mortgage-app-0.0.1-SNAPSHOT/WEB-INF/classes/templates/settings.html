@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
+<head th:replace="/common/common-header :: common-head"></head>
+<body class="fixed-left">
+
+	<div id="wrapper">
+
+		<div th:replace="/common/common-header :: common-topbar"></div>
+		<div th:replace="/common/common-header :: common-side-menu"></div>
+		<!--left menu start-->
+		<!--left menu end-->
+		<div class="content-page  equal-height">
+			<div class="content">
+				<div class="container" style="height:100%;">
+
+					<div class="row">
+						<div class="col-sm-5 col-sm-offset-4 h6">
+							<div class="panel-box">
+								<h4>User Information</h4>
+								<input type="hidden" id="user_id"/>
+								<form role="form">
+									<div class="form-group" >
+									<label>Role</label> <select id="user_role" class="form-control">
+									<option value="" selected>Select Role</option>
+									<option>Admin</option>
+									<option>Receiver</option>
+										
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Username</label> <input type="text" 
+											placeholder="username" id="user_name" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>Password</label> <input type="password"
+											placeholder="Enter password" id="user_password"
+											class="form-control input_field">
+									</div>
+								<div class="form-group">
+										<label>Re Enter Password</label> <input type="password"
+											placeholder="Enter password again" id="user_repassword"
+											class="form-control input_field">
+									</div>
+
+									<ul class="pager">
+								
+								<li class="next"><button class='form-control col-sm-2' style="width:30%;"id="save_setting" type="button">Save User
+										&rarr;</button></li>
+
+							</ul>
+							
+									<!-- &nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a> -->
+								</form>
+							</div>
+						</div>
+						<div class="container">
+							<table class="table table-striped "  id="settings_table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Role</th>
+										<th>Username</th>
+										<th>Password</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--content-->
+				</div>
+				<!--content page-->
+			</div>
+			<!--end wrapper-->
+		</div>
+
+	</div>
+	<div th:replace="/common/common-header :: common-required-scripts"></div>
+	<script>
+	var dataTable = null;
+	
+	$(document).ready(function () {
+		loadAllUser();
+	});
+	
+	function loadAllUser(){
+		let URL = getAbsoluteUrl("mortgage-app/api/user/");
+		buildAjax(URL,"GET").then(function(respJson){
+			
+			let users = [];
+			jQuery.each(respJson, function(i, user) {
+				users.push([user.userId,user.role,user.username,user.passwordText,
+					"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+user.userId+"' name='update' value='update' id='update' />",
+      				"<input class='form-controlcol-sm-2  del' type='button' delid='"+user.userId+"' name='delete' value='delete' id='delete' />"
+      			]);
+			});
+	
+			dataTable = $('#settings_table').DataTable({
+        		data:           users,
+                deferRender:    true,
+                scrollY:        100,
+                scrollCollapse: true,
+                scroller:       true,
+                "order": [],
+				"footerCallback": function ( row, data, start, end, display ) {
+        		var api = this.api(), data;
+        	// Remove the formatting to get integer data for summation
+        var intVal = function ( i ) {
+            return typeof i === 'string' ?
+                i.replace(/[\$,]/g, '')*1 :
+                typeof i === 'number' ?
+                    i : 0;
+        };
+    }
+        	});  
+			
+		},function(reason){
+        	 console.log("error in processing your request user", reason);
+      	});
+	}
+	
+	(function(){
+		
+		$("#save_setting").click(function(e){
+			let userId = formatValue($("#user_id").val());
+			let userName = formatValue($("#user_name").val());
+			let userRole = formatValue($("#user_role").val());
+			let userPassword = formatValue($("#user_password").val());
+			let userRePassword = formatValue($("#user_repassword").val());
+			if(userPassword != userRePassword){
+				alert("user password and repassword does not matched");
+				return;
+			} else if(userRole == null){
+				alert("please select user Role");
+				return;
+			}
+			
+			let user = {};
+			user["passwordText"] = userPassword;
+			user["role"] = userRole;
+			user["username"] = userName;
+			user["userId"] = userId;
+			user["password"] = userPassword;
+			
+			let URL = getAbsoluteUrl("mortgage-app/api/user/");
+			buildAjaxForJson(URL,"POST",user).then(function(respJson){
+				console.log(respJson);
+				console.log("saved");
+				var t = $('#settings_table').DataTable();
+				let user = respJson;
+				
+				if(parseInt($("#user_id").val())==parseInt(user.userId)){
+					let r = t.row();
+					var rowNode = r.node();
+					r.remove();
+					customerDataTable.page(t.page()).draw(false);
+				}
+				
+				t.row.add([user.userId,user.username,user.role,user.passwordText,
+					"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+user.userId+"' name='update' value='update' id='update' />",
+      				"<input class='form-controlcol-sm-2  del' type='button' delid='"+user.userId+"' name='delete' value='delete' id='delete' />"
+      			]).draw();
+				
+				moveDataTableRow(1,t);
+			},function(reason){
+             	 console.log("error in processing your request user", reason);
+          	}); 
+		});
+		
+		$('#settings_table tbody').on( 'click', '.del', function () {
+        	var table = $('#settings_table').DataTable();
+        	if(confirm('Are you sure !')){
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  
+        		  var URL = getAbsoluteUrl("mortgage-app/api/user/"+parseInt($(this).attr('delid')));
+        		  buildAjax(URL, "POST").then(function(respJson){
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	}); 
+        		  var row = table.row( $(this).parents('tr') );
+                  var rowNode = row.node();
+                  row.remove();
+                  dataTable.page(currentPage).draw(false);
+        	}    
+        });
+		
+        $('#settings_table tbody').on( 'click', '.upd', function () {
+        	var table = $('#settings_table').DataTable();
+        	  r = table.row( $(this).parents('tr') );
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  
+        		  var URL = getAbsoluteUrl("mortgage-app/api/user/"+parseInt($(this).attr('updid')));
+        		  buildAjax(URL, "GET").then(function(user){
+        			  console.log("updated user =>");
+        			  console.log(user);
+        			    $("#user_id").val(user.userId);
+        				$("#user_name").val(user.username);
+        				$("#user_role").val(user.role);
+        				$("#user_password").val(user.passwordText);
+        				$("#user_repassword").val(user.passwordText);
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	}); 
+        	});
+		
+	})();
+	</script>
+</body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
+</html>
+

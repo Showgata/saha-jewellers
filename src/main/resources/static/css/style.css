@@ -99,7 +99,7 @@ h1,h2,h3,h4,h5,h6{
     padding: 10px 25px;
 }
 #wrapper {
-    overflow: hidden;
+    overflow: auto;
     width: 100%;
 }
 #para1,#para2,#para3{
@@ -830,7 +830,7 @@ body.widescreen.fixed-left .side-menu .metismenu>li .nav-second-level{
     display: inherit;
 }
 .metismenu .nav-third-level.collapse.in {
-    display: inherit;
+    display: block;
 }
 .footer{
     left: 0;
@@ -871,4 +871,11 @@ body.widescreen.fixed-left .side-menu .metismenu>li .nav-second-level{
 .dataTables_scroll
 {
     overflow:auto;
+    scrollX: true
 }
+
+
+
+
+
+

@@ -29,16 +29,16 @@ and open the template in the editor.
                                   	<div class="clearfix" style="padding-top:20px">
 									<form role="form" class="form-inline">
 										<div class="form-group col-sm-5" style="padding-left: 10px;">
-											<label>Search</label> <input type="text" id="cust_name"
+											<label>Search</label> <input type="text" id="cust_name_id"
 												placeholder="search by id" class="form-control">
 										</div>
 										<div class="form-group col-sm-5" style="padding-left: 10px;">
 											<label>select</label> 
-												<select class="form-control">
-												<option class="form-control">Mortgage</option>
+												<select class="form-control transactionType">
+												<option class="form-control" value="Mortgage">Mortgage</option>
 												
-												<option class="form-control">Loan Take</option>
-												<option class="form-control">Loan Give</option>
+												<option class="form-control" value="Loan Take">Loan Take</option>
+												<option class="form-control" value="Loan Give">Loan Give</option>
 												
 
 												</select>
@@ -46,7 +46,7 @@ and open the template in the editor.
 										</div>
 										
 										<div class="form-group col-sm-2 " style="padding-left: 10px;">
-											<a href="#" class="btn btn-border-theme btn-xs">View Report</a> 
+											<a href="#" id="view_report" class="btn btn-border-theme btn-xs">View Report</a> 
 										</div>
 										
 									</form>
@@ -118,9 +118,9 @@ and open the template in the editor.
 
                                                 <th> Receive date</th>
                                                 
-                                                <th>Due Amount</th>
-                                                <th>Loan</th>
-                                               
+                                                <th>Total Loan Amount</th>
+                                                <th>Total Due Loan Amount</th>
+                                               <th>Total Due Interest Amount</th>
 												<th>Balance</th>																								
 										     
 
@@ -129,7 +129,25 @@ and open the template in the editor.
                                         <tbody>
                                            
                                         </tbody>
+                                       
                                     </table>
+                                    
+                                    <form action="" class="form-inline">
+    <div class="form-group">
+    	<label>Total Amount</label>
+        <input type="text" id="dt_total_amount" disabled class="form-control" placeholder="Total Amount">
+    </div>
+    <div class="form-group">   
+    	<label>Total Due Amount</label> 
+         <input type="text" id="dt_due_amount" disabled class="form-control" placeholder="Total Due Amount">   
+    </div>
+    <div class="form-group">
+    	<label>Total Balance</label>    
+         <input type="text" id="dt_balance" disabled class="form-control" placeholder="Total Balance">   
+    </div>
+</form>
+                                    
+                                    
                                     </div>
                                     <div class="clearfix"></div>
                                 
@@ -147,6 +165,7 @@ and open the template in the editor.
         </div>
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/customer/customer-credit.js"></script>
    <script src="/js/customer/customer.js"></script>
     </body>
 

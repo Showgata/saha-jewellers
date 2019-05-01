@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+
+            <div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+            <!--left menu end-->
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+
+                        <div class="row">
+                             <div class="col-sm-4 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+                                    <h4>Customer Information</h4>
+                                    <form role="form">
+                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" id="cust_name" class="form-control"></div>
+									<div class="form-group"><label>ID</label> <input disabled type="text" placeholder="Enter id" id="cust_id"  class="form-control"></div>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile"  id="cust_mobile" class="form-control"></div>
+                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_addr" class="form-control"></div>
+									<input type="hidden" id="custId"/> 
+                                  
+									 <button id="save_customer" class="btn btn-border-theme btn-xs">Save</button>   &nbsp;
+									 <button id="cancel_customer" class="btn btn-border-theme btn-xs">Cancel</button>  &nbsp;
+								  <div>
+                                       <label></label>
+                                    </div>
+                                </form>
+
+                                </div>
+									
+										
+                            </div >
+                          
+                            <div class="col-sm-5 h6"  style="margin-top:-10px;">
+                                <div class="panel-box">
+                                    <h4>Transaction Details</h4>
+                                    <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Account Name</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="Enter account name" name="trans_acc_name" id="trans_acc_name" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Currency</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <select class="form-control" id="trans_curr" name="trans_curr">
+															<option selected>Taka </option>
+                                                             <option>Cheque </option>
+															</select>
+															<input class="form-control" id="trans_cheque_number" disabled="true" placeholder="cheque number" name="trans_cheque_number" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Bank List</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                           <select class="form-control" id="trans_bank">
+                                                           <option value="" selected>Select Bank</option>
+														   <option>AB Bank Limited</option>
+                                                             <option>Agrani Bank Ltd.</option>
+															  <option>Al-Arafah Islami Bank Limited</option>
+															    <option>	Bangladesh Commerce Bank Limited</option>
+																  <option>Bangladesh Development Bank Limited.</option>
+																    <option>	Bangladesh Krishi Bank</option>
+																	  <option>Bank Asia Limited</option>
+																	    <option>	Basic Bank Limited</option>
+																		  <option>	Bengal Bank Limited</option>
+																		    <option>City Bank LimitedRAC Bank Limited</option>
+																			  <option>Dhaka Bank Limited</option>
+																			    <option>	Dutch-Bangla Bank Limited</option>
+																				  <option>Eastern Bank Limited</option>
+																				    <option>	EXIM Bank Limited</option>
+																					  <option>First Security Islami Bank Limited</option>
+																					    <option>	ICB Islamic Bank Limited</option>
+																						  <option>IFIC Bank Limited</option>
+																						    <option>	Islami Bank Bangladesh Limited</option>
+																							  <option>Islami Bank Bangladesh Limited</option>
+																							    <option>	Jamuna Bank Limited</option>
+																								  <option>Janata Bank Ltd.</option>
+																								    <option>	Meghna Bank Limited</option>
+																									  <option>Mercantile Bank Limited</option>
+																									    <option>	Midland Bank</option>
+																										  <option>Modhumoti Bank Limited</option>
+																										    <option>	Modhumoti Bank Limited</option>
+																											  <option>	National Bank Limited</option>
+																											   <option>National Credit & Commerce Bank Limited</option>
+																								    <option>	NRB Bank Limited</option>
+																									  <option>	NRB Commercial Bank Limited</option>
+																									    <option>	NRB Commercial Bank Limited</option>
+																										  <option>Premier Bank Limited</option>
+																										    <option>	Prime Bank Limited</option>
+																											  <option>	Pubali Bank Limited</option>
+																											   <option>	Rupali Bank Ltd.</option>
+																								    <option>	Shahjalal Islami Bank Limited</option>
+																									  <option>	Shahjalal Islami Bank Limited</option>
+																									    <option>	Social Islami Bank Limited</option>
+																										  <option>Sonali Bank Ltd.</option>
+																										    <option>South Bangla Agriculture & Commerce Bank Limited</option>
+																											  <option>Southeast Bank Limited</option>
+																											     <option>Standard Bank Limited</option>
+																											  <option>Standard Bank Limited</option>
+																											     <option>Trust Bank Limited</option>
+																											  <option>Union Bank Limited</option>
+																											     <option>United Commercial Bank Limited</option>
+																											  <option>Uttara Bank Limited</option>
+																											  <option>Other</option>
+														   </select >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Reminder Date</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" id="trans_reminder_date" placeholder="reminder date" name="trans_reminder_date" type="text">
+                                                        </div>
+                                                    </div>
+													<div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Interest Rate</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" id="trans_interest_rate" placeholder="Interest Rate" name="trans_interest_rate" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Loan Amount</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" id="trans_loan_amount" placeholder="Loan Amount" name="trans_loan_amount" type="text">
+                                                        </div>
+                                                    </div>                                                                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        <!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+                                    </div>
+                                    <!-- End .bwizard -->
+                                </div>
+                            </div><!--height-->
+							
+							 <div class="col-sm-3 "  style="margin-top:-10px;">
+                                <div class="panel-box">
+								<h4>Voucher Details</h4>
+								 <div id="wizard" class="bwizard"  style="margin-top:-20px;">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Date</label>
+                                                        <div class="col-lg-10 col-md-9">
+                                                            <input class="form-control" placeholder="date" id="date" name="date" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!-- End .control-group  -->
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
+                                                        <div class="col-lg-10 col-md-9 has-warning">
+                                                            <input class="form-control input-lg" id="serial_no" disabled style="color:#f7b03e;" placeholder="sl no." name="serial_no" value="22220" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" value="" id="voucher_id"/>
+                                                    <input type="hidden" value="" id="transaction_id"/>
+     												<input type="hidden" value="" id="account_id"/>
+                                                  
+                                                                                                        
+                                                    
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+								</div>
+								
+								</div>
+							<ul class="pager">
+							
+                                            <li class="previous input-lg"><button id="save_loan">Save &rarr;</button>
+                                            </li>
+                                       
+                                        </ul>
+								
+							
+                        </div>
+ 							 <div class="row">
+                             <div class="col-sm-12" style="overflow: scroll;height:250px;margin-top:-20px">
+							 <div class="panel-box">                             
+                                    <div class="table-responsive">
+									
+                                                      <input class="form-control"  style="width:150px;float:right;" id="total_loan_voucher" placeholder="total loan voucher" name="vdetails" type="text">
+									  <input class="form-control" id="total_loan" style="width:150px;" placeholder="total loan" name="lamount" type="text">
+                                                
+                                          <table id="loan-give-table" class="table table-striped" cellspacing="0" width="90%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+                                                <th>Name</th>
+									    <th>Mobile</th>
+                                                <th>Address</th>
+
+                                                <th>Account Name</th>
+                                                <th>Currency</th>
+                                                <th>Bank List</th>
+                                                <th>Reminder Date</th>
+                                               
+												<th>Interest Rate</th>																								
+												<th>Loan Amount</th>
+										
+                                               <th>Date</th>
+                                             <th>sl no.</th>
+                                             <th>Update</th>
+                                             <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+        </div>
+       
+  <div th:replace="/common/common-header :: common-required-scripts"></div>
+  <script>
+  var loanDataTable = null;
+  $(document).ready(function () {
+	  setCustomerAutoCompleteList();
+	  setDatePicker();
+	  fillLoanDetails();
+  });
+  
+  function fillLoanDetails(){
+	  var URL = getAbsoluteUrl("mortgage-app/api/loan/loan-give-today");
+	   var data = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+    		console.log(respJson);
+    		
+    		 jQuery.each(respJson, function(i, val) {
+      			
+      			 data.push([(val.id==null?"0":val.id),
+      				val.customer.customerName,
+					val.customer.mobile,
+					val.customer.address,
+					val.transaction.account.accountName,
+					val.transaction.account.currency,
+					val.transaction.account.bankList,
+					val.transaction.reminderDate,
+					val.transaction.account.interestRate,
+					val.transaction.account.amount,
+					val.date,
+					val.transaction.id,
+	 				"<input id='cust'"+val.id+" class='form-controlcol-sm-2 btn btn-xs btn-theme upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
+	 				"<input class='form-controlcol-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+	 				]); 
+      		}); 
+    		
+    		 loanDataTable = $('#loan-give-table').DataTable({
+       		data:           data,
+               deferRender:    true,
+               scrollY:        200,
+               scrollCollapse: true,
+               scroller:       true,
+               "order": [],
+				 "footerCallback": function ( row, data, start, end, display ) {
+					 
+					 var intVal = function ( i ) {
+			                return typeof i === 'string' ?
+			                    i.replace(/[\$,]/g, '')*1 :
+			                    typeof i === 'number' ?
+			                        i : 0;
+			            };	 
+       var api = this.api(), data;
+       
+       total = api
+       .column( 9 )
+       .data()
+       .reduce( function (a, b) {
+           return intVal(a) + intVal(b);
+       }, 0 );
+	$("#total_loan").val(total);
+   var rowsCount = api
+   .column( 10 )
+   .data().length;
+   
+   $("#total_loan_voucher").val(rowsCount);
+   }
+    		 
+       	});  
+    		 
+    		},function(reason){
+		       	 console.log("error in processing your request", reason);
+	       	}); 
+	   
+  }
+  
+  ;(function () {
+	  
+	  var customer_name_field = $("#cust_name"); 
+	  var acc_name_field = $("#trans_acc_name");
+	  var trans_curr_field = $("#trans_curr");
+	  var trans_cheque_number_field = $("#trans_cheque_number");
+	  var trans_bank_field = $("#trans_bank");
+	  var trans_reminder_date_field = $("#trans_reminder_date");
+	  var trans_interest_rate_field = $("#trans_interest_rate");
+	  var trans_loan_amount_field = $("#trans_loan_amount");
+	  var date_field = $("#date");
+	  var serial_no_field = $("#serial_no");
+	  var cust_name_field = $("#cust_name");
+	  var cust_mobile_field = $("#cust_mobile");
+	  var cust_addr_field = $("#cust_addr");
+	  var cust_id_field = $("#cust_id");
+	  var custId_field = $("#custId");
+	  var voucher_id_field = $("#voucher_id");
+	  var transaction_id_field = $("#transaction_id");
+	  var account_id_field = $("#account_id");
+	  
+	  $("#save_loan").on('click',function(){
+		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
+		  let voucher = {};
+		  let customer = {};
+		  let account = {};
+		  let transaction = {};
+		  
+		  customer["customerId"] = formatIntegerValue(custId_field.val());
+		  customer["customerName"] = formatValue(cust_name_field.val());
+		  customer["mobile"] = formatIntegerValue(cust_mobile_field.val());
+		  customer["address"] =  formatValue(cust_addr_field.val());
+		  
+		  account["amount"] = formatFloatValue(trans_loan_amount_field.val());
+		  account["accountId"] = formatIntegerValue(account_id_field.val());
+		  account["accountName"] = formatValue(acc_name_field.val());
+		  account["currency"] = formatValue(trans_curr_field.val());
+		  account["interestRate"] = formatFloatValue(trans_interest_rate_field.val());
+		  account["bankList"] = formatValue(trans_bank_field.val());
+//		  transaction["expense"] =  formatValue(expense_field.val());
+//		  transaction["note"] = formatValue(note_field.val());
+		  transaction["customerName"] = formatValue(cust_name_field.val());
+		  transaction["mobile"] = formatValue(cust_mobile_field.val());
+		  transaction["address"] = formatValue(cust_addr_field.val());
+		  transaction["amount"] = formatValue(trans_loan_amount_field.val());
+		  transaction["id"] = formatValue(transaction_id_field.val());		  
+	      transaction["reminderDate"] = trans_reminder_date_field.val()==""?null:trans_reminder_date_field.val();
+	 /*      transaction["note"] = note.val()==""?null:note.val();
+	      transaction["storage"] = formatIntegerValue(storage.val()); */
+	      transaction["account"] = account;
+	     // transaction["id"] = formatIntegerValue($("#transaction_id").val());
+		  
+		  voucher["customer"] = customer;
+		  voucher["transaction"] =  transaction;
+		  voucher["type"] = "loan_give";
+		  voucher["date"] = date_field.val();
+		  voucher["serial"] = formatIntegerValue(serial_no_field.val());
+		  voucher["id"] = formatIntegerValue(voucher_id_field.val());
+		  
+		  buildAjaxForJson(URL, "POST", voucher).then(function(respJson){
+			  
+		  customer_name_field.val("");
+		  acc_name_field.val("");
+		  trans_curr_field.val("");
+		  trans_cheque_number_field.val("");
+		  trans_bank_field.val("");
+		  
+		  
+		  
+		  loanDataTable.row.add([(respJson.id==null?"0":respJson.id),
+					respJson.customer.customerName,
+					respJson.customer.mobile,
+					respJson.customer.address,
+					respJson.transaction.account.accountName,
+					respJson.transaction.account.currency,
+					respJson.transaction.account.bankList,
+					respJson.transaction.reminderDate,
+					respJson.transaction.account.interestRate,
+					respJson.transaction.amount,
+					respJson.transaction.id,
+					(respJson.note==null?"":respJson.note),
+	 				"<input id='cust'"+respJson.id+" class='form-control col-sm-2 btn btn-xs btn-theme upd' updid='"+respJson.id+"'  type='button' name='update' value='update' id='update' />",
+	 				"<input class='form-control col-sm-2 btn btn-xs btn-theme del' type='button' name='delete' value='delete' delid='"+respJson.id+"' id='delete' />"
+	 			 ]).draw();  
+		  moveDataTableRow(1,loanDataTable);
+		  },function(reason){
+	           	 console.log("error in processing your request in customer get", reason);
+         }); 
+	  });
+	  
+	  $("#trans_curr").on('change',function(){
+		  var isDirty = !this.options[this.selectedIndex].defaultSelected;
+		  if(isDirty){
+			  if(this.options[this.selectedIndex].value == "Cheque"){
+				  $("#trans_cheque_number").prop("disabled", false);
+			  } else {
+				  $("#trans_cheque_number").val("");
+				  $("#trans_cheque_number").prop('disabled', true);
+			  }
+		  } else {
+			  $("#trans_cheque_number").val("");
+			  $("#trans_cheque_number").prop('disabled', true);
+		  }
+	  });
+	  
+  })();
+  
+  function setCustomerAutoCompleteList(){
+	   var URL = getAbsoluteUrl("mortgage-app/api/customer/");
+	   var autoCompleteList = [];
+	   buildAjax(URL, "GET").then(function(respJson){
+		   jQuery.each(respJson, function(i, val) {
+				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+			   
+		   });
+		   $( "#cust_name" ).autocomplete({
+		        source: autoCompleteList,
+		        select: function (event, ui) {
+		        	var txt = ui.item.label;
+		          let custId = parseInt(txt.split(">")[1]);
+		          $("#cust_id").val(custId); 
+		          $("#custId").val(custId);
+		          
+		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
+		        	$("#cust_addr").val(respJson.address);
+		       	    $("#cust_mobile").val(respJson.mobile);
+		         },function(reason){
+		           	 console.log("error in processing your request in customer get", reason);
+	           	}); 
+		      }
+		      });
+	   }, function(reason){
+        	 console.log("error in processing your request customer", reason);
+     	}); 
+	   
+	   $('#loan-give-table tbody').on( 'click', '.del', function () {
+       	var table = $('#loan-give-table').DataTable();
+       	if(confirm('Are you sure !')){
+       		  var currentPage = table.page();
+       		  //console.log($(this).attr('delid'));
+       		  var URL = "http://localhost:8080//mortage-app/api/voucher/"+parseInt($(this).attr('delid'));
+       		  buildAjax(URL, "POST").then(function(respJson){
+       		  },function(reason){
+ 		           	 console.log("error in processing your request", reason);
+  	           	}); 
+       		  var row = table.row( $(this).parents('tr') );
+                 var rowNode = row.node();
+                 row.remove();
+                 table.page(currentPage).draw(false);
+       	}
+        
+           
+       });
+       var r = null;
+       $('#loan-give-table tbody').on( 'click', '.upd', function () {
+       	var table = $('#loan-give-table').DataTable();
+       	  r = table.row( $(this).parents('tr') );
+       		  var currentPage = table.page();
+       		  //console.log($(this).attr('delid'));
+       		  var URL = "http://localhost:8080//mortgage-app/api/voucher/"+parseInt($(this).attr('updid'));
+       		  buildAjax(URL, "GET").then(function(respJson){
+       			  console.log(respJson);
+       			  
+       			  var customer_name_field = $("#cust_name"); 
+       			  var acc_name_field = $("#trans_acc_name");
+       			  var trans_curr_field = $("#trans_curr");
+       			  var trans_cheque_number_field = $("#trans_cheque_number");
+       			  var trans_bank_field = $("#trans_bank");
+       			  var trans_reminder_date_field = $("#trans_reminder_date");
+       			  var trans_interest_rate_field = $("#trans_interest_rate");
+       			  var trans_loan_amount_field = $("#trans_loan_amount");
+       			  var date_field = $("#date");
+       			  var serial_no_field = $("#serial_no");
+       			//  var cust_name_field = $("#cust_name");
+       			  var cust_mobile_field = $("#cust_mobile");
+       			  var cust_addr_field = $("#cust_addr");
+       			  var cust_id_field = $("#cust_id");
+       			  var custId_field = $("#custId");
+       			  var voucher_id_field = $("#voucher_id");
+       			  var transaction_id_field = $("#transaction_id");
+       			  var account_id_field = $("#account_id");
+       			  
+       			    customer_name_field.val(respJson.customer.customerName);
+       			    cust_id_field.val(respJson.customer.customerId);
+       		        cust_mobile_field.val(respJson.customer.mobile);
+       		        cust_addr_field.val(respJson.customer.address);
+       		        
+       		        $("#bori").val(respJson.mortgage.bori);
+       		        $("#ana").val(respJson.mortgage.ana);
+       		        $("#ratti").val(respJson.mortgage.ratti);
+       		        $("#point").val(respJson.mortgage.point);
+       		        $("#gram").val(respJson.mortgage.gram);
+       		        $("#interestRate").val(respJson.mortgage.interestRate);
+       		        $("#loanAmount").val(respJson.mortgage.loanAmount);
+       		        /* $("#product").val(respJson.mortgage.product); */
+       		        $("#cust_id").val(respJson.transaction.id);
+       		        $("#reminder_date").val(respJson.transaction.transactionDate);
+       		        $("#storage").val(respJson.transaction.storage);
+       		        $("#note").val(respJson.transaction.note);
+       		        
+       		        $("#serial").val(respJson.id);
+       		        $("#transaction_serial").val(respJson.transaction.id);
+       		        $("#cust_id").val(respJson.customer.customerId);
+       		        $("#voucher_id").val(respJson.id);
+       		        $("#transaction_id").val(respJson.transaction.id);
+       		        $("#mortgage_id").val(respJson.mortgage.mortgageId);
+       		  },function(reason){
+ 		           	 console.log("error in processing your request", reason);
+  	           	}); 
+       		  /* var row = table.row( $(this).parents('tr') );
+                 var rowNode = row.node();
+                 row.remove();
+                 table.page(currentPage).draw(false); */
+       	
+        
+           
+       });
+       
+  }
+  
+  
+  
+  function setDatePicker(){
+	  let dateConfig = dateSettings;
+	  $("#date").datepicker(dateConfig);
+	  dateConfig.maxDate=null;
+      var d = new Date();
+      d.setDate(d.getDate() - 1);
+      dateConfig.minDate=d;
+	  $("#trans_reminder_date").datepicker(dateConfig);
+  }
+  
+  </script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>

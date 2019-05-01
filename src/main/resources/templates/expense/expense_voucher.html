@@ -292,6 +292,7 @@ and open the template in the editor.
 	</div>
 
   <div th:replace="/common/common-header :: common-required-scripts"></div>
+  
   <script>
   var dataTable;
   
@@ -540,7 +541,8 @@ and open the template in the editor.
 	  voucher["customer"] = customer;
 	  voucher["transaction"] =  transaction;
 	  voucher["type"] = "expense";
-	  voucher["date"] = voucherDate_field.val();
+	 var da = moment($("#voucher_date").val().trim(),"DD/MM/YYYY").format("MM/DD/YYYY");
+  		voucher["date"]=new Date(da);
 	  voucher["serial"] = formatIntegerValue(serial_field.val());
 	  voucher["id"] = formatIntegerValue(voucher_Id.val());
 	  
@@ -565,19 +567,10 @@ and open the template in the editor.
  			
        		moveDataTableRow(1,t);
        		
-       	 	custId_field.val("");
-		    custName_field.val("");
-		    custPhone_field.val("");
-		    custAddress_field.val("");
-		    customerId_field.val("");
-		    expense_field.val("");
-		    note_field.val("");
-		    amount_field.val("");
-		    voucher_field.val("");
-		    serial_field.val("");
-		    transactionId_field.val("");
-		    voucherDate_field.val("");
-		    voucher_Id.val();
+       		
+       		//
+       		reset();
+       	 	
 		   
 	   }, function(reason){
          	 console.log("error in processing your request voucher", reason);
@@ -692,6 +685,23 @@ and open the template in the editor.
     });
   
   setCustomerAutoCompleteList();
+  
+  
+  var reset =function(){
+	  custId_field.val("");
+	    custName_field.val("");
+	    custPhone_field.val("");
+	    custAddress_field.val("");
+	    customerId_field.val("");
+	    expense_field.val("");
+	    note_field.val("");
+	    amount_field.val("");
+	    voucher_field.val("");
+	    serial_field.val("");
+	    transactionId_field.val("");
+	    voucherDate_field.val("");
+	    voucher_Id.val();
+  }
   
 </script>
 </body>

@@ -1,10 +1,14 @@
 package com.sahaJwellers.app.controller;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/mortgage-app/web/")
@@ -15,7 +19,7 @@ public class VoucherWebController {
 		model.addAttribute("menu", "home");
 	}
 	
-	
+
 	@RequestMapping(path= {"/voucher"})
 	public String createVoucher(Model model) {
 		System.out.println("voucher");
@@ -144,11 +148,13 @@ public class VoucherWebController {
 		model.addAttribute("menu","custom");
 		return "custom/customer_credit_list";
 	}
+	
 	@GetMapping("/exp")
 	public String exp(Model model) {
 		model.addAttribute("menu","expense");
 		return "expense/expense_voucher2";
 	}
+	
 	
 	@GetMapping("/update_expense/{id}")
 	public String expenseUpdate(@PathVariable("id") Long id,Model model){
@@ -157,8 +163,71 @@ public class VoucherWebController {
 		return "expense/expense_voucher2";
 	}
 	
+	
+	
+	
 	@GetMapping("/settings")
 	public String set() {
 		return "/settings";
 	}
+	
+	@GetMapping("/create_user")
+	public String createNewUser() {
+		return "/create_user";
+	}
+	
+	
+	
+	
+	@GetMapping("/history")
+	public String transactionHistory(Model model) {
+		model.addAttribute("menu","custom");
+		return "custom/transaction_history";
+	}
+	
+	@RequestMapping(value = "/update_transaction",params = { "type","id" }, method = RequestMethod.GET)
+	public String updateTransaction(@RequestParam(value = "type") String type,@RequestParam("id") Long id,Model model){
+		
+		
+		
+		model.addAttribute("type",type);
+		model.addAttribute("voucherId",id);
+		
+		if(type.equalsIgnoreCase("mortgage"))
+		{
+			model.addAttribute("menu", "goldmortgage");
+			
+			return "voucher/transaction";
+		}else if(type.equalsIgnoreCase("loan_take"))
+		{
+			model.addAttribute("menu", "loan-take");
+			
+			return "loan/loan_take_trans";
+		}else {
+			model.addAttribute("menu", "loan-give");
+			
+			return "loan/loan_give_trans";
+		}
+	
+		
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "/specific_transaction",params = { "id","voucherId" }, method = RequestMethod.GET)
+	public String updateTransaction(@RequestParam(value = "id") Long id,@RequestParam("voucherId") Long voucherId,Model model){
+		model.addAttribute("menu", "custom");
+		model.addAttribute("voucherId",voucherId);
+		model.addAttribute("id",id);
+		return "custom/transaction_history";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

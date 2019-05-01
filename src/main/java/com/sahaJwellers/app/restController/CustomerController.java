@@ -1,6 +1,5 @@
 package com.sahaJwellers.app.restController;
 
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -62,7 +61,9 @@ public class CustomerController {
 	
 	@PostMapping("/{id}")
 	public void deleteCustomerById(@PathVariable("id") Long id) {
-		customerService.deleteCustomerById(id);
+		System.out.println("Id===>"+id);
+		
+		customerService.deleteByCustomerId(id);
 	}
 	
 	@GetMapping("/today")

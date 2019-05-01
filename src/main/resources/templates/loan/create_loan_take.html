@@ -10,7 +10,8 @@ and open the template in the editor.
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head th:replace="/common/common-header :: common-headpage"></head>
     
-    <body class="fixed-left" style="overflow:hidden;">
+    <body class="fixed-left" >
+
 
         <div id="wrapper" >
 
@@ -28,15 +29,16 @@ and open the template in the editor.
                                 <div class="panel-box">
                                     <h4>Customer Information</h4>
                                     <form role="form">
-                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" class="form-control"></div>
-									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" class="form-control"></div>
-                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile" class="form-control"></div>
-                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" class="form-control"></div>
+                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" id="cust_name" class="form-control"></div>
+									<div class="form-group"><label>ID</label> <input type="text" placeholder="Enter id" id="cust_id" class="form-control"></div>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile" id="cust_mobile" class="form-control"></div>
+                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_address" class="form-control"></div>
+									 
 									 
                                   
 <a href="#" class="btn btn-border-theme btn-xs">Print</a>   &nbsp;
-									 <a href="#" class="btn btn-border-theme btn-xs">Cancel</a>  &nbsp;
-								
+									 <a href="#" id="new" class="btn btn-border-theme btn-xs">New</a>  &nbsp;
+										<input type="hidden" id="slid"/>
 										   <a href="#" class="btn btn-border-theme btn-xs">PDF</a>   &nbsp;
 								  <div>
                                        <label></label>
@@ -80,25 +82,25 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Account Name</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="account name" name="firstname" type="text">
+                                                            <input class="form-control" placeholder="account name" id="acc_name" name="firstname" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Currency</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <select class="form-control">
-															<option>Taka</option>
-                                                             <option>Cheque </option>
+                                                            <select class="form-control" id="pay_type">
+															<option id="id_taka">Taka</option>
+                                                             <option id="id_cheque">Cheque</option>
 														
 															</select>
-															<input class="form-control" placeholder="if cheque" name="firstname" type="text">
+														
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="list_of_banks">
                                                         <label class="col-lg-2 col-md-3 control-label">Bank List</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                           <select class="form-control">
+                                                           <select class="form-control" id="list_of_banks">
 														   <option>AB Bank Limited</option>
                                                              <option>Agrani Bank Ltd.</option>
 															  <option>Al-Arafah Islami Bank Limited</option>
@@ -147,24 +149,26 @@ and open the template in the editor.
 																											     <option>United Commercial Bank Limited</option>
 																											  <option>Uttara Bank Limited</option>
 														   </select >
+														   <input type="hidden" value="" id="transaction_id"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Reminder Date</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="reminder date" name="lastname" type="text">
+                                                            <input class="form-control date" placeholder="reminder date" id="reminder_date" name="lastname" data-language='en'
+															data-position='bottom left' data-date-format="dd/mm/yyyy" type="text">
                                                         </div>
                                                     </div>
 													<div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Interest Rate</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Interest Rate" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Interest Rate" id="rate" name="lastname" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Loan Amount</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="Loan Amount" name="lastname" type="text">
+                                                            <input class="form-control" placeholder="Loan Amount" name="lastname" id="loan_amnt" type="text">
                                                         </div>
                                                     </div>
                                                                                               
@@ -190,7 +194,7 @@ and open the template in the editor.
 							
 							 <div class="col-sm-3 "  style="margin-top:-10px;">
                                 <div class="panel-box">
-								<h4>Voucher Details</h4>
+								<h4>Voucher Details</h4><script src="/js/reminderDateSet.js"></script>
 								 <div id="wizard" class="bwizard"  style="margin-top:-20px;">
                                         <!-- Start .bwizard -->
                                      
@@ -200,14 +204,14 @@ and open the template in the editor.
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Date</label>
                                                         <div class="col-lg-10 col-md-9">
-                                                            <input class="form-control" placeholder="date" name="firstname" type="text">
+                                                            <input class="form-control date" placeholder="Date" id="voucher_date" name="firstname" type="text">
                                                         </div>
                                                     </div>
                                                     <!-- End .control-group  -->
                                                     <div class="form-group">
                                                         <label class="col-lg-2 col-md-3 control-label">Serial No.</label>
                                                         <div class="col-lg-10 col-md-9 has-warning">
-                                                            <input class="form-control input-lg " style="color:#f7b03e;" placeholder="sl no." name="lastname" value="22220" type="text">
+                                                            <input class="form-control input-lg " style="color:#f7b03e;font-size: 28px;" placeholder="sl no." name="lastname" disabled id="serial" type="text">
                                                         </div>
                                                     </div>
                                                     
@@ -229,7 +233,7 @@ and open the template in the editor.
 								</div>
 							<ul class="pager">
 							
-                                            <li class="previous input-lg"><a href="#">Save &rarr;</a>
+                                            <li class="previous input-lg"><a href="#" class="save">Save &rarr;</a>
                                             </li>
                                        
                                         </ul>
@@ -237,7 +241,7 @@ and open the template in the editor.
 							
                         </div>
  <div class="row"  >
-                             <div class="col-sm-12" style="overflow: scroll;height:250px;margin-top:-20px">
+                             <div class="col-sm-12" style="margin-top:-20px">
 							 <div class="panel-box">
 							 
                                     
@@ -258,10 +262,10 @@ and open the template in the editor.
 										   
                                     <div class="table-responsive">
 									
-                                                      <input class="form-control" style="width:150px;float:right;" placeholder="total loan voucher" name="vdetails" type="text">
-									  <input class="form-control" style="width:150px;" placeholder="total loan" name="lamount" type="text">
+                                                      
+									  <input class="form-control" style="width:150px;" placeholder="total loan" id="totalLoan" disabled type="text">
                                                 
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="90%">
+                                          <table id="basic-datatables" class="table table-striped loantake_voucher"  cellspacing="0" width="100%" style="font-size:10px;">
                                         <thead>
                                             <tr>
 											<th>ID</th>
@@ -307,6 +311,605 @@ and open the template in the editor.
         </div>-->
          <div th:replace="/common/common-header :: common-required-scripts"></div>
     </body>
+    
+      <script src="/js/initialTrans.js"></script>
+    <script src="/js/check.js"></script>
+    <script src="/js/reminderDateSet.js"></script>
+     <!-- used to update balance all the time  -->
+			<input type="submit" id="#edit-submit" class="abc" style="display:none"> 
+ <div style="display:none">
+ <form action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form>
+</div>
+   <script src="/js/cashledger/cashledger.js"></script>
+   <!-- used to update balance all the time  -->
+    
+    <script type="text/javascript">
+    
+    //======================================================================================================
+    	
+    	
+    	
+    	
+	
+	/*
+	 $("#serial").val("");
+            $("#loan_amnt").val("");
+            $("#rate").val("");
+            
+            	$("#acc_name").val("");
+            	$("#note").val("");
+            	$("#storage").val("");
+            	dateSet($("#voucher_date"),$("#reminder_date"));
+      		$("#cust_name").val("");
+      		$("#cust_address").val("");
+      		$("#cust_mobile").val("");
+      		$("#cust_id").val("");
+      		$("#voucher_date").val(moment().format("DD/MM/YYYY"));
+	*/
+    	
+    	
+    	
+    	var totalLoanAmount =0;
+    	var dataTable=null;
+    	var isSavedAlready = false;
+    	
+    	$(document).ready(function(){
+    		setAutoComplete();
+    		fetchLoanTakeVouchers();
+    		
+    		var disabledDays = [0];
+            var dateSetting = {
+                language: 'en',
+                //maxDate: new Date(),
+                autoClose:true,
+                onSelect: function(dateText) {
+                    console.log("Selected date: " + moment(dateText).format("DD/MM/YYYY"));
+                  },
+                onRenderCell: function (date, cellType) {
+                    if (cellType == 'day') {
+                        var day = date.getDay(),
+                            isDisabled = disabledDays.indexOf(day) != -1;
+
+                        return {
+                            disabled: isDisabled
+                        }
+                    }
+                }
+            };
+    		
+    		$(".date").datepicker(dateSetting);
+    		//date format changed
+ 		   $(".date").datepicker({
+ 			   dateFormat: "dd/mm/yyyy"
+ 		   });
+    		
+ 		  	dateSetting.maxDate=null;
+          	var d = new Date();
+          	d.setDate(d.getDate() - 1);
+          	dateSetting.minDate=d;
+      		//$("#reminder_date").datepicker(dateSetting);
+    		
+    		
+    		
+    		$("#voucher_date").val(moment().format("DD/MM/YYYY"));
+    		
+    		dateSet($("#voucher_date"),$("#reminder_date"));
+    		$("#list_of_banks").hide();
+			$("#id_if_cheque").hide();
+    	});
+    	
+    	
+    	
+    	$("#pay_type").change(function(){
+    		
+    		var selectedValue = $(this).val();
+    		
+    		console.log(selectedValue);
+    		
+    		if(selectedValue === "Cheque")
+    		{
+    			$("#list_of_banks").show(400);
+    			$("#id_if_cheque").show(400);
+    		}else
+    		{
+    			$("#list_of_banks").hide(400);
+    			$("#id_if_cheque").hide(400);
+    		}
+    		
+    		
+    		
+    	});
+    	
+    	
+    	
+    	function setAutoComplete(){
+     	   
+     	   var autoCompleteList = [];
+     	   var URL = getAbsoluteUrl("mortgage-app/api/customer/today");
+     	   buildAjax(URL, "GET").then(function(respJson){
+     		   jQuery.each(respJson, function(i, val) {
+     			   
+     				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+     			   
+     		   });
+     	   
+     		 $( "#cust_name" ).autocomplete({
+   		        source: autoCompleteList,
+   		        select: function (event, ui) {
+   		        	var txt = ui.item.label;
+   		          let custId = parseInt(txt.split(">")[1]);
+   		          $("#cust_id").val(custId); 
+   		        
+   		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
+   		        	$("#cust_address").val(respJson.address);
+   		       	    $("#cust_mobile").val(respJson.mobile);
+   		         },function(reason){
+   		           	 console.log("error in processing your request", reason);
+   	           	}); 
+   		          
+   		      }
+   		      });
+     	   }, function(reason){
+            	 console.log("error in processing your request customer", reason);
+          	}); 
+        }
+    	
+    	
+    	
+    	
+    	
+    	var saveLoanTakeInfo =function()
+    	{
+    		if(!isSavedAlready){
+    		var ignoreThisArray =["serial"];
+	    	   
+	    	   
+	    	   
+   	    	if(isValid(ignoreThisArray)){
+    		
+    		
+    		
+    		
+    		let URL =getAbsoluteUrl("mortgage-app/api/voucher/");
+    		
+    		
+    		let custId_field = $("#cust_id");
+			  let custName_field = $("#cust_name");
+			  let custPhone_field = $("#cust_mobile");
+			  let custAddress_field = $("#cust_address");
+			  let customerId_field = $("#custId");
+			  let accountName = $("#acc_name");
+			  let amount_field = $("#loan_amnt");
+			  let reminderDate = $("#reminder_date");
+			  let serial_field = $("#serial");
+			  let interestRate_field = $("#rate");
+			  let transaction_id_field =$("#transaction_id");
+			  
+			  let voucherDate_field = $("#voucher_date");
+			  let voucher_Id = $("#voucher_id");
+			  
+			  let payType =$("#pay_type :selected");
+			  let listOfbanks =$("#list_of_banks :selected");
+			  
+			  console.log("selected="+payType.text());
+			  console.log("selected="+listOfbanks.text());
+			  
+			  
+			  
+			  
+			  let transaction = {};
+			  let account={};
+			  let customer={};
+			  let voucher={};
+			  
+			  
+			  
+			  customer["customerId"] = formatIntegerValue(custId_field.val());
+			  customer["customerName"] = formatValue(custName_field.val());
+			  customer["mobile"] = formatIntegerValue(custPhone_field.val());
+			  customer["address"] =  formatValue(custAddress_field.val());
+			  
+			  account["accountName"] =  formatValue(accountName.val());
+			  account["amount"] = formatValue(amount_field.val());
+			  account["accountId"] = getLoanId();
+			  transaction["reminderDate"]= reminderDate.val();
+			  
+			  transaction["amount"]=formatFloatValue(amount_field.val());
+			  account["interestRate"]=formatFloatValue(interestRate_field.val());
+			  account["currency"]=formatValue(payType.text());
+			  account["bankList"]=formatValue(payType.text() === "Taka"?null:(listOfbanks.text()));
+			  
+			  transaction["customerId"] = formatIntegerValue(custId_field.val());
+			  transaction["mobile"] =  formatIntegerValue(custPhone_field.val());
+			  transaction["address"] =  formatValue(custAddress_field.val());
+			  transaction["amount"] = formatValue(amount_field.val());
+			  transaction["id"] = formatValue(transaction_id_field.val());//check this
+			  transaction["account"] = account;
+			  transaction["transactionDate"] =voucherDate_field.val()==""?null:voucherDate_field.val();
+		 	
+			  voucher["customer"] = customer;
+			  voucher["transaction"] =  transaction;
+			  voucher["type"] = "loan_take";
+			  var da = moment($("#voucher_date").val().trim(),"DD/MM/YYYY").format("MM/DD/YYYY");
+			  voucher["date"] = new Date(da);
+			  
+			  //voucher["customer"] = customer;
+			  //voucher["transaction"] =  transaction;
+			  //voucher["type"] = "loan_take";
+			  //voucher["date"] = voucherDate_field.val();
+			  var res =serial_field.val();
+			  voucher["sl_id"]=formatIntegerValue($("#slid").val());
+			  voucher["id"] = formatIntegerValue(res.substr(3, 2));
+			  
+			  console.log("Result: ",voucher);
+			  
+			  buildAjaxForJson(URL, "POST",voucher).then(function(val){
+				  
+				  //initialize transaction
+				  setInitialTransaction(val,val.type);
+				  
+				  console.log("val");
+				  console.log(val);
+				  
+				  var m = ($("#serial").val()).split("-");
+				  console.log(m);
+				  
+				  var t = $('.loantake_voucher').DataTable();
+		       		if(parseInt(m[1])===parseInt(val.id)){
+						var rowNode = r.node();
+						r.remove();
+						t.page(t.page()).draw(false);
+					}
+		       		totalLoanAmount+=val.transaction.account.amount;
+		       		
+		       		t.row.add([(val.customer.customerId==null?"":val.customer.customerId),
+		       			(val.customer==null?"":val.customer.customerName),
+		       			(val.customer==null?"":val.customer.mobile),
+		       			(val.customer==null?"":val.customer.address),
+          				(val.transaction.account.accountName==null?"===":val.transaction.account.accountName),
+          				(val.transaction.account.currency==null?"===":val.transaction.account.currency),
+          				(val.transaction.account.bankList==null?"===":val.transaction.account.bankList),
+          				(val.transaction.reminderDate),
+          				(val.transaction.account.interestRate),
+          				(val.transaction.account.amount),
+          				moment(val.date).format("DD/MM/YYYY"),
+          				("LT-"+val.id),
+          				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.sl_id+"' name='update' value='update' id='update' />",
+          				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.sl_id+"' name='delete' value='delete' id='delete' />"
+          			 ]).draw();  
+		 			
+		       		moveDataTableRow(1,t);
+				  
+		       		$("#totalLoan").val(totalLoanAmount);
+		       		$("#serial").val("LT-"+val.id);
+		       	 	
+			  });
+			  isSavedAlready = true;
+			  
+    	}else{
+    		alert("Some fields are empty !")
+    	}
+    		}else{
+    			isSavedAlready = false;
+    			reset();
+    		}
+    	}
+    	
+    	$(".save").click(function(){
+    		saveLoanTakeInfo();
+    		setLoanId(null);
+    	});
+    	
+    	
+    	
+    	
+    	function fetchLoanTakeVouchers(){
+      	  
+     	   var URL = getAbsoluteUrl("/mortgage-app/api/loan/loan-take-today");
+     	   var data = [];
+     	   var autoCompleteList = [];
+     	  $("#sl_id").val("");
+     	  $('.loantake_voucher').DataTable().destroy();
+     	   buildAjax(URL, "GET").then(function(respJson){
+           		console.log(respJson);
+           		 let tr ="";
+           		 
+           		 jQuery.each(respJson, function(i, val) {
+           			//autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
+           			
+           			
+           			
+           			totalLoanAmount+=val.transaction.account.amount;
+           			
+           			
+           			data.push([(val.customer.customerId==null?"":val.customer.customerId),
+		       			(val.customer==null?"":val.customer.customerName),
+		       			(val.customer==null?"":val.customer.mobile),
+		       			(val.customer==null?"":val.customer.address),
+          				(val.transaction.account.accountName==null?"===":val.transaction.account.accountName),
+          				(val.transaction.account.currency==null?"===":val.transaction.account.currency),
+          				(val.transaction.account.bankList==null?"===":val.transaction.account.bankList),
+          				(val.transaction.reminderDate),
+          				(val.transaction.account.interestRate),
+          				(val.transaction.account.amount),
+          				moment(val.date).format("DD/MM/YYYY"),
+          				("LT-"+val.id),//correct this
+          				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.sl_id+"' name='update' value='update' id='update' />",
+          				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.sl_id+"' name='delete' value='delete' id='delete' />"
+          			 ]);  
+		 			
+		       		
+		       		
+		       	 
+			   
+           			 
+           			
+           			/*  tr = "";
+           			 tr += "<tr role='row' class='"+(i%2==0?'even':'odd')+"'>";
+           			 tr += "<td>"+(val.id==null?"0":val.id)+"</td>";
+           			 tr += "<td>"+val.customer.customerName+"</td>";
+           			 tr += "<td>"+(val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial)+"</td>";
+           			 tr += "<td>"+(val.customer.customerId==null?"":val.customer.customerId)+"</td>";
+           			 tr += "<td>"+val.date+"</td>";
+           			 tr += "<td>"+(val.mortgage.bori==null?"0.0":val.mortgage.bori)+"</td>";
+           			 tr += "<td>"+(val.mortgage.ana==null?"0.0":val.mortgage.ana)+"</td>";
+           			 tr += "<td>"+(val.mortgage.ratti==null?"0.0":val.mortgage.ratti)+"</td>";
+           			 tr += "<td>"+(val.mortgage.gram==null?"0.0":val.mortgage.gram)+"</td>";
+           			 tr += "<td>"+(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate)+"</td>";
+           			 tr += "<td>"+(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount)+"</td>";
+           			 tr += "<td>"+
+           			"<input class='form-controlcol-sm-2'  type='button' name='show_voucher_details' value='update' id='update' />"+
+           				"<input class='form-controlcol-sm-2' type='button' name='show_voucher_details' value='delete' id='delete />"+
+           			 "</td>"; */
+           		// $("#voucher > tbody").append("<tr><td>"+val.id+"</td><td>"+val.customer.customerName+"</td></tr>");
+           		/* tr += "</tr>";
+           		$("#voucher > tbody").append(tr); */
+           		}); 
+           		 
+           		 $("#totalLoan").val(totalLoanAmount);
+           		 
+           		 
+           		dataTable = $('.loantake_voucher').DataTable({
+             		data:           data,
+                     deferRender:    true,
+                     
+                     scrollCollapse: true,
+                     scroller:       true,
+                     "order": [],
+ 					 "footerCallback": function ( row, data, start, end, display ) {
+             var api = this.api(), data;
+  
+             // Remove the formatting to get integer data for summation
+             var intVal = function ( i ) {
+                 return typeof i === 'string' ?
+                     i.replace(/[\$,]/g, '')*1 :
+                     typeof i === 'number' ?
+                         i : 0;
+             };
+  
+             // Total over all pages
+             total = api
+                 .column( 10 )
+                 .data()
+                 .reduce( function (a, b) {
+                     return intVal(a) + intVal(b);
+                 }, 0 );
+  
+             var rowsCount = api
+             .column( 10 )
+             .data().length;
+             
+             //$("#voucher_count").val(rowsCount);
+             //$("#total_loan_amount").val(roundTo(total,2));
+             // Total over this page
+             pageTotal = api
+                 .column( 10, { page: 'current'} )
+                 .data()
+                 .reduce( function (a, b) {
+                     return intVal(a) + intVal(b);
+                 }, 0 );
+             
+             
+  
+             // Update footer
+             $( api.column( 10 ).footer() ).html(
+                 '$'+pageTotal +' ( $'+ total +' total)'
+             );
+         }
+             	});  
+           		
+           		 /* $(  dataTable.table().container() ).on( 'keyup', '#cname', function () {
+           			 
+           			dataTable
+           	            .column( $(this).data('index') )
+           	            .search( this.value )
+           	            .draw();
+           	    } ); */
+           	
+           		
+            	}, function(reason){
+            	 console.log("error in processing your request", reason);
+            	}); 
+        }
+    	
+    	
+    	
+    	$('.loantake_voucher tbody').on( 'click', '.del', function () {
+        	var table = $('.loantake_voucher').DataTable();
+        	if(confirm('Are you sure !')){
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  
+        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/remove");
+        		  /*buildAjax(URL, "POST").then(function(respJson){
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	});*/
+   	           	
+   	           	var params = {
+   	           			type:"loan_take",
+   	           			id:parseInt($(this).attr('delid'))
+   	           			};
+   	           	
+   	         $.ajax({
+          	     type: "POST",
+          	     url: URL,
+          	   //data:{id:voucherId},
+          	   data:params,
+          	    success: function(respJson) {
+
+          	    	alert("Deleted successfully !")
+          	  			
+          	  		}  
+          	})
+        		  
+        		  var row = table.row( $(this).parents('tr') );
+                  var rowNode = row.node();
+                  row.remove();
+                  table.page(currentPage).draw(false);
+                  reset();
+                  isSavedAlready = false;
+        		  
+        	}
+         
+            
+        });
+    	
+    	
+    	
+    	var r =null;
+    	var updateFun = function () {
+        	var table = $('.loantake_voucher').DataTable();
+      	  r = table.row( $(this).parents('tr') );
+      		  var currentPage = table.page();
+      		  //console.log($(this).attr('delid'));
+      		  
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/update/"+parseInt($(this).attr('updid')));
+      		  buildAjax(URL, "GET").then(function(respJson){
+      			  
+      			  console.log(respJson);
+
+          		let custId_field = $("#cust_id");
+      			  let custName_field = $("#cust_name");
+      			  let custPhone_field = $("#cust_mobile");
+      			  let custAddress_field = $("#cust_address");
+      			  let accountName = $("#acc_name");
+      			  let amount_field = $("#loan_amnt");
+      			  let remainderDate = $("#reminder_date");
+      			  let serial_field = $("#serial");
+      			  let interestRate_field = $("#rate");
+      			  
+      			  
+      			  
+      			  let voucherDate_field = $("#voucher_date");
+      			  let voucher_Id = $("#voucher_id");
+      			  
+      			  let payType =$("#pay_type");
+      			  let listOfbanks =$("#list_of_banks");
+      			  
+      			  
+      		      
+	       	 	custId_field.val(respJson.customer.customerId);
+      			custName_field.val(respJson.customer.customerName);
+      			custPhone_field.val(respJson.customer.mobile);
+      			custAddress_field.val(respJson.customer.address);
+	       		
+      			
+      			voucherDate_field.val(moment(respJson.date).format("DD/MM/YYYY"));
+      			accountName.val(respJson.transaction.account.accountName);
+      			amount_field.val(respJson.transaction.amount);
+      			remainderDate.val(respJson.transaction.reminderDate);
+      			serial_field.val("LT-"+respJson.id);
+      			interestRate_field.val(respJson.transaction.account.interestRate);
+      			$("#slid").val(respJson.sl_id);
+      			
+      			
+      			if(respJson.transaction.account.currency != null)
+      				$("#payType option[value='" + respJson.currency + "']").attr('selected', 'selected');
+      			
+      			
+      			if(respJson.transaction.account.bankList != null){
+      				$("#payType option[value='" + respJson.bankList + "']").attr('selected', 'selected');
+      				$("#list_of_banks").show(400);
+        			$("#id_if_cheque").show(400);
+      			}
+      				
+      			
+      			
+      			setLoanId(respJson.loanId);
+      			
+      		        
+      		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+ 	           	}); 
+      		  /* var row = table.row( $(this).parents('tr') );
+                var rowNode = row.node();
+                row.remove();
+                table.page(currentPage).draw(false); */
+         
+          
+      }
+    	
+    	
+   
+        $('.loantake_voucher tbody').on( 'click', '.upd',updateFun );
+        
+        
+        
+        function reset(){
+            
+     	   $("#serial").val("");
+            $("#loan_amnt").val("");
+            $("#rate").val("");
+            
+            	$("#acc_name").val("");
+            	$("#note").val("");
+            	$("#storage").val("");
+            	dateSet($("#voucher_date"),$("#reminder_date"));
+      		$("#cust_name").val("");
+      		$("#cust_address").val("");
+      		$("#cust_mobile").val("");
+      		$("#cust_id").val("");
+      		$("#slid").val("")
+  			
+      		$("#voucher_date").val(moment().format("DD/MM/YYYY"));
+      		totalLoanAmount=0;
+
+        }
+        
+        
+        $("#new").click(function(){
+        	reset();
+        });
+        
+        let id=null;
+        getLoanId=function(){return id;}
+		setLoanId=function(loanId){id=loanId;}
+					
+					
+				</script>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
 </html>

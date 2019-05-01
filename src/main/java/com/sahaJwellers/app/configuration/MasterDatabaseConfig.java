@@ -18,6 +18,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -30,6 +31,8 @@ import com.zaxxer.hikari.HikariDataSource;
  * @since 11/6/18
  * @version 1.0
  */
+//to enable sceduling - rajat
+@EnableScheduling
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.sahaJwellers.app.model",
@@ -67,19 +70,19 @@ public class MasterDatabaseConfig {
                 + masterDbProperties.toString());*/
 
         HikariDataSource ds = new HikariDataSource();
+//
+//        ds.setUsername("root");
+//        ds.setPassword("YTAgsl79998");
+//        ds.setJdbcUrl("jdbc:mysql://node21050-sahajweller.mj.milesweb.cloud/mortgage_db");
+//        ds.setDriverClassName("com.mysql.jdbc.Driver");
+//        ds.setPoolName("modgage_database_Pool");
 
         ds.setUsername("root");
-        ds.setPassword("YTAgsl79998");
-        ds.setJdbcUrl("jdbc:mysql://node21050-sahajweller.mj.milesweb.cloud/mortgage_db");
+        ds.setPassword("");
+        ds.setJdbcUrl("jdbc:mysql://localhost:3306/modgage");
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setPoolName("modgage_database_Pool");
-
-//      ds.setUsername("root");
-//      ds.setPassword("");
-//      ds.setJdbcUrl("jdbc:mysql://localhost:3306/mordgage_db");
-//      ds.setDriverClassName("com.mysql.jdbc.Driver");
-//      ds.setPoolName("modgage_database_Pool");
-//        
+        
         
         // HikariCP settings
         // Maximum number of actual connection in the pool

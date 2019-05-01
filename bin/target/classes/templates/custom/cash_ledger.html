@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+		 <!--top bar-->
+   			<div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+
+                        <div class="row">
+                             <div class="col-sm-12 h6" style="margin-top:-10px;padding-bottom:-15px;">
+                                <div class="panel-box">
+                                  	<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-2 ">
+											<label>Date from</label> <input type="text" id="cust_name"
+												placeholder="date from" class="form-control">
+										</div>
+										<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
+											<label>Date To</label> <input type="text" id="cust_name"
+												placeholder="date to" class="form-control">
+										</div>
+										<div class="form-group col-sm-4 col-sm-offset-1 mt-sm-4" style="padding-left: 10px;">
+											<a href="#" class="btn btn-border-theme btn-xs">View Ledger</a> 
+												<a href="#" class="btn btn-border-theme btn-xs">Cancel</a> 
+													<a href="#" class="btn btn-border-theme btn-xs">View Report</a> 
+										</div>
+										
+									</form>
+								</div>
+								<br>
+							  
+                                </div>
+								
+										
+                            </div >
+                            <style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+                           
+							
+							
+							
+									
+                        </div>
+						
+				
+ <div class="row"  >
+                             <div class="col-sm-12" style="overflow: hidden;">
+							 <div class="panel-box">
+							 
+                                    
+									   
+                                           <style>
+                                               .pane-box{
+    padding: 15px;
+  background: #272a31;
+    margin-bottom: 20px;
+                                               }
+    .table{
+        height:200px;
+                                                   
+                                               }
+    
+
+                                           </style>
+										   
+                                    <div class="table-responsive" >
+								
+                                                    
+                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>Date</th>
+											<th>TmDate</th>
+											 <th>TmType</th>
+                                              
+									    <th>SL</th>
+										  <th>CustomerSL</th>
+                                                <th>Name</th>
+
+                                                <th>IntRate</th>
+                                                
+                                                <th>Paid Int Amount</th>
+												     <th>Paid Prin Amount</th>
+                                                <th>CashIn</th>
+                                                <th>CashOut</th>
+												<th>Balance</th>																								
+										     
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+            </div><!--end wrapper-->
+        </div>
+
+   <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/customer/customer.js"></script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>
+

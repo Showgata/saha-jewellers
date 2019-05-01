@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+		 <!--top bar-->
+   			<div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+         <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+
+                        <div class="row">
+                        
+                        		<div class="panel-box">
+                                  	<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-1 " style="padding-left: 10px;">
+											<label>Sl no.</label> <input type="text" id="r_serial"
+												placeholder="sl no" class="form-control">
+										</div>
+										<div class="form-group col-sm-2   " style="padding-left: 10px;">
+											<label>Name</label> <input type="text" id="r_cust_name"
+												placeholder="name" class="form-control">
+										</div>
+										
+									<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Cust ID</label> <input type="text" id="r_cust_id"
+												placeholder="cust id" class="form-control">
+										</div>
+										
+										
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>From Date</label> <input type="text" id="r_datepicker_from"
+												placeholder="date from" class="form-control date">
+										</div>
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>To Date</label> <input type="text" id="r_datepicker_to"
+												placeholder="date to" class="form-control date">
+										</div>
+										
+										<div class="form-group col-sm-5" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control transactionType">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
+												
+										</div>
+									
+									
+								</div>
+								
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_view_report" >View Report</button> 
+									
+										
+									</form>
+								</div>
+					
+							
+					
+					
+					
+
+						<div class="form-group ">
+							<table class="table table-striped" id="receiveTransaction_tbl">
+								<thead>
+									<tr>
+										<th>Type</th> 
+										<th>ID</th> 
+										<th>Name</th>
+										<th>Sl. No.</th>
+										<th>Customer Sl.no</th>
+										<th>Receive Date</th>
+										<th>Bori</th>
+										<th>Ana</th>
+										<th>Ratti</th>
+										<th>Gram</th>
+										<th>Interest Rate</th>
+										<th>Day Count</th>
+										<th>Loan Amount</th>
+										<th>Paid Principal Amount</th>
+										<th>Interest Amount</th>
+										<th>Paid Interest Amount</th>
+										<th>Total Value</th>
+										<th>Balance</th>
+										<th>Update</th>
+										<th>Delete</th>
+										<th>View</th>									
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							
+							
+						</div>
+                        
+                        
+                        
+                        
+                        
+                            
+								
+										
+                            </div >
+                            
+							 
+							 
+							 
+							 
+							 		 
+					 
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+            </div><!--end wrapper-->
+        
+
+   <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/custom-report.js"></script>
+   <script src="/js/customer/customer.js"></script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>

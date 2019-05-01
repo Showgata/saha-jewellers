@@ -29,17 +29,17 @@ and open the template in the editor.
                                   	<div class="clearfix">
 									<form role="form" class="form-inline">
 										<div class="form-group col-sm-2 ">
-											<label>Date from</label> <input type="text" id="cust_name"
+											<label>Date from</label> <input type="text" data-language='en' id="date_from"
 												placeholder="date from" class="form-control">
 										</div>
 										<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>Date To</label> <input type="text" id="cust_name"
+											<label>Date To</label> <input data-language='en' type="text" id="date_to"
 												placeholder="date to" class="form-control">
 										</div>
 										<div class="form-group col-sm-4 col-sm-offset-1 mt-sm-4" style="padding-left: 10px;">
 											<a href="#" class="btn btn-border-theme btn-xs">View Ledger</a> 
 												<a href="#" class="btn btn-border-theme btn-xs">Cancel</a> 
-													<a href="#" class="btn btn-border-theme btn-xs">View Report</a> 
+													<a href="#" id="view_report" class="btn btn-border-theme btn-xs">View Report</a> 
 										</div>
 										
 									</form>
@@ -92,7 +92,7 @@ and open the template in the editor.
     margin-bottom: 20px;
                                                }
     .table{
-        height:200px;
+        height:500px;
                                                    
                                                }
     
@@ -102,21 +102,23 @@ and open the template in the editor.
                                     <div class="table-responsive" >
 								
                                                     
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                          <table id="cashledger_tb" class="table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
+                                            <th>ID</th>
 											<th>Date</th>
-											<th>TmDate</th>
+										
 											 <th>TmType</th>
                                               
-									    <th>SL</th>
-										  <th>CustomerSL</th>
+									    <th>Voucher SL</th>
+										  <th>Customer SL</th>
                                                 <th>Name</th>
 
                                                 <th>IntRate</th>
                                                 
                                                 <th>Paid Int Amount</th>
-												     <th>Paid Prin Amount</th>
+												<th>Paid Loan Amount</th>
+                                                <th>Amount</th>
                                                 <th>CashIn</th>
                                                 <th>CashOut</th>
 												<th>Balance</th>																								
@@ -125,9 +127,64 @@ and open the template in the editor.
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
+                                                                                       
                                         </tbody>
                                     </table>
+                                    <div  id="todays" >
+                                    <form  action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form> 
+</div>
+<!--date from to date to -->
+<div id = "alldatas" style = "display:none">
+<form id="todays" action="" class="form-inline">
+  <center>  <div class="form-group">
+    	<label>Cash-in:</label>
+        <input type="text" id="dt_in" disabled="" class="form-control" placeholder="Cash-in">
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">   
+    	<label>Cash-out:</label> 
+         <input type="text" id="dt_out" disabled="" class="form-control" placeholder="Cash-out">   
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    	<label>Balance:</label>    
+         <input type="text" id="dt_bal" disabled="" class="form-control" placeholder="Balance">   
+         
+           
+          
+    </div>
+   
+</center>
+</form>
+</div>
+
+
+
+<input type="submit" id="#edit-submit" class="abc" style="display:none">   
                                     </div>
                                     <div class="clearfix"></div>
                                 
@@ -145,7 +202,9 @@ and open the template in the editor.
         </div>
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
-   <script src="/js/customer/customer.js"></script>
+   <script src="/js/cashledger/cashledger.js"></script>
+     <script src="/js/cashledger/cashledger2.js"></script>
+     
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->

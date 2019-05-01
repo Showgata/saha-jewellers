@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="/common/common-header :: common-headpage"></head>
+    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+		 <!--top bar-->
+   			<div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                        <div class="page-title">
+                            <h3>Customer Section</h3>
+                           
+                        </div><!--end page title-->
+
+                        <!--end widget-->
+
+                        <div class="row">
+                             <div class="col-sm-3">
+                                <div class="panel-box">
+                                    <h4>Create Customer</h4>
+                                    <form role="form" id="cust_form">
+                                    <input type="hidden" id="cust_Id" value=""/>
+                                    <div class="form-group"><label>Customer Name</label> <input type="text" placeholder="Enter name" id="cust_name" class="form-control"></div>
+                                    <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Enter mobile" id="cust_mobile" class="form-control"></div>
+                                    <div class="form-group"><label>Address</label> <input type="text" placeholder="Enter address" id="cust_addr" class="form-control"></div>
+                                    <div class="form-group"><label>References</label> <input type="text" placeholder="Enter references" id="cust_references" class="form-control"></div>
+                                    <div class="form-group"><label>Note</label> <input type="text" placeholder="Enter note"id="cust_note" class="form-control"></div>
+                                    <div>
+                                        <button class="btn btn-sm btn-theme pull-right m-t-n-xs" type="submit"><strong>Save</strong></button>
+                                        <label></label>
+                                    </div>
+                                </form>
+
+                                </div>
+                            </div >
+                            <div class="col-sm-9"  style="overflow-y: scroll;height:470px">
+                                                            <div class="col-sm-12" >
+                                <div class="panel-box ">
+                                    <h4>Customer Information</h4>
+                                    <div>
+                                      
+                                    <div class="table-responsive">
+                                          <table id="cust_table" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+                                                <th>Name</th>
+                                                <th>Mobile</th>
+                                                <th>Address</th>
+                                                <th>References</th>
+                                                <th>Note</th>
+                                                <th>Delete</th>
+												<th>Update</th>
+                                            </tr>
+                                        </thead>
+                                     <!--    <tfoot>
+                                            <tr>
+                                               <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Mobile</th>
+                                                <th>Address</th>
+                                                <th>References</th>
+                                                <th>Note</th>
+                                                <th>Delete</th>
+												<th>Update</th>
+                                            </tr>
+                                        </tfoot> -->
+                                        <tbody>
+                                       <!--      <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+												 <td> <a href="#" id="btno" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+											
+											<div class="delete-popup" style="display:none">
+  <h2 class="delete-heading">CONFIRMATION</h2>
+  <div class="delete-message">
+    <span>Are you sure want to delete item?</span>
+  </div>
+  <div>
+    <button>Cancel</button>
+    <button>OK</button>
+  </div>
+</div>
+				<style>
+.delete-popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 600px;
+  border: 1px solid red;
+  transform: translate(-50%, -50%);
+}
+.delete-popup .delete-heading {
+  margin: 0px;
+  padding: 10px;
+  background: #000A2F;
+  color: #ffffff;
+}
+.delete-popup .delete-message {
+  position: relative;
+  padding: 80px 0px;
+}
+.delete-popup .delete-message span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+				</style>				
+											
+                                            <tr>
+                                                <td>Garrett Winters</td>
+                                                <td>Accountant</td>
+                                                <td>Tokyo</td>
+                                                <td>63</td>
+                                                <td>2011/07/25</td>
+                                                <td>$170,750</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ashton Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                                <td>$86,000</td>
+													 <td> <a href="#"  class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                             <tr>
+                                                <td>Ashton Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                                <td>$86,000</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                             <tr>
+                                                <td>Ashton Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                                <td>$86,000</td>
+												 	 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                             <tr>
+                                                <td>Ashton Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                                <td>$86,000</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cedric Kelly</td>
+                                                <td>Senior Javascript Developer</td>
+                                                <td>Edinburgh</td>
+                                                <td>22</td>
+                                                <td>2012/03/29</td>
+                                                <td>$433,060</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Airi Satou</td>
+                                                <td>Accountant</td>
+                                                <td>Tokyo</td>
+                                                <td>33</td>
+                                                <td>2008/11/28</td>
+                                                <td>$162,700</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Brielle Williamson</td>
+                                                <td>Integration Specialist</td>
+                                                <td>New York</td>
+                                                <td>61</td>
+                                                <td>2012/12/02</td>
+                                                <td>$372,000</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Herrod Chandler</td>
+                                                <td>Sales Assistant</td>
+                                                <td>San Francisco</td>
+                                                <td>59</td>
+                                                <td>2012/08/06</td>
+                                                <td>$137,500</td>
+													 <td> <a href="#" class="btn btn-xs btn-theme">Delete</a></td>
+                                                   <td><a href="#" class="btn btn-white btn-xs">Update</a></td>
+                                            </tr> -->
+                                           
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                           </div><!--height-->
+                        </div>
+
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+        </div>
+
+   <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <script src="/js/customer/customer.js"></script>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>
+

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -32,7 +34,7 @@ public class Transaction {
 	
 	@JsonCreator
 	public Transaction(@JsonProperty("id") Long id,@JsonProperty("reminderDate") Date reminderDate,@JsonProperty("storage") @Range(min = 1, max = 10) Integer storage, @JsonProperty("note") String note,
-			@JsonProperty("transactionDate") Date transactionDate, @JsonProperty("transactionSerial") String transactionSerial) {
+			@JsonProperty("transactionDate") Date transactionDate, @JsonProperty("transactionSerial") String transactionSerial,@JsonProperty("customerId")Long customerId) {
 		super();
 		this.id = id;
 		this.reminderDate = reminderDate;
@@ -40,6 +42,7 @@ public class Transaction {
 		this.note = note;
 		this.transactionDate = transactionDate;
 		this.transactionSerial = transactionSerial;
+		this.customerId=customerId;
 		
 	}
 
@@ -52,8 +55,8 @@ public class Transaction {
 	@Column(name="transaction_id")
 	private Long id;
 	
-	@Column(name="customer_name")
-	private String customerName;
+	@Column(name="customer_id")
+	private Long customerId;
 	
 	@Column(name="mobile")
 	private String mobile;
@@ -68,6 +71,7 @@ public class Transaction {
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="reminder_date")
+	@Temporal(TemporalType.DATE)
 	private Date reminderDate;
 	
 	@Range(min=1,max=10)
@@ -77,10 +81,23 @@ public class Transaction {
 	@Column(name="note")
 	private String note;
 	
+	//======================================================================
+	
+	
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Column(name="transaction_date")
+	@Column(name="creation_timestamp")
 	@UpdateTimestamp
+	private Date creationTimestamp;
+	
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	@Column(name="transaction_date")
 	private Date transactionDate;
+	
+	
+	//======================================================================
+	
 	
 	@Column(name="expenses")
 	private String expense;
@@ -102,6 +119,9 @@ public class Transaction {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	//@Column(name="cancel")
+	//private int cancel=0;
 
 	/*public Long getVersion() {
 		return version;
@@ -175,12 +195,12 @@ public class Transaction {
 		this.expense = expense;
 	}
 
-	public String getCustomerName() {
-		return customerName;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+	public void setCustomerId(Long customerName) {
+		this.customerId = customerName;
 	}
 
 	public String getMobile() {

@@ -9,7 +9,7 @@ import com.sahaJwellers.app.model.Customer;
 
 public interface CustomerService {
 
-	void deleteCustomerById(Long id);
+	void deleteByCustomerId(Long id);
 
 	Optional<Customer> findCustomerById(Long id);
 

@@ -10,7 +10,7 @@ and open the template in the editor.
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head th:replace="/common/common-header :: common-headpage"></head>
     
-    <body class="fixed-left" style="overflow:hidden;">
+    <body class="fixed-left" >
 
         <div id="wrapper" >
 		 <!--top bar-->
@@ -28,80 +28,58 @@ and open the template in the editor.
                                 <div class="panel-box">
                                   	<div class="clearfix">
 									<form role="form" class="form-inline">
-										<div class="form-group col-sm-2 ">
-											<label>Sl no.</label> <input type="text" id="cust_name"
+										<div class="form-group col-sm-1 ">
+											<label>Sl no.</label> <input type="text" id="serial"
 												placeholder="sl no" class="form-control">
 										</div>
-										<div class="form-group col-sm-2 col-sm-offset-1  " style="padding-left: 10px;">
+										<div class="form-group col-sm-2   " style="padding-left: 10px;">
 											<label>Name</label> <input type="text" id="cust_name"
-												placeholder="name" class="form-control">
+												placeholder="name" class="form-control" disabled>
 										</div>
-										<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>Receive Date</label> <input type="text" id="cust_name"
-												placeholder="date" class="form-control">
-										</div>
-									<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>Cust ID</label> <input type="text" id="cust_name"
-												placeholder="cust id" class="form-control">
-										</div>
-										
-									</form>
-								</div>
-								<br>
-							  
-                                </div>
-								
-										
-                            </div >
-                            <style>
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
-</style>
-                           
-							
-							
-							
-									
-                        </div>
-						   <div class="row">
-                             <div class="col-sm-12 h6" style="padding-bottom:-15px;">
-                                <div class="panel-box">
-                                  	<div class="clearfix">
-									<form role="form" class="form-inline">
 										<div class="form-group col-sm-2 " style="padding-left: 10px;">
-											<label>Address</label> <input type="text" id="cust_name"
-												placeholder="address" class="form-control">
+											<label>Receive Date</label> <input type="text" id="receive_date"
+												placeholder="date" class="form-control" disabled>
 										</div>
-										<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>Loan Amount</label> <input type="text" id="cust_name"
-												placeholder="loan amount" class="form-control">
+									<div class="form-group col-sm-1 " style="padding-left: 10px;">
+											<label>Cust ID</label> <input type="text" id="cust_id"
+												placeholder="cust id" class="form-control" disabled >
 										</div>
-										<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>RID</label> <input type="text" id="cust_name"
-												placeholder="rid" class="form-control">
+										
+										
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Interest Amount</label> <input type="text" id="interest_amount"
+												placeholder="interest amount" class="form-control" disabled >
 										</div>
-									<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>Search Customer</label> <input type="text" id="cust_name"
-												placeholder="search customer" class="form-control">
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Loan Amount</label> <input type="text" id="loan_amount"
+												placeholder="loan amount" class="form-control" disabled>
+										</div>
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Total Amount</label> <input type="text" id="total_amount"
+												placeholder="total amount" class="form-control" disabled>
+										</div>
+										
+										<div class="form-group col-sm-5" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control custom">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
 												
 										</div>
+									
+									
+								</div>
+								
+								<button type="button" class="btn btn-border-theme btn-xs" id="view_report">View Report</button>
+								<button type="button" class="btn btn-border-theme btn-xs" id="delivery_modal" data-toggle="modal"  data-target="#deliveryModal">Delivery Transaction</button> 
+											<button type="button" class="btn btn-border-theme btn-xs" id="receive_modal" data-toggle="modal"  data-target="#myModal">Receive Transaction</button> 	
+								<button type="button" class="btn btn-border-theme btn-xs" >Print</button>
+								 <button type="button" class="btn btn-border-theme btn-xs"  id="clear">Clear</button>	
 										
 									</form>
 								</div>
@@ -131,6 +109,12 @@ and open the template in the editor.
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
+ul.ui-autocomplete {
+    z-index: 1100;
+}
+
+
 </style>
                            
 							
@@ -138,10 +122,11 @@ and open the template in the editor.
 							
 									
                         </div>
+
 						 
 				
  <div class="row"  >
-                             <div class="col-sm-12" style="overflow: hidden;">
+                             <div class="col-sm-12" style="">
 							 <div class="panel-box">
 							 
                                     
@@ -165,20 +150,7 @@ and open the template in the editor.
 									  <div class="row">
                              <div class="col-sm-12 h6">
                                
-                                  	<div class="clearfix">
-									<form role="form" class="form-inline">
-										<div class="form-group col-sm-2 col-sm-offset-4" style="padding-left: 10px;">
-											<label>Interest Amount</label> <input type="text" id="cust_name"
-												placeholder="interest amount" class="form-control">
-										</div>
-										<div class="form-group col-sm-2 col-sm-offset-1" style="padding-left: 10px;">
-											<label>Loan Amount</label> <input type="text" id="cust_name"
-												placeholder="loan amount" class="form-control">
-										</div>
-									
-									
-									</form>
-								</div>
+                                  	
 								
 							  
                             
@@ -206,16 +178,18 @@ and open the template in the editor.
     background: #555; 
 }
 </style>
-                           
-							
-							
-							
-									
+                           								
                         </div>
                                                     
-                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%" style="font-size:12px;">
                                         <thead>
                                             <tr>
+                                            <th class="hideColumn">Name</th>
+                                            <th class="hideColumn">Cust_ID</th>
+                                            <th class="hideColumn">Interest</th>
+                                            <th class="hideColumn">Amount</th>
+                                            <th class="hideColumn">Total Amount</th>
+                                            
 											<th>TmDate</th>
                                                 <th>TransID</th>
 									    <th>SL</th>
@@ -226,7 +200,11 @@ and open the template in the editor.
                                                 <th>Paid Prin Amount</th>
                                                 <th>Debit</th>
                                                
-												<th>Balance</th>																								
+												<th>Balance</th>
+												
+												<th>Update</th>
+										<th>Delete</th>	
+																																	
 										     
 
                                             </tr>
@@ -242,6 +220,357 @@ and open the template in the editor.
 							 </div>
 							 </div>
 							 </div>
+							 
+							 
+							 
+							 
+							 <!-- Receive Transaction -->
+							 
+							 <div class="modal fade" id="myModal" role="dialog"  >
+			<div class="modal-dialog modal-lg" style="width:100%;margin:0;padding:0;">
+
+				
+				<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="btn btn-border-theme btn-xs close"  data-dismiss="modal">BACK</button>
+						<h4 class="modal-title">Receive Transactions</h4> 
+					</div>
+					<div class="modal-body" style="padding:0;">
+						<!-- Fields -->
+							    <div class="panel-box">
+                                  	<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-2 ">
+											<label>Sl no.</label> <input type="text" id="r_serial"
+												placeholder="sl no" class="form-control">
+										</div>
+										<div class="form-group col-sm-2   " style="padding-left: 10px;">
+											<label>Name</label> <input type="text" id="r_cust_name"
+												placeholder="name" class="form-control">
+										</div>
+										
+									<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Cust ID</label> <input type="text" id="r_cust_id"
+												placeholder="cust id" class="form-control" >
+										</div>
+										
+										
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>From Date</label> <input type="text" id="r_datepicker_from"
+												placeholder="date from" class="form-control date">
+										</div>
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>To Date</label> <input type="text" id="r_datepicker_to"
+												placeholder="date to" class="form-control date">
+										</div>
+										
+										
+										
+										<div class="form-group col-sm-5" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control transactionType">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
+												
+										</div>
+										
+										<form>
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_cust_print">Customer Print</button> 	
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_balam_print">Balam Print</button> 	
+								<button type="button" class="btn btn-border-theme btn-xs"  id="clear_rec">Clear</button>		
+									</form>
+								
+									
+								</div>
+								
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_view_report" >View Report</button> 
+									
+										
+									</form>
+								</div>
+					
+							
+
+						<div class="form-group " style="padding:16px">
+							<table class="table table-striped" id="receiveTransaction_tbl" style="font-size:12px;">
+								<thead>
+									<tr>
+										<th>ID</th> 
+										<th>Name</th>
+										<th>Sl No.</th>
+										<th>Cust Sl.no</th>
+										<th>Receive Date</th>
+										<th>Bori</th>
+										<th>Ana</th>
+										<th>Ratti</th>
+										<th>Gram</th>
+										<th>Interest Rate</th>
+										<th>Day Count</th>
+										<th>Loan Amount</th>
+										<th>Paid Principal Amount</th>
+										<th>Interest Amount</th>
+										<th>Paid Interest Amount</th>
+										<th>Total Value</th>
+										<th>Balance</th>
+															
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							
+							<form action="" class="form-inline">
+    <div class="form-group">
+    	<label>Bori</label>
+        <input type="text" id="re_bori" disabled class="form-control" placeholder="Bori">
+    </div>
+    <div class="form-group">   
+    	<label>Ana</label> 
+         <input type="text" id="re_ana" disabled class="form-control" placeholder="Ana">   
+    </div>
+    <div class="form-group">
+    	<label>Ratti</label>    
+         <input type="text" id="re_ratti" disabled class="form-control" placeholder="Ratti">   
+    </div>
+    <div class="form-group">
+    	<label>Gram</label>    
+         <input type="text" id="re_gram" disabled class="form-control" placeholder="Gram">   
+    </div>
+    <div class="form-group">
+    	<label>Total Balance</label>    
+         <input type="text" id="re_balance" disabled class="form-control" placeholder="Total Balance">   
+    </div>
+</form>
+									
+						</div>
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><a href="#"
+								onclick="javascript:toggleModal()" data-toggle="modal">Close
+									&rarr;</a></li>
+						</ul>
+					</div>
+					
+				</div>
+
+			</div>
+							 
+							 
+							 
+					
+					
+					<!-- Delivery Transaction -->
+						
+		<div class="modal fade" id="deliveryModal" role="dialog">
+			<div class="modal-dialog modal-sm" style="width:100%;margin:0;padding:0;">			
+			<!-- Modal content For Product Details-->
+					<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="btn btn-border-theme btn-xs close"  data-dismiss="modal">BACK</button>
+						<h4 class="modal-title">Delivery Transaction</h4> 
+					</div>
+					<div class="modal-body" style="padding:0;">
+					
+						<div class="panel-box">
+                                  	<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-2 ">
+											<label>Sl no.</label> <input type="text" id="d_serial"
+												placeholder="sl no" class="form-control">
+										</div>
+										<div class="form-group col-sm-2   " style="padding-left: 10px;">
+											<label>Name</label> <input type="text" id="d_cust_name"
+												placeholder="name" class="form-control" >
+										</div>
+										
+									<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>Cust ID</label> <input type="text" id="d_cust_id"
+												placeholder="cust id" class="form-control"  >
+										</div>
+										
+										
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>From Date</label> <input type="text" id="d_date_from"
+												placeholder="date from" class="form-control date">
+										</div>
+										<div class="form-group col-sm-2 " style="padding-left: 10px;">
+											<label>To Date</label> <input type="text" id="d_date_to"
+												placeholder="date to" class="form-control date">
+										</div>
+									
+									</form>
+									
+									
+									<div class="form-group col-sm-5" style="padding-left: 10px;">
+											<label>select</label> 
+												<select class="form-control transactionType1">
+												<option class="form-control" value="mortgage">Mortgage</option>
+												
+												<option class="form-control" value="loan_take">Loan Take</option>
+												<option class="form-control" value="loan_give">Loan Give</option>
+												
+
+												</select>
+												
+										</div>
+									<form>
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_cust_print">Customer Print</button> 	
+								<button type="button" class="btn btn-border-theme btn-xs" id="r_balam_print">Balam Print</button> 
+								<button type="button" class="btn btn-border-theme btn-xs"  id="clear_del">Clear</button>			
+										
+									</form>
+									
+									
+									
+								</div>
+								
+								<form>
+								<button type="button" class="btn btn-border-theme btn-xs" id="d_view_report" >View Report</button> 
+								
+										
+									</form>
+								</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+						<div class="form-group " style="padding:16px">
+							<table class="table table-striped" id="deliveryTransaction_tbl" style="font-size:12px;">
+								<thead>
+									<tr>
+										<th >ID</th> 
+										<th>Name</th>
+										<th>Sl No</th>
+										<th>Customer Sl.no</th>
+										<th>Receive Date</th>
+										<th>Bori</th>
+										<th>Ana</th>
+										<th>Ratti</th>
+										<th>Gram</th>
+										<th>Interest Rate</th>
+										<th>Delivery Date</th>
+										<th>Day Count</th>
+										<th>Loan Amount</th>
+										<th>Paid Principal Amount</th>
+										<th>Interest Amount</th>
+										<th>Paid Interest Amount</th>
+										<th>Total Value</th>
+										<th>Total Balance</th>
+										<th>Update</th>
+										<th>Delete</th>
+										<th>View</th>								
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							
+							<form action="" class="form-inline">
+    <div class="form-group">
+    	<label>Bori</label>
+        <input type="text" id="dt_bori" disabled class="form-control" placeholder="Bori">
+    </div>
+    <div class="form-group">   
+    	<label>Ana</label> 
+         <input type="text" id="dt_ana" disabled class="form-control" placeholder="Ana">   
+    </div>
+    <div class="form-group">
+    	<label>Ratti</label>    
+         <input type="text" id="dt_ratti" disabled class="form-control" placeholder="Ratti">   
+    </div>
+    <div class="form-group">
+    	<label>Gram</label>    
+         <input type="text" id="dt_gram" disabled class="form-control" placeholder="Gram">   
+    </div>
+    <div class="form-group">
+    	<label>Total Balance</label>    
+         <input type="text" id="dt_balance" disabled class="form-control" placeholder="Total Balance">   
+    </div>
+</form>
+							
+							
+							
+							
+							
+							
+							
+							
+						</div>
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><a href="#"
+								onclick="javascript:toggleDeliveryModal()" data-toggle="deliveryModal">Close
+									&rarr;</a></li>
+						</ul>
+					</div>
+			
+			</div>
+
+			</div>		 
+							 
+							 
+							 
+					
+					
+					
+					<!-- View Modal -->
+					<div class="modal fade" id="viewModal" role="dialog">
+			<div class="modal-dialog modal-lg" style="width:50%;">
+
+				
+				<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Receive Transactions</h4> 
+					</div>
+					<div class="modal-body">
+						<!-- Fields -->
+							    <div class="panel-box">
+                                  	
+								
+								</div>
+					
+							
+					
+					
+					
+
+						<div class="form-group details">
+							<ul>
+							</ul>
+							
+						</div>
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><a href="#"
+								onclick="javascript:toggleViewModal()" data-toggle="modal">Close
+									&rarr;</a></li>
+						</ul>
+					</div>
+					
+				</div>
+
+			</div>		 
+							 
+							 
+							 
+							 
+							 
                      
 
 
@@ -252,9 +581,10 @@ and open the template in the editor.
         </div>
 
    <div th:replace="/common/common-header :: common-required-scripts"></div>
+   <!--  <script src="/js/custom_report_2.js"></script>-->
+   <script src="/js/custom-report.js"></script>
    <script src="/js/customer/customer.js"></script>
     </body>
 
 <!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
 </html>
-

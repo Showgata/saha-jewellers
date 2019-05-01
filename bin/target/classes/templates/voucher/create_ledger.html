@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ 
+   <head th:replace="common/common-header :: common-headpage"></head>    
+    <body class="fixed-left" style="overflow:hidden;">
+
+        <div id="wrapper" >
+
+            <!--top bar-->
+            <div th:replace="/common/common-header :: common-topbar"></div>
+			<div th:replace="/common/common-header :: common-side-menu"></div>
+
+           
+            <div class="content-page  equal-height" >
+                <div class="content">
+                    <div class="container">
+                      
+
+                        <!--end widget-->
+ <div class="row">
+  <div class="col-sm-12 h6">
+   <div class="panel-box">
+   <h5>Date Info</h5>
+                                  	<div class="clearfix">
+										<form role="form" class="form-inline">
+									<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Date from</label> <input type="text" id="cust_address"
+												placeholder="Date From" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Date To</label> <input type="text" id="cust_address"
+												placeholder="Date To" class="form-control">
+												</div>
+												<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Select</label> <select class="form-control">
+											<option>Gold Mortgage</option>
+											<option>Loan Take</option>
+											<option>Loan Give</option>
+											</select></div>
+												</form>
+										
+									
+									</div>
+									</div>
+  
+  </div>
+ </div>
+                        <div class="row">
+                             <div class="col-sm-9 h6" style="margin-top:-10px;">
+                                <div class="panel-box">
+                                  	<div class="clearfix">
+									<form role="form" class="form-inline">
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Customer Name</label> <input type="text" id="cust_name"
+												placeholder="Enter name" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Customer Id</label> <input disabled="true" type="text" id="cust_id"
+												placeholder="Enter Customer Id" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Mobile</label> <input type="text" id="cust_mobile"
+												placeholder="Enter mobile" class="form-control">
+										</div>
+										<div class="form-group col-sm-3" style="padding-left: 10px;">
+											<label>Address</label> <input type="text" id="cust_address"
+												placeholder="Enter address" class="form-control">
+										</div>
+										
+										   
+									</form>
+								</div>
+								<br>
+							   &nbsp;   &nbsp;	<a href="#" class="btn btn-border-theme btn-xs">View Report</a>   &nbsp;
+													<a href="#" class="btn btn-border-theme btn-xs">Cancel</a>  &nbsp;
+                                </div>
+								
+										
+                            </div >
+                            <style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+                            <div class="col-sm-3 h6"  style="margin-top:-10px;">
+                                <div class="panel-box">
+                                    <h4>Payment Informantion</h4>
+                                    <div id="wizard" class="bwizard">
+                                        <!-- Start .bwizard -->
+                                     
+                                        <form class="form-horizontal" role="form">
+                                            <div class="tab-content" style="margin-top:-10px;">
+                                                <div class="tab-pane active" id="tab1">
+                                               
+                                                    <!-- End .control-group  -->
+													<div class="form-group">
+												  <label class="col-lg-2 col-md-3 control-label">Payment (Loan)</label><div class="col-md-8 " style="margin-left:20px"><input type="text" placeholder="Payment " class="form-control"></div>
+                                          
+												
+												 
+                                           <label class="col-lg-2 col-md-3 control-label">Collection (Delivery)</label>   <div class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Collection" class="form-control"></div>
+													
+                                                   
+													
+													   <label class="col-lg-2 col-md-3 control-label"> Balance</label><div class="col-md-8" style="margin-left:20px"><input type="text" placeholder=" Balance" class="form-control"></div>
+                                           
+												
+                                                    <label class="col-lg-2 col-md-3 control-label">Cash In</label><div class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Cash In" class="form-control"></div>
+													
+                                                   
+                                                  
+												
+                                                
+                                                        <label class="col-lg-2 col-md-3 control-label">Balance</label><div class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Balance" class="form-control"></div>
+                                            
+                                                    
+                                                      
+                                            <label class="col-lg-2 col-md-3 control-label">Cash Out</label><div class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Cash Out" class="form-control"></div>
+                                                        
+                                                 
+                                                    
+                                                        <label class="col-lg-2 col-md-3 control-label">Current Due</label><div class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Current Due" class="form-control"></div>
+                                            <label class="col-lg-2 col-md-3 control-label">Previous Due</label><div class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Previous Due" class="form-control"></div>
+                                                      
+                                                 
+													  <label class="col-lg-2 col-md-3 control-label">Balance Due</label><div  class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Balance Due" class="form-control"></div>
+                                            <label class="col-lg-2 col-md-3 control-label">Cash In</label><div  class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Cash In" class="form-control"></div>
+													 
+													 
+                                                       
+                                                
+										  <label class="col-lg-2 col-md-3 control-label">Cash Out</label><div  class="col-md-8" style="margin-left:20px"><input type="text" placeholder="Cash Out" class="form-control"></div>
+												
+                                                    
+                                                  
+													 
+                                                       
+                                                    </div>
+													<!-- End .control-group  -->
+                                                </div>
+                                              
+                                               
+                                            </div>
+                                        </form>
+                                        <!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+                                    </div>
+                                    <!-- End .bwizard -->
+									
+					
+                                </div>
+                            </div><!--height-->
+							
+							
+							
+									
+                        </div>
+				
+ <div class="row"  >
+                             <div class="col-sm-9" style="overflow: hidden;height:550px;margin-top:-430px">
+							 <div class="panel-box">
+							 
+                                    
+									   
+                                           <style>
+                                               .pane-box{
+    padding: 15px;
+  background: #272a31;
+    margin-bottom: 20px;
+                                               }
+    .table{
+        height:200px;
+                                                   
+                                               }
+    
+
+                                           </style>
+										   
+                                    <div class="table-responsive">
+									
+                                                    
+                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+                                                <th>Name</th>
+									    <th>mobile</th>
+                                                <th>address</th>
+
+                                                <th> Date</th>
+                                                <th>Particulars</th>
+                                                <th>Delivery</th>
+                                                <th>Loan</th>
+                                               
+												<th>Balance</th>																								
+										     
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           <tr>
+											<td>1</td>
+                                                <td>aa</td>
+									    <td>aaaaaaaaa</td>
+                                                <td>a</td>
+
+                                                <td> a</td>
+                                                <td>Pas</td>
+                                                <td>Da</td>
+                                                <td>La</td>
+                                               
+												<td>Baa</td>																								
+										     
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                
+
+							 </div>
+							 </div>
+							 </div>
+                     
+
+
+                    </div><!--content-->               
+                </div><!--content page-->
+            </div><!--end wrapper-->
+        </div>
+       
+       <!--<div class="footer">
+            <span>Copyright &copy; 2018.Magfus India.</span>
+        </div>-->
+        <!-- Plugins  -->
+         <div th:replace="/common/common-header :: common-required-scripts"></div>
+    </body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:07 GMT -->
+</html>
+

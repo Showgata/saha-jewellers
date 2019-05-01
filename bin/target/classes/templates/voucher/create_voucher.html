@@ -1,0 +1,1387 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
+<head th:replace="/common/common-header :: common-headpage"></head>
+<body class="fixed-left" id="content">
+
+	<div id="wrapper">
+
+		<div th:replace="/common/common-header :: common-topbar"></div>
+		<div th:replace="/common/common-header :: common-side-menu"></div>
+		<!--left menu start-->
+		<!--left menu end-->
+		<div class="content-page  equal-height">
+			<div class="content">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-sm-4 h6">
+							<div class="panel-box">
+								<h4>Customer Information</h4>
+								<form role="form">
+									<div class="form-group">
+										<label>Customer Name</label> <input type="text"
+											placeholder="Enter name" id="cust_name"
+											class="form-control input_field">
+									</div>
+									<div class="form-group">
+										<label>ID</label> <input type="text" disabled="true"
+											placeholder="Id" id="cust_id" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>Mobile</label> <input type="text"
+											placeholder="Enter mobile" id="cust_mobile"
+											class="form-control input_field">
+									</div>
+									<div class="form-group">
+										<label>Address</label> <input type="text"
+											placeholder="Enter address" id="cust_address"
+											class="form-control input_field">
+									</div>
+
+
+									<!-- <a href="#" class="btn btn-border-theme btn-xs">Print</a> -->
+									
+									&nbsp;
+									<button type="button" class="btn btn-border-theme btn-xs"
+										data-toggle="modal" data-target="#myModal">Add
+										Product</button>&nbsp;&nbsp;<button type="button" id="pdf" class="btn btn-border-theme btn-xs">PDF</button>
+									<!-- &nbsp; <a href="#" class="btn btn-border-theme btn-xs">PDF</a> -->
+									</button>&nbsp;&nbsp;<button type="button" id="pdf" class="btn btn-border-theme btn-xs">Print</button>
+									&nbsp;
+									<div>
+										<label></label>
+									</div>
+								</form>
+
+							</div>
+							<ul class="pager">
+								
+								<li class="previous"  ><a href="#" onclick="saveVoucher()" id="saveVoucher">Save
+										&rarr;</a>
+									</li>	
+									
+									<li class="" style="padding-right:180px;" >
+																	
+										<a id="new" >New</a>
+                                     </li>
+							</ul>
+
+						</div>
+						<style>
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+</style>
+						<div class="col-sm-4 h6">
+							<div class="panel-box">
+								<h4>Mortgage Information</h4>
+								<div id="wizard" class="bwizard">
+									<!-- Start .bwizard -->
+
+									<form class="form-horizontal" role="form">
+										<!-- mortgage hidden field -->
+										<input type="hidden" id="mortgage_id" value="" />
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Bori</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="0.0"
+															name="bori" onkeyup="calculateGram();" id="bori"
+															type="text" />
+													</div>
+												</div>
+												<!-- End .control-group  -->
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Ana</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="0.0"
+															name="ana" id="ana" onkeyup="calculateGram();"
+															type="text" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Ratti</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="0.0"
+															name="ratti" onkeyup="calculateGram();" id="ratti"
+															type="text" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">point</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="0.0"
+															name="point" onkeyup="calculateGram();" id="point"
+															type="text" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Gram</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control " placeholder="0.0"
+															readonly="readonly" name="gram" id="gram" type="text" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Interest
+														rate</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="0.0"
+															name="rate" id="rate" type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Loan
+														amount</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="0.00"
+															name="loan_amnt" id="loan_amnt" type="text">
+													</div>
+												</div>
+
+
+												<!-- End .control-group  -->
+											</div>
+
+
+										</div>
+									</form>
+									<!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+								</div>
+								<!-- End .bwizard -->
+							</div>
+						</div>
+						<!--height-->
+						<div class="col-sm-3 ">
+							<div class="panel-box">
+								<h4>Voucher Details</h4>
+								<div id="wizard" class="bwizard" style="margin-top: -20px;">
+									<!-- Start .bwizard -->
+
+									<form class="form-horizontal" role="form">
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Date</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field datepicker-here"
+															placeholder="date" name="date" id="date" type="text"
+															data-language='en' data-position='bottom left'
+															data-date-format="dd/mm/yyyy">
+													</div>
+												</div>
+												<!-- End .control-group  -->
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Serial
+														No.</label>
+													<div class="col-lg-10 col-md-9 has-warning">
+														<input class="form-control input_field input-lg "
+															style="color: #f7b03e; font-size: 14px;"
+															placeholder="sl no." name="serial" id="serial"
+															disabled="true" value="" type="text">
+														<!-- voucher hidden field -->
+														<input type="hidden" id="voucher_id" value="" />
+													</div>
+												</div>
+
+
+
+
+
+
+												<!-- End .control-group  -->
+											</div>
+
+
+										</div>
+									</form>
+
+								</div>
+							</div>
+
+						</div>
+						<div class="col-sm-3 h6">
+							<div class="panel-box">
+								<h4>Transaction Details</h4>
+
+								<div id="wizard" class="bwizard" style="margin-top: -20px;">
+									<!-- Start .bwizard -->
+
+									<form class="form-horizontal" role="form">
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label"
+														style="font-size: 8px;"><font>Customer
+															Serial</font></label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control" placeholder="customer serial"
+															name="transaction_serial" id="transaction_serial"
+															type="text">
+														<!-- transaction hidden field -->
+														<input type="hidden" id="transaction_id" value="" />
+													</div>
+												</div>
+												<!-- End .control-group  -->
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label"
+														style="font-size: 8px;">Reminder Date</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field"
+															placeholder="reminder date" name="reminder_date"
+															id="reminder_date" type="text" data-language='en'
+															data-position='bottom left' data-date-format="dd/mm/yyyy">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label"
+														style="font-size: 10px;">Storage</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field"
+															placeholder="storage" name="storage" id="storage"
+															type="text">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-lg-2 col-md-3 control-label">Note</label>
+													<div class="col-lg-10 col-md-9">
+														<input class="form-control input_field" placeholder="note"
+															name="note" id="note" type="text">
+													</div>
+												</div>
+
+
+
+
+												<!-- End .control-group  -->
+											</div>
+
+
+										</div>
+									</form>
+									<!--<ul class="pager">
+                                            <li class="previous"><a href="#">&larr; Back</a>
+                                            </li>
+                                            <li class="next"><a href="#">Next &rarr;</a>
+                                            </li>
+                                            <li class="next finish" style="display:none;"><a href="#">Finish</a>
+                                            </li>
+                                        </ul>-->
+
+								</div>
+							</div>
+
+						</div>
+						<div class="container">
+							<!-- <input class="form-control" style="width:150px;float:right;" placeholder="Voucher Details" name="vdetails" type="text">
+								  <input class="form-control" style="width:150px;" placeholder="Total Loan Amount" name="lamount" type="text"> -->
+							<div id="voucher_search" class="row col-sm-12" >
+								<!-- <div id="name">Customer Name</div> -->
+								<!-- <input type="text" name="cust_name" id="cname"  onkeyup="searchCustomer();" placeholder="Search Customer" data-index="1"/> -->
+								 <div class="col-sm-3">
+								 	<input class="form-control col-sm-3" 
+										placeholder="voucher count" id="voucher_count" name="vdetails" type="text"/>
+								 </div>
+								 <div class="col-sm-offset-6 col-sm-3">
+								 	
+									<input class="form-control col-sm-3" 
+										placeholder="total expense" name="lamount" id="total_loan_amount" type="text"/>
+								 </div>
+								
+							</div>
+							
+							<table class="table table-striped" id="voucher">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Name</th>
+										<th>Serial no</th>
+										<th>Cust sl</th>
+
+										<th>Receive Date</th>
+										<th>Bori</th>
+										<th>Ana</th>
+										<th>Ratti</th>
+
+										<th>Gram</th>
+										<th>Int. Rate</th>
+										<th>Loan Amt.</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+								<!-- 	<tr>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td>John</td>
+										<td>Doe</td>
+										<td>john@example.com</td>
+										<td></td>
+									</tr>
+ -->								</tbody>
+								<tfoot>
+            <tr>
+                <th colspan="11" style="text-align:right">Total:</th>
+                <th></th>
+            </tr>
+        </tfoot>
+							</table>
+
+						</div>
+						<!--  <style>
+                                               .panel-box{
+    padding: 15px;
+  background: #272a31;
+    margin-bottom: 20px;
+                                               }
+    .table{
+        height:200px;
+                                                   
+                                               }
+    
+
+                                           </style>
+								
+                         <div class="row"  >
+                             <div class="col-sm-12" style="overflow: scroll;height:150px;">
+							 <div class="panel-box">
+							 
+                                    
+									   
+                                         										   
+                                    <div class="table-responsive">
+									
+                                                    
+                                                
+                                          <table id="basic-datatables" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+											<th>ID</th>
+                                                <th>Name</th>
+									    <th>Serial no</th>
+                                                <th>Cust sl</th>
+
+                                                <th>Receive Date</th>
+                                                <th>Bori</th>
+                                                <th>Ana</th>
+                                                <th>Ratti</th>
+                                               
+												<th>Gram</th>																								
+												<th>Int. Rate</th>
+											<th>Loan Amt.</th>
+                                               <th>Update</th>
+                                             <th>Delete</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                        		<td>ID</td>
+                                        			<td>ID</td>
+                                        				<td>ID</td>
+                                        					<td>ID</td>
+                                        						<td>ID</td>
+                                        							<td>ID</td>
+                                        			<td>ID</td>
+                                        				<td>ID</td>
+                                        					<td>ID</td>
+                                        						<td>ID</td>
+                                        							<td>ID</td>
+                                        								<td>ID</td>					
+                                        </tr>
+                                       
+                                                <th>Name</th>
+									    <td>Serial no</th>
+                                                <th>Cust sl</th>
+
+                                                <th>Receive Date</th>
+                                                <th>Bori</th>
+                                                <th>Ana</th>
+                                                <th>Ratti</th>
+                                               
+												<th>Gram</th>																								
+												<th>Int. Rate</th>
+											<th>Loan Amt.</th>
+                                               <th>Update</th>
+                                             <th>Delete</th>
+                                        </tbody>
+                                    </table>
+                                    </div> -->
+						<!-- <div class="clearfix"></div> -->
+
+
+						<!--  </div>
+							 </div>
+							 </div>
+                     
+                        </div> -->
+
+
+
+						<!-- <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table> -->
+
+					</div>
+					<!--content-->
+				</div>
+				<!--content page-->
+			</div>
+			<!--end wrapper-->
+		</div>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content modal_dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Products</h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="form-group">
+							<ul class="list-group">
+								<li class="list-group-item"><label for="products">Products:</label>
+									<select id="productName">
+										<option value="" selected>Select Product</option>
+										<option> Anklet</option>
+										<option>	Ayesti</option>
+										<option>	Baju</option>
+										<option>	Bala</option>
+										<option>	Bangle</option>
+										<option>	Bicha</option>
+										<option>	Bracelet</option>
+										<option>	Chain</option>
+										<option>	Chik</option>
+										<option>	Chur</option>
+										<option>	Churi</option>
+										<option>	Ear Chain Pair</option>
+										<option>	Earring Pair</option>
+										<option>	Ghaar Tana Pair</option>
+										<option>	Haar</option>
+										<option>	Hair Chain Pair</option>
+										<option>	Hath Panja</option>
+										<option>	Jhapta</option>
+										<option>	Jhumka Pair</option>
+										<option>	Kaan Tana Pair</option>
+										<option>	Locket</option>
+										<option>	Locket & Chain</option>
+										<option>	Mangalsutra</option>
+										<option>	Mantasha</option>
+										<option>	Necklace</option>
+										<option>	Nose Pin</option>
+										<option>	Noth</option>
+										<option>	Nupur</option>
+										<option>	Pasha Pair</option>
+										<option>	Payel</option>
+										<option>	Pendant</option>
+										<option>	Pola</option>
+										<option>	Ring</option>
+										<option>	Ring Bracelet</option>
+										<option>	Shakha</option>
+										<option>	Side Clip</option>
+										<option>	Sita Haar</option>
+										<option>	Sithi Patti</option>
+										<option>	Taj</option>
+										<option>	Tayra</option>
+										<option>	Tiara</option>
+										<option>	Tikli</option>
+										<option>	Other</option>
+
+
+								</select> <input
+									type="text" name="add_product_Name" id="product_added" disabled placeholder="Other Product Name" /><br/><label for="productQuantity">Quantity:</label> <input
+									type="text" id="productQuantity" name="productQuantity" /> <input
+									type="hidden" name="product_Id" id="productId" /><button id="add_prod"
+								>Add
+									&rarr;</button></li>
+									
+							</ul>
+							<ul class="list-inline" id="prod_list">
+  <li class="list-inline-item init">Product : Quantity</li>
+  <br>
+</ul>
+
+						</div>
+						<div class="panel-group"></div>
+						<ul class="pager">
+							<li class="previous"><button
+								onclick="javascript:toggleModal()" data-toggle="modal" id="saveProducts">Save
+									&rarr;</button></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+ <div th:replace="/common/common-header :: common-required-scripts"></div>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+	
+	
+	
+	<!-- Plugins  -->
+<!-- 	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jqueryy.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.slimscroll.js"></script>
+	<script src="/js/metisMenu.js"></script>
+	<script src="/js/core.js"></script>
+	<script src="/js/mediaquery.js"></script>
+	<script src="/js/equalize.js"></script>
+	<script src="/js/app.js"></script>
+
+
+	<script src="/js/dataTables.bootstrap.js"></script>
+	<script src="/js/dataTables.colVis.js"></script> -->
+	<!-- new js -->
+	<!-- 	<script
+		src="/js/jqueryy-datatable.js"></script>
+	<script
+		src="/js/datepick.js"></script>
+	<script
+		src="/js/datepickanother.js"></script>
+		end new js-->
+	
+	<script> 
+	
+
+
+	//change focus
+	
+	$("#cust_address").focusout(function(){
+		$("#bori").focus();
+	})
+	
+	$("#loan_amnt").focusout(function(){
+		$("#transaction_serial").focus();
+	})
+	
+	$("#note").focusout(function(){
+		$("#saveVoucher").focus();
+	})
+	
+	$("#saveVoucher").keypress(function(e) {
+	    if(e.which == 13) {
+	        saveVoucher();
+	        $("#customer_name").focus();
+	        
+	    }
+	});
+
+
+
+
+	$("#add_prod").click(function(){
+		let prodName = $("#productName").val();
+		
+		if(prodName === "Other")
+			prodName = $("#product_added").val();
+		
+		
+		let productQuantity = $("#productQuantity").val();
+		$("#prod_list").append("<li class='list-inline-item init'><p style='display:inline-block; width:400px;'>"+prodName+" : "
+			+productQuantity+"</p><span id='cancel_item' style='float:right;cursor:pointer;'>X</span><br></li>");
+	})
+	
+	
+	$('#prod_list').on('click','#cancel_item',function(){
+		
+		console.log($(this).parent());
+		$(this).parent().remove();
+	})
+	
+	let itemsString="";
+	
+	$('#saveProducts').click(function(){
+		$('#prod_list li').each(function(i)
+				{
+				   let str=$(this).find("p").text();
+				   let data = str.split(":");
+				   
+				   if(data != ""){
+					   
+					   let productName =(data[0]+"").trim();
+					   let productQty =parseInt((data[1]+"").trim()); 
+					   itemsString += productName+":"+productQty+",";
+					   
+				   }
+				   
+				});	
+	})
+	
+	
+	
+	var info ={};
+	
+	
+	
+	
+	//===========================================================
+	/*$("#pdf").click(function(){
+		var pdf = new jsPDF('p', 'pt', 'letter','div');
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#content')[0];
+
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 800
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                pdf.save('Test.pdf');
+            }, margins
+        );
+	});*/
+	
+	$("#pdf").click(function(){
+		
+		console.log(info);
+		pdfSetUp(info);
+		
+		
+	});
+	
+	
+	var pdfSetUp =function(info)
+	{
+		var pdf = new jsPDF('p', 'pt', 'letter','div');
+		pdf.text(20,30,"Customer Name :		"+info.customer.customerName);
+		pdf.text(20,60,"Mobile        :		"+info.customer.mobile);
+		pdf.text(20,90,"Address       :	    "+info.customer.address);
+		pdf.text(20,120,"==============================================");
+		
+		pdf.save(info.serial+".pdf");
+	}
+	
+	
+	var dataTable;
+        function toggleModal(){
+        	$('#myModal').modal('toggle');
+        }
+        
+        function calculateGram(){
+        	console.log('calculate gram');
+        	const boriUnitValue = 11.664;
+            const anaUnitValue = 0.729;
+            const rotiUnitValue = 0.1215;
+            const pointUnitValue = 0.01215;
+            
+            let bori_field = $("#bori");
+            let ana_field = $("#ana");
+            let ratti_field = $("#ratti");
+            let point_field = $("#point");
+            let gram_field = $("#gram");
+            
+        	let bori = bori_field.val();
+        	let ana = ana_field.val();
+        	let rati = ratti_field.val();
+        	let point = point_field.val();
+        
+        	
+        	bori = isNaN(bori)||bori.trim()==""?0:parseFloat(bori);
+        	ana = isNaN(ana)||ana.trim()==""?0:parseFloat(ana);
+        	rati = isNaN(rati)||rati.trim()==""?0:parseFloat(rati);
+        	point = isNaN(point)||point.trim()==""?0:parseFloat(point);
+        	
+        	let gram = boriUnitValue * bori + anaUnitValue * ana + rotiUnitValue * rati + pointUnitValue * point;
+        	gram_field.val(roundTo(gram,2));
+        	
+        }
+        
+        function roundTo(n, digits) {
+            var negative = false;
+            if (digits === undefined) {
+                digits = 0;
+            }
+                if( n < 0) {
+                negative = true;
+              n = n * -1;
+            }
+            var multiplicator = Math.pow(10, digits);
+            n = parseFloat((n * multiplicator).toFixed(11));
+            n = (Math.round(n) / multiplicator).toFixed(2);
+            if( negative ) {    
+                n = (n * -1).toFixed(2);
+            }
+            return n;
+        }
+        
+       
+        	
+        
+        function GetFormattedDate() {
+
+            var todayTime = new Date();
+
+            var month = format(todayTime .getMonth() + 1);
+
+            var day = format(todayTime .getDate());
+
+            var year = todayTime .getFullYear();
+
+            return day + "/" + month + "/" + year;
+
+        }
+        function buildAjaxForJson(url, methodType, inputData){
+       	 return $.ajax({
+       	    url : url,
+       	    method : methodType,
+       	    data : JSON.stringify(inputData),
+       	    dataType : "json",
+       	    contentType: "application/json"
+       	 })
+       	}
+       
+        function buildAjax(url, methodType){
+        	return $.ajax({
+           	    url : url,
+           	    method : methodType,
+           	    contentType: "application/json"
+           	 })
+        }
+        
+       function formatFloatValue(val){
+       		return val==""||isNaN(val)?null:parseFloat(val);
+       	}
+       	
+       function formatIntegerValue(val){
+      		return val==""||isNaN(val)?null:parseInt(val);
+      	}	
+       
+       function formatValue(val){
+    	   return val==""?null:val;
+       }
+       
+       /* function fetchCustomers(){
+    	   var URL = "http://localhost:8080/modgage-app/api/customer";
+    	   var data = [];
+    	   buildAjax(URL, "GET").then(function(respJson){
+    		   jQuery.each(respJson, function(i, val) {
+    			   data.push(respJson.customerName+" > "+customerId);
+    		   });
+    		   
+    	   }, function(reason){
+             	 console.log("error in processing your request customer", reason);
+          	}); 
+       }	 */
+       
+       function fetchVouchers(){
+    	  
+    	   var URL = getAbsoluteUrl("mortgage-app/api/voucher/mortgage-for-today/");
+    	   var data = [];
+    	   var autoCompleteList = [];
+    	   buildAjax(URL, "GET").then(function(respJson){
+          		console.log(respJson);
+          		 let tr ="";
+          		 
+          		 jQuery.each(respJson, function(i, val) {
+          			//autoCompleteList.push({value: val.customer.customerName,  label: val.customer.customerName+" > "+val.customer.customerId});
+          			
+          			 data.push([(val.customer.customerId==null?"":val.customer.customerId),
+          				 val.customer.customerName,
+          				(val.id==null?"0":val.id),
+          				 (val.transaction.transactionSerial==null?"not defined":val.transaction.transactionSerial),
+          				 val.date,
+          				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
+          				(val.mortgage.ana==null?"0.0":val.mortgage.ana),
+          				(val.mortgage.ratti==null?"0.0":val.mortgage.ratti),
+          				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
+          				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
+          				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
+          				"<input class='form-controlcol-sm-2  upd'  type='button' updid='"+val.id+"' name='update' value='update' id='update' />",
+          				"<input class='form-controlcol-sm-2  del' type='button' delid='"+val.id+"' name='delete' value='delete' id='delete' />"
+          			 ]); 
+          			/*  tr = "";
+          			 tr += "<tr role='row' class='"+(i%2==0?'even':'odd')+"'>";
+          			 tr += "<td>"+(val.id==null?"0":val.id)+"</td>";
+          			 tr += "<td>"+val.customer.customerName+"</td>";
+          			 tr += "<td>"+(val.transaction.trasnsactionSerial==null?"":val.transaction.trasnsactionSerial)+"</td>";
+          			 tr += "<td>"+(val.customer.customerId==null?"":val.customer.customerId)+"</td>";
+          			 tr += "<td>"+val.date+"</td>";
+          			 tr += "<td>"+(val.mortgage.bori==null?"0.0":val.mortgage.bori)+"</td>";
+          			 tr += "<td>"+(val.mortgage.ana==null?"0.0":val.mortgage.ana)+"</td>";
+          			 tr += "<td>"+(val.mortgage.ratti==null?"0.0":val.mortgage.ratti)+"</td>";
+          			 tr += "<td>"+(val.mortgage.gram==null?"0.0":val.mortgage.gram)+"</td>";
+          			 tr += "<td>"+(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate)+"</td>";
+          			 tr += "<td>"+(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount)+"</td>";
+          			 tr += "<td>"+
+          			"<input class='form-controlcol-sm-2'  type='button' name='show_voucher_details' value='update' id='update' />"+
+          				"<input class='form-controlcol-sm-2' type='button' name='show_voucher_details' value='delete' id='delete />"+
+          			 "</td>"; */
+          		// $("#voucher > tbody").append("<tr><td>"+val.id+"</td><td>"+val.customer.customerName+"</td></tr>");
+          		/* tr += "</tr>";
+          		$("#voucher > tbody").append(tr); */
+          		}); 
+          		dataTable = $('#voucher').DataTable({
+            		data:           data,
+                    deferRender:    true,
+                    scrollY:        200,
+                    scrollCollapse: true,
+                    scroller:       true,
+                    "order": [],
+					 "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 10 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            var rowsCount = api
+            .column( 10 )
+            .data().length;
+            
+            $("#voucher_count").val(rowsCount);
+            $("#total_loan_amount").val(roundTo(total,2));
+            // Total over this page
+            pageTotal = api
+                .column( 10, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 10 ).footer() ).html(
+                '$'+pageTotal +' ( $'+ total +' total)'
+            );
+        }
+            	});  
+          		
+          		 /* $(  dataTable.table().container() ).on( 'keyup', '#cname', function () {
+          			 
+          			dataTable
+          	            .column( $(this).data('index') )
+          	            .search( this.value )
+          	            .draw();
+          	    } ); */
+          	
+          		
+           	}, function(reason){
+           	 console.log("error in processing your request", reason);
+           	}); 
+       }
+       
+       function setAutoComplete(){
+    	   
+    	   var autoCompleteList = [];
+    	   var URL = getAbsoluteUrl("mortgage-app/api/customer/today");
+    	   buildAjax(URL, "GET").then(function(respJson){
+    		   jQuery.each(respJson, function(i, val) {
+    			   
+    				   autoCompleteList.push({value: val.customerName,  label: val.customerName+" > "+val.customerId});
+    			   
+    		   });
+    	   
+    		 $( "#cust_name" ).autocomplete({
+  		        source: autoCompleteList,
+  		        select: function (event, ui) {
+  		        	var txt = ui.item.label;
+  		          let custId = parseInt(txt.split(">")[1]);
+  		          $("#cust_id").val(custId); 
+  		        
+  		         buildAjax(getAbsoluteUrl("mortgage-app/api/customer/"+custId), "GET").then(function(respJson){
+  		        	$("#cust_address").val(respJson.address);
+  		       	    $("#cust_mobile").val(respJson.mobile);
+  		         },function(reason){
+  		           	 console.log("error in processing your request", reason);
+  	           	}); 
+  		          
+  		      }
+  		      });
+    	   }, function(reason){
+           	 console.log("error in processing your request customer", reason);
+         	}); 
+       }
+       function moveDataTableRow(position,table){
+    	   var currentPage = table.page();
+    	   var index = position-1,
+           rowCount = table.data().length-1,
+           insertedRow = table.row(rowCount).data(),
+           tempRow;
+
+       for (var i=rowCount;i>index;i--) {
+           tempRow = table.row(i-1).data();
+           table.row(i).data(tempRow);
+           table.row(i-1).data(insertedRow);
+       }     
+       //refresh the current page
+       table.page(currentPage).draw(false);
+       }
+       
+       function reset(){
+           
+    	   $("#serial").val("");
+           $("#bori").val("");
+           $("#ana").val("");
+           $("#ratti").val("");
+           $("#point").val("");
+           $("#gram").val("");
+           $("#loan_amnt").val("");
+           $("#rate").val("");
+           
+           	$("#transaction_serial").val("");
+           	$("#note").val("");
+           	$("#storage").val("");
+           	$("#reminder_date").val("");
+     		$("#mortgage_id").val("");
+     		$("#cust_name").val("");
+     		$("#cust_address").val("");
+     		$("#cust_mobile").val("");
+     		$("#cust_id").val("");
+     		
+     		$("#productName").val("");
+     		$("#productQuantity").val("");
+     		$("#productId").val("");
+     		$("#product_added").val("");
+       }
+       
+       function saveVoucher(){   	   
+    	var URL = getAbsoluteUrl("mortgage-app/api/voucher/");
+    	var voucher = {
+    			/* id : null
+    			date	null
+    			serial	null
+    			customer	null
+    			transaction	null
+    			mortgage	null */
+    	};
+    	voucher["date"]=$("#date").val();
+    	
+    	//voucher["serial"]=$("#serial").val();==========
+    	voucher["serial"]=formatIntegerValue($("#cust_id").val());
+    	
+    	var customer = {};
+    	var mortgage = {};
+    	var transaction = {};
+    	var product = {};
+    	
+        let bori_field = $("#bori");
+        let ana_field = $("#ana");
+        let ratti_field = $("#ratti");
+        let point_field = $("#point");
+        let gram_field = $("#gram");
+        let loanAmnt_field = $("#loan_amnt");
+        let interestRate_field = $("#rate");
+        let transactionSerial = $("#transaction_serial");
+        let reminderDate = $("#reminder_date");
+        let note = $("#note");
+        let storage = $("#storage");
+        
+        
+        
+        transaction["reminderDate"] = reminderDate.val()==""?null:reminderDate.val();
+        transaction["transactionDate"] = $("#date").val()==""?null:$("#date").val();
+        transaction["note"] = note.val()==""?null:note.val();
+        transaction["storage"] = formatIntegerValue(storage.val());
+        transaction["id"] = formatIntegerValue($("#transaction_id").val());        
+        //=============================modification
+        transaction["transactionSerial"]=transactionSerial.val().trim();
+        transaction["customerId"] = formatIntegerValue($("#cust_id").val());
+        
+        mortgage["bori"] = formatFloatValue(bori_field.val());
+        mortgage["ana"] = formatFloatValue(ana_field.val());
+        mortgage["ratti"] = formatFloatValue(ratti_field.val());
+        mortgage["point"] = formatFloatValue(point_field.val());
+    	mortgage["gram"] = formatFloatValue(gram_field.val());
+    	mortgage["loanAmount"]=formatFloatValue(loanAmnt_field.val());
+    	mortgage["totalLoan"]=formatFloatValue(loanAmnt_field.val());
+    	mortgage["interestRate"]=formatFloatValue(interestRate_field.val());
+    	mortgage["mortgageId"] = formatIntegerValue($("#mortgage_id").val());
+        
+    	customer["customerName"]=$("#cust_name").val();
+    	customer["address"]=$("#cust_address").val();
+    	customer["mobile"]=$("#cust_mobile").val();
+    	customer["customerId"]=formatIntegerValue($("#cust_id").val());
+    	
+    	
+  		
+    	
+  		
+  		console.log("In product="+itemsString);
+    	product["productName"] = itemsString;
+    	//product["quantity"] = formatIntegerValue($("#productQuantity").val());
+    	product["productId"] = formatIntegerValue($("#productId").val());
+    	
+    	
+    	voucher["customer"] = customer;
+    	voucher["mortgage"] = mortgage; 
+    	voucher["product"] = product;
+    	voucher["type"] = "mortgage";
+    	//transaction["voucher"] = voucher;
+    	voucher["transaction"] = transaction;
+    	
+    	voucher["id"] = formatIntegerValue($("#voucher_id").val());
+    	
+    	
+    	
+    	
+    	//============================= modification
+    	info = voucher;
+    	
+       	buildAjaxForJson(URL, "POST",voucher).then(function(respJson){
+       	
+       		if(voucher["id"] != "" && voucher["id"] != null) return;
+       		
+       		//reset values
+       		/* bori_field.val("");
+       		ana_field.val("");
+       		ratti_field.val("");
+       		point_field.val("");
+       		gram_field.val("");
+       		loanAmnt_field.val("");
+       		interestRate_field.val("");
+       		$("#mortgage_id").val("");
+       		$("#cust_name").val("");
+       		$("#cust_address").val("");
+       		$("#cust_mobile").val("");
+       		$("#cust_id").val("");
+       		
+       		$("#productName").val("");
+       		$("#productQuantity").val("");
+       		$("#productId").val(""); */
+       		
+       		
+       		
+       		//reset();
+       		
+       		//updateFun();
+       		
+       		var t = $('#voucher').DataTable();
+       		if(parseInt($("#voucher_id").val())==parseInt(respJson.id)){
+				var rowNode = r.node();
+				r.remove();
+				customerDataTable.page(t.page()).draw(false);
+			}
+       		
+       		//$("#voucher_id").val("");
+       		
+       		
+       		console.log(respJson);
+       		let val = respJson;       		 
+       		$("#serial").val(respJson.id);//=====================================================added the serial
+       		
+       		
+       		t.row.add([(respJson.customer.customerId==null?"":respJson.customer.customerId),
+       			respJson.customer.customerName,
+ 				(respJson.id==null?"0":respJson.id),//=============Check here//
+ 				 (val.transaction.trasnsactionSerial==null?"not defined":val.transaction.transactionSerial),
+ 				 val.date,
+ 				(val.mortgage.bori==null?"0.0":val.mortgage.bori),
+ 				(val.mortgage.ana==null?"0.0":val.mortgage.ana),
+ 				(val.mortgage.ratti==null?"0.0":val.mortgage.ratti),
+ 				(val.mortgage.gram==null?"0.0":val.mortgage.gram),
+ 				(val.mortgage.interestRate==null?"0.0":val.mortgage.interestRate),
+ 				(val.mortgage.loanAmount==null?"0.0":val.mortgage.loanAmount),
+ 				"<input class='form-controlcol-sm-2 upd' updid='"+val.id+"'  type='button' name='update' value='update' id='update' />",
+ 				"<input class='form-controlcol-sm-2 del' type='button' name='delete' value='delete' delid='"+val.id+"' id='delete' />"
+ 			 ]).draw();  
+ 			
+       		moveDataTableRow(1,t);
+       		
+       		
+       		
+       	}, function(reason){
+       	 console.log("error in processing your request", reason);
+       	}); 
+    	  
+       } 	
+        // 2 digit formatted date
+        function format(n){
+        	return n<10? '0'+n:''+n;
+        }
+        
+        $("#new").click(function(){
+        	reset();
+        });
+        $(document).ready( function () {    	
+         fetchVouchers();
+         setAutoComplete();
+            
+            var disabledDays = [0];
+            var dateSettings = {
+                language: 'en',
+                maxDate: new Date(),
+                autoClose:true,
+                onRenderCell: function (date, cellType) {
+                    if (cellType == 'day') {
+                        var day = date.getDay(),
+                            isDisabled = disabledDays.indexOf(day) != -1;
+
+                        return {
+                            disabled: isDisabled
+                        }
+                    }
+                }
+            };
+            $("#date").datepicker(dateSettings);
+            dateSettings.maxDate=null;
+            var d = new Date();
+            d.setDate(d.getDate() - 1);
+            dateSettings.minDate=d;
+        	$("#reminder_date").datepicker(dateSettings);
+        	$("#date").val(GetFormattedDate());
+        	  
+            /* ratti_field.change(calculateGram());
+            point_field.change(calculateGram()); */
+            
+        } );
+        
+        $('#voucher tbody').on( 'click', '.del', function () {
+        	var table = $('#voucher').DataTable();
+        	if(confirm('Are you sure !')){
+        		  var currentPage = table.page();
+        		  //console.log($(this).attr('delid'));
+        		  
+        		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('delid')));
+        		  buildAjax(URL, "POST").then(function(respJson){
+        		  },function(reason){
+  		           	 console.log("error in processing your request", reason);
+   	           	}); 
+        		  var row = table.row( $(this).parents('tr') );
+                  var rowNode = row.node();
+                  row.remove();
+                  table.page(currentPage).draw(false);
+        	}
+         
+            
+        });
+        
+        var updateFun = function () {
+        	var table = $('#voucher').DataTable();
+      	  r = table.row( $(this).parents('tr') );
+      		  var currentPage = table.page();
+      		  //console.log($(this).attr('delid'));
+      		  
+      		  var URL = getAbsoluteUrl("mortgage-app/api/voucher/"+parseInt($(this).attr('updid')));
+      		  buildAjax(URL, "GET").then(function(respJson){
+      			  console.log(respJson);
+      		        let bori_field = $("#bori");
+      		        let ana_field = $("#ana");
+      		        let ratti_field = $("#ratti");
+      		        let point_field = $("#point");
+      		        let gram_field = $("#gram");
+      		        let loanAmnt_field = $("#loan_amnt");
+      		        let interestRate_field = $("#rate");
+      		        let transactionSerial = $("#transaction_serial");
+      		        let reminderDate = $("#reminder_date");
+      		        let note = $("#note");
+      		        let storage = $("#storage");
+      			  
+      		        $("#cust_name").val(respJson.customer.customerName);
+      		        $("#cust_id").val(respJson.customer.customerId);
+      		        $("#cust_mobile").val(respJson.customer.mobile);
+      		        $("#cust_address").val(respJson.customer.address);
+      		        $("#bori").val(respJson.mortgage.bori);
+      		        $("#ana").val(respJson.mortgage.ana);
+      		        $("#ratti").val(respJson.mortgage.ratti);
+      		        $("#point").val(respJson.mortgage.point);
+      		        $("#gram").val(respJson.mortgage.gram);
+      		        
+      		        console.log(respJson.mortgage);
+      		       
+      		        
+      		        $("#rate").val(respJson.mortgage.interestRate);
+      		        $("#loan_amnt").val(respJson.mortgage.loanAmount);
+      		        /* $("#product").val(respJson.mortgage.product); */
+      		        $("#cust_id").val(respJson.transaction.id);
+      		        $("#reminder_date").val(respJson.transaction.transactionDate);
+      		        $("#storage").val(respJson.transaction.storage);
+      		        $("#note").val(respJson.transaction.note);
+      		        
+      		        //changed serial to id
+      		        $("#serial").val(respJson.id);
+      		        
+      		        
+      		        $("#transaction_serial").val(respJson.transaction.transactionSerial);
+      		        $("#cust_id").val(respJson.customer.customerId);
+      		        $("#voucher_id").val(respJson.id);
+      		        $("#transaction_id").val(respJson.transaction.id);
+      		        $("#mortgage_id").val(respJson.mortgage.mortgageId);
+      		        
+      		        info = respJson;
+      		  },function(reason){
+		           	 console.log("error in processing your request", reason);
+ 	           	}); 
+      		  /* var row = table.row( $(this).parents('tr') );
+                var rowNode = row.node();
+                row.remove();
+                table.page(currentPage).draw(false); */
+      	
+       
+          
+      }
+        
+        
+        
+        
+        
+        var r = null;
+        $('#voucher tbody').on( 'click', '.upd',updateFun );
+        
+        $("#productName").on('change',function(){
+        	if(this.options[this.selectedIndex].value == "Other"){
+        		$("#product_added").prop('disabled', false);
+        	} else {
+        		$("#product_added").prop('disabled', true);
+        	}
+        	
+        });
+        
+        function searchCustomer(){
+        	console.log('search')
+        	dataTable
+	            .column(1)
+	            .search($("#cname").val())
+	            .draw();
+        }
+        
+       /*  $('#voucher_search').each( function (i) {
+	        var title = $('#voucher_search div').eq( $(this).index() ).text();
+	      //  $(this).html( '<input type="text" placeholder="Search '+title+'" data-index="'+i+'" />' );
+	    } ); */
+	
+        </script>
+</body>
+
+<!-- Mirrored from psd2allconversion.com/templates/templatemonster/html/pink-desh/dark/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Jun 2018 06:31:59 GMT -->
+</html>
+
