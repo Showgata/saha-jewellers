@@ -4,35 +4,6 @@
 
 This application allows user to make various gold mortgage related vouchers and transaction. It uses spring boot mvc along with hibernate on the server side along few other libraries.In the front end side, it uses html,css,bootstrap,jquery and few additional frameworks for datepicker and plotting graph.The project is structured in a well-defined fashion and follows the principles of model-view-controller architecture.
 
-Various segment of the project is discussed below :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1 . App package : It contains MortgageAppApplication.java file which is responsible for configuring and running this spring boot application. It also contains code to initialize and add resource handlers.
-
-2.App.configuration :This package is responsible for set-up and configuration of the database and also for App session and authentication procedures.This contains fours java files:
-MortgageUserDetailsService
-MortgageAppSecurity
- CustomAuthenticationSuccessHandler
-MasterDatabaseConfig
-
-	The MortgageUserDetailsService and  MortgageAppSecurity is responsible for login authentication and session management.The configure method is mostly responsible for this. It configures the HttpSecurity. They also uses a password Encoder like BCryptPasswordEncoder for safe encoding.CustomAuthenticationSuccessHandler is used to start a session if the authentication is successful. The few code snippets are given below for demonstration :
-
-
-MasterDatabaseConfig.java is responsible for setting up the hibernate with our database.It creates the master datasource bean which is required for creating the entity manager factory bean and then implements the entity manager factory bean which is required to access the JPA functionalities provided by the JPA persistence provider, i.e. Hibernate. The transaction manager is used in this applications as it uses a single JPA EntityManagerFactory for transactional data access.
-
 ### BASIC PROGRAM FLOW : ###
 
 DispatcherServlet : It is responsible for request handling by delegating requests to additional components of Spring MVC e.g. actual controller classes i.e. those which are annotated using @Controller or @RestController (in case of RESTful Web Services), Views, View Resolvers, handler mappers etc.
